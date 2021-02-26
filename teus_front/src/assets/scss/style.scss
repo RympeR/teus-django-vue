@@ -1,0 +1,267 @@
+*::before, 
+*::after {
+    font-size: inherit;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.layout__container.container-fluid {
+    max-width: 1920px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.layout__inner {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.header {
+    width: 100%;
+}
+
+.footer {
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    padding: 40px 50px 40px 0;
+}
+
+.page {
+    width: calc(100% - 250px);
+    padding: 28px 0 40px;
+}
+
+.content {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    .nav-tabs {
+        margin-bottom: 30px;
+    }
+}
+
+
+
+
+
+.img__thumbnail {
+    display: flex;
+    align-items: center;
+    
+    .media-delete {
+        margin-top: 0;
+    }
+}
+
+.img__thumbnail-img {
+    // width: 80px;
+    // height: 80px;
+    margin-right: 20px;
+    cursor: pointer;
+    // img {
+    //     width: 100%;
+    //     height: 100%;
+    //     object-fit: cover;
+    // }
+}
+
+.table__thumbnail {
+    cursor: pointer;
+    outline: none;
+}
+
+.modal-dialog-auto {
+    max-width: fit-content !important;
+}
+
+.table__search {
+    max-width: 600px;
+}
+
+.table.b-table > thead > tr > [aria-sort] {
+    color: #007bff;
+}
+
+.table__actions {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 -10px;
+}
+
+.btn.btn_edit,
+.btn.btn_delete,
+.btn.btn_updown,
+.btn.btn_turn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    margin: 0 10px;
+    border: none;
+    border-radius: 50%;
+    
+    background-size: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border-color: transparent;
+    
+    &:hover {
+        background-color: transparent;
+        border-color: transparent;
+    }
+    
+    &:focus,
+    &:active {
+        background-color: transparent !important;
+        border-color: transparent !important;
+        box-shadow: none !important;
+    }
+}
+
+.btn.btn_delete {
+    background-image: url(~@/assets/img/icons/delete.png);
+}
+
+.btn.btn_edit {
+    background-image: url(~@/assets/img/icons/tool.png);
+}
+
+.btn.btn_updown {
+    background-image: url(~@/assets/img/icons/updown.png);
+}
+
+.btn.btn_turn {
+    background-image: url(~@/assets/img/icons/bulb_off.png);
+}
+
+.btn.btn_turn-on {
+    background-image: url(~@/assets/img/icons/bulb_on.png);
+}
+
+
+
+.form__item {
+    display: flex;
+    align-items: center;
+    margin: 0 -15px 20px;
+}
+
+.form__item_submit {
+    .form__control {
+        margin-left: 0;
+    }
+}
+
+.form__label {
+    width: 250px;
+    padding: 0 15px;
+}
+
+
+.form__control {
+    width: calc(100% - 250px);
+    margin-left: auto;
+    padding: 0 15px;
+}
+
+.form__tooltip {
+    margin-top: 5px;
+    font-size: 13px;
+    color: #6c757d;
+}
+
+.media-delete {
+    margin-top: 10px;
+}
+
+
+
+
+.form__task {
+    // padding: 20px;
+}
+
+.task__video {
+    max-width: 470px;
+}
+
+.task__audio {
+    max-width: 470px;
+    .plyr--audio .plyr__controls {
+        background: #f7f7f7;
+    }
+}
+
+.answer {
+    // padding: 10px 0 0;
+}
+
+
+.alert.alert-custom {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    max-width: 450px;
+    width: 100%;
+    margin-right: 1rem;
+}
+
+
+.form__item_top {
+    .form__label {
+        align-self: flex-start;
+        padding-top: 7px;
+        padding-bottom: 7px;
+    } 
+}
+
+.short {
+    max-width: 470px;
+}
+
+.textarea {
+    min-height: 100px;
+}
+
+.media-delete {
+    border: none;
+    color: #dc3545 !important;
+    
+    &:focus,
+    &.focus {
+        text-decoration: none !important;
+    }
+    
+    &:hover {
+        text-decoration: underline;
+    }
+}

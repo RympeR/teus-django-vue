@@ -1,0 +1,16 @@
+@mixin link {
+    color: #007bff;
+    border-bottom: 1px solid#cee6ff;
+    &:hover {
+        text-decoration: none;
+        border-bottom: 1px solid rgba(243, 55, 57, 0.23);
+        color: #f33435;
+    }
+}
+
+@mixin reset-btn {
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+}

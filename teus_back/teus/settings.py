@@ -87,9 +87,9 @@ WSGI_APPLICATION = 'teus.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'teos',
-        'USER': 'postgres',
-        'PASSWORD': '1111',
+        'NAME': 'teus',
+        'USER': 'teus_dev',
+        'PASSWORD': 'teus_dev',
         'HOST': 'localhost',
         'PORT': '5432',
     }

@@ -1,0 +1,1561 @@
+*** Starting uWSGI 2.0.19.1 (64bit) on [Fri Feb 26 17:51:31 2021] ***
+compiled with version: 7.5.0 on 26 February 2021 15:46:55
+os: Linux-4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018
+nodename: vps-36418.vps-default-host.net
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 7709
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+*** starting uWSGI Emperor ***
+*** has_emperor mode detected (fd: 5) ***
+[uWSGI] getting INI configuration from /home/teus-django-vue/teus_back/teus_uwsgi.ini
+Fri Feb 26 17:51:31 2021 - [emperor] vassal /home/teus-django-vue/teus_back/teus_uwsgi.ini has been spawned
+Fri Feb 26 17:51:31 2021 - [emperor] vassal /home/teus-django-vue/teus_back/teus_uwsgi.ini is ready to accept requests
+[emperor] *** RAGNAROK EVOKED ***
+Fri Feb 26 17:51:47 2021 - [emperor] stop the uwsgi instance /home/teus-django-vue/teus_back/teus_uwsgi.ini
+Fri Feb 26 17:51:49 2021 - [emperor] removed uwsgi instance /home/teus-django-vue/teus_back/teus_uwsgi.ini
+Fri Feb 26 17:51:50 2021 - The Emperor is buried.
+*** Starting uWSGI 2.0.19.1 (64bit) on [Fri Feb 26 17:51:50 2021] ***
+compiled with version: 7.5.0 on 26 February 2021 15:46:55
+os: Linux-4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018
+nodename: vps-36418.vps-default-host.net
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 7709
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+*** starting uWSGI Emperor ***
+*** has_emperor mode detected (fd: 5) ***
+[uWSGI] getting INI configuration from /home/teus-django-vue/teus_back/teus_uwsgi.ini
+Fri Feb 26 17:51:50 2021 - [emperor] vassal /home/teus-django-vue/teus_back/teus_uwsgi.ini has been spawned
+Fri Feb 26 17:51:50 2021 - [emperor] vassal /home/teus-django-vue/teus_back/teus_uwsgi.ini is ready to accept requests
+*** Starting uWSGI 2.0.19.1 (64bit) on [Fri Feb 26 17:58:11 2021] ***
+compiled with version: 7.5.0 on 26 February 2021 15:46:55
+os: Linux-4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018
+nodename: vps-36418.vps-default-host.net
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 7709
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+*** starting uWSGI Emperor ***
+*** has_emperor mode detected (fd: 5) ***
+[uWSGI] getting INI configuration from /home/teus-django-vue/teus_back/teus_uwsgi.ini
+Fri Feb 26 17:58:12 2021 - [emperor] vassal /home/teus-django-vue/teus_back/teus_uwsgi.ini has been spawned
+Fri Feb 26 17:58:12 2021 - [emperor] vassal /home/teus-django-vue/teus_back/teus_uwsgi.ini is ready to accept requests
+[emperor] *** RAGNAROK EVOKED ***
+Fri Feb 26 18:03:43 2021 - [emperor] stop the uwsgi instance /home/teus-django-vue/teus_back/teus_uwsgi.ini
+Fri Feb 26 18:03:45 2021 - [emperor] removed uwsgi instance /home/teus-django-vue/teus_back/teus_uwsgi.ini
+Fri Feb 26 18:03:46 2021 - The Emperor is buried.
+*** Starting uWSGI 2.0.19.1 (64bit) on [Fri Feb 26 18:03:46 2021] ***
+compiled with version: 7.5.0 on 26 February 2021 15:46:55
+os: Linux-4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018
+nodename: vps-36418.vps-default-host.net
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 7709
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+*** starting uWSGI Emperor ***
+*** has_emperor mode detected (fd: 5) ***
+[uWSGI] getting INI configuration from /home/teus-django-vue/teus_back/teus_uwsgi.ini
+Fri Feb 26 18:03:46 2021 - [emperor] vassal /home/teus-django-vue/teus_back/teus_uwsgi.ini has been spawned
+Fri Feb 26 18:03:46 2021 - [emperor] vassal /home/teus-django-vue/teus_back/teus_uwsgi.ini is ready to accept requests
+[emperor] *** RAGNAROK EVOKED ***
+Fri Feb 26 18:18:31 2021 - [emperor] stop the uwsgi instance /home/teus-django-vue/teus_back/teus_uwsgi.ini
+Fri Feb 26 18:18:33 2021 - [emperor] removed uwsgi instance /home/teus-django-vue/teus_back/teus_uwsgi.ini
+Fri Feb 26 18:18:34 2021 - The Emperor is buried.
+[2021-02-26 18:18:34 +0200] [15757] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:18:34 +0200] [15757] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:18:34 +0200] [15757] [ERROR] Retrying in 1 second.
+[2021-02-26 18:18:35 +0200] [15757] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:18:35 +0200] [15757] [ERROR] Retrying in 1 second.
+[2021-02-26 18:18:36 +0200] [15757] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:18:36 +0200] [15757] [ERROR] Retrying in 1 second.
+[2021-02-26 18:18:37 +0200] [15757] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:18:37 +0200] [15757] [ERROR] Retrying in 1 second.
+[2021-02-26 18:18:38 +0200] [15757] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:18:38 +0200] [15757] [ERROR] Retrying in 1 second.
+[2021-02-26 18:18:39 +0200] [15757] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:18:40 +0200] [15765] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:18:40 +0200] [15765] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:18:40 +0200] [15765] [ERROR] Retrying in 1 second.
+[2021-02-26 18:18:41 +0200] [15765] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:18:41 +0200] [15765] [ERROR] Retrying in 1 second.
+[2021-02-26 18:18:42 +0200] [15765] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:18:42 +0200] [15765] [ERROR] Retrying in 1 second.
+[2021-02-26 18:18:43 +0200] [15765] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:18:43 +0200] [15765] [ERROR] Retrying in 1 second.
+[2021-02-26 18:18:44 +0200] [15765] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:18:44 +0200] [15765] [ERROR] Retrying in 1 second.
+[2021-02-26 18:18:45 +0200] [15765] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:18:45 +0200] [15771] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:18:45 +0200] [15771] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:18:45 +0200] [15771] [ERROR] Retrying in 1 second.
+[2021-02-26 18:18:46 +0200] [15771] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:18:46 +0200] [15771] [ERROR] Retrying in 1 second.
+[2021-02-26 18:18:47 +0200] [15771] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:18:47 +0200] [15771] [ERROR] Retrying in 1 second.
+[2021-02-26 18:18:48 +0200] [15771] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:18:48 +0200] [15771] [ERROR] Retrying in 1 second.
+[2021-02-26 18:18:49 +0200] [15771] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:18:49 +0200] [15771] [ERROR] Retrying in 1 second.
+[2021-02-26 18:18:50 +0200] [15771] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:18:51 +0200] [15778] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:18:51 +0200] [15778] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:18:51 +0200] [15778] [ERROR] Retrying in 1 second.
+[2021-02-26 18:18:52 +0200] [15778] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:18:52 +0200] [15778] [ERROR] Retrying in 1 second.
+[2021-02-26 18:18:53 +0200] [15778] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:18:53 +0200] [15778] [ERROR] Retrying in 1 second.
+[2021-02-26 18:18:54 +0200] [15778] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:18:54 +0200] [15778] [ERROR] Retrying in 1 second.
+[2021-02-26 18:18:55 +0200] [15778] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:18:55 +0200] [15778] [ERROR] Retrying in 1 second.
+[2021-02-26 18:18:56 +0200] [15778] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:18:58 +0200] [15785] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:18:58 +0200] [15785] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:18:58 +0200] [15785] [ERROR] Retrying in 1 second.
+[2021-02-26 18:18:59 +0200] [15785] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:18:59 +0200] [15785] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:00 +0200] [15785] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:00 +0200] [15785] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:01 +0200] [15785] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:01 +0200] [15785] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:02 +0200] [15785] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:02 +0200] [15785] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:03 +0200] [15785] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:19:04 +0200] [15788] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:19:04 +0200] [15788] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:04 +0200] [15788] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:05 +0200] [15788] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:05 +0200] [15788] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:06 +0200] [15788] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:06 +0200] [15788] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:07 +0200] [15788] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:07 +0200] [15788] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:08 +0200] [15788] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:08 +0200] [15788] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:09 +0200] [15788] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:19:10 +0200] [15794] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:19:10 +0200] [15794] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:10 +0200] [15794] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:11 +0200] [15794] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:11 +0200] [15794] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:12 +0200] [15794] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:12 +0200] [15794] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:13 +0200] [15794] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:13 +0200] [15794] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:14 +0200] [15794] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:14 +0200] [15794] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:15 +0200] [15794] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:19:16 +0200] [15799] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:19:16 +0200] [15799] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:16 +0200] [15799] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:17 +0200] [15799] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:17 +0200] [15799] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:18 +0200] [15799] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:18 +0200] [15799] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:19 +0200] [15799] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:19 +0200] [15799] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:20 +0200] [15799] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:20 +0200] [15799] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:21 +0200] [15799] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:19:22 +0200] [15806] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:19:22 +0200] [15806] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:22 +0200] [15806] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:23 +0200] [15806] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:23 +0200] [15806] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:24 +0200] [15806] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:24 +0200] [15806] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:25 +0200] [15806] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:25 +0200] [15806] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:26 +0200] [15806] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:26 +0200] [15806] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:27 +0200] [15806] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:19:28 +0200] [15816] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:19:28 +0200] [15816] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:28 +0200] [15816] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:29 +0200] [15816] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:29 +0200] [15816] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:30 +0200] [15816] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:30 +0200] [15816] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:31 +0200] [15816] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:31 +0200] [15816] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:32 +0200] [15816] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:32 +0200] [15816] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:33 +0200] [15816] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:19:34 +0200] [15821] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:19:34 +0200] [15821] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:34 +0200] [15821] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:35 +0200] [15821] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:35 +0200] [15821] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:36 +0200] [15821] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:36 +0200] [15821] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:37 +0200] [15821] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:37 +0200] [15821] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:38 +0200] [15821] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:38 +0200] [15821] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:39 +0200] [15821] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:19:41 +0200] [15830] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:19:41 +0200] [15830] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:41 +0200] [15830] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:42 +0200] [15830] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:42 +0200] [15830] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:43 +0200] [15830] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:43 +0200] [15830] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:44 +0200] [15830] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:44 +0200] [15830] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:45 +0200] [15830] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:45 +0200] [15830] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:46 +0200] [15830] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:19:47 +0200] [15835] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:19:47 +0200] [15835] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:47 +0200] [15835] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:48 +0200] [15835] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:48 +0200] [15835] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:49 +0200] [15835] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:49 +0200] [15835] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:50 +0200] [15835] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:50 +0200] [15835] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:51 +0200] [15835] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:51 +0200] [15835] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:52 +0200] [15835] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:19:53 +0200] [15840] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:19:53 +0200] [15840] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:53 +0200] [15840] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:54 +0200] [15840] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:54 +0200] [15840] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:55 +0200] [15840] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:55 +0200] [15840] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:56 +0200] [15840] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:56 +0200] [15840] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:57 +0200] [15840] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:57 +0200] [15840] [ERROR] Retrying in 1 second.
+[2021-02-26 18:19:58 +0200] [15840] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:19:59 +0200] [15849] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:19:59 +0200] [15849] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:19:59 +0200] [15849] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:00 +0200] [15849] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:00 +0200] [15849] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:01 +0200] [15849] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:01 +0200] [15849] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:02 +0200] [15849] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:02 +0200] [15849] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:03 +0200] [15849] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:03 +0200] [15849] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:04 +0200] [15849] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:20:05 +0200] [15854] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:20:05 +0200] [15854] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:05 +0200] [15854] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:06 +0200] [15854] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:06 +0200] [15854] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:07 +0200] [15854] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:07 +0200] [15854] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:08 +0200] [15854] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:08 +0200] [15854] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:09 +0200] [15854] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:09 +0200] [15854] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:10 +0200] [15854] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:20:11 +0200] [15860] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:20:11 +0200] [15860] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:11 +0200] [15860] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:12 +0200] [15860] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:12 +0200] [15860] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:13 +0200] [15860] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:13 +0200] [15860] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:14 +0200] [15860] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:14 +0200] [15860] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:15 +0200] [15860] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:15 +0200] [15860] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:16 +0200] [15860] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:20:17 +0200] [15866] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:20:17 +0200] [15866] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:17 +0200] [15866] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:18 +0200] [15866] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:18 +0200] [15866] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:19 +0200] [15866] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:19 +0200] [15866] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:20 +0200] [15866] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:20 +0200] [15866] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:21 +0200] [15866] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:21 +0200] [15866] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:22 +0200] [15866] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:20:24 +0200] [15873] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:20:24 +0200] [15873] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:24 +0200] [15873] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:25 +0200] [15873] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:25 +0200] [15873] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:26 +0200] [15873] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:26 +0200] [15873] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:27 +0200] [15873] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:27 +0200] [15873] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:28 +0200] [15873] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:28 +0200] [15873] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:29 +0200] [15873] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:20:30 +0200] [15878] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:20:30 +0200] [15878] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:30 +0200] [15878] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:31 +0200] [15878] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:31 +0200] [15878] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:32 +0200] [15878] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:32 +0200] [15878] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:33 +0200] [15878] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:33 +0200] [15878] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:34 +0200] [15878] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:34 +0200] [15878] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:35 +0200] [15878] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:20:36 +0200] [15885] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:20:36 +0200] [15885] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:36 +0200] [15885] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:37 +0200] [15885] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:37 +0200] [15885] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:38 +0200] [15885] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:38 +0200] [15885] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:39 +0200] [15885] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:39 +0200] [15885] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:40 +0200] [15885] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:40 +0200] [15885] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:41 +0200] [15885] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:20:42 +0200] [15892] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:20:42 +0200] [15892] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:42 +0200] [15892] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:43 +0200] [15892] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:43 +0200] [15892] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:44 +0200] [15892] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:44 +0200] [15892] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:45 +0200] [15892] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:45 +0200] [15892] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:46 +0200] [15892] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:46 +0200] [15892] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:47 +0200] [15892] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:20:48 +0200] [15899] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:20:48 +0200] [15899] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:48 +0200] [15899] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:49 +0200] [15899] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:49 +0200] [15899] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:50 +0200] [15899] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:50 +0200] [15899] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:51 +0200] [15899] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:51 +0200] [15899] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:52 +0200] [15899] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:52 +0200] [15899] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:53 +0200] [15899] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:20:54 +0200] [15906] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:20:54 +0200] [15906] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:54 +0200] [15906] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:55 +0200] [15906] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:55 +0200] [15906] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:56 +0200] [15906] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:56 +0200] [15906] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:57 +0200] [15906] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:57 +0200] [15906] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:58 +0200] [15906] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:20:58 +0200] [15906] [ERROR] Retrying in 1 second.
+[2021-02-26 18:20:59 +0200] [15906] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:21:00 +0200] [15911] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:21:00 +0200] [15911] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:00 +0200] [15911] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:01 +0200] [15911] [INFO] Listening at: http://127.0.0.1:8000 (15911)
+[2021-02-26 18:21:01 +0200] [15911] [INFO] Using worker: sync
+[2021-02-26 18:21:01 +0200] [15911] [INFO] Unhandled exception in main loop
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 202, in run
+    self.manage_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 545, in manage_workers
+    self.spawn_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 616, in spawn_workers
+    self.spawn_worker()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 565, in spawn_worker
+    self.cfg, self.log)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/base.py", line 63, in __init__
+    self.tmp = WorkerTmp(cfg)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/workertmp.py", line 29, in __init__
+    util.chown(name, cfg.uid, cfg.gid)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/util.py", line 153, in chown
+    os.chown(path, uid, gid)
+PermissionError: [Errno 1] Operation not permitted: '/tmp/wgunicorn-38gkr564'
+[2021-02-26 18:21:02 +0200] [15919] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:21:02 +0200] [15919] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:02 +0200] [15919] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:03 +0200] [15919] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:03 +0200] [15919] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:04 +0200] [15919] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:04 +0200] [15919] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:05 +0200] [15919] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:05 +0200] [15919] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:06 +0200] [15919] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:06 +0200] [15919] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:07 +0200] [15919] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:21:08 +0200] [15932] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:21:08 +0200] [15932] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:08 +0200] [15932] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:09 +0200] [15932] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:09 +0200] [15932] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:10 +0200] [15932] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:10 +0200] [15932] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:11 +0200] [15932] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:11 +0200] [15932] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:12 +0200] [15932] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:12 +0200] [15932] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:13 +0200] [15932] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:21:14 +0200] [15944] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:21:14 +0200] [15944] [INFO] Listening at: http://127.0.0.1:8000 (15944)
+[2021-02-26 18:21:14 +0200] [15944] [INFO] Using worker: sync
+[2021-02-26 18:21:14 +0200] [15944] [INFO] Unhandled exception in main loop
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 202, in run
+    self.manage_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 545, in manage_workers
+    self.spawn_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 616, in spawn_workers
+    self.spawn_worker()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 565, in spawn_worker
+    self.cfg, self.log)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/base.py", line 63, in __init__
+    self.tmp = WorkerTmp(cfg)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/workertmp.py", line 29, in __init__
+    util.chown(name, cfg.uid, cfg.gid)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/util.py", line 153, in chown
+    os.chown(path, uid, gid)
+PermissionError: [Errno 1] Operation not permitted: '/tmp/wgunicorn-rcjtryh9'
+[2021-02-26 18:21:16 +0200] [15956] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:21:16 +0200] [15956] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:16 +0200] [15956] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:17 +0200] [15956] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:17 +0200] [15956] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:18 +0200] [15956] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:18 +0200] [15956] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:19 +0200] [15956] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:19 +0200] [15956] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:20 +0200] [15956] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:20 +0200] [15956] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:21 +0200] [15956] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:21:22 +0200] [15963] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:21:22 +0200] [15963] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:22 +0200] [15963] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:23 +0200] [15963] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:23 +0200] [15963] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:24 +0200] [15963] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:24 +0200] [15963] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:25 +0200] [15963] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:25 +0200] [15963] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:26 +0200] [15963] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:26 +0200] [15963] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:27 +0200] [15963] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:21:27 +0200] [15967] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:21:27 +0200] [15967] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:27 +0200] [15967] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:28 +0200] [15967] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:28 +0200] [15967] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:29 +0200] [15967] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:29 +0200] [15967] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:30 +0200] [15967] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:30 +0200] [15967] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:31 +0200] [15967] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:31 +0200] [15967] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:32 +0200] [15967] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:21:33 +0200] [15972] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:21:33 +0200] [15972] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:33 +0200] [15972] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:34 +0200] [15972] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:34 +0200] [15972] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:35 +0200] [15972] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:35 +0200] [15972] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:36 +0200] [15972] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:36 +0200] [15972] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:37 +0200] [15972] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:37 +0200] [15972] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:38 +0200] [15972] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:21:39 +0200] [15980] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:21:39 +0200] [15980] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:39 +0200] [15980] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:40 +0200] [15980] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:40 +0200] [15980] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:41 +0200] [15980] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:41 +0200] [15980] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:42 +0200] [15980] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:42 +0200] [15980] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:43 +0200] [15980] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:43 +0200] [15980] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:44 +0200] [15980] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:21:45 +0200] [15986] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:21:45 +0200] [15986] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:45 +0200] [15986] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:46 +0200] [15986] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:46 +0200] [15986] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:47 +0200] [15986] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:47 +0200] [15986] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:48 +0200] [15986] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:48 +0200] [15986] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:49 +0200] [15986] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:49 +0200] [15986] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:50 +0200] [15986] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:21:52 +0200] [15992] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:21:52 +0200] [15992] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:52 +0200] [15992] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:53 +0200] [15992] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:53 +0200] [15992] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:54 +0200] [15992] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:54 +0200] [15992] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:55 +0200] [15992] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:55 +0200] [15992] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:56 +0200] [15992] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:56 +0200] [15992] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:57 +0200] [15992] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:21:58 +0200] [15997] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:21:58 +0200] [15997] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:58 +0200] [15997] [ERROR] Retrying in 1 second.
+[2021-02-26 18:21:59 +0200] [15997] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:21:59 +0200] [15997] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:00 +0200] [15997] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:00 +0200] [15997] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:01 +0200] [15997] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:01 +0200] [15997] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:02 +0200] [15997] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:02 +0200] [15997] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:03 +0200] [15997] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:22:04 +0200] [16004] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:22:04 +0200] [16004] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:04 +0200] [16004] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:05 +0200] [16004] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:05 +0200] [16004] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:06 +0200] [16004] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:06 +0200] [16004] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:07 +0200] [16004] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:07 +0200] [16004] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:08 +0200] [16004] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:08 +0200] [16004] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:09 +0200] [16004] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:22:10 +0200] [16019] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:22:10 +0200] [16019] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:10 +0200] [16019] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:11 +0200] [16019] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:11 +0200] [16019] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:12 +0200] [16019] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:12 +0200] [16019] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:13 +0200] [16019] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:13 +0200] [16019] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:14 +0200] [16019] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:14 +0200] [16019] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:15 +0200] [16019] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:22:16 +0200] [16024] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:22:16 +0200] [16024] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:16 +0200] [16024] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:17 +0200] [16024] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:17 +0200] [16024] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:18 +0200] [16024] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:18 +0200] [16024] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:19 +0200] [16024] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:19 +0200] [16024] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:20 +0200] [16024] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:20 +0200] [16024] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:21 +0200] [16024] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:22:22 +0200] [16046] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:22:22 +0200] [16046] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:22 +0200] [16046] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:23 +0200] [16046] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:23 +0200] [16046] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:24 +0200] [16046] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:24 +0200] [16046] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:25 +0200] [16046] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:25 +0200] [16046] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:26 +0200] [16046] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:26 +0200] [16046] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:27 +0200] [16046] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:22:28 +0200] [16053] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:22:28 +0200] [16053] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:28 +0200] [16053] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:29 +0200] [16053] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:29 +0200] [16053] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:30 +0200] [16053] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:30 +0200] [16053] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:31 +0200] [16053] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:31 +0200] [16053] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:32 +0200] [16053] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:32 +0200] [16053] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:33 +0200] [16053] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:22:35 +0200] [16063] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:22:35 +0200] [16063] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:35 +0200] [16063] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:36 +0200] [16063] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:36 +0200] [16063] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:37 +0200] [16063] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:37 +0200] [16063] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:38 +0200] [16063] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:38 +0200] [16063] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:39 +0200] [16063] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:39 +0200] [16063] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:40 +0200] [16063] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:22:41 +0200] [16071] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:22:41 +0200] [16071] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:41 +0200] [16071] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:42 +0200] [16071] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:42 +0200] [16071] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:43 +0200] [16071] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:43 +0200] [16071] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:44 +0200] [16071] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:44 +0200] [16071] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:45 +0200] [16071] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:45 +0200] [16071] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:46 +0200] [16071] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:22:47 +0200] [16076] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:22:47 +0200] [16076] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:47 +0200] [16076] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:48 +0200] [16076] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:48 +0200] [16076] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:49 +0200] [16076] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:49 +0200] [16076] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:50 +0200] [16076] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:50 +0200] [16076] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:51 +0200] [16076] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:51 +0200] [16076] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:52 +0200] [16076] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:22:53 +0200] [16084] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:22:53 +0200] [16084] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:53 +0200] [16084] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:54 +0200] [16084] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:54 +0200] [16084] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:55 +0200] [16084] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:55 +0200] [16084] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:56 +0200] [16084] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:56 +0200] [16084] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:57 +0200] [16084] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:57 +0200] [16084] [ERROR] Retrying in 1 second.
+[2021-02-26 18:22:58 +0200] [16084] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:22:59 +0200] [16093] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:22:59 +0200] [16093] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:22:59 +0200] [16093] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:00 +0200] [16093] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:00 +0200] [16093] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:01 +0200] [16093] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:01 +0200] [16093] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:02 +0200] [16093] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:02 +0200] [16093] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:03 +0200] [16093] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:03 +0200] [16093] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:04 +0200] [16093] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:23:05 +0200] [16101] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:23:05 +0200] [16101] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:05 +0200] [16101] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:06 +0200] [16101] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:06 +0200] [16101] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:07 +0200] [16101] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:07 +0200] [16101] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:08 +0200] [16101] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:08 +0200] [16101] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:09 +0200] [16101] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:09 +0200] [16101] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:10 +0200] [16101] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:23:11 +0200] [16105] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:23:11 +0200] [16105] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:11 +0200] [16105] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:12 +0200] [16105] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:12 +0200] [16105] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:13 +0200] [16105] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:13 +0200] [16105] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:14 +0200] [16105] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:14 +0200] [16105] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:15 +0200] [16105] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:15 +0200] [16105] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:16 +0200] [16105] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:23:18 +0200] [16112] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:23:18 +0200] [16112] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:18 +0200] [16112] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:19 +0200] [16112] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:19 +0200] [16112] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:20 +0200] [16112] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:20 +0200] [16112] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:21 +0200] [16112] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:21 +0200] [16112] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:22 +0200] [16112] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:22 +0200] [16112] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:23 +0200] [16112] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:23:24 +0200] [16117] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:23:24 +0200] [16117] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:24 +0200] [16117] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:25 +0200] [16117] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:25 +0200] [16117] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:26 +0200] [16117] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:26 +0200] [16117] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:27 +0200] [16117] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:27 +0200] [16117] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:28 +0200] [16117] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:28 +0200] [16117] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:29 +0200] [16117] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:23:30 +0200] [16122] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:23:30 +0200] [16122] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:30 +0200] [16122] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:31 +0200] [16122] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:31 +0200] [16122] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:32 +0200] [16122] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:32 +0200] [16122] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:33 +0200] [16122] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:33 +0200] [16122] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:34 +0200] [16122] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:34 +0200] [16122] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:35 +0200] [16122] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:23:36 +0200] [16127] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:23:36 +0200] [16127] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:36 +0200] [16127] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:37 +0200] [16127] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:37 +0200] [16127] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:38 +0200] [16127] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:38 +0200] [16127] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:39 +0200] [16127] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:39 +0200] [16127] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:40 +0200] [16127] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:40 +0200] [16127] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:41 +0200] [16127] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:23:42 +0200] [16136] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:23:42 +0200] [16136] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:42 +0200] [16136] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:43 +0200] [16136] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:43 +0200] [16136] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:44 +0200] [16136] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:44 +0200] [16136] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:45 +0200] [16136] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:45 +0200] [16136] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:46 +0200] [16136] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:46 +0200] [16136] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:47 +0200] [16136] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:23:48 +0200] [16142] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:23:48 +0200] [16142] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:48 +0200] [16142] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:49 +0200] [16142] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:49 +0200] [16142] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:50 +0200] [16142] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:50 +0200] [16142] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:51 +0200] [16142] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:51 +0200] [16142] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:52 +0200] [16142] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:52 +0200] [16142] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:53 +0200] [16142] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:23:54 +0200] [16147] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:23:54 +0200] [16147] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:54 +0200] [16147] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:55 +0200] [16147] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:55 +0200] [16147] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:56 +0200] [16147] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:56 +0200] [16147] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:57 +0200] [16147] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:57 +0200] [16147] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:58 +0200] [16147] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:23:58 +0200] [16147] [ERROR] Retrying in 1 second.
+[2021-02-26 18:23:59 +0200] [16147] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:24:01 +0200] [16152] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:24:01 +0200] [16152] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:01 +0200] [16152] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:02 +0200] [16152] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:02 +0200] [16152] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:03 +0200] [16152] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:03 +0200] [16152] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:04 +0200] [16152] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:04 +0200] [16152] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:05 +0200] [16152] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:05 +0200] [16152] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:06 +0200] [16152] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:24:07 +0200] [16159] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:24:07 +0200] [16159] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:07 +0200] [16159] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:08 +0200] [16159] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:08 +0200] [16159] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:09 +0200] [16159] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:09 +0200] [16159] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:10 +0200] [16159] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:10 +0200] [16159] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:11 +0200] [16159] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:11 +0200] [16159] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:12 +0200] [16159] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:24:13 +0200] [16167] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:24:13 +0200] [16167] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:13 +0200] [16167] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:14 +0200] [16167] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:14 +0200] [16167] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:15 +0200] [16167] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:15 +0200] [16167] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:16 +0200] [16167] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:16 +0200] [16167] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:17 +0200] [16167] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:17 +0200] [16167] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:18 +0200] [16167] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:24:19 +0200] [16172] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:24:19 +0200] [16172] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:19 +0200] [16172] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:20 +0200] [16172] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:20 +0200] [16172] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:21 +0200] [16172] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:21 +0200] [16172] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:22 +0200] [16172] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:22 +0200] [16172] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:23 +0200] [16172] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:23 +0200] [16172] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:24 +0200] [16172] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:24:25 +0200] [16186] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:24:25 +0200] [16186] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:25 +0200] [16186] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:26 +0200] [16186] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:26 +0200] [16186] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:27 +0200] [16186] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:27 +0200] [16186] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:28 +0200] [16186] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:28 +0200] [16186] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:29 +0200] [16186] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:29 +0200] [16186] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:30 +0200] [16186] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:24:31 +0200] [16201] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:24:31 +0200] [16201] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:31 +0200] [16201] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:32 +0200] [16201] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:32 +0200] [16201] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:33 +0200] [16201] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:33 +0200] [16201] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:34 +0200] [16201] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:34 +0200] [16201] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:35 +0200] [16201] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:35 +0200] [16201] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:36 +0200] [16201] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:24:37 +0200] [16210] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:24:37 +0200] [16210] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:37 +0200] [16210] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:38 +0200] [16210] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:38 +0200] [16210] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:39 +0200] [16210] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:39 +0200] [16210] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:40 +0200] [16210] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:40 +0200] [16210] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:41 +0200] [16210] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:41 +0200] [16210] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:42 +0200] [16210] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:24:44 +0200] [16217] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:24:44 +0200] [16217] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:44 +0200] [16217] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:45 +0200] [16217] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:45 +0200] [16217] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:46 +0200] [16217] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:46 +0200] [16217] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:47 +0200] [16217] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:47 +0200] [16217] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:48 +0200] [16217] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:48 +0200] [16217] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:49 +0200] [16217] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:24:50 +0200] [16224] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:24:50 +0200] [16224] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:50 +0200] [16224] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:51 +0200] [16224] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:51 +0200] [16224] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:52 +0200] [16224] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:52 +0200] [16224] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:53 +0200] [16224] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:53 +0200] [16224] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:54 +0200] [16224] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:54 +0200] [16224] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:55 +0200] [16224] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:24:56 +0200] [16233] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:24:56 +0200] [16233] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:56 +0200] [16233] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:57 +0200] [16233] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:57 +0200] [16233] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:58 +0200] [16233] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:58 +0200] [16233] [ERROR] Retrying in 1 second.
+[2021-02-26 18:24:59 +0200] [16233] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:24:59 +0200] [16233] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:00 +0200] [16233] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:25:00 +0200] [16233] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:01 +0200] [16233] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:25:02 +0200] [16241] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:25:02 +0200] [16241] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:25:02 +0200] [16241] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:03 +0200] [16241] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:25:03 +0200] [16241] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:04 +0200] [16241] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:25:04 +0200] [16241] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:05 +0200] [16241] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:25:05 +0200] [16241] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:06 +0200] [16241] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:25:06 +0200] [16241] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:07 +0200] [16241] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:25:08 +0200] [16246] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:25:08 +0200] [16246] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:25:08 +0200] [16246] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:09 +0200] [16246] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:25:09 +0200] [16246] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:10 +0200] [16246] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:25:10 +0200] [16246] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:11 +0200] [16246] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:25:11 +0200] [16246] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:12 +0200] [16246] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:25:12 +0200] [16246] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:13 +0200] [16246] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:25:14 +0200] [16254] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:25:14 +0200] [16254] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:25:14 +0200] [16254] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:15 +0200] [16254] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:25:15 +0200] [16254] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:16 +0200] [16254] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:25:16 +0200] [16254] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:17 +0200] [16254] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:25:17 +0200] [16254] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:18 +0200] [16254] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:25:18 +0200] [16254] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:19 +0200] [16254] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:25:20 +0200] [16262] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:25:20 +0200] [16262] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:25:20 +0200] [16262] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:21 +0200] [16262] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:25:21 +0200] [16262] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:22 +0200] [16262] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:25:22 +0200] [16262] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:23 +0200] [16262] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:25:23 +0200] [16262] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:24 +0200] [16262] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:25:24 +0200] [16262] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:25 +0200] [16262] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:25:26 +0200] [16268] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:25:26 +0200] [16268] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:25:26 +0200] [16268] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:27 +0200] [16268] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:25:27 +0200] [16268] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:28 +0200] [16268] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:25:28 +0200] [16268] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:29 +0200] [16268] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:25:29 +0200] [16268] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:30 +0200] [16268] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2021-02-26 18:25:30 +0200] [16268] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:31 +0200] [16268] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2021-02-26 18:25:33 +0200] [16273] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:25:33 +0200] [16273] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:25:33 +0200] [16273] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:34 +0200] [16273] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:25:34 +0200] [16273] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:35 +0200] [16273] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:25:35 +0200] [16273] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:36 +0200] [16273] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:25:36 +0200] [16273] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:37 +0200] [16273] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:25:37 +0200] [16273] [ERROR] Retrying in 1 second.
+[2021-02-26 18:25:38 +0200] [16273] [ERROR] Can't connect to ('127.0.0.1', 8001)
+[2021-02-26 18:25:39 +0200] [16282] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:25:39 +0200] [16282] [INFO] Listening at: http://127.0.0.1:8001 (16282)
+[2021-02-26 18:25:39 +0200] [16282] [INFO] Using worker: sync
+[2021-02-26 18:25:39 +0200] [16282] [INFO] Unhandled exception in main loop
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 202, in run
+    self.manage_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 545, in manage_workers
+    self.spawn_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 616, in spawn_workers
+    self.spawn_worker()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 565, in spawn_worker
+    self.cfg, self.log)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/base.py", line 63, in __init__
+    self.tmp = WorkerTmp(cfg)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/workertmp.py", line 29, in __init__
+    util.chown(name, cfg.uid, cfg.gid)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/util.py", line 153, in chown
+    os.chown(path, uid, gid)
+PermissionError: [Errno 1] Operation not permitted: '/tmp/wgunicorn-8z2heevg'
+[2021-02-26 18:25:40 +0200] [16315] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:25:40 +0200] [16315] [INFO] Listening at: http://127.0.0.1:8001 (16315)
+[2021-02-26 18:25:40 +0200] [16315] [INFO] Using worker: sync
+[2021-02-26 18:25:40 +0200] [16315] [INFO] Unhandled exception in main loop
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 202, in run
+    self.manage_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 545, in manage_workers
+    self.spawn_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 616, in spawn_workers
+    self.spawn_worker()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 565, in spawn_worker
+    self.cfg, self.log)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/base.py", line 63, in __init__
+    self.tmp = WorkerTmp(cfg)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/workertmp.py", line 29, in __init__
+    util.chown(name, cfg.uid, cfg.gid)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/util.py", line 153, in chown
+    os.chown(path, uid, gid)
+PermissionError: [Errno 1] Operation not permitted: '/tmp/wgunicorn-7u7mbbsk'
+[2021-02-26 18:25:42 +0200] [16318] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:25:42 +0200] [16318] [INFO] Listening at: http://127.0.0.1:8001 (16318)
+[2021-02-26 18:25:42 +0200] [16318] [INFO] Using worker: sync
+[2021-02-26 18:25:42 +0200] [16318] [INFO] Unhandled exception in main loop
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 202, in run
+    self.manage_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 545, in manage_workers
+    self.spawn_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 616, in spawn_workers
+    self.spawn_worker()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 565, in spawn_worker
+    self.cfg, self.log)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/base.py", line 63, in __init__
+    self.tmp = WorkerTmp(cfg)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/workertmp.py", line 29, in __init__
+    util.chown(name, cfg.uid, cfg.gid)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/util.py", line 153, in chown
+    os.chown(path, uid, gid)
+PermissionError: [Errno 1] Operation not permitted: '/tmp/wgunicorn-drz474h8'
+[2021-02-26 18:25:45 +0200] [16325] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:25:45 +0200] [16325] [INFO] Listening at: http://127.0.0.1:8001 (16325)
+[2021-02-26 18:25:45 +0200] [16325] [INFO] Using worker: sync
+[2021-02-26 18:25:45 +0200] [16325] [INFO] Unhandled exception in main loop
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 202, in run
+    self.manage_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 545, in manage_workers
+    self.spawn_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 616, in spawn_workers
+    self.spawn_worker()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 565, in spawn_worker
+    self.cfg, self.log)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/base.py", line 63, in __init__
+    self.tmp = WorkerTmp(cfg)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/workertmp.py", line 29, in __init__
+    util.chown(name, cfg.uid, cfg.gid)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/util.py", line 153, in chown
+    os.chown(path, uid, gid)
+PermissionError: [Errno 1] Operation not permitted: '/tmp/wgunicorn-xrcnh7_b'
+[2021-02-26 18:26:27 +0200] [16393] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:26:27 +0200] [16393] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:26:27 +0200] [16393] [ERROR] Retrying in 1 second.
+[2021-02-26 18:26:28 +0200] [16393] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:26:28 +0200] [16393] [ERROR] Retrying in 1 second.
+[2021-02-26 18:26:29 +0200] [16393] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:26:29 +0200] [16393] [ERROR] Retrying in 1 second.
+[2021-02-26 18:26:30 +0200] [16393] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:26:30 +0200] [16393] [ERROR] Retrying in 1 second.
+[2021-02-26 18:26:31 +0200] [16393] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:26:31 +0200] [16393] [ERROR] Retrying in 1 second.
+[2021-02-26 18:26:32 +0200] [16393] [ERROR] Can't connect to ('127.0.0.1', 8001)
+[2021-02-26 18:26:33 +0200] [16402] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:26:33 +0200] [16402] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:26:33 +0200] [16402] [ERROR] Retrying in 1 second.
+[2021-02-26 18:26:34 +0200] [16402] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:26:34 +0200] [16402] [ERROR] Retrying in 1 second.
+[2021-02-26 18:26:35 +0200] [16402] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:26:35 +0200] [16402] [ERROR] Retrying in 1 second.
+[2021-02-26 18:26:36 +0200] [16402] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:26:36 +0200] [16402] [ERROR] Retrying in 1 second.
+[2021-02-26 18:26:37 +0200] [16402] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:26:37 +0200] [16402] [ERROR] Retrying in 1 second.
+[2021-02-26 18:26:38 +0200] [16402] [ERROR] Can't connect to ('127.0.0.1', 8001)
+[2021-02-26 18:26:39 +0200] [16410] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:26:39 +0200] [16410] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:26:39 +0200] [16410] [ERROR] Retrying in 1 second.
+[2021-02-26 18:26:40 +0200] [16410] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:26:40 +0200] [16410] [ERROR] Retrying in 1 second.
+[2021-02-26 18:26:41 +0200] [16410] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:26:41 +0200] [16410] [ERROR] Retrying in 1 second.
+[2021-02-26 18:26:42 +0200] [16410] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:26:42 +0200] [16410] [ERROR] Retrying in 1 second.
+[2021-02-26 18:26:43 +0200] [16410] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:26:43 +0200] [16410] [ERROR] Retrying in 1 second.
+[2021-02-26 18:26:44 +0200] [16410] [ERROR] Can't connect to ('127.0.0.1', 8001)
+[2021-02-26 18:26:45 +0200] [16415] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:26:45 +0200] [16415] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:26:45 +0200] [16415] [ERROR] Retrying in 1 second.
+[2021-02-26 18:26:46 +0200] [16415] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:26:46 +0200] [16415] [ERROR] Retrying in 1 second.
+[2021-02-26 18:26:47 +0200] [16415] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:26:47 +0200] [16415] [ERROR] Retrying in 1 second.
+[2021-02-26 18:26:48 +0200] [16415] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:26:48 +0200] [16415] [ERROR] Retrying in 1 second.
+[2021-02-26 18:26:49 +0200] [16415] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:26:49 +0200] [16415] [ERROR] Retrying in 1 second.
+[2021-02-26 18:26:50 +0200] [16415] [ERROR] Can't connect to ('127.0.0.1', 8001)
+[2021-02-26 18:26:51 +0200] [16423] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:26:51 +0200] [16423] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:26:51 +0200] [16423] [ERROR] Retrying in 1 second.
+[2021-02-26 18:26:52 +0200] [16423] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:26:52 +0200] [16423] [ERROR] Retrying in 1 second.
+[2021-02-26 18:26:53 +0200] [16423] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:26:53 +0200] [16423] [ERROR] Retrying in 1 second.
+[2021-02-26 18:26:54 +0200] [16423] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:26:54 +0200] [16423] [ERROR] Retrying in 1 second.
+[2021-02-26 18:26:55 +0200] [16423] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:26:55 +0200] [16423] [ERROR] Retrying in 1 second.
+[2021-02-26 18:26:56 +0200] [16423] [ERROR] Can't connect to ('127.0.0.1', 8001)
+[2021-02-26 18:26:56 +0200] [16429] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:26:56 +0200] [16429] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:26:56 +0200] [16429] [ERROR] Retrying in 1 second.
+[2021-02-26 18:26:57 +0200] [16429] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:26:57 +0200] [16429] [ERROR] Retrying in 1 second.
+[2021-02-26 18:26:58 +0200] [16429] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:26:58 +0200] [16429] [ERROR] Retrying in 1 second.
+[2021-02-26 18:26:59 +0200] [16429] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:26:59 +0200] [16429] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:00 +0200] [16429] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:00 +0200] [16429] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:01 +0200] [16429] [ERROR] Can't connect to ('127.0.0.1', 8001)
+[2021-02-26 18:27:02 +0200] [16436] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:27:02 +0200] [16436] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:02 +0200] [16436] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:03 +0200] [16436] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:03 +0200] [16436] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:04 +0200] [16436] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:04 +0200] [16436] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:05 +0200] [16436] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:05 +0200] [16436] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:06 +0200] [16436] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:06 +0200] [16436] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:07 +0200] [16436] [ERROR] Can't connect to ('127.0.0.1', 8001)
+[2021-02-26 18:27:09 +0200] [16442] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:27:09 +0200] [16442] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:09 +0200] [16442] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:10 +0200] [16442] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:10 +0200] [16442] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:11 +0200] [16442] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:11 +0200] [16442] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:12 +0200] [16442] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:12 +0200] [16442] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:13 +0200] [16442] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:13 +0200] [16442] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:14 +0200] [16442] [ERROR] Can't connect to ('127.0.0.1', 8001)
+[2021-02-26 18:27:15 +0200] [16447] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:27:15 +0200] [16447] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:15 +0200] [16447] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:16 +0200] [16447] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:16 +0200] [16447] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:17 +0200] [16447] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:17 +0200] [16447] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:18 +0200] [16447] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:18 +0200] [16447] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:19 +0200] [16447] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:19 +0200] [16447] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:20 +0200] [16447] [ERROR] Can't connect to ('127.0.0.1', 8001)
+[2021-02-26 18:27:21 +0200] [16455] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:27:21 +0200] [16455] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:21 +0200] [16455] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:22 +0200] [16455] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:22 +0200] [16455] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:23 +0200] [16455] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:23 +0200] [16455] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:24 +0200] [16455] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:24 +0200] [16455] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:25 +0200] [16455] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:25 +0200] [16455] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:26 +0200] [16455] [ERROR] Can't connect to ('127.0.0.1', 8001)
+[2021-02-26 18:27:27 +0200] [16460] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:27:27 +0200] [16460] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:27 +0200] [16460] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:28 +0200] [16460] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:28 +0200] [16460] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:29 +0200] [16460] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:29 +0200] [16460] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:30 +0200] [16460] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:30 +0200] [16460] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:31 +0200] [16460] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:31 +0200] [16460] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:32 +0200] [16460] [ERROR] Can't connect to ('127.0.0.1', 8001)
+[2021-02-26 18:27:33 +0200] [16470] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:27:33 +0200] [16470] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:33 +0200] [16470] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:34 +0200] [16470] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:34 +0200] [16470] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:35 +0200] [16470] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:35 +0200] [16470] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:36 +0200] [16470] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:36 +0200] [16470] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:37 +0200] [16470] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:37 +0200] [16470] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:38 +0200] [16470] [ERROR] Can't connect to ('127.0.0.1', 8001)
+[2021-02-26 18:27:39 +0200] [16478] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:27:39 +0200] [16478] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:39 +0200] [16478] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:40 +0200] [16478] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:40 +0200] [16478] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:41 +0200] [16478] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:41 +0200] [16478] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:42 +0200] [16478] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:42 +0200] [16478] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:43 +0200] [16478] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:43 +0200] [16478] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:44 +0200] [16478] [ERROR] Can't connect to ('127.0.0.1', 8001)
+[2021-02-26 18:27:45 +0200] [16487] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:27:45 +0200] [16487] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:45 +0200] [16487] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:46 +0200] [16487] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:46 +0200] [16487] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:47 +0200] [16487] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:47 +0200] [16487] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:48 +0200] [16487] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:48 +0200] [16487] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:49 +0200] [16487] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:49 +0200] [16487] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:50 +0200] [16487] [ERROR] Can't connect to ('127.0.0.1', 8001)
+[2021-02-26 18:27:52 +0200] [16492] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:27:52 +0200] [16492] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:52 +0200] [16492] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:53 +0200] [16492] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:53 +0200] [16492] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:54 +0200] [16492] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:54 +0200] [16492] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:55 +0200] [16492] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:55 +0200] [16492] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:56 +0200] [16492] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:56 +0200] [16492] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:57 +0200] [16492] [ERROR] Can't connect to ('127.0.0.1', 8001)
+[2021-02-26 18:27:58 +0200] [16500] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:27:58 +0200] [16500] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:58 +0200] [16500] [ERROR] Retrying in 1 second.
+[2021-02-26 18:27:59 +0200] [16500] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:27:59 +0200] [16500] [ERROR] Retrying in 1 second.
+[2021-02-26 18:28:00 +0200] [16500] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:28:00 +0200] [16500] [ERROR] Retrying in 1 second.
+[2021-02-26 18:28:01 +0200] [16500] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:28:01 +0200] [16500] [ERROR] Retrying in 1 second.
+[2021-02-26 18:28:02 +0200] [16500] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:28:02 +0200] [16500] [ERROR] Retrying in 1 second.
+[2021-02-26 18:28:03 +0200] [16500] [ERROR] Can't connect to ('127.0.0.1', 8001)
+[2021-02-26 18:28:04 +0200] [16504] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:28:04 +0200] [16504] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:28:04 +0200] [16504] [ERROR] Retrying in 1 second.
+[2021-02-26 18:28:05 +0200] [16504] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:28:05 +0200] [16504] [ERROR] Retrying in 1 second.
+[2021-02-26 18:28:06 +0200] [16504] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:28:06 +0200] [16504] [ERROR] Retrying in 1 second.
+[2021-02-26 18:28:07 +0200] [16504] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:28:07 +0200] [16504] [ERROR] Retrying in 1 second.
+[2021-02-26 18:28:08 +0200] [16504] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:28:08 +0200] [16504] [ERROR] Retrying in 1 second.
+[2021-02-26 18:28:09 +0200] [16504] [ERROR] Can't connect to ('127.0.0.1', 8001)
+[2021-02-26 18:28:10 +0200] [16514] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:28:10 +0200] [16514] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:28:10 +0200] [16514] [ERROR] Retrying in 1 second.
+[2021-02-26 18:28:11 +0200] [16514] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:28:11 +0200] [16514] [ERROR] Retrying in 1 second.
+[2021-02-26 18:28:12 +0200] [16514] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:28:12 +0200] [16514] [ERROR] Retrying in 1 second.
+[2021-02-26 18:28:13 +0200] [16514] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:28:13 +0200] [16514] [ERROR] Retrying in 1 second.
+[2021-02-26 18:28:14 +0200] [16514] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:28:14 +0200] [16514] [ERROR] Retrying in 1 second.
+[2021-02-26 18:28:15 +0200] [16514] [ERROR] Can't connect to ('127.0.0.1', 8001)
+[2021-02-26 18:28:16 +0200] [16519] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:28:16 +0200] [16519] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:28:16 +0200] [16519] [ERROR] Retrying in 1 second.
+[2021-02-26 18:28:17 +0200] [16519] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:28:17 +0200] [16519] [ERROR] Retrying in 1 second.
+[2021-02-26 18:28:18 +0200] [16519] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:28:18 +0200] [16519] [ERROR] Retrying in 1 second.
+[2021-02-26 18:28:19 +0200] [16519] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:28:19 +0200] [16519] [ERROR] Retrying in 1 second.
+[2021-02-26 18:28:20 +0200] [16519] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:28:20 +0200] [16519] [ERROR] Retrying in 1 second.
+[2021-02-26 18:28:21 +0200] [16519] [ERROR] Can't connect to ('127.0.0.1', 8001)
+[2021-02-26 18:28:22 +0200] [16530] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:28:22 +0200] [16530] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:28:22 +0200] [16530] [ERROR] Retrying in 1 second.
+[2021-02-26 18:28:23 +0200] [16530] [ERROR] Connection in use: ('127.0.0.1', 8001)
+[2021-02-26 18:28:23 +0200] [16530] [ERROR] Retrying in 1 second.
+[2021-02-26 18:28:24 +0200] [16530] [INFO] Listening at: http://127.0.0.1:8001 (16530)
+[2021-02-26 18:28:24 +0200] [16530] [INFO] Using worker: sync
+[2021-02-26 18:28:24 +0200] [16530] [INFO] Unhandled exception in main loop
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 202, in run
+    self.manage_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 545, in manage_workers
+    self.spawn_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 616, in spawn_workers
+    self.spawn_worker()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 565, in spawn_worker
+    self.cfg, self.log)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/base.py", line 63, in __init__
+    self.tmp = WorkerTmp(cfg)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/workertmp.py", line 29, in __init__
+    util.chown(name, cfg.uid, cfg.gid)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/util.py", line 153, in chown
+    os.chown(path, uid, gid)
+PermissionError: [Errno 1] Operation not permitted: '/tmp/wgunicorn-8q7cqqw5'
+[2021-02-26 18:28:25 +0200] [16564] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:28:25 +0200] [16564] [INFO] Listening at: http://127.0.0.1:8001 (16564)
+[2021-02-26 18:28:25 +0200] [16564] [INFO] Using worker: sync
+[2021-02-26 18:28:25 +0200] [16564] [INFO] Unhandled exception in main loop
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 202, in run
+    self.manage_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 545, in manage_workers
+    self.spawn_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 616, in spawn_workers
+    self.spawn_worker()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 565, in spawn_worker
+    self.cfg, self.log)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/base.py", line 63, in __init__
+    self.tmp = WorkerTmp(cfg)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/workertmp.py", line 29, in __init__
+    util.chown(name, cfg.uid, cfg.gid)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/util.py", line 153, in chown
+    os.chown(path, uid, gid)
+PermissionError: [Errno 1] Operation not permitted: '/tmp/wgunicorn-en_hi41d'
+[2021-02-26 18:28:26 +0200] [16567] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:28:26 +0200] [16567] [INFO] Listening at: http://127.0.0.1:8001 (16567)
+[2021-02-26 18:28:26 +0200] [16567] [INFO] Using worker: sync
+[2021-02-26 18:28:26 +0200] [16567] [INFO] Unhandled exception in main loop
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 202, in run
+    self.manage_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 545, in manage_workers
+    self.spawn_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 616, in spawn_workers
+    self.spawn_worker()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 565, in spawn_worker
+    self.cfg, self.log)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/base.py", line 63, in __init__
+    self.tmp = WorkerTmp(cfg)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/workertmp.py", line 29, in __init__
+    util.chown(name, cfg.uid, cfg.gid)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/util.py", line 153, in chown
+    os.chown(path, uid, gid)
+PermissionError: [Errno 1] Operation not permitted: '/tmp/wgunicorn-motl5zu4'
+[2021-02-26 18:28:29 +0200] [16573] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:28:29 +0200] [16573] [INFO] Listening at: http://127.0.0.1:8001 (16573)
+[2021-02-26 18:28:29 +0200] [16573] [INFO] Using worker: sync
+[2021-02-26 18:28:29 +0200] [16573] [INFO] Unhandled exception in main loop
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 202, in run
+    self.manage_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 545, in manage_workers
+    self.spawn_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 616, in spawn_workers
+    self.spawn_worker()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 565, in spawn_worker
+    self.cfg, self.log)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/base.py", line 63, in __init__
+    self.tmp = WorkerTmp(cfg)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/workertmp.py", line 29, in __init__
+    util.chown(name, cfg.uid, cfg.gid)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/util.py", line 153, in chown
+    os.chown(path, uid, gid)
+PermissionError: [Errno 1] Operation not permitted: '/tmp/wgunicorn-6o7z91at'
+[2021-02-26 18:28:32 +0200] [16578] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:28:32 +0200] [16578] [INFO] Listening at: http://127.0.0.1:8001 (16578)
+[2021-02-26 18:28:32 +0200] [16578] [INFO] Using worker: sync
+[2021-02-26 18:28:32 +0200] [16578] [INFO] Unhandled exception in main loop
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 202, in run
+    self.manage_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 545, in manage_workers
+    self.spawn_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 616, in spawn_workers
+    self.spawn_worker()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 565, in spawn_worker
+    self.cfg, self.log)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/base.py", line 63, in __init__
+    self.tmp = WorkerTmp(cfg)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/workertmp.py", line 29, in __init__
+    util.chown(name, cfg.uid, cfg.gid)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/util.py", line 153, in chown
+    os.chown(path, uid, gid)
+PermissionError: [Errno 1] Operation not permitted: '/tmp/wgunicorn-hih5fru4'
+[2021-02-26 18:28:36 +0200] [16585] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:28:36 +0200] [16585] [INFO] Listening at: http://127.0.0.1:8001 (16585)
+[2021-02-26 18:28:36 +0200] [16585] [INFO] Using worker: sync
+[2021-02-26 18:28:36 +0200] [16585] [INFO] Unhandled exception in main loop
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 202, in run
+    self.manage_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 545, in manage_workers
+    self.spawn_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 616, in spawn_workers
+    self.spawn_worker()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 565, in spawn_worker
+    self.cfg, self.log)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/base.py", line 63, in __init__
+    self.tmp = WorkerTmp(cfg)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/workertmp.py", line 29, in __init__
+    util.chown(name, cfg.uid, cfg.gid)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/util.py", line 153, in chown
+    os.chown(path, uid, gid)
+PermissionError: [Errno 1] Operation not permitted: '/tmp/wgunicorn-lrmyclv2'
+[2021-02-26 18:28:37 +0200] [16590] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:28:37 +0200] [16590] [INFO] Listening at: http://127.0.0.1:8001 (16590)
+[2021-02-26 18:28:37 +0200] [16590] [INFO] Using worker: sync
+[2021-02-26 18:28:37 +0200] [16590] [INFO] Unhandled exception in main loop
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 202, in run
+    self.manage_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 545, in manage_workers
+    self.spawn_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 616, in spawn_workers
+    self.spawn_worker()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 565, in spawn_worker
+    self.cfg, self.log)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/base.py", line 63, in __init__
+    self.tmp = WorkerTmp(cfg)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/workertmp.py", line 29, in __init__
+    util.chown(name, cfg.uid, cfg.gid)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/util.py", line 153, in chown
+    os.chown(path, uid, gid)
+PermissionError: [Errno 1] Operation not permitted: '/tmp/wgunicorn-6o6ycwv7'
+[2021-02-26 18:28:39 +0200] [16598] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:28:39 +0200] [16598] [INFO] Listening at: http://127.0.0.1:8001 (16598)
+[2021-02-26 18:28:39 +0200] [16598] [INFO] Using worker: sync
+[2021-02-26 18:28:39 +0200] [16598] [INFO] Unhandled exception in main loop
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 202, in run
+    self.manage_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 545, in manage_workers
+    self.spawn_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 616, in spawn_workers
+    self.spawn_worker()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 565, in spawn_worker
+    self.cfg, self.log)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/base.py", line 63, in __init__
+    self.tmp = WorkerTmp(cfg)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/workertmp.py", line 29, in __init__
+    util.chown(name, cfg.uid, cfg.gid)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/util.py", line 153, in chown
+    os.chown(path, uid, gid)
+PermissionError: [Errno 1] Operation not permitted: '/tmp/wgunicorn-dxpg0b_3'
+[2021-02-26 18:28:42 +0200] [16603] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:28:42 +0200] [16603] [INFO] Listening at: http://127.0.0.1:8001 (16603)
+[2021-02-26 18:28:42 +0200] [16603] [INFO] Using worker: sync
+[2021-02-26 18:28:42 +0200] [16603] [INFO] Unhandled exception in main loop
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 202, in run
+    self.manage_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 545, in manage_workers
+    self.spawn_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 616, in spawn_workers
+    self.spawn_worker()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 565, in spawn_worker
+    self.cfg, self.log)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/base.py", line 63, in __init__
+    self.tmp = WorkerTmp(cfg)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/workertmp.py", line 29, in __init__
+    util.chown(name, cfg.uid, cfg.gid)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/util.py", line 153, in chown
+    os.chown(path, uid, gid)
+PermissionError: [Errno 1] Operation not permitted: '/tmp/wgunicorn-c1x5stzo'
+[2021-02-26 18:30:39 +0200] [16719] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:30:39 +0200] [16719] [INFO] Listening at: http://127.0.0.1:8001 (16719)
+[2021-02-26 18:30:39 +0200] [16719] [INFO] Using worker: sync
+[2021-02-26 18:30:39 +0200] [16719] [INFO] Unhandled exception in main loop
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 202, in run
+    self.manage_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 545, in manage_workers
+    self.spawn_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 616, in spawn_workers
+    self.spawn_worker()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 565, in spawn_worker
+    self.cfg, self.log)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/base.py", line 63, in __init__
+    self.tmp = WorkerTmp(cfg)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/workertmp.py", line 29, in __init__
+    util.chown(name, cfg.uid, cfg.gid)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/util.py", line 153, in chown
+    os.chown(path, uid, gid)
+PermissionError: [Errno 1] Operation not permitted: '/tmp/wgunicorn-3o286jq8'
+[2021-02-26 18:30:40 +0200] [16722] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:30:40 +0200] [16722] [INFO] Listening at: http://127.0.0.1:8001 (16722)
+[2021-02-26 18:30:40 +0200] [16722] [INFO] Using worker: sync
+[2021-02-26 18:30:40 +0200] [16722] [INFO] Unhandled exception in main loop
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 202, in run
+    self.manage_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 545, in manage_workers
+    self.spawn_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 616, in spawn_workers
+    self.spawn_worker()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 565, in spawn_worker
+    self.cfg, self.log)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/base.py", line 63, in __init__
+    self.tmp = WorkerTmp(cfg)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/workertmp.py", line 29, in __init__
+    util.chown(name, cfg.uid, cfg.gid)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/util.py", line 153, in chown
+    os.chown(path, uid, gid)
+PermissionError: [Errno 1] Operation not permitted: '/tmp/wgunicorn-qo6z2osd'
+[2021-02-26 18:30:42 +0200] [16728] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:30:42 +0200] [16728] [INFO] Listening at: http://127.0.0.1:8001 (16728)
+[2021-02-26 18:30:42 +0200] [16728] [INFO] Using worker: sync
+[2021-02-26 18:30:42 +0200] [16728] [INFO] Unhandled exception in main loop
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 202, in run
+    self.manage_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 545, in manage_workers
+    self.spawn_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 616, in spawn_workers
+    self.spawn_worker()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 565, in spawn_worker
+    self.cfg, self.log)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/base.py", line 63, in __init__
+    self.tmp = WorkerTmp(cfg)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/workertmp.py", line 29, in __init__
+    util.chown(name, cfg.uid, cfg.gid)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/util.py", line 153, in chown
+    os.chown(path, uid, gid)
+PermissionError: [Errno 1] Operation not permitted: '/tmp/wgunicorn-120rn5yy'
+[2021-02-26 18:30:45 +0200] [16733] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:30:45 +0200] [16733] [INFO] Listening at: http://127.0.0.1:8001 (16733)
+[2021-02-26 18:30:45 +0200] [16733] [INFO] Using worker: sync
+[2021-02-26 18:30:45 +0200] [16733] [INFO] Unhandled exception in main loop
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 202, in run
+    self.manage_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 545, in manage_workers
+    self.spawn_workers()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 616, in spawn_workers
+    self.spawn_worker()
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/arbiter.py", line 565, in spawn_worker
+    self.cfg, self.log)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/base.py", line 63, in __init__
+    self.tmp = WorkerTmp(cfg)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/workers/workertmp.py", line 29, in __init__
+    util.chown(name, cfg.uid, cfg.gid)
+  File "/home/teus/lib/python3.6/site-packages/gunicorn/util.py", line 153, in chown
+    os.chown(path, uid, gid)
+PermissionError: [Errno 1] Operation not permitted: '/tmp/wgunicorn-lpl1yym_'
+[2021-02-26 18:33:41 +0200] [16870] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:33:41 +0200] [16870] [INFO] Listening at: http://127.0.0.1:8001 (16870)
+[2021-02-26 18:33:41 +0200] [16870] [INFO] Using worker: sync
+[2021-02-26 18:33:41 +0200] [16873] [INFO] Booting worker with pid: 16873
+[2021-02-26 18:33:41 +0200] [16874] [INFO] Booting worker with pid: 16874
+[2021-02-26 18:33:41 +0200] [16877] [INFO] Booting worker with pid: 16877
+[2021-02-26 18:33:51 +0200] [16870] [INFO] Handling signal: term
+[2021-02-26 16:33:51 +0000] [16873] [INFO] Worker exiting (pid: 16873)
+[2021-02-26 16:33:51 +0000] [16874] [INFO] Worker exiting (pid: 16874)
+[2021-02-26 16:33:51 +0000] [16877] [INFO] Worker exiting (pid: 16877)
+[2021-02-26 18:33:52 +0200] [16870] [INFO] Shutting down: Master
+[2021-02-26 18:33:52 +0200] [16888] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:33:52 +0200] [16888] [INFO] Listening at: http://127.0.0.1:8001 (16888)
+[2021-02-26 18:33:52 +0200] [16888] [INFO] Using worker: sync
+[2021-02-26 18:33:52 +0200] [16891] [INFO] Booting worker with pid: 16891
+[2021-02-26 18:33:52 +0200] [16893] [INFO] Booting worker with pid: 16893
+[2021-02-26 18:33:52 +0200] [16894] [INFO] Booting worker with pid: 16894
+[2021-02-26 18:35:16 +0200] [17013] [INFO] Starting gunicorn 20.0.4
+[2021-02-26 18:35:16 +0200] [17013] [INFO] Listening at: http://127.0.0.1:8003 (17013)
+[2021-02-26 18:35:16 +0200] [17013] [INFO] Using worker: sync
+[2021-02-26 18:35:16 +0200] [17016] [INFO] Booting worker with pid: 17016
+[2021-02-26 18:35:16 +0200] [17018] [INFO] Booting worker with pid: 17018
+[2021-02-26 18:35:17 +0200] [17019] [INFO] Booting worker with pid: 17019

@@ -2,27 +2,23 @@
     <b-form @submit="goSave($event)">
         <b-tabs content-class="mt-3">
             <b-tab title="Основное" active>
-            <div class="form__item">
-                <span class="form__label">Название</span>
-                <div class="form__control">
-                    <div class="row">
-                        <div class="col-12">
-                            <b-form-input class="short"
-                                          type="text"
-                                          required
-                                          placeholder="ru"
-                                          v-model="line.name"
-                            />
+                <div class="form__item">
+                    <span class="form__label">Название</span>
+                    <div class="form__control">
+                        <div class="row">
+                            <div class="col-12">
+                                <b-form-input class="short"
+                                    type="text"
+                                    required
+                                    placeholder="ru"
+                                    v-model="lines.item.name"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-           
             </b-tab>
-
         </b-tabs>
-
         <div class="form__item form__item_submit">
             <div class="form__control">
                 <b-button type="submit" variant="primary">Сохранить</b-button>
@@ -32,17 +28,18 @@
 </template>
 
 <script>
-import LineMixin from '@/mixins/info/LineMixin';
+// import LineMixin from '@/mixins/info/LineMixin';
 // import 'quill/dist/quill.core.css'
 // import 'quill/dist/quill.snow.css'
 // import 'quill/dist/quill.bubble.css'
 
 // import { quillEditor } from 'vue-quill-editor'
 
+import { mapState } from 'vuex'
 
 export default {
     name: 'LineForm',
-    mixins: [LineMixin],
+    // mixins: [LineMixin],
     components: {
         
     },
@@ -51,6 +48,9 @@ export default {
             id: null,
             alert: false
         }
+    },
+    computed: {
+        ...mapState(['lines'])
     },
     created() {
         this.id = this.$route.params.id;
@@ -67,15 +67,22 @@ export default {
                 {text: 'Создать', to: {name: 'line-create'}}
             ];
         }
-        if (this.$route.params.id)
-            this.getLine(this.$route.params.id)
+        if (this.$route.params.id) {
+            this.$store.dispatch('lines/getItem', this.$route.params.id)
+                .then(item => {
+                    console.log(item)
+                })
+                .catch(error => {
+                    console.log(error)
+                });
+        }
     },
     methods: {
         goSave($event){
             $event.preventDefault();
-            let data = Object.assign({}, this.line);
-            this.saveLine(data, this.$route.params.id);
-            this.alert = true;
+            // let data = Object.assign({}, this.line);
+            // this.saveLine(data, this.$route.params.id);
+            // this.alert = true;
         },
     },
 }

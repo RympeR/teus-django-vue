@@ -1559,3 +1559,25 @@ PermissionError: [Errno 1] Operation not permitted: '/tmp/wgunicorn-lpl1yym_'
 [2021-02-26 18:35:16 +0200] [17016] [INFO] Booting worker with pid: 17016
 [2021-02-26 18:35:16 +0200] [17018] [INFO] Booting worker with pid: 17018
 [2021-02-26 18:35:17 +0200] [17019] [INFO] Booting worker with pid: 17019
+[2021-03-01 12:21:05 +0200] [17013] [INFO] Handling signal: term
+[2021-03-01 10:21:05 +0000] [17016] [INFO] Worker exiting (pid: 17016)
+[2021-03-01 10:21:05 +0000] [17018] [INFO] Worker exiting (pid: 17018)
+[2021-03-01 10:21:05 +0000] [17019] [INFO] Worker exiting (pid: 17019)
+[2021-03-01 12:21:05 +0200] [17013] [INFO] Shutting down: Master
+[2021-03-01 12:21:05 +0200] [29664] [INFO] Starting gunicorn 20.0.4
+[2021-03-01 12:21:05 +0200] [29664] [INFO] Listening at: http://127.0.0.1:8003 (29664)
+[2021-03-01 12:21:05 +0200] [29664] [INFO] Using worker: sync
+[2021-03-01 12:21:05 +0200] [29667] [INFO] Booting worker with pid: 29667
+[2021-03-01 12:21:05 +0200] [29669] [INFO] Booting worker with pid: 29669
+[2021-03-01 12:21:05 +0200] [29670] [INFO] Booting worker with pid: 29670
+[2021-03-01 12:45:30 +0200] [31012] [INFO] Starting gunicorn 20.0.4
+[2021-03-01 12:45:30 +0200] [31012] [INFO] Listening at: http://127.0.0.1:8003 (31012)
+[2021-03-01 12:45:30 +0200] [31012] [INFO] Using worker: sync
+[2021-03-01 12:45:30 +0200] [31015] [INFO] Booting worker with pid: 31015
+[2021-03-01 12:45:30 +0200] [31016] [INFO] Booting worker with pid: 31016
+[2021-03-01 12:45:30 +0200] [31018] [INFO] Booting worker with pid: 31018
+[2021-03-01 14:03:11 +0200] [31012] [INFO] Handling signal: term
+[2021-03-01 12:03:11 +0000] [31015] [INFO] Worker exiting (pid: 31015)
+[2021-03-01 12:03:11 +0000] [31016] [INFO] Worker exiting (pid: 31016)
+[2021-03-01 12:03:11 +0000] [31018] [INFO] Worker exiting (pid: 31018)
+[2021-03-01 14:03:11 +0200] [31012] [INFO] Shutting down: Master

@@ -1,0 +1,213 @@
+uwsgi: unrecognized option '--empreror'
+getopt_long() error
+uwsgi: unrecognized option '--empreror'
+getopt_long() error
+uwsgi: unrecognized option '--empreror'
+getopt_long() error
+uwsgi: unrecognized option '--empreror'
+getopt_long() error
+uwsgi: unrecognized option '--empreror'
+getopt_long() error
+uwsgi: unrecognized option '--empreror'
+getopt_long() error
+uwsgi: unrecognized option '--empreror'
+getopt_long() error
+uwsgi: unrecognized option '--empreror'
+getopt_long() error
+uwsgi: unrecognized option '--empreror'
+getopt_long() error
+uwsgi: unrecognized option '--empreror'
+getopt_long() error
+uwsgi: unrecognized option '--empreror'
+getopt_long() error
+uwsgi: unrecognized option '--empreror'
+getopt_long() error
+*** Starting uWSGI 2.0.19.1 (64bit) on [Mon Mar  1 14:35:57 2021] ***
+compiled with version: 7.5.0 on 26 February 2021 15:46:55
+os: Linux-4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018
+nodename: vps-36418.vps-default-host.net
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/teus-django-vue/teus_back
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 7709
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+*** starting uWSGI Emperor ***
+*** has_emperor mode detected (fd: 5) ***
+[uWSGI] getting INI configuration from /etc/uwsgi/apps-enabled/teus_back.ini
+open("./python_plugin.so"): No such file or directory [core/utils.c line 3732]
+!!! UNABLE to load uWSGI plugin: ./python_plugin.so: cannot open shared object file: No such file or directory !!!
+*** Starting uWSGI 2.0.19.1 (64bit) on [Mon Mar  1 14:35:57 2021] ***
+compiled with version: 7.5.0 on 26 February 2021 15:46:55
+os: Linux-4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018
+nodename: vps-36418.vps-default-host.net
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/teus-django-vue/teus_back
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/teus-django-vue/teus_back
+your processes number limit is 7709
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+VirtualHosting mode enabled.
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /var/run/uwsgi/teus.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.6.9 (default, Oct  8 2020, 12:12:24)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/teus/
+Set PythonHome to /home/teus/
+Python main interpreter initialized at 0x55b72d895480
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+added /home/teus/bin/python3 to pythonpath.
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55b72d895480 pid: 854 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 854)
+Mon Mar  1 14:35:57 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini has been spawned
+spawned uWSGI worker 1 (pid: 856, cores: 1)
+spawned uWSGI worker 2 (pid: 857, cores: 1)
+spawned uWSGI worker 3 (pid: 858, cores: 1)
+spawned uWSGI worker 4 (pid: 859, cores: 1)
+Mon Mar  1 14:35:57 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is ready to accept requests
+api-teus.maximusapp.com [pid: 859|app: 0|req: 1/1] 159.224.213.215 () {44 vars in 893 bytes} [Mon Mar  1 12:36:17 2021] GET /api/info/get-cities-list/ => generated 14 bytes in 112 msecs (HTTP/1.1 200) 7 headers in 200 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Mon Mar  1 14:36:18 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+api-teus.maximusapp.com [pid: 856|app: 0|req: 1/2] 159.224.213.215 () {46 vars in 897 bytes} [Mon Mar  1 12:36:20 2021] GET /api/info/get-containers-list/ => generated 14 bytes in 116 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Mon Mar  1 14:36:21 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+api-teus.maximusapp.com [pid: 857|app: 0|req: 1/3] 159.224.213.215 () {46 vars in 887 bytes} [Mon Mar  1 12:36:22 2021] GET /api/info/get-lines-list/ => generated 36 bytes in 125 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Mon Mar  1 14:36:22 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+api-teus.maximusapp.com [pid: 856|app: 0|req: 2/4] 159.224.213.215 () {46 vars in 889 bytes} [Mon Mar  1 12:36:23 2021] GET /api/info/get-cities-list/ => generated 14 bytes in 8 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+Not Found: /apidoc/
+api-teus.maximusapp.com [pid: 857|app: 0|req: 2/5] 159.224.213.215 () {42 vars in 826 bytes} [Mon Mar  1 12:36:55 2021] GET /apidoc/ => generated 2416 bytes in 11 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 3/6] 159.224.213.215 () {50 vars in 923 bytes} [Mon Mar  1 12:37:46 2021] OPTIONS /api/info/get-containers-list/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 857|app: 0|req: 3/7] 159.224.213.215 () {46 vars in 897 bytes} [Mon Mar  1 12:37:46 2021] GET /api/info/get-containers-list/ => generated 14 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 859|app: 0|req: 2/8] 159.224.213.215 () {50 vars in 913 bytes} [Mon Mar  1 12:37:49 2021] OPTIONS /api/info/get-lines-list/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 858|app: 0|req: 1/9] 159.224.213.215 () {46 vars in 887 bytes} [Mon Mar  1 12:37:49 2021] GET /api/info/get-lines-list/ => generated 36 bytes in 125 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Mon Mar  1 14:37:49 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+api-teus.maximusapp.com [pid: 856|app: 0|req: 4/10] 159.224.213.215 () {50 vars in 905 bytes} [Mon Mar  1 12:37:51 2021] OPTIONS /api/info/get-line/1/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 859|app: 0|req: 3/11] 159.224.213.215 () {46 vars in 879 bytes} [Mon Mar  1 12:37:51 2021] GET /api/info/get-line/1/ => generated 27 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 5/12] 159.224.213.215 () {50 vars in 911 bytes} [Mon Mar  1 12:37:57 2021] OPTIONS /api/info/update-line/1/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 857|app: 0|req: 4/13] 159.224.213.215 () {50 vars in 1071 bytes} [Mon Mar  1 12:37:57 2021] PUT /api/info/update-line/1/ => generated 29 bytes in 10 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 6/14] 159.224.213.215 () {46 vars in 879 bytes} [Mon Mar  1 12:37:57 2021] GET /api/info/get-line/1/ => generated 29 bytes in 8 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 859|app: 0|req: 4/15] 159.224.213.215 () {46 vars in 887 bytes} [Mon Mar  1 12:37:58 2021] GET /api/info/get-lines-list/ => generated 38 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 858|app: 0|req: 2/16] 159.224.213.215 () {50 vars in 915 bytes} [Mon Mar  1 12:38:00 2021] OPTIONS /api/info/get-cities-list/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 858|app: 0|req: 3/17] 159.224.213.215 () {46 vars in 889 bytes} [Mon Mar  1 12:38:00 2021] GET /api/info/get-cities-list/ => generated 14 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 857|app: 0|req: 5/18] 159.224.213.215 () {50 vars in 908 bytes} [Mon Mar  1 12:38:03 2021] OPTIONS /api/info/create-city/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+<QueryDict: {'name': ['Киев']}>
+api-teus.maximusapp.com [pid: 857|app: 0|req: 6/19] 159.224.213.215 () {50 vars in 1068 bytes} [Mon Mar  1 12:38:03 2021] POST /api/info/create-city/ => generated 13 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 7/20] 159.224.213.215 () {46 vars in 889 bytes} [Mon Mar  1 12:38:03 2021] GET /api/info/get-cities-list/ => generated 40 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+<QueryDict: {'name': ['Харьков']}>
+api-teus.maximusapp.com [pid: 859|app: 0|req: 5/21] 159.224.213.215 () {50 vars in 1068 bytes} [Mon Mar  1 12:38:07 2021] POST /api/info/create-city/ => generated 13 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 858|app: 0|req: 4/22] 159.224.213.215 () {46 vars in 889 bytes} [Mon Mar  1 12:38:07 2021] GET /api/info/get-cities-list/ => generated 73 bytes in 5 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 857|app: 0|req: 7/23] 159.224.213.215 () {46 vars in 897 bytes} [Mon Mar  1 12:38:08 2021] GET /api/info/get-containers-list/ => generated 14 bytes in 9 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 8/24] 159.224.213.215 () {50 vars in 918 bytes} [Mon Mar  1 12:38:24 2021] OPTIONS /api/info/create-container/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 858|app: 0|req: 5/25] 159.224.213.215 () {50 vars in 1084 bytes} [Mon Mar  1 12:38:24 2021] POST /api/info/create-container/ => generated 18 bytes in 10 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 9/26] 159.224.213.215 () {46 vars in 897 bytes} [Mon Mar  1 12:38:24 2021] GET /api/info/get-containers-list/ => generated 95 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 859|app: 0|req: 6/27] 159.224.213.215 () {50 vars in 915 bytes} [Mon Mar  1 12:38:28 2021] OPTIONS /api/info/get-container/1/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 857|app: 0|req: 8/28] 159.224.213.215 () {46 vars in 889 bytes} [Mon Mar  1 12:38:28 2021] GET /api/info/get-container/1/ => generated 91 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 10/29] 159.224.213.215 () {46 vars in 889 bytes} [Mon Mar  1 12:39:48 2021] GET /api/info/get-container/1/ => generated 91 bytes in 9 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 857|app: 0|req: 9/30] 159.224.213.215 () {46 vars in 889 bytes} [Mon Mar  1 12:39:48 2021] GET /api/info/get-container/1/ => generated 91 bytes in 9 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 859|app: 0|req: 7/31] 159.224.213.215 () {46 vars in 887 bytes} [Mon Mar  1 12:40:03 2021] GET /api/info/get-lines-list/ => generated 38 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 858|app: 0|req: 6/32] 159.224.213.215 () {46 vars in 889 bytes} [Mon Mar  1 12:40:04 2021] GET /api/info/get-cities-list/ => generated 73 bytes in 8 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 11/33] 159.224.213.215 () {50 vars in 899 bytes} [Mon Mar  1 12:40:05 2021] OPTIONS /api/user/profile/ => generated 0 bytes in 1 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 12/34] 159.224.213.215 () {46 vars in 873 bytes} [Mon Mar  1 12:40:05 2021] GET /api/user/profile/ => generated 14 bytes in 11 msecs (HTTP/1.1 200) 8 headers in 238 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 857|app: 0|req: 10/35] 159.224.213.215 () {46 vars in 897 bytes} [Mon Mar  1 12:40:07 2021] GET /api/info/get-containers-list/ => generated 95 bytes in 9 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 859|app: 0|req: 8/36] 159.224.213.215 () {46 vars in 887 bytes} [Mon Mar  1 12:40:08 2021] GET /api/info/get-lines-list/ => generated 38 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 858|app: 0|req: 7/37] 159.224.213.215 () {46 vars in 889 bytes} [Mon Mar  1 12:40:09 2021] GET /api/info/get-cities-list/ => generated 73 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 13/38] 159.224.213.215 () {46 vars in 873 bytes} [Mon Mar  1 12:40:10 2021] GET /api/user/profile/ => generated 14 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 238 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 858|app: 0|req: 8/39] 159.224.213.215 () {46 vars in 889 bytes} [Mon Mar  1 12:40:11 2021] GET /api/info/get-cities-list/ => generated 73 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 857|app: 0|req: 11/40] 159.224.213.215 () {46 vars in 887 bytes} [Mon Mar  1 12:40:12 2021] GET /api/info/get-lines-list/ => generated 38 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 859|app: 0|req: 9/41] 159.224.213.215 () {46 vars in 897 bytes} [Mon Mar  1 12:40:12 2021] GET /api/info/get-containers-list/ => generated 95 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 14/42] 159.224.213.215 () {46 vars in 873 bytes} [Mon Mar  1 12:40:26 2021] GET /api/user/profile/ => generated 14 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 238 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 15/43] 159.224.213.215 () {46 vars in 889 bytes} [Mon Mar  1 12:44:59 2021] GET /api/info/get-cities-list/ => generated 73 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 857|app: 0|req: 12/44] 159.224.213.215 () {46 vars in 873 bytes} [Mon Mar  1 12:44:59 2021] GET /api/user/profile/ => generated 14 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 238 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 859|app: 0|req: 10/45] 159.224.213.215 () {46 vars in 897 bytes} [Mon Mar  1 12:45:00 2021] GET /api/info/get-containers-list/ => generated 95 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 858|app: 0|req: 9/46] 159.224.213.215 () {46 vars in 889 bytes} [Mon Mar  1 12:45:07 2021] GET /api/info/get-cities-list/ => generated 73 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 16/47] 159.224.213.215 () {44 vars in 893 bytes} [Mon Mar  1 12:59:13 2021] GET /api/info/get-cities-list/ => generated 73 bytes in 6 msecs (HTTP/1.1 200) 7 headers in 200 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 17/48] 159.224.213.215 () {50 vars in 901 bytes} [Mon Mar  1 14:04:36 2021] OPTIONS /api/info/get-containers-list/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (2 switches on core 0)
+api-teus.maximusapp.com [pid: 857|app: 0|req: 13/49] 159.224.213.215 () {46 vars in 875 bytes} [Mon Mar  1 14:04:36 2021] GET /api/info/get-containers-list/ => generated 95 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 18/50] 159.224.213.215 () {50 vars in 891 bytes} [Mon Mar  1 14:04:37 2021] OPTIONS /api/info/get-lines-list/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 859|app: 0|req: 11/51] 159.224.213.215 () {46 vars in 865 bytes} [Mon Mar  1 14:04:37 2021] GET /api/info/get-lines-list/ => generated 38 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 858|app: 0|req: 10/52] 159.224.213.215 () {50 vars in 893 bytes} [Mon Mar  1 14:04:37 2021] OPTIONS /api/info/get-cities-list/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 858|app: 0|req: 11/53] 159.224.213.215 () {46 vars in 867 bytes} [Mon Mar  1 14:04:37 2021] GET /api/info/get-cities-list/ => generated 73 bytes in 5 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 19/54] 159.224.213.215 () {46 vars in 875 bytes} [Mon Mar  1 14:04:38 2021] GET /api/info/get-containers-list/ => generated 95 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 859|app: 0|req: 12/55] 159.224.213.215 () {46 vars in 865 bytes} [Mon Mar  1 14:04:39 2021] GET /api/info/get-lines-list/ => generated 38 bytes in 5 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 857|app: 0|req: 14/56] 159.224.213.215 () {46 vars in 875 bytes} [Mon Mar  1 14:04:39 2021] GET /api/info/get-containers-list/ => generated 95 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 858|app: 0|req: 12/57] 159.224.213.215 () {50 vars in 893 bytes} [Mon Mar  1 14:04:42 2021] OPTIONS /api/info/get-container/1/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 858|app: 0|req: 13/58] 159.224.213.215 () {46 vars in 867 bytes} [Mon Mar  1 14:04:42 2021] GET /api/info/get-container/1/ => generated 91 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 20/59] 159.224.213.215 () {50 vars in 899 bytes} [Mon Mar  1 14:05:10 2021] OPTIONS /api/info/update-container/1/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 859|app: 0|req: 13/60] 159.224.213.215 () {50 vars in 1065 bytes} [Mon Mar  1 14:05:10 2021] PUT /api/info/update-container/1/ => generated 86 bytes in 9 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 21/61] 159.224.213.215 () {46 vars in 867 bytes} [Mon Mar  1 14:05:10 2021] GET /api/info/get-container/1/ => generated 91 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 22/62] 159.224.213.215 () {50 vars in 1065 bytes} [Mon Mar  1 14:06:22 2021] PUT /api/info/update-container/1/ => generated 86 bytes in 12 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 857|app: 0|req: 15/63] 159.224.213.215 () {46 vars in 867 bytes} [Mon Mar  1 14:06:22 2021] GET /api/info/get-container/1/ => generated 91 bytes in 9 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 23/64] 159.224.213.215 () {46 vars in 867 bytes} [Mon Mar  1 14:08:42 2021] GET /api/info/get-container/1/ => generated 91 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 857|app: 0|req: 16/65] 159.224.213.215 () {46 vars in 875 bytes} [Mon Mar  1 14:08:43 2021] GET /api/info/get-containers-list/ => generated 95 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 859|app: 0|req: 14/66] 159.224.213.215 () {46 vars in 865 bytes} [Mon Mar  1 14:08:44 2021] GET /api/info/get-lines-list/ => generated 38 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 858|app: 0|req: 14/67] 159.224.213.215 () {46 vars in 875 bytes} [Mon Mar  1 14:08:48 2021] GET /api/info/get-containers-list/ => generated 95 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 24/68] 159.224.213.215 () {46 vars in 867 bytes} [Mon Mar  1 14:08:48 2021] GET /api/info/get-cities-list/ => generated 73 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 859|app: 0|req: 15/69] 159.224.213.215 () {46 vars in 865 bytes} [Mon Mar  1 14:08:49 2021] GET /api/info/get-lines-list/ => generated 38 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 25/70] 159.224.213.215 () {46 vars in 887 bytes} [Mon Mar  1 14:12:10 2021] GET /api/info/get-lines-list/ => generated 38 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 857|app: 0|req: 17/71] 159.224.213.215 () {46 vars in 889 bytes} [Mon Mar  1 14:12:11 2021] GET /api/info/get-cities-list/ => generated 73 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 859|app: 0|req: 16/72] 159.224.213.215 () {46 vars in 897 bytes} [Mon Mar  1 14:12:12 2021] GET /api/info/get-containers-list/ => generated 95 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 858|app: 0|req: 15/73] 159.224.213.215 () {46 vars in 887 bytes} [Mon Mar  1 14:12:13 2021] GET /api/info/get-lines-list/ => generated 38 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 26/74] 159.224.213.215 () {46 vars in 897 bytes} [Mon Mar  1 14:12:14 2021] GET /api/info/get-containers-list/ => generated 95 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 857|app: 0|req: 18/75] 159.224.213.215 () {50 vars in 915 bytes} [Mon Mar  1 14:12:28 2021] OPTIONS /api/info/get-container/1/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 859|app: 0|req: 17/76] 159.224.213.215 () {46 vars in 889 bytes} [Mon Mar  1 14:12:28 2021] GET /api/info/get-container/1/ => generated 91 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 27/77] 159.224.213.215 () {50 vars in 891 bytes} [Mon Mar  1 14:14:30 2021] OPTIONS /api/info/get-lines-list/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 857|app: 0|req: 19/78] 159.224.213.215 () {46 vars in 865 bytes} [Mon Mar  1 14:14:30 2021] GET /api/info/get-lines-list/ => generated 38 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 859|app: 0|req: 18/79] 159.224.213.215 () {50 vars in 893 bytes} [Mon Mar  1 14:14:31 2021] OPTIONS /api/info/get-cities-list/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 858|app: 0|req: 16/80] 159.224.213.215 () {46 vars in 867 bytes} [Mon Mar  1 14:14:31 2021] GET /api/info/get-cities-list/ => generated 73 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 28/81] 159.224.213.215 () {46 vars in 865 bytes} [Mon Mar  1 14:14:32 2021] GET /api/info/get-lines-list/ => generated 38 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 859|app: 0|req: 19/82] 159.224.213.215 () {50 vars in 901 bytes} [Mon Mar  1 14:14:32 2021] OPTIONS /api/info/get-containers-list/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 859|app: 0|req: 20/83] 159.224.213.215 () {46 vars in 875 bytes} [Mon Mar  1 14:14:32 2021] GET /api/info/get-containers-list/ => generated 95 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 857|app: 0|req: 20/84] 159.224.213.215 () {50 vars in 893 bytes} [Mon Mar  1 14:14:42 2021] OPTIONS /api/info/get-container/1/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 857|app: 0|req: 21/85] 159.224.213.215 () {46 vars in 867 bytes} [Mon Mar  1 14:14:42 2021] GET /api/info/get-container/1/ => generated 91 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 29/86] 159.224.213.215 () {50 vars in 899 bytes} [Mon Mar  1 14:15:03 2021] OPTIONS /api/info/update-container/1/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 859|app: 0|req: 21/87] 159.224.213.215 () {50 vars in 1065 bytes} [Mon Mar  1 14:15:03 2021] PUT /api/info/update-container/1/ => generated 86 bytes in 9 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 30/88] 159.224.213.215 () {46 vars in 867 bytes} [Mon Mar  1 14:15:04 2021] GET /api/info/get-container/1/ => generated 91 bytes in 8 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 31/89] 159.224.213.215 () {50 vars in 915 bytes} [Mon Mar  1 14:30:19 2021] OPTIONS /api/info/get-container/1/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 857|app: 0|req: 22/90] 159.224.213.215 () {46 vars in 889 bytes} [Mon Mar  1 14:30:19 2021] GET /api/info/get-container/1/ => generated 91 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 32/91] 159.224.213.215 () {50 vars in 893 bytes} [Mon Mar  1 14:34:16 2021] OPTIONS /api/info/get-container/2/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+Not Found: /api/info/get-container/2/
+api-teus.maximusapp.com [pid: 857|app: 0|req: 23/92] 159.224.213.215 () {46 vars in 867 bytes} [Mon Mar  1 14:34:16 2021] GET /api/info/get-container/2/ => generated 23 bytes in 8 msecs (HTTP/1.1 404) 8 headers in 264 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 33/93] 159.224.213.215 () {50 vars in 891 bytes} [Mon Mar  1 14:34:19 2021] OPTIONS /api/info/get-lines-list/ => generated 0 bytes in 1 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 859|app: 0|req: 22/94] 159.224.213.215 () {46 vars in 865 bytes} [Mon Mar  1 14:34:19 2021] GET /api/info/get-lines-list/ => generated 38 bytes in 9 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 34/95] 159.224.213.215 () {50 vars in 893 bytes} [Mon Mar  1 14:34:20 2021] OPTIONS /api/info/get-cities-list/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 858|app: 0|req: 17/96] 159.224.213.215 () {46 vars in 867 bytes} [Mon Mar  1 14:34:20 2021] GET /api/info/get-cities-list/ => generated 73 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 35/97] 159.224.213.215 () {50 vars in 901 bytes} [Mon Mar  1 14:34:21 2021] OPTIONS /api/info/get-containers-list/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 857|app: 0|req: 24/98] 159.224.213.215 () {46 vars in 875 bytes} [Mon Mar  1 14:34:21 2021] GET /api/info/get-containers-list/ => generated 95 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 36/99] 159.224.213.215 () {50 vars in 950 bytes} [Mon Mar  1 14:41:14 2021] OPTIONS /api/info/get-containers-list/ => generated 0 bytes in 1 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 857|app: 0|req: 25/100] 159.224.213.215 () {46 vars in 924 bytes} [Mon Mar  1 14:41:14 2021] GET /api/info/get-containers-list/ => generated 95 bytes in 9 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 37/101] 159.224.213.215 () {50 vars in 935 bytes} [Mon Mar  1 14:41:14 2021] OPTIONS /api/info/get-lines-list/ => generated 0 bytes in 1 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 859|app: 0|req: 23/102] 159.224.213.215 () {46 vars in 909 bytes} [Mon Mar  1 14:41:14 2021] GET /api/info/get-lines-list/ => generated 38 bytes in 8 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 858|app: 0|req: 18/103] 159.224.213.215 () {50 vars in 937 bytes} [Mon Mar  1 14:41:15 2021] OPTIONS /api/info/get-cities-list/ => generated 0 bytes in 1 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 38/104] 159.224.213.215 () {46 vars in 911 bytes} [Mon Mar  1 14:41:15 2021] GET /api/info/get-cities-list/ => generated 73 bytes in 8 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 858|app: 0|req: 19/105] 159.224.213.215 () {46 vars in 909 bytes} [Mon Mar  1 14:41:17 2021] GET /api/info/get-lines-list/ => generated 38 bytes in 10 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 857|app: 0|req: 26/106] 159.224.213.215 () {46 vars in 924 bytes} [Mon Mar  1 14:41:18 2021] GET /api/info/get-containers-list/ => generated 95 bytes in 8 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 859|app: 0|req: 24/107] 159.224.213.215 () {50 vars in 929 bytes} [Mon Mar  1 14:41:19 2021] OPTIONS /api/user/profile/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 856|app: 0|req: 39/108] 159.224.213.215 () {46 vars in 903 bytes} [Mon Mar  1 14:41:19 2021] GET /api/user/profile/ => generated 14 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 238 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 859|app: 0|req: 25/109] 159.224.213.215 () {46 vars in 911 bytes} [Mon Mar  1 14:41:19 2021] GET /api/info/get-cities-list/ => generated 73 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 858|app: 0|req: 20/110] 159.224.213.215 () {46 vars in 909 bytes} [Mon Mar  1 14:41:21 2021] GET /api/info/get-lines-list/ => generated 38 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 857|app: 0|req: 27/111] 159.224.213.215 () {46 vars in 924 bytes} [Mon Mar  1 14:41:21 2021] GET /api/info/get-containers-list/ => generated 95 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)

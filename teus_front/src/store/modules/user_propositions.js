@@ -39,8 +39,8 @@ const actions = {
                             amount: el.amount,
                         };
                         el.date = {
-                            filter: el.date.start + '-' + el.date.end,
-                            date: el.date.start + '-' + el.date.end,
+                            filter: el.date.start + ':' + el.date.end,
+                            date: el.date.start + ':' + el.date.end,
                         };
                         
                     });

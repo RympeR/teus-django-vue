@@ -54,7 +54,7 @@ class PropositionSerializer(serializers.ModelSerializer):
             user=validated_data.get('user', None),
             city=validated_data.get('city', None),
             line=validated_data.get('line', None),
-            container=validated_data.get('containter', None),
+            container=validated_data.get('container', None),
             defaults={
                 "start_date": validated_data.get('start_date'),
                 "end_date": validated_data.get('end_date'),
@@ -62,6 +62,16 @@ class PropositionSerializer(serializers.ModelSerializer):
         )
         return user_proposition
 
+    def update(self, instance, validated_data):
+        instance.user = validated_data.get('user', instance.user)
+        instance.city = validated_data.get('city', instance.city)
+        instance.line = validated_data.get('line', instance.line)
+        instance.container = validated_data.get('container', instance.container)
+        instance.start_date = validated_data.get('start_date', instance.start_date)
+        instance.end_date = validated_data.get('end_date', instance.start_date)
+        instance.save()
+        return instance
+    
     @staticmethod
     def get_propos(proposition_id):
         proposition=UserProposition.objects.get(pk=proposition_id)

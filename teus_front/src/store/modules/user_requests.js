@@ -28,7 +28,24 @@ const actions = {
                     let list = response.data.results;
                     commit('setList', list);
                     console.log(list)
+                   
+                        list.forEach((el) => {
+                        el.user.filter = el.user.phone;
+                        el.city.filter = el.city.name;
+                        el.line.filter = el.line.name;
+                        el.container.filter = el.container.name;
+                        el.amount = {
+                            filter: el.amount,
+                            amount: el.amount,
+                        };
+                        el.date = {
+                            filter: el.date,
+                            date: el.date,
+                        };
+                        
+                    });
                     resolve(list);
+
                 })
                 .catch(response => {
                     reject(response.error);

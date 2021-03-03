@@ -17,7 +17,7 @@
                 <template v-slot:cell(actions)="data">
                     <div class="table__actions">
                         <b-button class="btn_edit" :to="{name: 'line-update', params: {id: data.item.id}}"></b-button>
-                        <b-button class="btn_delete" @click="deleteLine(data.item.id)"/>
+                        <b-button class="btn_delete" @click="deleteItem(data.item.id)"/>
                     </div>
                 </template>
             </b-table>
@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
     name: "LineList",
@@ -45,7 +45,11 @@ export default {
         }
     },
     computed: {
-        ...mapState(['lines'])
+        ...mapState(['lines']),
+
+    },
+    methods: {
+        ...mapActions('lines', ['saveItem', 'deleteItem', 'getList'])
     },
     created() {
         this.$store.state.breadcrumbs = [

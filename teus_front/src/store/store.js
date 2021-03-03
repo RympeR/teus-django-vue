@@ -2,6 +2,11 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 import lines from './modules/lines'
+import cities from './modules/cities'
+import containers from './modules/containers'
+import users from './modules/users'
+import user_propositions from './modules/user_propositions'
+import user_requests from './modules/user_requests'
 
 Vue.use(Vuex);
 
@@ -77,5 +82,10 @@ export default new Vuex.Store({
     },
     modules: {
         lines,
+        cities,
+        containers,
+        users,
+        user_propositions,
+        user_requests,
     }
 })

@@ -3,7 +3,6 @@ import axios from 'axios'
 const state = () => ({
     list: [],
     item: {},
-    iamge:null
 })
 
 const mutations = {
@@ -20,7 +19,7 @@ const actions = {
         commit
     }) {
         return new Promise((resolve, reject) => {
-            axios.get(process.env.VUE_APP_HOST + '/api/info/get-lines-list/', {
+            axios.get(process.env.VUE_APP_HOST + '/api/info/get-containers-list/', {
                     // params: this.linesSearch,
                     // headers: {
                     //     Authoriz ation: token
@@ -42,7 +41,7 @@ const actions = {
         commit
     }, id) {
         return new Promise((resolve, reject) => {
-            axios.get(process.env.VUE_APP_HOST + `/api/info/get-line/${id}/`, {
+            axios.get(process.env.VUE_APP_HOST + `/api/info/get-container/${id}/`, {
                     // params: this.linesSearch,
                     // headers: {
                     //     Authorization: token
@@ -81,13 +80,18 @@ const actions = {
         }
         console.log(commit)
         console.log(this)
-        deleteRequest('/api/info/delete-line/', id)
+        deleteRequest('/api/info/delete-container/', id)
             // state.list = state.list.filter(element => element.id !== id);
     },
     
     saveItem({commit}, obj) {
         console.log(commit)
         console.log(obj.id)
+        if (typeof(obj.image) == 'string')
+            delete obj.image;
+
+        if (obj.image === [])
+            obj.image = null;
         let formData = new FormData();
         Object.keys(obj).map(function (key) {
             if (obj[key])
@@ -97,10 +101,9 @@ const actions = {
         console.log(obj)
         if (obj.id) {
             return new Promise((resolve, reject) => {
-                  
                 axios
                     .put(
-                        process.env.VUE_APP_HOST + '/api/info/update-line/' + obj.id + '/',
+                        process.env.VUE_APP_HOST + '/api/info/update-container/' + obj.id + '/',
                         formData, {
                             headers: {
                                 'Content-Type': 'multipart/form-data'
@@ -120,7 +123,7 @@ const actions = {
         } else {
             return new Promise((resolve, reject) => {
                 axios.post(
-                        process.env.VUE_APP_HOST + '/api/info/create-line/',
+                        process.env.VUE_APP_HOST + '/api/info/create-container/',
                         formData, {
                             headers: {
                                 'Content-Type': 'multipart/form-data',

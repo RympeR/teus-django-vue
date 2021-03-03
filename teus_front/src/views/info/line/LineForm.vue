@@ -35,7 +35,7 @@
 
 // import { quillEditor } from 'vue-quill-editor'
 
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
     name: 'LineForm',
@@ -50,7 +50,8 @@ export default {
         }
     },
     computed: {
-        ...mapState(['lines'])
+        ...mapState(['lines']),
+        
     },
     created() {
         this.id = this.$route.params.id;
@@ -78,11 +79,19 @@ export default {
         }
     },
     methods: {
+        ...mapActions('lines', ['saveItem', 'deleteItem']),
         goSave($event){
             $event.preventDefault();
-            // let data = Object.assign({}, this.line);
-            // this.saveLine(data, this.$route.params.id);
-            // this.alert = true;
+            let data = Object.assign({}, this.lines.item);
+            console.log(this.$route.params.id)
+            data.id = this.$route.params.id
+            this.$store.dispatch('lines/saveItem',data)
+                .then(item => {
+                    console.log(item)
+                })
+                .catch(error => {
+                    console.log(error)
+                });
         },
     },
 }

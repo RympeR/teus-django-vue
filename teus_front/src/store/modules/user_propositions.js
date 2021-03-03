@@ -3,7 +3,6 @@ import axios from 'axios'
 const state = () => ({
     list: [],
     item: {},
-    iamge:null
 })
 
 const mutations = {

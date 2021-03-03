@@ -3,7 +3,6 @@ import axios from 'axios'
 const state = () => ({
     list: [],
     item: {},
-    iamge:null
 })
 
 const mutations = {
@@ -20,7 +19,7 @@ const actions = {
         commit
     }) {
         return new Promise((resolve, reject) => {
-            axios.get(process.env.VUE_APP_HOST + '/api/info/get-lines-list/', {
+            axios.get(process.env.VUE_APP_HOST + '/api/info/get-cities-list/', {
                     // params: this.linesSearch,
                     // headers: {
                     //     Authoriz ation: token
@@ -42,7 +41,7 @@ const actions = {
         commit
     }, id) {
         return new Promise((resolve, reject) => {
-            axios.get(process.env.VUE_APP_HOST + `/api/info/get-line/${id}/`, {
+            axios.get(process.env.VUE_APP_HOST + `/api/info/get-city/${id}/`, {
                     // params: this.linesSearch,
                     // headers: {
                     //     Authorization: token
@@ -81,7 +80,7 @@ const actions = {
         }
         console.log(commit)
         console.log(this)
-        deleteRequest('/api/info/delete-line/', id)
+        deleteRequest('/api/info/delete-city/', id)
             // state.list = state.list.filter(element => element.id !== id);
     },
     
@@ -100,7 +99,7 @@ const actions = {
                   
                 axios
                     .put(
-                        process.env.VUE_APP_HOST + '/api/info/update-line/' + obj.id + '/',
+                        process.env.VUE_APP_HOST + '/api/info/update-city/' + obj.id + '/',
                         formData, {
                             headers: {
                                 'Content-Type': 'multipart/form-data'
@@ -120,7 +119,7 @@ const actions = {
         } else {
             return new Promise((resolve, reject) => {
                 axios.post(
-                        process.env.VUE_APP_HOST + '/api/info/create-line/',
+                        process.env.VUE_APP_HOST + '/api/info/create-city/',
                         formData, {
                             headers: {
                                 'Content-Type': 'multipart/form-data',

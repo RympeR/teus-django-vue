@@ -30,6 +30,9 @@ export default {
             },
         }
     },
+    mounted() {
+        // console.log('mounted')
+    },
     methods: {
         transformDate(date) {
             console.log(date)

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import axios from 'axios'
+// import axios from './plugins/axios'
 import store from './store/store'
 import {BootstrapVue, BootstrapVueIcons} from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -26,8 +27,15 @@ import CustomMixin from '@/mixins/CustomMixin'
 
 Vue.mixin(CustomMixin);
 
+
+
+console.log(axios)
+
+// axios = axios.create({
+//     baseURL: process.env.VUE_APP_HOST
+// });
 Vue.prototype.$axios = axios.create({
-  baseURL: process.env.VUE_APP_BASE_API
+    baseURL: process.env.VUE_APP_HOST
 });
 
 Vue.config.productionTip = false;

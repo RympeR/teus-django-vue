@@ -88,18 +88,20 @@ const actions = {
     saveItem({commit}, obj) {
         console.log(commit)
         console.log(obj.id)
-        if (typeof(obj.image) == 'string')
-            delete obj.image;
+        // if (typeof(obj.image) == 'string')
+        //     delete obj.image;
 
-        if (obj.image === [])
-            obj.image = null;
+        // if (obj.image === [])
+        //     obj.image = null;
+            
         let formData = new FormData();
+        
         Object.keys(obj).map(function (key) {
             if (obj[key])
                 formData.append(key, obj[key]);
         });
 
-        console.log(obj)
+        // console.log(obj)
         if (obj.id) {
             return new Promise((resolve, reject) => {
                 axios

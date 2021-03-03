@@ -17,7 +17,6 @@
                     </div>
                 </div>
             </div>
-            {{containers.item}}
             <div class="form__item">
                 <span class="form__label">Изображение</span>
                 <div class="form__control">
@@ -117,6 +116,8 @@ export default {
             this.$store.dispatch('containers/saveItem', data)
                 .then(item => {
                     console.log(item)
+                    this.templateShowSuccess();
+                    this.goBack();
                 })
                 .catch(error => {
                     console.log(error)
@@ -126,7 +127,7 @@ export default {
             let confirmDelete = confirm('Удалить фото?');
             if (confirmDelete) {
                 this.containers.image = null;
-                this.containers.item.image = [];
+                this.containers.item.image = null;
             }
         },
     },

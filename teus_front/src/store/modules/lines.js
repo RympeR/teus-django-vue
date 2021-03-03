@@ -51,7 +51,7 @@ const actions = {
                     reject(response.error);
                 })
         })
-    },
+    }, 
     deleteItem({state}, id) {
         let confirmDelete = confirm('Удалить?');
         if (confirmDelete) {
@@ -69,8 +69,8 @@ const actions = {
         }
     },
     
-    saveItem({commit}, obj) {
-        console.log(commit)
+    saveItem({state}, obj) {
+        console.log(state)
         console.log(obj.id)
         
         let formData = new FormData();
@@ -91,6 +91,7 @@ const actions = {
                     )
                     .then(response => {
                         console.log(this)
+                        state.item = {};
                         resolve(response.data);
                     })
                     .catch(response => {
@@ -106,8 +107,9 @@ const actions = {
                         },
                     })
                     .then(response => {
-                        // console.log(response.data)
+                        state.item = {};
                         resolve(response.data)
+                        // console.log(response.data)
                     })
                     .catch(response => {
                         reject(response.error);

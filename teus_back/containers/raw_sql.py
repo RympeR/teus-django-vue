@@ -67,7 +67,8 @@ class UserFilter:
 
     def get_propositions(self, request, login, password):
         base_query = '''
-            select 
+            select
+                containers_userproposition.id,
                 info_city.id "city_id", info_city.name "city name", 
                 users_user.id "user_id", users_user.phone "user phone", 
                 info_line.id "line id", info_line.name "line name",
@@ -110,7 +111,8 @@ class UserFilter:
 
     def get_requests(self, request, login, password):
         base_query = '''
-            select 
+            select
+                containers_userrequest.id,
                 info_city.id "city id", info_city.name "city name", 
                 users_user.id "user id", users_user.phone "user phone", 
                 info_line.id "line id", info_line.name "line name",

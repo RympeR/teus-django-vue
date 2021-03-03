@@ -1,3 +1,4 @@
+// import axios from '@/plugins/axios'
 import axios from 'axios'
 
 const state = () => ({
@@ -11,15 +12,13 @@ const mutations = {
     },
     setItem(state, item) {
         state.item = item;
-    }
+    },
 }
 
 const actions = {
-    getList({
-        commit
-    }) {
+    getList({commit}) {
         return new Promise((resolve, reject) => {
-            axios.get(process.env.VUE_APP_HOST + '/api/info/get-lines-list/', {
+            axios.get(process.env.VUE_APP_HOST+'/api/containers/get-proposition-list', {
                     // params: this.linesSearch,
                     // headers: {
                     //     Authoriz ation: token
@@ -36,12 +35,9 @@ const actions = {
                 })
         })
     },
-
-    getItem({
-        commit
-    }, id) {
+    getItem({commit}, id) {
         return new Promise((resolve, reject) => {
-            axios.get(process.env.VUE_APP_HOST + `/api/info/get-line/${id}/`, {
+            axios.get(process.env.VUE_APP_HOST + `/api/containers/get-proposition/${id}/`, {
                     // params: this.linesSearch,
                     // headers: {
                     //     Authorization: token
@@ -55,83 +51,67 @@ const actions = {
                     reject(response.error);
                 })
         })
-    },
-    deleteItem({
-        commit
-    }, id) {
-        function deleteRequest(address, id) {
-            let confirmDelete = confirm('Удалить?');
-            if (confirmDelete) {
-                return new Promise((resolve, reject) => {
-                    axios
-                        .delete(process.env.VUE_APP_HOST + address + id + '/', {
-                            headers: {},
-                        })
-                        .then(function (response) {
-                            resolve(response.data)
-                            return true
-                        })
-                        .catch(function (response) {
-                            reject(response.error);
-                        })
-                })
-            } else
-                return false
+    }, 
+    deleteItem({state}, id) {
+        let confirmDelete = confirm('Удалить?');
+        if (confirmDelete) {
+            return new Promise((resolve, reject) => {
+                axios.delete(`${process.env.VUE_APP_HOST}/api/containers/delete-proposition/${id}/`)
+                    .then(response => {
+                        state.list = state.list.filter(element => element.id !== id);
+                        resolve(response.data);
+                    })
+                    .catch(response => {
+                        console.log(response.error);
+                        reject(response.error);
+                    })
+            })
         }
-        console.log(commit)
-        console.log(this)
-        deleteRequest('/api/info/delete-line/', id)
-            // state.list = state.list.filter(element => element.id !== id);
     },
     
-    saveItem({commit}, obj) {
-        console.log(commit)
+    saveItem({state}, obj) {
+        console.log(state)
         console.log(obj.id)
+        
         let formData = new FormData();
+        
         Object.keys(obj).map(function (key) {
             if (obj[key])
                 formData.append(key, obj[key]);
         });
-
-        console.log(obj)
+        
         if (obj.id) {
             return new Promise((resolve, reject) => {
-                  
                 axios
-                    .put(
-                        process.env.VUE_APP_HOST + '/api/info/update-line/' + obj.id + '/',
-                        formData, {
+                    .put(process.env.VUE_APP_HOST + '/api/containers/update-proposition/' + obj.id + '/', formData, {
                             headers: {
                                 'Content-Type': 'multipart/form-data'
                             },
-
                         }
                     )
-                    .then(function (response) {
-                        this.templateShowSuccess(response);
-                        this.getItem(obj.id)
+                    .then(response => {
+                        console.log(this)
+                        state.item = {};
+                        resolve(response.data);
                     })
-                    .catch(function (response) {
-                        console.log(response);
-                        reject(response);
+                    .catch(response => {
+                        console.log(response.error);
+                        reject(response.error);
                     })
             })
         } else {
             return new Promise((resolve, reject) => {
-                axios.post(
-                        process.env.VUE_APP_HOST + '/api/info/create-line/',
-                        formData, {
-                            headers: {
-                                'Content-Type': 'multipart/form-data',
-                            },
-
-                        }
-                    )
-                    .then(function (response) {
-                        resolve(response.data)
-                        this.goBack()
+                axios.post(process.env.VUE_APP_HOST + '/api/info/create-proposition/', formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                        },
                     })
-                    .catch(function (response) {
+                    .then(response => {
+                        state.item = {};
+                        resolve(response.data)
+                        // console.log(response.data)
+                    })
+                    .catch(response => {
                         reject(response.error);
                     })
             })

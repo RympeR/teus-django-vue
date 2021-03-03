@@ -18,7 +18,7 @@
                     <div class="table__actions">
                         <b-button class="btn_edit" :to="{name: 'city-update', params: {id: data.item.id}}"></b-button>
                         <!--<btn-turn :turn="true"/>-->
-                        <b-button class="btn_delete" @click="deleteItem(data.item.id)"/>
+                        <b-button class="btn_delete" @click="deleteCity(data.item.id)"/>
                     </div>
                 </template>
             </b-table>
@@ -50,20 +50,23 @@ export default {
         ...mapState(['cities']),
     },
     methods: {
-        ...mapActions('cities', ['saveItem', 'deleteItem', 'getList'])
+        ...mapActions({
+                saveCity: 'cities/saveItem',
+                deleteCity: 'cities/deleteItem',
+                getCities: 'cities/getList'
+            })
     },
     created() {
         this.$store.state.breadcrumbs = [
             {text: 'Главная', to: {name: 'home'}},
             {text: 'Города', to: {name: 'cities'}},
         ];
-        this.$store.dispatch('cities/getList')
-            .then(list => {
+        this.getCities().then(list => {
                 console.log(list)
-            })
-            .catch(error => {
-                console.log(error)
-            });
+        })
+        .catch(error => {
+            console.log(error)
+        });
     }
 }
 </script>

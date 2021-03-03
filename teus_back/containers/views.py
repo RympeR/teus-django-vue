@@ -98,7 +98,17 @@ class PropositionAPI(APIView):
             })
 
     def put(self, request, proposition_id):
-        ...
+        instance = self.get_object(proposition_id)
+        proposition = PropositionSerializer(instance)
+        data = proposition.update()
+        return Response(
+            {
+                "data": data
+            }
+        )
+
+    def get_object(self, proposition_id):
+        return UserProposition.objects.get(pk=proposition_id)
 
     def delete(self, request, proposition_id):
         proposition_id = PropositionSerializer.delete(proposition_id)
@@ -156,31 +166,33 @@ class RequestsList(APIView):
         print(request.GET)
         data = self.userfilter.get_requests(request, 'postgres', '1111')
         result = {
-            "result": []
+            "results": []
         }
         for ind, row in enumerate(data):
-            result['result'].append({
+            result['results'].append({
+                "id": row[0],
                 "city": {
-                    "id": row[0],
-                    "name": row[1]
+                    "id": row[1],
+                    "name": row[2]
                 },
                 "user": {
-                    "id": row[2],
-                    "phone": row[3]
+                    "id": row[3],
+                    "phone": row[4]
                 },
                 "line": {
-                    "id": row[4],
-                    "name": row[5]
+                    "id": row[5],
+                    "name": row[6]
                 },
                 "container": {
-                    "id": row[6],
-                    "name": row[7]
+                    "id": row[7],
+                    "name": row[8]
                 },
-                "amount": row[8],
-                "date": row[9]
+                "amount": row[9],
+                "date": row[10]
 
             })
         return Response(result)
+
 
 class PropositionList(APIView):
     renderer_classes = (JSONRenderer,)

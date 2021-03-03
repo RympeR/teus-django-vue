@@ -28,18 +28,11 @@
 </template>
 
 <script>
-// import LineMixin from '@/mixins/info/LineMixin';
-// import 'quill/dist/quill.core.css'
-// import 'quill/dist/quill.snow.css'
-// import 'quill/dist/quill.bubble.css'
 
-// import { quillEditor } from 'vue-quill-editor'
-
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
     name: 'LineForm',
-    // mixins: [LineMixin],
     components: {
         
     },
@@ -77,14 +70,10 @@ export default {
         }
     },
     methods: {
-        ...mapActions('lines', ['saveItem', 'deleteItem']),
         goSave(e){
             e.preventDefault();
-        
             let data = Object.assign({}, this.lines.item);
             data.id = this.id
-            // console.log(this.$route.params.id)
-
             this.$store.dispatch('lines/saveItem', data)
                 .then(item => {
                     console.log(item)

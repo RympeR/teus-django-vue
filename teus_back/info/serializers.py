@@ -67,7 +67,7 @@ class ContainerSerializer(serializers.ModelSerializer):
     @staticmethod
     def post(validated_data):
         container = Container(
-            name=validated_data['name'][0],
+            name=validated_data['name'],
             image=validated_data['image']
         )
         container.save()

@@ -7,18 +7,17 @@
                 </b-button>
             </div>
             <b-table hover outlined head-variant="light"
-                :items="lines"
+                :items="lines.list"
                 :fields="fields"
                 :filter="filter"
-                >
+            >
                 <template #cell(index)="data">
                     <b>{{ data.index + 1 }}</b>
                 </template>
                 <template v-slot:cell(actions)="data">
                     <div class="table__actions">
                         <b-button class="btn_edit" :to="{name: 'line-update', params: {id: data.item.id}}"></b-button>
-                        <!--<btn-turn :turn="true"/>-->
-                        <b-button class="btn_delete" @click="deleteLine(data.item.id)"/>
+                        <b-button class="btn_delete" @click="deleteItem(data.item.id)"/>
                     </div>
                 </template>
             </b-table>
@@ -27,11 +26,10 @@
 </template>
 
 <script>
-import LineMixin from '@/mixins/info/LineMixin';
+import { mapState, mapActions } from 'vuex'
 
 export default {
     name: "LineList",
-    mixins: [LineMixin],
     data () {
         return {
             fields: [
@@ -39,7 +37,6 @@ export default {
                 { key: 'id', label: 'ID'},
                 { key: 'name', label: 'Название'},
                 { key: 'actions', label: ''},
-
             ],
             activePage: 1,
             filter: {
@@ -47,12 +44,26 @@ export default {
             },
         }
     },
+    computed: {
+        ...mapState(['lines']),
+
+    },
+    methods: {
+        ...mapActions('lines', ['saveItem', 'deleteItem', 'getList'])
+    },
     created() {
         this.$store.state.breadcrumbs = [
             {text: 'Главная', to: {name: 'home'}},
             {text: 'Линии', to: {name: 'lines'}},
         ];
-        this.getLines()
+        
+        this.$store.dispatch('lines/getList')
+            .then(list => {
+                console.log(list)
+            })
+            .catch(error => {
+                console.log(error)
+            });
     }
 }
 </script>

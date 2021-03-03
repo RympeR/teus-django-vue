@@ -10,8 +10,7 @@ class CitySerializer(serializers.ModelSerializer):
     class Meta:
         model = City
         fields = (
-            'id',
-            'name'
+            'name',
         )
 
     @staticmethod
@@ -54,7 +53,6 @@ class ContainerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Container
         fields = (
-            'id',
             'name',
             'image'
         )
@@ -105,8 +103,7 @@ class LineSerializer(serializers.ModelSerializer):
     class Meta:
         model = Line
         fields = (
-            'id',
-            'name'
+            'name',
         )
 
     @staticmethod

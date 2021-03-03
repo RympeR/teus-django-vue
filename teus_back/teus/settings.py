@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'info',
     'containers',
 
+    'django_filters',
     'rest_framework',
     'corsheaders',
 ]
@@ -88,8 +89,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'teus',
-        'USER': 'teus_dev',
-        'PASSWORD': 'teus_dev',
+        'USER': 'postgres',
+        'PASSWORD': '1111',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -151,7 +152,7 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
     ],
-
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 300,
 

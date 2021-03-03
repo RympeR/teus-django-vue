@@ -7,7 +7,7 @@
                 </b-button>
             </div>
             <b-table hover outlined head-variant="light"
-                :items="cities"
+                :items="cities.list"
                 :fields="fields"
                 :filter="filter"
                 >
@@ -18,7 +18,7 @@
                     <div class="table__actions">
                         <b-button class="btn_edit" :to="{name: 'city-update', params: {id: data.item.id}}"></b-button>
                         <!--<btn-turn :turn="true"/>-->
-                        <b-button class="btn_delete" @click="deleteCity(data.item.id)"/>
+                        <b-button class="btn_delete" @click="deleteItem(data.item.id)"/>
                     </div>
                 </template>
             </b-table>
@@ -27,11 +27,10 @@
 </template>
 
 <script>
-import CityMixin from '@/mixins/info/CityMixin';
+import { mapState, mapActions } from 'vuex'
 
 export default {
     name: "CityList",
-    mixins: [CityMixin],
     data () {
         return {
             fields: [
@@ -47,12 +46,24 @@ export default {
             },
         }
     },
+    computed: {
+        ...mapState(['cities']),
+    },
+    methods: {
+        ...mapActions('cities', ['saveItem', 'deleteItem', 'getList'])
+    },
     created() {
         this.$store.state.breadcrumbs = [
             {text: 'Главная', to: {name: 'home'}},
             {text: 'Города', to: {name: 'cities'}},
         ];
-        this.getCities()
+        this.$store.dispatch('cities/getList')
+            .then(list => {
+                console.log(list)
+            })
+            .catch(error => {
+                console.log(error)
+            });
     }
 }
 </script>

@@ -1,22 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import lines from './modules/lines'
+import cities from './modules/cities'
+import containers from './modules/containers'
+import users from './modules/users'
+import user_propositions from './modules/user_propositions'
+import user_requests from './modules/user_requests'
 
 Vue.use(Vuex);
 
-// const state = {
-//     token: localStorage.getItem('token') || null,
-//     profile: null,
-//     breadcrumbs: [
-//         {text: 'Главная', to: {name: 'home'}},
-//     ]
-// };
-
-// export default new Vuex.Store({
-//     state,
-// })
-
 export default new Vuex.Store({
+    // namespaced: true,
     state: {
         status: '',
         token: localStorage.getItem('token') || null,
@@ -84,5 +79,13 @@ export default new Vuex.Store({
     getters: {
         isLoggedIn: state => !!state.token,
         authStatus: state => state.status,
+    },
+    modules: {
+        lines,
+        cities,
+        containers,
+        users,
+        user_propositions,
+        user_requests,
     }
 })

@@ -7,10 +7,11 @@
                 </b-button>
             </div>
             <b-table hover outlined head-variant="light"
-                :items="containers"
+                :items="containers.list"
                 :fields="fields"
                 :filter="filter"
                 >
+                
                 <template #cell(index)="data">
                     <b>{{ data.index + 1 }}</b>
                 </template>
@@ -30,7 +31,7 @@
                     <div class="table__actions">
                         <b-button class="btn_edit" :to="{name: 'container-update', params: {id: data.item.id}}"></b-button>
                         <!--<btn-turn :turn="true"/>-->
-                        <b-button class="btn_delete" @click="deleteContainer(data.item.id)"/>
+                        <b-button class="btn_delete" @click="deleteItem(data.item.id)"/>
                     </div>
                 </template>
             </b-table>
@@ -39,11 +40,11 @@
 </template>
 
 <script>
-import ContainerMixin from '@/mixins/info/ContainerMixin';
+import { mapState, mapActions } from 'vuex'
 
 export default {
-    name: "CroubleList",
-    mixins: [ContainerMixin],
+    name: "ContainerList",
+
     data () {
         return {
             fields: [
@@ -60,12 +61,24 @@ export default {
             },
         }
     },
+    computed: {
+        ...mapState(['containers']),
+    },
+    methods: {
+        ...mapActions('containers', ['saveItem', 'deleteItem', 'getList'])
+    },
     created() {
         this.$store.state.breadcrumbs = [
             {text: 'Главная', to: {name: 'home'}},
             {text: 'Контейнеры', to: {name: 'containers'}},
         ];
-        this.getContainers()
+        this.$store.dispatch('containers/getList')
+            .then(list => {
+                console.log(list)
+            })
+            .catch(error => {
+                console.log(error)
+            });
     }
 }
 </script>

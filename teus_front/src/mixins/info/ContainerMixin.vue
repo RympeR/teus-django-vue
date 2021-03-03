@@ -57,7 +57,7 @@ export default {
                                 }
                             })
                             .then(function (response) {
-                                console.log(response);
+                                console.log(response.data);
                                 self.container = response.data;
                                 self.image = response.data.image;
                                 self.container.image = null;
@@ -85,7 +85,7 @@ export default {
 
             if (obj.image === [])
                 obj.image = null;
-
+            
             let formData = new FormData();
             Object.keys(obj).map(function(key) {
                 if (obj[key])

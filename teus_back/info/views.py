@@ -39,12 +39,14 @@ class ContainerAPI(APIView):
 
     def put(self, *args, **kwargs):
         data = dict(self.request.data)
+        print(data)
         data['container_id'] = kwargs['container_id']
         container = ContainerSerializer.put(data)
         domain = self.request.get_host()
         path_image = container.image.url
         image_url = 'http://{domain}{path}'.format(
             domain=domain, path=path_image)
+        print(image_url)
         return Response(
             {
                 "container_id": container.id,

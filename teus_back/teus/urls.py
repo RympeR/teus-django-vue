@@ -7,5 +7,6 @@ urlpatterns = [
     path('api/', include('rest_framework.urls')),
     path('api/info/', include('info.urls')),
     path('api/user/', include('users.urls')),
+    path('api/containers/', include('containers.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

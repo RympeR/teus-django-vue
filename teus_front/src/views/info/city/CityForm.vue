@@ -11,7 +11,7 @@
                                           type="text"
                                           required
                                           placeholder="ru"
-                                          v-model="city.name"
+                                          v-model="cities.item.name"
                             />
                         </div>
                     </div>
@@ -32,17 +32,10 @@
 </template>
 
 <script>
-import CityMixin from '@/mixins/info/CityMixin';
-// import 'quill/dist/quill.core.css'
-// import 'quill/dist/quill.snow.css'
-// import 'quill/dist/quill.bubble.css'
-
-// import { quillEditor } from 'vue-quill-editor'
-
+import { mapState } from 'vuex'
 
 export default {
     name: 'CityForm',
-    mixins: [CityMixin],
     components: {
         
     },
@@ -51,6 +44,9 @@ export default {
             id: null,
             alert: false
         }
+    },
+    computed: {
+        ...mapState(['cities']),
     },
     created() {
         this.id = this.$route.params.id;
@@ -67,15 +63,28 @@ export default {
                 {text: 'Создать', to: {name: 'city-create'}}
             ];
         }
-        if (this.$route.params.id)
-            this.getCity(this.$route.params.id)
+        if (this.$route.params.id) {
+            this.$store.dispatch('cities/getItem', this.$route.params.id)
+                .then(item => {
+                    console.log(item)
+                })
+                .catch(error => {
+                    console.log(error)
+                });
+        }
     },
     methods: {
         goSave($event){
             $event.preventDefault();
-            let data = Object.assign({}, this.city);
-            this.saveCity(data, this.$route.params.id);
-            this.alert = true;
+            let data = Object.assign({}, this.cities.item);
+            data.id = this.$route.params.id
+            this.$store.dispatch('cities/saveItem',data)
+                .then(item => {
+                    console.log(item)
+                })
+                .catch(error => {
+                    console.log(error)
+                });
         },
     },
 }

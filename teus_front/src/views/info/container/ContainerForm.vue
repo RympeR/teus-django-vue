@@ -11,34 +11,34 @@
                                           type="text"
                                           required
                                           placeholder="ru"
-                                          v-model="container.name"
+                                          v-model="containers.item.name"
                             />
                         </div>
                     </div>
                 </div>
             </div>
-
+            {{containers.item}}
             <div class="form__item">
                 <span class="form__label">Изображение</span>
                 <div class="form__control">
-                    <template v-if="image">
+                    <template v-if="containers.image">
                         <div class="img__thumbnail">
                             <div class="img__thumbnail-img">
-                                <b-img :id="`field-${container.id}`"
-                                       :src="image" width="80"
-                                       v-b-modal="'modal__thumbnail' + container.id"
+                                <b-img :id="`field-${containers.item.container_id}`"
+                                       :src="containers.image" width="80"
+                                       v-b-modal="'modal__thumbnail' + containers.item.container_id"
                                 />
                             </div>
-                            <b-modal :id="'modal__thumbnail' + container.id" scrollable hide-footer centered class="modal-dialog-auto">
-                                <b-img :src="image" fluid/>
+                            <b-modal :id="'modal__thumbnail' + containers.item.container_id" scrollable hide-footer centered class="modal-dialog-auto">
+                                <b-img :src="containers.image" fluid/>
                             </b-modal>
                             <b-button type="button" class="media-delete" variant="link" @click="deleteImg">Удалить</b-button>
                         </div>
                     </template>
                     <template v-else>
                         <b-form-file
-                            :id="`field-${container.image}`"
-                            v-model="container.image"
+                            :id="`field-${containers.image}`"
+                            v-model="containers.image"
                             plain
                         />
                     </template>
@@ -58,17 +58,11 @@
 </template>
 
 <script>
-import ContainerMixin from '@/mixins/info/ContainerMixin';
-// import 'quill/dist/quill.core.css'
-// import 'quill/dist/quill.snow.css'
-// import 'quill/dist/quill.bubble.css'
 
-// import { quillEditor } from 'vue-quill-editor'
-
+import { mapState } from 'vuex'
 
 export default {
     name: 'ContainerForm',
-    mixins: [ContainerMixin],
     components: {
         
     },
@@ -78,6 +72,7 @@ export default {
             alert: false
         }
     },
+
     created() {
         this.id = this.$route.params.id;
         if (this.id){
@@ -93,25 +88,42 @@ export default {
                 {text: 'Создать', to: {name: 'container-create'}}
             ];
         }
-        if (this.$route.params.id)
-            this.getContainer(this.$route.params.id)
+        if (this.$route.params.id) {
+            this.$store.dispatch('containers/getItem', this.$route.params.id)
+                .then(item => {
+                    console.log(item)
+                })
+                .catch(error => {
+                    console.log(error)
+                });
+        }
     },
+    computed: {
+        ...mapState(['containers']),
+    },
+
     methods: {
         processFile(event) {
             console.log('Event: ', event);
-            this.container.image = event[0]
+            this.containers.item.image = event[0]
         },
         goSave($event){
             $event.preventDefault();
-            let data = Object.assign({}, this.container);
-            this.saveContainer(data, this.$route.params.id);
-            this.alert = true;
+            let data = Object.assign({}, this.containers.item);
+            data.id = this.$route.params.id
+            this.$store.dispatch('containers/saveItem',data)
+                .then(item => {
+                    console.log(item)
+                })
+                .catch(error => {
+                    console.log(error)
+                });
         },
         deleteImg() {
             let confirmDelete = confirm('Удалить фото?');
             if (confirmDelete) {
-                this.image = null;
-                this.container.image = [];
+                this.containers.image = null;
+                this.containers.item.image = [];
             }
         },
     },

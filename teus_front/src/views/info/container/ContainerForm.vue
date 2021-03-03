@@ -8,29 +8,28 @@
                     <div class="row">
                         <div class="col-12">
                             <b-form-input class="short"
-                                          type="text"
-                                          required
-                                          placeholder="ru"
-                                          v-model="containers.item.name"
+                                type="text"
+                                required
+                                placeholder="ru"
+                                v-model="containers.item.name"
                             />
                         </div>
                     </div>
                 </div>
             </div>
-            {{containers.item}}
             <div class="form__item">
                 <span class="form__label">Изображение</span>
                 <div class="form__control">
-                    <template v-if="containers.image">
+                    <template v-if="containers.item.image">
                         <div class="img__thumbnail">
                             <div class="img__thumbnail-img">
                                 <b-img :id="`field-${containers.item.container_id}`"
-                                       :src="containers.image" width="80"
+                                       :src="containers.item.image" width="80"
                                        v-b-modal="'modal__thumbnail' + containers.item.container_id"
                                 />
                             </div>
                             <b-modal :id="'modal__thumbnail' + containers.item.container_id" scrollable hide-footer centered class="modal-dialog-auto">
-                                <b-img :src="containers.image" fluid/>
+                                <b-img :src="containers.item.image" fluid/>
                             </b-modal>
                             <b-button type="button" class="media-delete" variant="link" @click="deleteImg">Удалить</b-button>
                         </div>
@@ -68,13 +67,12 @@ export default {
     },
     data () {
         return {
-            id: null,
+            id: this.$route.params.id,
             alert: false
         }
     },
 
     created() {
-        this.id = this.$route.params.id;
         if (this.id){
             this.$store.state.breadcrumbs = [
                 {text: 'Главная', to: {name: 'home'}},
@@ -88,8 +86,8 @@ export default {
                 {text: 'Создать', to: {name: 'container-create'}}
             ];
         }
-        if (this.$route.params.id) {
-            this.$store.dispatch('containers/getItem', this.$route.params.id)
+        if (this.id) {
+            this.$store.dispatch('containers/getItem', this.id)
                 .then(item => {
                     console.log(item)
                 })
@@ -101,7 +99,6 @@ export default {
     computed: {
         ...mapState(['containers']),
     },
-
     methods: {
         processFile(event) {
             console.log('Event: ', event);
@@ -109,11 +106,18 @@ export default {
         },
         goSave($event){
             $event.preventDefault();
+            
             let data = Object.assign({}, this.containers.item);
-            data.id = this.$route.params.id
-            this.$store.dispatch('containers/saveItem',data)
+            data.id = this.id
+            data.image = this.containers.image;
+            
+            console.log(data);
+
+            this.$store.dispatch('containers/saveItem', data)
                 .then(item => {
                     console.log(item)
+                    this.templateShowSuccess();
+                    this.goBack();
                 })
                 .catch(error => {
                     console.log(error)
@@ -123,7 +127,7 @@ export default {
             let confirmDelete = confirm('Удалить фото?');
             if (confirmDelete) {
                 this.containers.image = null;
-                this.containers.item.image = [];
+                this.containers.item.image = null;
             }
         },
     },

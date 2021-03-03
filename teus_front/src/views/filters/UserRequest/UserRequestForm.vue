@@ -11,7 +11,7 @@
                                     type="text"
                                     required
                                     placeholder="ru"
-                                    v-model="lines.item.name"
+                                    v-model="user_proposition.item.line.name"
                                 />
                             </div>
                         </div>
@@ -32,7 +32,7 @@
 import { mapState } from 'vuex'
 
 export default {
-    name: 'LineForm',
+    name: 'UserRequestForm',
     components: {
         
     },
@@ -43,24 +43,24 @@ export default {
         }
     },
     computed: {
-        ...mapState(['lines']),
+        ...mapState(['user_proposition']),
     },
     created() {
         if (this.id){
             this.$store.state.breadcrumbs = [
                 {text: 'Главная', to: {name: 'home'}},
-                {text: 'Линия', to: {name: 'lines'}},
-                {text: 'Редактировать', to: {name: 'line-update', params: {id: this.id}}}
+                {text: 'Запрос', to: {name: 'requests'}},
+                {text: 'Редактировать', to: {name: 'request-update', params: {id: this.id}}}
             ];
         }else{
             this.$store.state.breadcrumbs = [
                 {text: 'Главная', to: {name: 'home'}},
-                {text: 'Линия', to: {name: 'lines'}},
-                {text: 'Создать', to: {name: 'line-create'}}
+                {text: 'Запрос', to: {name: 'requests'}},
+                {text: 'Создать', to: {name: 'request-create'}}
             ];
         }
         if (this.$route.params.id) {
-            this.$store.dispatch('lines/getItem', this.$route.params.id)
+            this.$store.dispatch('user_requests/getItem', this.$route.params.id)
                 .then(item => {
                     console.log(item)
                 })
@@ -74,7 +74,7 @@ export default {
             e.preventDefault();
             let data = Object.assign({}, this.lines.item);
             data.id = this.id
-            this.$store.dispatch('lines/saveItem', data)
+            this.$store.dispatch('user_requests/saveItem', data)
                 .then(item => {
                     console.log(item)
                     this.templateShowSuccess();

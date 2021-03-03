@@ -17,7 +17,7 @@
                 <template v-slot:cell(actions)="data">
                     <div class="table__actions">
                         <b-button class="btn_edit" :to="{name: 'line-update', params: {id: data.item.id}}"></b-button>
-                        <b-button class="btn_delete" @click="deleteItem(data.item.id)"/>
+                        <b-button class="btn_delete" @click="deleteLine(data.item.id)"/>
                     </div>
                 </template>
             </b-table>
@@ -46,10 +46,6 @@ export default {
     },
     computed: {
         ...mapState(['lines']),
-
-    },
-    methods: {
-        ...mapActions('lines', ['saveItem', 'deleteItem', 'getList'])
     },
     created() {
         this.$store.state.breadcrumbs = [
@@ -57,14 +53,29 @@ export default {
             {text: 'Линии', to: {name: 'lines'}},
         ];
         
-        this.$store.dispatch('lines/getList')
-            .then(list => {
-                console.log(list)
-            })
-            .catch(error => {
-                console.log(error)
-            });
-    }
+        this.getLines().then(list => {
+            console.log(list)
+        })
+        
+        // this.$store.dispatch('lines/getList')
+        //     .then(list => {
+        //         console.log(list)
+        //     })
+        //     .catch(error => {
+        //         console.log(error)
+        //     });
+    },
+    methods: {
+        ...mapActions(
+            //'lines', ['saveItem', 'deleteItem', 'getList']),
+            {
+                saveLine: 'lines/saveItem',
+                deleteLine: 'lines/deleteItem',
+                getLines: 'lines/getList'
+            }
+        )
+    },
+
 }
 </script>
 

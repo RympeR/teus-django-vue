@@ -29,6 +29,24 @@
                 <span class="sidebar__icon">
                     <img src="@/assets/img/icons/tested.png" alt="">
                 </span>
+                <b-link class="sidebar__link" :to="{name: 'requests'}">Запросы</b-link>
+            </div>
+            <div class="sidebar__item">
+                <span class="sidebar__icon">
+                    <img src="@/assets/img/icons/tested.png" alt="">
+                </span>
+                <b-link class="sidebar__link" :to="{name: 'proposition'}">Заявки</b-link>
+            </div>
+            <div class="sidebar__item">
+                <span class="sidebar__icon">
+                    <img src="@/assets/img/icons/tested.png" alt="">
+                </span>
+                <b-link class="sidebar__link" :to="{name: 'deals'}">Сделки</b-link>
+            </div>
+            <div class="sidebar__item">
+                <span class="sidebar__icon">
+                    <img src="@/assets/img/icons/tested.png" alt="">
+                </span>
                 <b-link class="sidebar__link" :to="{name: 'students'}">Пользователи</b-link>
             </div>
         </ul>

@@ -18,6 +18,12 @@ import CityForm from "@/views/info/city/CityForm";
 import ContainerList from "@/views/info/container/ContainerList";
 import ContainerForm from "@/views/info/container/ContainerForm";
 
+import UserRequestsList from "@/views/filters/UserRequest/UserRequestList"
+import UserRequestForm from "@/views/filters/UserRequest/UserRequestForm"
+
+import UserPropositionList from "@/views/filters/UserProposition/UserPropositiontList"
+import UserPropositionForm from "@/views/filters/UserProposition/UserPropositionForm"
+
 Vue.use(Router);
 
 export default new Router({
@@ -155,6 +161,56 @@ export default new Router({
 						requiresAuth: true
 					}
 				},
+				{
+					path: 'requests',
+					name: 'requests',
+					component: UserRequestsList,
+					meta: {
+						requiresAuth: true
+					},
+				},
+				{
+					path: 'requests/update/:id',
+					name: 'requests-update',
+					component: UserRequestForm,
+					meta: {
+						requiresAuth: true
+					}
+				},
+				{
+					path: 'requests/create',
+					name: 'requests-create',
+					component: UserRequestForm,
+					meta: {
+						requiresAuth: true
+					}
+				},
+				{
+					path: 'proposition',
+					name: 'proposition',
+					component: UserPropositionList,
+					meta: {
+						requiresAuth: true
+					},
+				},
+				{
+					path: 'proposition/update/:id',
+					name: 'proposition-update',
+					component: UserPropositionForm,
+					meta: {
+						requiresAuth: true
+					}
+				},
+				{
+					path: 'proposition/create',
+					name: 'proposition-create',
+					component: UserPropositionForm,
+					meta: {
+						requiresAuth: true
+					}
+					
+				}
+				
 			]
 		},
 	],

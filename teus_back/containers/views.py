@@ -11,6 +11,8 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework.decorators import permission_classes, renderer_classes, api_view, parser_classes
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
+from .raw_sql import UserFilter
+
 
 class RequestAPI(APIView):
     renderer_classes = (JSONRenderer,)
@@ -47,19 +49,25 @@ class RequestAPI(APIView):
             }
         )
 
+
 class RequestUpdateAPI(generics.UpdateAPIView):
-    queryset=UserRequest.objects.all()
-    serializer_class=RequestSerializer
+    queryset = UserRequest.objects.all()
+    serializer_class = RequestSerializer
+
     def get_queryset(self):
         user = self.request.user
         return user.accounts.all()
+
     def get_object(self, queryset=None):
-        obj = self.model.objects.get(my_id_or_name_of_field=self.kwargs['pk']) # instead of self.request.GET or self.request.POST
+        # instead of self.request.GET or self.request.POST
+        obj = self.model.objects.get(my_id_or_name_of_field=self.kwargs['pk'])
         return obj
+
     def perform_update(self, serializer):
         instance = serializer.save()
         print(instance)
-        
+
+
 class PropositionAPI(APIView):
     renderer_classes = (JSONRenderer,)
     permission_classes = (permissions.AllowAny, )
@@ -90,7 +98,17 @@ class PropositionAPI(APIView):
             })
 
     def put(self, request, proposition_id):
-        ...
+        instance = self.get_object(proposition_id)
+        proposition = PropositionSerializer(instance)
+        data = proposition.update()
+        return Response(
+            {
+                "data": data
+            }
+        )
+
+    def get_object(self, proposition_id):
+        return UserProposition.objects.get(pk=proposition_id)
 
     def delete(self, request, proposition_id):
         proposition_id = PropositionSerializer.delete(proposition_id)
@@ -101,14 +119,14 @@ class PropositionAPI(APIView):
         )
 
 
-class RequestsList(generics.ListAPIView):
+class RequestsList1(generics.ListAPIView):
     renderer_classes = (JSONRenderer,)
     permission_classes = (permissions.AllowAny, )
     queryset = UserRequest.objects.all()
     serializer_class = RequestSerializer
     filter_backends = [filters.SearchFilter]
     search_fields = ['=user__phone', '=city__name',
-                        '=line__name', 'amount', '=container__name', '^request_date']
+                     '=line__name', 'amount', '=container__name', '^request_date']
 
     def get_queryset(self):
         queryset = self.filter_queryset(UserRequest.objects.all())
@@ -116,15 +134,15 @@ class RequestsList(generics.ListAPIView):
         return queryset
 
 
-class PropositionList(generics.ListAPIView):
+class PropositionList1(generics.ListAPIView):
     renderer_classes = (JSONRenderer,)
     permission_classes = (permissions.AllowAny, )
     queryset = UserProposition.objects.all()
     serializer_class = PropositionSerializer
     filter_backends = [filters.SearchFilter]
     search_fields = ['=user__phone', '=city__name',
-                        '=line__name', 'amount', '=container__name', '^end_date']
-    
+                     '=line__name', 'amount', '=container__name', '^end_date']
+
     def filter_queryset(self, queryset):
         filter_backends = [filters.SearchFilte]
         if 'geo_route' in self.request.query_params:
@@ -133,7 +151,82 @@ class PropositionList(generics.ListAPIView):
             queryset = backend().filter_queryset(self.request, queryset, view=self)
 
         return queryset
-        
+
     def get_queryset(self):
         queryset = self.filter_queryset(UserProposition.objects.all())
         return queryset
+
+
+class RequestsList(APIView):
+    renderer_classes = (JSONRenderer,)
+    permission_classes = (permissions.AllowAny, )
+    userfilter = UserFilter()
+
+    def get(self, request):
+        print(request.GET)
+        data = self.userfilter.get_requests(request, 'teus_dev', 'teus_dev')
+        result = {
+            "results": []
+        }
+        for ind, row in enumerate(data):
+            result['results'].append({
+                "id": row[0],
+                "city": {
+                    "id": row[1],
+                    "name": row[2]
+                },
+                "user": {
+                    "id": row[3],
+                    "phone": row[4]
+                },
+                "line": {
+                    "id": row[5],
+                    "name": row[6]
+                },
+                "container": {
+                    "id": row[7],
+                    "name": row[8]
+                },
+                "amount": row[9],
+                "date": row[10]
+
+            })
+        return Response(result)
+
+
+class PropositionList(APIView):
+    renderer_classes = (JSONRenderer,)
+    permission_classes = (permissions.AllowAny, )
+    userfilter = UserFilter()
+
+    def get(self, request):
+        data = self.userfilter.get_propositions(request, 'teus_dev', 'teus_dev')
+        result = {
+            "results": []
+        }
+        for ind, row in enumerate(data):
+            result['results'].append({
+                "id": row[0],
+                "city": {
+                    "id": row[1],
+                    "name": row[2]
+                },
+                "user": {
+                    "id": row[3],
+                    "phone": row[4]
+                },
+                "line": {
+                    "id": row[5],
+                    "name": row[6]
+                },
+                "container": {
+                    "id": row[7],
+                    "name": row[8]
+                },
+                "amount": row[9],
+                "date": {
+                    "start": row[10],
+                    "end": row[11]
+                }
+            })
+        return Response(result)

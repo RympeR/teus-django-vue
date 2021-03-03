@@ -1,5 +1,5 @@
 <template>
-    <b-form @submit="goSave($event)">
+    <b-form @submit="goSave">
         <b-tabs content-class="mt-3">
             <b-tab title="Основное" active>
                 <div class="form__item">
@@ -45,16 +45,14 @@ export default {
     },
     data () {
         return {
-            id: null,
+            id: this.$route.params.id,
             alert: false
         }
     },
     computed: {
         ...mapState(['lines']),
-        
     },
     created() {
-        this.id = this.$route.params.id;
         if (this.id){
             this.$store.state.breadcrumbs = [
                 {text: 'Главная', to: {name: 'home'}},
@@ -80,14 +78,18 @@ export default {
     },
     methods: {
         ...mapActions('lines', ['saveItem', 'deleteItem']),
-        goSave($event){
-            $event.preventDefault();
+        goSave(e){
+            e.preventDefault();
+        
             let data = Object.assign({}, this.lines.item);
-            console.log(this.$route.params.id)
-            data.id = this.$route.params.id
-            this.$store.dispatch('lines/saveItem',data)
+            data.id = this.id
+            // console.log(this.$route.params.id)
+
+            this.$store.dispatch('lines/saveItem', data)
                 .then(item => {
                     console.log(item)
+                    this.templateShowSuccess();
+                    this.goBack();
                 })
                 .catch(error => {
                     console.log(error)

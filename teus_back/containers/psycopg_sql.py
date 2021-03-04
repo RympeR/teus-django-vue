@@ -4,7 +4,7 @@ import psycopg2
 def execute_query(user, password, query):
     conn = psycopg2.connect(
         host="localhost",
-        database="teos",
+        database="teus",
         user=user,
         password=password,
         port='5432'
@@ -19,7 +19,7 @@ def execute_query(user, password, query):
 def execute_select_query(user, password, query, f_all=True):
     conn = psycopg2.connect(
         host="localhost",
-        database="teos",
+        database="teus",
         user=user,
         password=password,
         port='5432'

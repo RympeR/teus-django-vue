@@ -206,6 +206,7 @@ class PropositionList(APIView):
         }
         for ind, row in enumerate(data):
             result['results'].append({
+                "id": row[0],
                 "city": {
                     "id": row[0],
                     "name": row[1]

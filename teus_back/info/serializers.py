@@ -65,7 +65,7 @@ class ContainerSerializer(serializers.ModelSerializer):
     @staticmethod
     def post(validated_data):
         container = Container(
-            name=validated_data['name'][0],
+            name=validated_data['name'],
             image=validated_data['image']
         )
         container.save()
@@ -88,8 +88,8 @@ class ContainerSerializer(serializers.ModelSerializer):
         container = get_object_or_404(Container, pk=container_id)
         try:
             container = container.delete()
-        except Exception:
-            pass
+        except Exception as e:
+            print(e)
         return container
 
     @staticmethod

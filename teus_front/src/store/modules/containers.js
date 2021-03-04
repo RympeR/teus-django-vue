@@ -55,7 +55,7 @@ const actions = {
         })
     },
     deleteItem({state}, id) {
-        let confirmDelete = confirm('Удалить?');
+        let confirmDelete = confirm('Удаление типа контейнера приводит к удалению всех заявок и запросов где он использовался.');
         if (confirmDelete) {
             return new Promise((resolve, reject) => {
                 axios.delete(`${process.env.VUE_APP_HOST}/api/info/delete-container/${id}/`)

@@ -202,10 +202,10 @@ class PropositionList(APIView):
     def get(self, request):
         data = self.userfilter.get_propositions(request, 'postgres', '1111')
         result = {
-            "result": []
+            "results": []
         }
         for ind, row in enumerate(data):
-            result['result'].append({
+            result['results'].append({
                 "city": {
                     "id": row[0],
                     "name": row[1]

@@ -70,7 +70,7 @@ const actions = {
         })
     }, 
     deleteItem({state}, id) {
-        let confirmDelete = confirm('Удалить?');
+        let confirmDelete = confirm('Вы действительно хотите удалить этот запрос?');
         if (confirmDelete) {
             return new Promise((resolve, reject) => {
                 axios.delete(`${process.env.VUE_APP_HOST}/api/containers/delete-request/${id}/`)

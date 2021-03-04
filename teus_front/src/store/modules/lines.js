@@ -53,7 +53,7 @@ const actions = {
         })
     }, 
     deleteItem({state}, id) {
-        let confirmDelete = confirm('Удалить?');
+        let confirmDelete = confirm('Удаление линии приводит к удалению всех заявок и запросов где она использовалась.');
         if (confirmDelete) {
             return new Promise((resolve, reject) => {
                 axios.delete(`${process.env.VUE_APP_HOST}/api/info/delete-line/${id}/`)

@@ -60,7 +60,7 @@ const actions = {
         commit
     }, id) {
         function deleteRequest(address, id) {
-            let confirmDelete = confirm('Удалить?');
+            let confirmDelete = confirm('Удаление этого пользователя также удалит все его запросы, заявки и чаты. Действительно удалить?');
             if (confirmDelete) {
                 return new Promise((resolve, reject) => {
                     axios

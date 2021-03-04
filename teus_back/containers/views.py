@@ -184,7 +184,6 @@ class DealAPI(APIView):
             }
         )
 
-locale.setlocale(locale.LC_TIME, "rus")
 def datetowords(string):
     day_, month_, year_ = [int(i) for i in reversed(string.split('-'))]
     return date(day=day_, month=month_, year=year_).strftime('%d %B %Y')

@@ -8,5 +8,6 @@ urlpatterns = [
     path('api/info/', include('info.urls')),
     path('api/user/', include('users.urls')),
     path('api/containers/', include('containers.urls')),
+    path('silk/', include('silk.urls', namespace='silk'))
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

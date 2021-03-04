@@ -7,6 +7,7 @@ import containers from './modules/containers'
 import users from './modules/users'
 import user_propositions from './modules/user_propositions'
 import user_requests from './modules/user_requests'
+import deals from './modules/deals'
 
 Vue.use(Vuex);
 
@@ -87,5 +88,6 @@ export default new Vuex.Store({
         users,
         user_propositions,
         user_requests,
+        deals,
     }
 })

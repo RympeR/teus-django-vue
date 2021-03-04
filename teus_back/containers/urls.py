@@ -15,4 +15,10 @@ urlpatterns = [
     path('update-proposition/<int:proposition_id>/', PropositionAPI.as_view() ,name='PropositionUpdate'),
     path('delete-proposition/<int:proposition_id>/', PropositionAPI.as_view() ,name='PropositionDelete'),
 
+    path('get-deal/<int:deal_id>/', DealAPI.as_view() ,name='DealProfile'),
+    path('get-deal-list', DealsList.as_view() ,name='DealFullList'),
+    path('create-deal/', DealAPI.as_view() ,name='DealCreate'),
+    path('update-deal/<int:deal_id>/', DealAPI.as_view() ,name='DealUpdate'),
+    path('delete-deal/<int:deal_id>/', DealAPI.as_view() ,name='DealDelete'),
+
 ]

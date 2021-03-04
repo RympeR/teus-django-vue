@@ -13,6 +13,7 @@ const mutations = {
     setItem(state, item) {
         state.item = item;
     },
+
 }
 
 const actions = {
@@ -26,24 +27,23 @@ const actions = {
                 })
                 .then(response => {
                     let list = response.data.results;
-                    commit('setList', list);
                     console.log(list)
                    
-                        list.forEach((el) => {
-                        el.user.filter = el.user.phone;
-                        el.city.filter = el.city.name;
-                        el.line.filter = el.line.name;
-                        el.container.filter = el.container.name;
+                    list.forEach((el) => {
                         el.amount = {
-                            filter: el.amount,
                             amount: el.amount,
                         };
+                        el.user = {
+                            name: el.user.name,
+                            phone: el.user.name + ' ' + el.user.phone
+                        }
                         el.date = {
-                            filter: el.date,
                             date: el.date,
                         };
                         
                     });
+                    commit('setList', list);
+
                     resolve(list);
 
                 })
@@ -85,7 +85,45 @@ const actions = {
             })
         }
     },
-    
+    getFilteredItems({commit, state}, obj){
+        console.log(obj)
+        console.log(state)
+        var str = `${process.env.VUE_APP_HOST}/api/containers/get-requests-list?`;
+        for (var key in obj) {
+            if (str != `${process.env.VUE_APP_HOST}/api/containers/get-requests-list?`) {
+                str += "&";
+            }
+            str += key + "=" + encodeURIComponent(obj[key]);
+        }
+        console.log(str)
+        return new Promise((resolve, reject) =>{
+            axios
+            .get(str)
+            .then(response => {
+                let list = response.data.results;
+                
+                console.log(list)
+                
+                list.forEach((el) => {
+                    el.date = {
+                        date: el.date,
+                    };
+                    el.user = {
+                        name: el.user.name,
+                        phone: el.user.name + ' ' + el.user.phone
+                    }
+                    el.amount = {
+                        amount: el.amount,
+                    };
+                });
+                commit('setList', list);
+                resolve(list);
+            })
+            .catch(response => {
+                reject(response.error);
+            })
+        })
+    },
     saveItem({state}, obj) {
         console.log(state)
         console.log(obj.id)

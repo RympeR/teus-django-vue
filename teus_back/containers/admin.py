@@ -3,3 +3,4 @@ from .models import *
 # Register your models here.
 admin.site.register(UserRequest)
 admin.site.register(UserProposition)
+admin.site.register(Deal)

@@ -18,6 +18,8 @@ Vue.use(wysiwyg, {}); // config is optional. more below
 Vue.use(VuePlyr);
 Vue.use( CKEditor );
 
+
+
 import BtnTurn from "@/components/BtnTurn";
 import TableThumbnail from "@/components/TableThumbnail";
 Vue.component("btn-turn", BtnTurn);

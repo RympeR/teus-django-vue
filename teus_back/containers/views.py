@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import *
-from .serializers import RequestSerializer, PropositionSerializer
+from .serializers import DealSerializer, RequestSerializer, PropositionSerializer
 from django.http import request
 from rest_framework import generics, permissions, filters
 from rest_framework.views import APIView
@@ -12,7 +12,9 @@ from rest_framework.decorators import permission_classes, renderer_classes, api_
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 from .raw_sql import UserFilter
-
+from django.core.paginator import Paginator
+import locale
+from datetime import date
 
 class RequestAPI(APIView):
     renderer_classes = (JSONRenderer,)
@@ -23,12 +25,13 @@ class RequestAPI(APIView):
         return Response(
             {
                 "id": user_request.id,
+                "name": user_request.user.first_name,
                 "phone": user_request.user.phone,
                 "amount": user_request.amount,
                 "city": user_request.city.name,
                 "line": user_request.line.name,
                 "container": user_request.container.name,
-                "request_date": user_request.request_date,
+                "request_date": user_request.request_date.strftime('%d %B %Y'),
             }
         )
 
@@ -77,13 +80,16 @@ class PropositionAPI(APIView):
         return Response(
             {
                 "id": proposition.id,
+                "name": proposition.user.first_name,
                 "phone": proposition.user.phone,
                 "amount": proposition.amount,
                 "city": proposition.city.name,
                 "line": proposition.line.name,
                 "container": proposition.container.name,
-                "start_date": proposition.start_date,
-                "end_date": proposition.end_date
+                "start_date": proposition.start_date.strftime('%d %B %Y')
+,
+                "end_date": proposition.end_date.strftime('%d %B %Y')
+
             }
         )
 
@@ -119,42 +125,69 @@ class PropositionAPI(APIView):
         )
 
 
-class RequestsList1(generics.ListAPIView):
+class DealAPI(APIView):
     renderer_classes = (JSONRenderer,)
     permission_classes = (permissions.AllowAny, )
-    queryset = UserRequest.objects.all()
-    serializer_class = RequestSerializer
-    filter_backends = [filters.SearchFilter]
-    search_fields = ['=user__phone', '=city__name',
-                     '=line__name', 'amount', '=container__name', '^request_date']
 
-    def get_queryset(self):
-        queryset = self.filter_queryset(UserRequest.objects.all())
+    def get(self, request, deal_id):
+        deal = DealSerializer.get_deal(deal_id)
+        return Response(
+            {
+                "id": deal.id,
+                "user_request": deal.user_request.phone,
+                "user_request_name": deal.user_request.first_name,
+                "user_proposition": deal.user_proposition.phone,
+                "user_proposition_name": deal.user_proposition.first_name,
+                "amount": deal.amount,
+                "city": deal.city.name,
+                "line": deal.line.name,
+                "container": deal.container.name,
+                "handshake_time": deal.handshake_time.strftime('%H:%M:%S %d %b %Y'),
+            }
+        )
+    
+    def post(self, request):
+        deal = DealSerializer(data=request.data)
+        if deal.is_valid():
+            deal.save()
+            deal = Deal.objects.get(
+                pk=request.data['id'])
+            return Response({
+                "id": deal.id
+            })
+        else:
+            print(deal)
+            return Response({
+                "id": "0"
+            })
 
-        return queryset
 
+    def get_object(self, deal_id):
+        return Deal.objects.get(pk=deal_id)
 
-class PropositionList1(generics.ListAPIView):
-    renderer_classes = (JSONRenderer,)
-    permission_classes = (permissions.AllowAny, )
-    queryset = UserProposition.objects.all()
-    serializer_class = PropositionSerializer
-    filter_backends = [filters.SearchFilter]
-    search_fields = ['=user__phone', '=city__name',
-                     '=line__name', 'amount', '=container__name', '^end_date']
+    def put(self, requset, deal_id):
+        instance = self.get_object(deal_id)
+        deal = DealSerializer(instance)
+        data = deal.update()
+        return Response(
+            {
+                "data": data
+            }
+        )
+    
+    def delete(self, request, deal_id):
+        deal_id = DealSerializer.delete_deal(deal_id)
+        
+        return Response(
+            {
+                "id": deal_id
+            }
+        )
 
-    def filter_queryset(self, queryset):
-        filter_backends = [filters.SearchFilte]
-        if 'geo_route' in self.request.query_params:
-            ...
-        for backend in list(filter_backends):
-            queryset = backend().filter_queryset(self.request, queryset, view=self)
-
-        return queryset
-
-    def get_queryset(self):
-        queryset = self.filter_queryset(UserProposition.objects.all())
-        return queryset
+locale.setlocale(locale.LC_TIME, "rus")
+def datetowords(string):
+    day_, month_, year_ = [int(i) for i in reversed(string.split('-'))]
+    return date(day=day_, month=month_, year=year_).strftime('%d %B %Y')
 
 
 class RequestsList(APIView):
@@ -177,21 +210,26 @@ class RequestsList(APIView):
                 },
                 "user": {
                     "id": row[3],
-                    "phone": row[4]
+                    "name": row[4],
+                    "phone": row[5]
                 },
                 "line": {
-                    "id": row[5],
-                    "name": row[6]
+                    "id": row[6],
+                    "name": row[7]
                 },
                 "container": {
-                    "id": row[7],
-                    "name": row[8]
+                    "id": row[8],
+                    "name": row[9]
                 },
-                "amount": row[9],
-                "date": row[10]
+                "amount": row[10],
+                "date": row[11].strftime('%d %B %Y')
 
             })
-        return Response(result)
+        return Response(
+            {
+                "results":result['results']
+            }
+        )
 
 
 class PropositionList(APIView):
@@ -208,25 +246,76 @@ class PropositionList(APIView):
             result['results'].append({
                 "id": row[0],
                 "city": {
-                    "id": row[0],
-                    "name": row[1]
+                    "id": row[1],
+                    "name": row[2]
                 },
                 "user": {
-                    "id": row[2],
-                    "phone": row[3]
+                    "id": row[3],
+                    "name": row[4],
+                    "phone": row[5]
                 },
                 "line": {
-                    "id": row[4],
-                    "name": row[5]
-                },
-                "container": {
                     "id": row[6],
                     "name": row[7]
                 },
-                "amount": row[8],
+                "container": {
+                    "id": row[8],
+                    "name": row[9]
+                },
+                "amount": row[10],
                 "date": {
-                    "start": row[9],
-                    "end": row[10]
+                    "start": row[11].strftime('%d %B %Y'),
+                    "end": row[12].strftime('%d %B %Y')
                 }
             })
-        return Response(result)
+        return Response(
+            {
+                "results":result['results']
+            }
+        )
+
+class DealsList(APIView):
+    renderer_classes = (JSONRenderer,)
+    permission_classes = (permissions.AllowAny, )
+    userfilter = UserFilter()
+
+    def get(self, request):
+        print(request.GET)
+        data = self.userfilter.get_deals(request, 'postgres', '1111')
+        result = {
+            "results": []
+        }
+        for ind, row in enumerate(data):
+            result['results'].append({
+                "id": row[0],
+                "city": {
+                    "id": row[1],
+                    "name": row[2]
+                },
+                "first_user": {
+                    "id": row[3],
+                    "name": row[4],
+                    "phone": row[5]
+                },
+                "second_user": {
+                    "id": row[6],
+                    "name": row[7],
+                    "phone": row[8]
+                },
+                "line": {
+                    "id": row[9],
+                    "name": row[10]
+                },
+                "container": {
+                    "id": row[11],
+                    "name": row[12]
+                },
+                "amount": row[13],
+                "handshake_time": row[14].strftime('%H:%M:%S %d %b %Y')
+
+            })
+        return Response(
+            {
+                "results":result['results']
+            }
+        )

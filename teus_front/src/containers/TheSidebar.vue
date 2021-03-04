@@ -9,46 +9,50 @@
             </div>
             <div class="sidebar__item">
                 <span class="sidebar__icon">
-                    <img src="@/assets/img/icons/gear.png" alt="">
+                    <img src="@/assets/img/icons/51.png" alt="">
                 </span>
-                <b-link class="sidebar__link" :to="{name: 'containers'}">Контейнеры</b-link>
+                <b-link class="sidebar__link" :to="{name: 'students'}">Пользователи</b-link>
             </div>
             <div class="sidebar__item">
                 <span class="sidebar__icon">
-                    <img src="@/assets/img/icons/gear.png" alt="">
-                </span>
-                <b-link class="sidebar__link" :to="{name: 'lines'}">Линии</b-link>
-            </div>
-            <div class="sidebar__item">
-                <span class="sidebar__icon">
-                    <img src="@/assets/img/icons/gear.png" alt="">
-                </span>
-                <b-link class="sidebar__link" :to="{name: 'cities'}">Города</b-link>
-            </div>
-            <div class="sidebar__item">
-                <span class="sidebar__icon">
-                    <img src="@/assets/img/icons/tested.png" alt="">
+                    <img src="@/assets/img/icons/12.png" alt="">
                 </span>
                 <b-link class="sidebar__link" :to="{name: 'requests'}">Запросы</b-link>
             </div>
             <div class="sidebar__item">
                 <span class="sidebar__icon">
-                    <img src="@/assets/img/icons/tested.png" alt="">
+                    <img src="@/assets/img/icons/63.png" alt="">
                 </span>
                 <b-link class="sidebar__link" :to="{name: 'proposition'}">Заявки</b-link>
             </div>
             <div class="sidebar__item">
                 <span class="sidebar__icon">
-                    <img src="@/assets/img/icons/tested.png" alt="">
+                    <img src="@/assets/img/icons/23.png" alt="">
                 </span>
                 <b-link class="sidebar__link" :to="{name: 'deals'}">Сделки</b-link>
             </div>
+            <hr>
             <div class="sidebar__item">
                 <span class="sidebar__icon">
-                    <img src="@/assets/img/icons/tested.png" alt="">
+                    <img src="@/assets/img/icons/65.png" alt="">
                 </span>
-                <b-link class="sidebar__link" :to="{name: 'students'}">Пользователи</b-link>
+                <b-link class="sidebar__link" :to="{name: 'lines'}">Линии</b-link>
             </div>
+            <div class="sidebar__item">
+                <span class="sidebar__icon">
+                    <img src="@/assets/img/icons/29.png" alt="">
+                </span>
+                <b-link class="sidebar__link" :to="{name: 'cities'}">Города</b-link>
+            </div>
+            <div class="sidebar__item">
+                <span class="sidebar__icon">
+                    <img src="@/assets/img/icons/45.png" alt="">
+                </span>
+                <b-link class="sidebar__link" :to="{name: 'containers'}">Типы контейнеров</b-link>
+            </div>
+            
+            
+            
         </ul>
     </div>
 </template>

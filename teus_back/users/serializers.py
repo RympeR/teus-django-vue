@@ -8,13 +8,7 @@ class UserSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = User
-        fields = (
-            'phone',
-            'first_name',
-            'last_name',
-            'company',
-            'image'
-        )
+        fields = ('__all__')
 
     @staticmethod
     def create(validated_data):

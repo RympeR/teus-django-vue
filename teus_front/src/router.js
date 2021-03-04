@@ -24,6 +24,10 @@ import UserRequestForm from "@/views/filters/UserRequest/UserRequestForm"
 import UserPropositionList from "@/views/filters/UserProposition/UserPropositiontList"
 import UserPropositionForm from "@/views/filters/UserProposition/UserPropositionForm"
 
+import DealsList from "@/views/filters/Deals/DealsList"
+import DealsForm from "@/views/filters/Deals/DealsForm"
+
+
 Vue.use(Router);
 
 export default new Router({
@@ -209,8 +213,32 @@ export default new Router({
 						requiresAuth: true
 					}
 					
-				}
-				
+				},
+				{
+					path: 'deals',
+					name: 'deals',
+					component: DealsList,
+					meta: {
+						requiresAuth: true
+					},
+				},
+				{
+					path: 'deals/update/:id',
+					name: 'deals-update',
+					component: DealsForm,
+					meta: {
+						requiresAuth: true
+					}
+				},
+				{
+					path: 'deals/create',
+					name: 'deals-create',
+					component: DealsForm,
+					meta: {
+						requiresAuth: true
+					}
+					
+				},
 			]
 		},
 	],

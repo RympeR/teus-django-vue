@@ -4610,3 +4610,1655 @@ None
         ;
 api-teus.maximusapp.com [pid: 3992|app: 0|req: 42/73] 159.224.213.215 () {44 vars in 819 bytes} [Wed Mar  3 17:36:33 2021] GET /api/containers/get-proposition-list => generated 436 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
 api-teus.maximusapp.com [pid: 3993|app: 0|req: 21/74] 159.224.213.215 () {44 vars in 789 bytes} [Wed Mar  3 17:36:34 2021] GET /api/info/get-city/2/ => generated 37 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date",
+                containers_userproposition.end_date "end date"
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 3992|app: 0|req: 43/75] 159.224.213.215 () {44 vars in 870 bytes} [Wed Mar  3 17:44:50 2021] GET /api/containers/get-proposition-list => generated 436 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 3993|app: 0|req: 22/76] 159.224.213.215 () {44 vars in 861 bytes} [Wed Mar  3 17:44:56 2021] GET /api/containers/get-requests-list => generated 379 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 3992|app: 0|req: 44/77] 159.224.213.215 () {44 vars in 861 bytes} [Wed Mar  3 17:45:11 2021] GET /api/containers/get-requests-list => generated 379 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3992|app: 0|req: 45/78] 159.224.213.215 () {44 vars in 842 bytes} [Wed Mar  3 17:45:59 2021] GET /api/info/get-city/2/ => generated 37 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 3993|app: 0|req: 23/79] 159.224.213.215 () {44 vars in 861 bytes} [Wed Mar  3 17:46:04 2021] GET /api/containers/get-requests-list => generated 379 bytes in 8 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3995|app: 0|req: 9/80] 159.224.213.215 () {44 vars in 857 bytes} [Wed Mar  3 17:46:05 2021] GET /api/info/get-container/5/ => generated 162 bytes in 9 msecs (HTTP/1.1 200) 8 headers in 258 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3994|app: 0|req: 4/81] 159.224.213.215 () {50 vars in 942 bytes} [Wed Mar  3 17:46:07 2021] OPTIONS /api/user/profile/1/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 3992|app: 0|req: 46/82] 159.224.213.215 () {44 vars in 861 bytes} [Wed Mar  3 17:46:07 2021] GET /api/containers/get-requests-list => generated 379 bytes in 8 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+user_id
+api-teus.maximusapp.com [pid: 3993|app: 0|req: 24/83] 159.224.213.215 () {46 vars in 916 bytes} [Wed Mar  3 17:46:07 2021] GET /api/user/profile/1/ => generated 103 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 258 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3994|app: 0|req: 5/84] 159.224.213.215 () {44 vars in 841 bytes} [Wed Mar  3 17:46:08 2021] GET /api/info/get-lines-list/ => generated 173 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3992|app: 0|req: 47/85] 159.224.213.215 () {44 vars in 819 bytes} [Wed Mar  3 17:46:18 2021] GET /api/info/get-lines-list/ => generated 173 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 3995|app: 0|req: 10/86] 159.224.213.215 () {44 vars in 821 bytes} [Wed Mar  3 17:46:18 2021] GET /api/info/get-cities-list/ => generated 73 bytes in 8 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3993|app: 0|req: 25/87] 159.224.213.215 () {44 vars in 835 bytes} [Wed Mar  3 17:46:18 2021] GET /api/containers/get-requests-list => generated 379 bytes in 8 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3994|app: 0|req: 6/88] 159.224.213.215 () {44 vars in 841 bytes} [Wed Mar  3 17:46:24 2021] GET /api/info/get-lines-list/ => generated 173 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 3995|app: 0|req: 11/89] 159.224.213.215 () {44 vars in 835 bytes} [Wed Mar  3 17:46:32 2021] GET /api/containers/get-requests-list => generated 379 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3993|app: 0|req: 26/90] 159.224.213.215 () {44 vars in 821 bytes} [Wed Mar  3 17:46:40 2021] GET /api/info/get-cities-list/ => generated 73 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3992|app: 0|req: 48/91] 159.224.213.215 () {44 vars in 819 bytes} [Wed Mar  3 17:46:49 2021] GET /api/info/get-lines-list/ => generated 173 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3992|app: 0|req: 49/92] 159.224.213.215 () {46 vars in 853 bytes} [Wed Mar  3 17:47:59 2021] GET /api/info/get-containers-list/ => generated 489 bytes in 10 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3993|app: 0|req: 27/93] 159.224.213.215 () {46 vars in 845 bytes} [Wed Mar  3 17:48:03 2021] GET /api/info/get-container/1/ => generated 97 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 3995|app: 0|req: 12/94] 159.224.213.215 () {46 vars in 859 bytes} [Wed Mar  3 17:48:06 2021] GET /api/containers/get-requests-list => generated 379 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date",
+                containers_userproposition.end_date "end date"
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 3994|app: 0|req: 7/95] 159.224.213.215 () {46 vars in 865 bytes} [Wed Mar  3 17:48:10 2021] GET /api/containers/get-proposition-list => generated 436 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3995|app: 0|req: 13/96] 159.224.213.215 () {46 vars in 845 bytes} [Wed Mar  3 17:48:11 2021] GET /api/info/get-cities-list/ => generated 73 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 3992|app: 0|req: 50/97] 159.224.213.215 () {46 vars in 859 bytes} [Wed Mar  3 17:48:12 2021] GET /api/containers/get-requests-list => generated 379 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3993|app: 0|req: 28/98] 159.224.213.215 () {46 vars in 843 bytes} [Wed Mar  3 17:48:13 2021] GET /api/info/get-lines-list/ => generated 173 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 3992|app: 0|req: 51/99] 159.224.213.215 () {44 vars in 839 bytes} [Wed Mar  3 17:57:16 2021] GET /api/containers/get-requests-list => generated 379 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3993|app: 0|req: 29/100] 159.224.213.215 () {44 vars in 821 bytes} [Wed Mar  3 17:57:17 2021] GET /api/info/get-cities-list/ => generated 73 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 3995|app: 0|req: 14/101] 159.224.213.215 () {44 vars in 839 bytes} [Wed Mar  3 17:57:18 2021] GET /api/containers/get-requests-list => generated 379 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date",
+                containers_userproposition.end_date "end date"
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 3994|app: 0|req: 8/102] 159.224.213.215 () {44 vars in 848 bytes} [Wed Mar  3 17:57:19 2021] GET /api/containers/get-proposition-list => generated 436 bytes in 9 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 3992|app: 0|req: 52/103] 159.224.213.215 () {44 vars in 839 bytes} [Wed Mar  3 17:57:20 2021] GET /api/containers/get-requests-list => generated 379 bytes in 8 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date",
+                containers_userproposition.end_date "end date"
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 3995|app: 0|req: 15/104] 159.224.213.215 () {44 vars in 848 bytes} [Wed Mar  3 17:57:20 2021] GET /api/containers/get-proposition-list => generated 436 bytes in 8 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 3993|app: 0|req: 30/105] 159.224.213.215 () {44 vars in 839 bytes} [Wed Mar  3 17:57:21 2021] GET /api/containers/get-requests-list => generated 379 bytes in 8 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3994|app: 0|req: 9/106] 159.224.213.215 () {44 vars in 821 bytes} [Wed Mar  3 17:57:22 2021] GET /api/info/get-cities-list/ => generated 73 bytes in 8 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3992|app: 0|req: 53/107] 159.224.213.215 () {44 vars in 819 bytes} [Wed Mar  3 17:57:24 2021] GET /api/info/get-lines-list/ => generated 173 bytes in 8 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3995|app: 0|req: 16/108] 159.224.213.215 () {44 vars in 834 bytes} [Wed Mar  3 17:57:25 2021] GET /api/info/get-containers-list/ => generated 489 bytes in 10 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3993|app: 0|req: 31/109] 159.224.213.215 () {50 vars in 907 bytes} [Wed Mar  3 17:57:28 2021] OPTIONS /api/user/profile/ => generated 0 bytes in 1 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3994|app: 0|req: 10/110] 159.224.213.215 () {46 vars in 881 bytes} [Wed Mar  3 17:57:28 2021] GET /api/user/profile/ => generated 112 bytes in 9 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3992|app: 0|req: 54/111] 159.224.213.215 () {50 vars in 920 bytes} [Wed Mar  3 17:57:30 2021] OPTIONS /api/user/profile/1/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+user_id
+api-teus.maximusapp.com [pid: 3993|app: 0|req: 32/112] 159.224.213.215 () {46 vars in 894 bytes} [Wed Mar  3 17:57:30 2021] GET /api/user/profile/1/ => generated 103 bytes in 8 msecs (HTTP/1.1 200) 8 headers in 258 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3992|app: 0|req: 55/113] 159.224.213.215 () {50 vars in 934 bytes} [Wed Mar  3 17:57:32 2021] OPTIONS /api/user/update-profile/1/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+<QueryDict: {'user_id': ['1'], 'phone': ['09409324'], 'first_name': ['test'], 'last_name': ['тест'], 'company': ['test'], 'image': [<InMemoryUploadedFile: kotik.jpg (image/jpeg)>]}>
+{'user_id': ['1'], 'phone': ['09409324'], 'first_name': ['test'], 'last_name': ['тест'], 'company': ['test'], 'image': [<InMemoryUploadedFile: kotik.jpg (image/jpeg)>]}
+api-teus.maximusapp.com [pid: 3995|app: 0|req: 17/114] 159.224.213.215 () {50 vars in 1100 bytes} [Wed Mar  3 17:57:32 2021] PUT /api/user/update-profile/1/ => generated 149 bytes in 13 msecs (HTTP/1.1 200) 8 headers in 258 bytes (1 switches on core 0)
+user_id
+api-teus.maximusapp.com [pid: 3992|app: 0|req: 56/115] 159.224.213.215 () {46 vars in 894 bytes} [Wed Mar  3 17:57:32 2021] GET /api/user/profile/1/ => generated 149 bytes in 9 msecs (HTTP/1.1 200) 8 headers in 258 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3993|app: 0|req: 33/116] 159.224.213.215 () {46 vars in 881 bytes} [Wed Mar  3 17:57:33 2021] GET /api/user/profile/ => generated 158 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3995|app: 0|req: 18/117] 159.224.213.215 () {50 vars in 929 bytes} [Wed Mar  3 17:57:40 2021] OPTIONS /api/user/profile/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3994|app: 0|req: 11/118] 159.224.213.215 () {46 vars in 903 bytes} [Wed Mar  3 17:57:40 2021] GET /api/user/profile/ => generated 158 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+user_id
+api-teus.maximusapp.com [pid: 3995|app: 0|req: 19/119] 159.224.213.215 () {46 vars in 916 bytes} [Wed Mar  3 17:57:43 2021] GET /api/user/profile/1/ => generated 149 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 258 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3992|app: 0|req: 57/120] 159.224.213.215 () {46 vars in 903 bytes} [Wed Mar  3 17:57:46 2021] GET /api/user/profile/ => generated 158 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3993|app: 0|req: 34/121] 159.224.213.215 () {44 vars in 841 bytes} [Wed Mar  3 17:57:47 2021] GET /api/info/get-lines-list/ => generated 173 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3994|app: 0|req: 12/122] 159.224.213.215 () {44 vars in 843 bytes} [Wed Mar  3 17:57:49 2021] GET /api/info/get-cities-list/ => generated 73 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3995|app: 0|req: 20/123] 159.224.213.215 () {44 vars in 856 bytes} [Wed Mar  3 17:57:49 2021] GET /api/info/get-containers-list/ => generated 489 bytes in 8 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3992|app: 0|req: 58/124] 159.224.213.215 () {44 vars in 857 bytes} [Wed Mar  3 17:57:51 2021] GET /api/info/get-container/1/ => generated 97 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3993|app: 0|req: 35/125] 159.224.213.215 () {48 vars in 905 bytes} [Wed Mar  3 17:57:56 2021] OPTIONS /api/info/update-container/1/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+{'container_id': ['1'], 'name': ['2243341'], 'id': ['1'], 'image': [<InMemoryUploadedFile: kotik.jpg (image/jpeg)>]}
+http://api-teus.maximusapp.com/media/kotik.jpg
+api-teus.maximusapp.com [pid: 3994|app: 0|req: 13/126] 159.224.213.215 () {48 vars in 1055 bytes} [Wed Mar  3 17:57:56 2021] PUT /api/info/update-container/1/ => generated 92 bytes in 10 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3993|app: 0|req: 36/127] 159.224.213.215 () {44 vars in 856 bytes} [Wed Mar  3 17:57:56 2021] GET /api/info/get-containers-list/ => generated 489 bytes in 10 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3992|app: 0|req: 59/128] 159.224.213.215 () {44 vars in 857 bytes} [Wed Mar  3 17:58:00 2021] GET /api/info/get-container/3/ => generated 94 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3995|app: 0|req: 21/129] 159.224.213.215 () {48 vars in 905 bytes} [Wed Mar  3 17:58:07 2021] OPTIONS /api/info/update-container/3/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+{'container_id': ['3'], 'name': ['2'], 'id': ['3'], 'image': [<InMemoryUploadedFile: Без названия.jpg (image/jpeg)>]}
+http://api-teus.maximusapp.com/media/%D0%91%D0%B5%D0%B7%20%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F.jpg
+api-teus.maximusapp.com [pid: 3994|app: 0|req: 14/130] 159.224.213.215 () {48 vars in 1051 bytes} [Wed Mar  3 17:58:07 2021] PUT /api/info/update-container/3/ => generated 150 bytes in 9 msecs (HTTP/1.1 200) 8 headers in 258 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3995|app: 0|req: 22/131] 159.224.213.215 () {44 vars in 856 bytes} [Wed Mar  3 17:58:07 2021] GET /api/info/get-containers-list/ => generated 489 bytes in 9 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3992|app: 0|req: 60/132] 159.224.213.215 () {48 vars in 899 bytes} [Wed Mar  3 17:58:12 2021] OPTIONS /api/info/delete-container/1/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+Internal Server Error: /api/info/delete-container/1/
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/teus/lib/python3.6/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/teus/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/teus/lib/python3.6/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "./info/views.py", line 62, in delete
+    "container_id": container[0]
+TypeError: 'Container' object does not support indexing
+api-teus.maximusapp.com [pid: 3993|app: 0|req: 37/133] 159.224.213.215 () {44 vars in 857 bytes} [Wed Mar  3 17:58:12 2021] DELETE /api/info/delete-container/1/ => generated 81719 bytes in 76 msecs (HTTP/1.1 500) 7 headers in 226 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3992|app: 0|req: 61/134] 159.224.213.215 () {44 vars in 856 bytes} [Wed Mar  3 17:58:16 2021] GET /api/info/get-containers-list/ => generated 489 bytes in 9 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+Internal Server Error: /api/info/delete-container/1/
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/teus/lib/python3.6/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/teus/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/teus/lib/python3.6/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "./info/views.py", line 62, in delete
+    "container_id": container[0]
+TypeError: 'Container' object does not support indexing
+api-teus.maximusapp.com [pid: 3995|app: 0|req: 23/135] 159.224.213.215 () {44 vars in 857 bytes} [Wed Mar  3 17:58:19 2021] DELETE /api/info/delete-container/1/ => generated 81719 bytes in 49 msecs (HTTP/1.1 500) 7 headers in 226 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3992|app: 0|req: 62/136] 159.224.213.215 () {44 vars in 841 bytes} [Wed Mar  3 17:58:21 2021] GET /api/info/get-lines-list/ => generated 173 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3993|app: 0|req: 38/137] 159.224.213.215 () {48 vars in 886 bytes} [Wed Mar  3 17:58:24 2021] OPTIONS /api/info/delete-line/21/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3994|app: 0|req: 15/138] 159.224.213.215 () {44 vars in 844 bytes} [Wed Mar  3 17:58:24 2021] DELETE /api/info/delete-line/21/ => generated 13 bytes in 8 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3993|app: 0|req: 39/139] 159.224.213.215 () {44 vars in 843 bytes} [Wed Mar  3 17:58:28 2021] GET /api/info/get-cities-list/ => generated 73 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+<QueryDict: {'name': ['еуые']}>
+api-teus.maximusapp.com [pid: 3992|app: 0|req: 63/140] 159.224.213.215 () {48 vars in 1029 bytes} [Wed Mar  3 17:58:32 2021] POST /api/info/create-city/ => generated 13 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3995|app: 0|req: 24/141] 159.224.213.215 () {44 vars in 843 bytes} [Wed Mar  3 17:58:32 2021] GET /api/info/get-cities-list/ => generated 100 bytes in 5 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3993|app: 0|req: 40/142] 159.224.213.215 () {48 vars in 884 bytes} [Wed Mar  3 17:58:34 2021] OPTIONS /api/info/delete-city/7/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3994|app: 0|req: 16/143] 159.224.213.215 () {44 vars in 842 bytes} [Wed Mar  3 17:58:34 2021] DELETE /api/info/delete-city/7/ => generated 13 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 3993|app: 0|req: 41/144] 159.224.213.215 () {44 vars in 861 bytes} [Wed Mar  3 17:58:35 2021] GET /api/containers/get-requests-list => generated 379 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 3995|app: 0|req: 25/145] 159.224.213.215 () {44 vars in 861 bytes} [Wed Mar  3 17:58:38 2021] GET /api/containers/get-requests-list => generated 379 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3992|app: 0|req: 64/146] 159.224.213.215 () {46 vars in 903 bytes} [Wed Mar  3 17:58:39 2021] GET /api/user/profile/ => generated 158 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date",
+                containers_userproposition.end_date "end date"
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 3993|app: 0|req: 42/147] 159.224.213.215 () {44 vars in 870 bytes} [Wed Mar  3 17:58:40 2021] GET /api/containers/get-proposition-list => generated 436 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3994|app: 0|req: 17/148] 159.224.213.215 () {44 vars in 841 bytes} [Wed Mar  3 17:58:41 2021] GET /api/info/get-lines-list/ => generated 152 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3995|app: 0|req: 26/149] 159.224.213.215 () {44 vars in 856 bytes} [Wed Mar  3 17:58:41 2021] GET /api/info/get-containers-list/ => generated 489 bytes in 8 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+Internal Server Error: /api/info/delete-container/1/
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/teus/lib/python3.6/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/teus/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/teus/lib/python3.6/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "./info/views.py", line 62, in delete
+    "container_id": container[0]
+TypeError: 'Container' object does not support indexing
+api-teus.maximusapp.com [pid: 3992|app: 0|req: 65/150] 159.224.213.215 () {44 vars in 857 bytes} [Wed Mar  3 17:58:43 2021] DELETE /api/info/delete-container/1/ => generated 81719 bytes in 54 msecs (HTTP/1.1 500) 7 headers in 226 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3993|app: 0|req: 43/151] 159.224.213.215 () {44 vars in 834 bytes} [Wed Mar  3 17:58:48 2021] GET /api/info/get-containers-list/ => generated 489 bytes in 9 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3995|app: 0|req: 27/152] 159.224.213.215 () {48 vars in 877 bytes} [Wed Mar  3 17:58:50 2021] OPTIONS /api/info/delete-container/1/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+Internal Server Error: /api/info/delete-container/1/
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/teus/lib/python3.6/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/teus/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/teus/lib/python3.6/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "./info/views.py", line 62, in delete
+    "container_id": container[0]
+TypeError: 'Container' object does not support indexing
+api-teus.maximusapp.com [pid: 3994|app: 0|req: 18/153] 159.224.213.215 () {44 vars in 835 bytes} [Wed Mar  3 17:58:50 2021] DELETE /api/info/delete-container/1/ => generated 81697 bytes in 50 msecs (HTTP/1.1 500) 7 headers in 226 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 3992|app: 0|req: 66/154] 159.224.213.215 () {42 vars in 886 bytes} [Wed Mar  3 17:59:02 2021] GET /api/info/delete-container/1/ => generated 97 bytes in 6 msecs (HTTP/1.1 200) 7 headers in 225 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+api-teus.maximusapp.com [pid: 3993|app: 0|req: 44/155] 159.224.213.215 () {42 vars in 807 bytes} [Wed Mar  3 17:59:03 2021] GET /favicon.ico => generated 2543 bytes in 4 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Internal Server Error: /api/info/delete-container/1/
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/teus/lib/python3.6/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/teus/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/teus/lib/python3.6/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "./info/views.py", line 62, in delete
+    "container_id": container[0]
+TypeError: 'Container' object does not support indexing
+api-teus.maximusapp.com [pid: 3995|app: 0|req: 28/156] 159.224.213.215 () {40 vars in 614 bytes} [Wed Mar  3 17:59:19 2021] DELETE /api/info/delete-container/1/ => generated 81232 bytes in 42 msecs (HTTP/1.1 500) 6 headers in 194 bytes (1 switches on core 0)
+[emperor] *** RAGNAROK EVOKED ***
+Wed Mar  3 20:04:49 2021 - [emperor] stop the uwsgi instance /etc/uwsgi/apps-enabled/teus_back.ini
+Wed Mar  3 18:04:49 2021 - received message 0 from emperor
+SIGINT/SIGQUIT received...killing workers...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+worker 4 buried after 1 seconds
+goodbye to uWSGI.
+Wed Mar  3 20:04:51 2021 - [emperor] removed uwsgi instance /etc/uwsgi/apps-enabled/teus_back.ini
+Wed Mar  3 20:04:52 2021 - The Emperor is buried.
+*** Starting uWSGI 2.0.19.1 (64bit) on [Wed Mar  3 20:04:52 2021] ***
+compiled with version: 7.5.0 on 26 February 2021 15:46:55
+os: Linux-4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018
+nodename: vps-36418.vps-default-host.net
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/teus-django-vue/teus_back
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 7709
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+*** starting uWSGI Emperor ***
+*** has_emperor mode detected (fd: 5) ***
+[uWSGI] getting INI configuration from /etc/uwsgi/apps-enabled/teus_back.ini
+open("./python_plugin.so"): No such file or directory [core/utils.c line 3732]
+!!! UNABLE to load uWSGI plugin: ./python_plugin.so: cannot open shared object file: No such file or directory !!!
+*** Starting uWSGI 2.0.19.1 (64bit) on [Wed Mar  3 20:04:52 2021] ***
+compiled with version: 7.5.0 on 26 February 2021 15:46:55
+os: Linux-4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018
+nodename: vps-36418.vps-default-host.net
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/teus-django-vue/teus_back
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/teus-django-vue/teus_back
+your processes number limit is 7709
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+VirtualHosting mode enabled.
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /var/run/uwsgi/teus.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.6.9 (default, Oct  8 2020, 12:12:24)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/teus/
+Set PythonHome to /home/teus/
+Python main interpreter initialized at 0x5590c7604480
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+added /home/teus/bin/python3 to pythonpath.
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x5590c7604480 pid: 5455 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 5455)
+Wed Mar  3 20:04:52 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini has been spawned
+spawned uWSGI worker 1 (pid: 5457, cores: 1)
+spawned uWSGI worker 2 (pid: 5458, cores: 1)
+spawned uWSGI worker 3 (pid: 5459, cores: 1)
+spawned uWSGI worker 4 (pid: 5460, cores: 1)
+Wed Mar  3 20:04:52 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is ready to accept requests
+api-teus.maximusapp.com [pid: 5460|app: 0|req: 1/1] 159.224.213.215 () {40 vars in 614 bytes} [Wed Mar  3 18:04:55 2021] DELETE /api/info/delete-container/1/ => generated 18 bytes in 116 msecs (HTTP/1.1 200) 7 headers in 225 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Wed Mar  3 20:04:55 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+api-teus.maximusapp.com [pid: 5457|app: 0|req: 1/2] 159.224.213.215 () {44 vars in 856 bytes} [Wed Mar  3 18:05:08 2021] GET /api/info/get-containers-list/ => generated 489 bytes in 114 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Wed Mar  3 20:05:08 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+api-teus.maximusapp.com [pid: 5458|app: 0|req: 1/3] 159.224.213.215 () {44 vars in 856 bytes} [Wed Mar  3 18:05:12 2021] GET /api/info/get-containers-list/ => generated 489 bytes in 116 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Wed Mar  3 20:05:13 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+api-teus.maximusapp.com [pid: 5457|app: 0|req: 2/4] 159.224.213.215 () {44 vars in 857 bytes} [Wed Mar  3 18:05:17 2021] DELETE /api/info/delete-container/1/ => generated 18 bytes in 11 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5460|app: 0|req: 2/5] 159.224.213.215 () {44 vars in 856 bytes} [Wed Mar  3 18:05:24 2021] GET /api/info/get-containers-list/ => generated 489 bytes in 13 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5457|app: 0|req: 3/6] 159.224.213.215 () {44 vars in 857 bytes} [Wed Mar  3 18:05:32 2021] DELETE /api/info/delete-container/1/ => generated 18 bytes in 9 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5458|app: 0|req: 2/7] 159.224.213.215 () {44 vars in 856 bytes} [Wed Mar  3 18:05:38 2021] GET /api/info/get-containers-list/ => generated 489 bytes in 10 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5460|app: 0|req: 3/8] 159.224.213.215 () {44 vars in 856 bytes} [Wed Mar  3 18:05:44 2021] GET /api/info/get-containers-list/ => generated 489 bytes in 11 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5457|app: 0|req: 4/9] 159.224.213.215 () {40 vars in 614 bytes} [Wed Mar  3 18:05:54 2021] DELETE /api/info/delete-container/1/ => generated 18 bytes in 7 msecs (HTTP/1.1 200) 7 headers in 225 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5458|app: 0|req: 3/10] 159.224.213.215 () {44 vars in 856 bytes} [Wed Mar  3 18:05:57 2021] GET /api/info/get-containers-list/ => generated 489 bytes in 8 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+Not Found: /api/info/delete-container/2/
+api-teus.maximusapp.com [pid: 5459|app: 0|req: 1/11] 159.224.213.215 () {40 vars in 614 bytes} [Wed Mar  3 18:06:04 2021] DELETE /api/info/delete-container/2/ => generated 23 bytes in 112 msecs (HTTP/1.1 404) 7 headers in 232 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Wed Mar  3 20:06:04 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+api-teus.maximusapp.com [pid: 5457|app: 0|req: 5/12] 159.224.213.215 () {44 vars in 856 bytes} [Wed Mar  3 18:06:12 2021] GET /api/info/get-containers-list/ => generated 489 bytes in 8 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+Internal Server Error: /api/info/delete-container/3/
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/teus/lib/python3.6/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/teus/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/teus/lib/python3.6/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "./info/views.py", line 62, in delete
+    "container_id": container.id
+AttributeError: 'tuple' object has no attribute 'id'
+api-teus.maximusapp.com [pid: 5458|app: 0|req: 4/13] 159.224.213.215 () {40 vars in 614 bytes} [Wed Mar  3 18:06:16 2021] DELETE /api/info/delete-container/3/ => generated 81294 bytes in 52 msecs (HTTP/1.1 500) 6 headers in 194 bytes (1 switches on core 0)
+[emperor] *** RAGNAROK EVOKED ***
+Wed Mar  3 20:06:32 2021 - [emperor] stop the uwsgi instance /etc/uwsgi/apps-enabled/teus_back.ini
+Wed Mar  3 18:06:32 2021 - received message 0 from emperor
+SIGINT/SIGQUIT received...killing workers...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+worker 4 buried after 1 seconds
+goodbye to uWSGI.
+Wed Mar  3 20:06:34 2021 - [emperor] removed uwsgi instance /etc/uwsgi/apps-enabled/teus_back.ini
+Wed Mar  3 20:06:35 2021 - The Emperor is buried.
+*** Starting uWSGI 2.0.19.1 (64bit) on [Wed Mar  3 20:06:35 2021] ***
+compiled with version: 7.5.0 on 26 February 2021 15:46:55
+os: Linux-4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018
+nodename: vps-36418.vps-default-host.net
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/teus-django-vue/teus_back
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 7709
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+*** starting uWSGI Emperor ***
+*** has_emperor mode detected (fd: 5) ***
+[uWSGI] getting INI configuration from /etc/uwsgi/apps-enabled/teus_back.ini
+open("./python_plugin.so"): No such file or directory [core/utils.c line 3732]
+!!! UNABLE to load uWSGI plugin: ./python_plugin.so: cannot open shared object file: No such file or directory !!!
+*** Starting uWSGI 2.0.19.1 (64bit) on [Wed Mar  3 20:06:35 2021] ***
+compiled with version: 7.5.0 on 26 February 2021 15:46:55
+os: Linux-4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018
+nodename: vps-36418.vps-default-host.net
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/teus-django-vue/teus_back
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/teus-django-vue/teus_back
+your processes number limit is 7709
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+VirtualHosting mode enabled.
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /var/run/uwsgi/teus.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.6.9 (default, Oct  8 2020, 12:12:24)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/teus/
+Set PythonHome to /home/teus/
+Python main interpreter initialized at 0x563f91938480
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+added /home/teus/bin/python3 to pythonpath.
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x563f91938480 pid: 5495 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 5495)
+Wed Mar  3 20:06:36 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini has been spawned
+spawned uWSGI worker 1 (pid: 5497, cores: 1)
+spawned uWSGI worker 2 (pid: 5498, cores: 1)
+spawned uWSGI worker 3 (pid: 5499, cores: 1)
+spawned uWSGI worker 4 (pid: 5500, cores: 1)
+Wed Mar  3 20:06:36 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is ready to accept requests
+api-teus.maximusapp.com [pid: 5500|app: 0|req: 1/1] 159.224.213.215 () {48 vars in 899 bytes} [Wed Mar  3 18:06:40 2021] OPTIONS /api/info/delete-container/5/ => generated 0 bytes in 2 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Wed Mar  3 20:06:40 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+Internal Server Error: /api/info/delete-container/5/
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/teus/lib/python3.6/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/teus/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/teus/lib/python3.6/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "./info/views.py", line 62, in delete
+    "container_id": container[0]
+TypeError: 'Container' object does not support indexing
+api-teus.maximusapp.com [pid: 5499|app: 0|req: 1/2] 159.224.213.215 () {44 vars in 857 bytes} [Wed Mar  3 18:06:40 2021] DELETE /api/info/delete-container/5/ => generated 81719 bytes in 155 msecs (HTTP/1.1 500) 7 headers in 226 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Wed Mar  3 20:06:40 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+Internal Server Error: /api/info/delete-container/5/
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/teus/lib/python3.6/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/teus/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/teus/lib/python3.6/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "./info/views.py", line 62, in delete
+    "container_id": container[0]
+TypeError: 'Container' object does not support indexing
+api-teus.maximusapp.com [pid: 5497|app: 0|req: 1/3] 159.224.213.215 () {44 vars in 857 bytes} [Wed Mar  3 18:06:44 2021] DELETE /api/info/delete-container/5/ => generated 81719 bytes in 156 msecs (HTTP/1.1 500) 7 headers in 226 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Wed Mar  3 20:06:44 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+Not Found: /api/info/delete-container/3/
+api-teus.maximusapp.com [pid: 5498|app: 0|req: 1/4] 159.224.213.215 () {40 vars in 614 bytes} [Wed Mar  3 18:06:52 2021] DELETE /api/info/delete-container/3/ => generated 23 bytes in 111 msecs (HTTP/1.1 404) 7 headers in 232 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Wed Mar  3 20:06:52 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+api-teus.maximusapp.com [pid: 5497|app: 0|req: 2/5] 159.224.213.215 () {44 vars in 856 bytes} [Wed Mar  3 18:06:55 2021] GET /api/info/get-containers-list/ => generated 404 bytes in 10 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+Internal Server Error: /api/info/delete-container/5/
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/teus/lib/python3.6/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/teus/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/teus/lib/python3.6/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "./info/views.py", line 62, in delete
+    "container_id": container[0]
+TypeError: 'Container' object does not support indexing
+api-teus.maximusapp.com [pid: 5500|app: 0|req: 2/6] 159.224.213.215 () {40 vars in 614 bytes} [Wed Mar  3 18:07:00 2021] DELETE /api/info/delete-container/5/ => generated 81232 bytes in 152 msecs (HTTP/1.1 500) 6 headers in 194 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5497|app: 0|req: 3/7] 159.224.213.215 () {44 vars in 856 bytes} [Wed Mar  3 18:07:11 2021] GET /api/info/get-containers-list/ => generated 404 bytes in 9 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+Internal Server Error: /api/info/delete-container/5/
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/teus/lib/python3.6/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/teus/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/teus/lib/python3.6/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "./info/views.py", line 62, in delete
+    "container_id": container[0]
+TypeError: 'Container' object does not support indexing
+api-teus.maximusapp.com [pid: 5498|app: 0|req: 2/8] 159.224.213.215 () {44 vars in 857 bytes} [Wed Mar  3 18:07:16 2021] DELETE /api/info/delete-container/5/ => generated 81719 bytes in 48 msecs (HTTP/1.1 500) 7 headers in 226 bytes (1 switches on core 0)
+[emperor] *** RAGNAROK EVOKED ***
+Wed Mar  3 20:07:24 2021 - [emperor] stop the uwsgi instance /etc/uwsgi/apps-enabled/teus_back.ini
+Wed Mar  3 18:07:24 2021 - received message 0 from emperor
+SIGINT/SIGQUIT received...killing workers...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+worker 4 buried after 1 seconds
+goodbye to uWSGI.
+Wed Mar  3 20:07:26 2021 - [emperor] removed uwsgi instance /etc/uwsgi/apps-enabled/teus_back.ini
+Wed Mar  3 20:07:27 2021 - The Emperor is buried.
+*** Starting uWSGI 2.0.19.1 (64bit) on [Wed Mar  3 20:07:27 2021] ***
+compiled with version: 7.5.0 on 26 February 2021 15:46:55
+os: Linux-4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018
+nodename: vps-36418.vps-default-host.net
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/teus-django-vue/teus_back
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 7709
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+*** starting uWSGI Emperor ***
+*** has_emperor mode detected (fd: 5) ***
+[uWSGI] getting INI configuration from /etc/uwsgi/apps-enabled/teus_back.ini
+open("./python_plugin.so"): No such file or directory [core/utils.c line 3732]
+!!! UNABLE to load uWSGI plugin: ./python_plugin.so: cannot open shared object file: No such file or directory !!!
+*** Starting uWSGI 2.0.19.1 (64bit) on [Wed Mar  3 20:07:27 2021] ***
+compiled with version: 7.5.0 on 26 February 2021 15:46:55
+os: Linux-4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018
+nodename: vps-36418.vps-default-host.net
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/teus-django-vue/teus_back
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/teus-django-vue/teus_back
+your processes number limit is 7709
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+VirtualHosting mode enabled.
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /var/run/uwsgi/teus.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.6.9 (default, Oct  8 2020, 12:12:24)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/teus/
+Set PythonHome to /home/teus/
+Python main interpreter initialized at 0x55e3771c2480
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+added /home/teus/bin/python3 to pythonpath.
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55e3771c2480 pid: 5518 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 5518)
+Wed Mar  3 20:07:27 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini has been spawned
+spawned uWSGI worker 1 (pid: 5520, cores: 1)
+spawned uWSGI worker 2 (pid: 5521, cores: 1)
+spawned uWSGI worker 3 (pid: 5522, cores: 1)
+spawned uWSGI worker 4 (pid: 5523, cores: 1)
+Wed Mar  3 20:07:27 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is ready to accept requests
+Internal Server Error: /api/info/delete-container/5/
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/teus/lib/python3.6/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/teus/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/teus/lib/python3.6/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "./info/views.py", line 62, in delete
+    "container_id": container[0]
+TypeError: 'Container' object does not support indexing
+api-teus.maximusapp.com [pid: 5523|app: 0|req: 1/1] 159.224.213.215 () {40 vars in 614 bytes} [Wed Mar  3 18:07:38 2021] DELETE /api/info/delete-container/5/ => generated 81232 bytes in 153 msecs (HTTP/1.1 500) 6 headers in 194 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Wed Mar  3 20:07:38 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+[emperor] *** RAGNAROK EVOKED ***
+Wed Mar  3 20:08:00 2021 - [emperor] stop the uwsgi instance /etc/uwsgi/apps-enabled/teus_back.ini
+Wed Mar  3 18:08:00 2021 - received message 0 from emperor
+SIGINT/SIGQUIT received...killing workers...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+worker 4 buried after 1 seconds
+goodbye to uWSGI.
+Wed Mar  3 20:08:02 2021 - [emperor] removed uwsgi instance /etc/uwsgi/apps-enabled/teus_back.ini
+Wed Mar  3 20:08:03 2021 - The Emperor is buried.
+*** Starting uWSGI 2.0.19.1 (64bit) on [Wed Mar  3 20:08:03 2021] ***
+compiled with version: 7.5.0 on 26 February 2021 15:46:55
+os: Linux-4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018
+nodename: vps-36418.vps-default-host.net
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/teus-django-vue/teus_back
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 7709
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+*** starting uWSGI Emperor ***
+*** has_emperor mode detected (fd: 5) ***
+[uWSGI] getting INI configuration from /etc/uwsgi/apps-enabled/teus_back.ini
+open("./python_plugin.so"): No such file or directory [core/utils.c line 3732]
+!!! UNABLE to load uWSGI plugin: ./python_plugin.so: cannot open shared object file: No such file or directory !!!
+*** Starting uWSGI 2.0.19.1 (64bit) on [Wed Mar  3 20:08:03 2021] ***
+compiled with version: 7.5.0 on 26 February 2021 15:46:55
+os: Linux-4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018
+nodename: vps-36418.vps-default-host.net
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/teus-django-vue/teus_back
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/teus-django-vue/teus_back
+your processes number limit is 7709
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+VirtualHosting mode enabled.
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /var/run/uwsgi/teus.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.6.9 (default, Oct  8 2020, 12:12:24)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/teus/
+Set PythonHome to /home/teus/
+Python main interpreter initialized at 0x55a4f858f480
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+added /home/teus/bin/python3 to pythonpath.
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55a4f858f480 pid: 5533 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 5533)
+Wed Mar  3 20:08:03 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini has been spawned
+spawned uWSGI worker 1 (pid: 5535, cores: 1)
+spawned uWSGI worker 2 (pid: 5536, cores: 1)
+spawned uWSGI worker 3 (pid: 5537, cores: 1)
+spawned uWSGI worker 4 (pid: 5538, cores: 1)
+Wed Mar  3 20:08:03 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is ready to accept requests
+api-teus.maximusapp.com [pid: 5538|app: 0|req: 1/1] 159.224.213.215 () {40 vars in 614 bytes} [Wed Mar  3 18:08:05 2021] DELETE /api/info/delete-container/5/ => generated 18 bytes in 114 msecs (HTTP/1.1 200) 7 headers in 225 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Wed Mar  3 20:08:05 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+api-teus.maximusapp.com [pid: 5535|app: 0|req: 1/2] 159.224.213.215 () {44 vars in 856 bytes} [Wed Mar  3 18:08:08 2021] GET /api/info/get-containers-list/ => generated 404 bytes in 114 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Wed Mar  3 20:08:08 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+api-teus.maximusapp.com [pid: 5536|app: 0|req: 1/3] 159.224.213.215 () {44 vars in 857 bytes} [Wed Mar  3 18:08:11 2021] DELETE /api/info/delete-container/5/ => generated 18 bytes in 114 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Wed Mar  3 20:08:11 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+api-teus.maximusapp.com [pid: 5535|app: 0|req: 2/4] 159.224.213.215 () {44 vars in 856 bytes} [Wed Mar  3 18:08:14 2021] GET /api/info/get-containers-list/ => generated 404 bytes in 9 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5538|app: 0|req: 2/5] 159.224.213.215 () {40 vars in 614 bytes} [Wed Mar  3 18:08:19 2021] DELETE /api/info/delete-container/5/ => generated 18 bytes in 8 msecs (HTTP/1.1 200) 7 headers in 225 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5537|app: 0|req: 1/6] 159.224.213.215 () {40 vars in 614 bytes} [Wed Mar  3 18:08:21 2021] DELETE /api/info/delete-container/5/ => generated 18 bytes in 111 msecs (HTTP/1.1 200) 7 headers in 225 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Wed Mar  3 20:08:21 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+[emperor] *** RAGNAROK EVOKED ***
+Wed Mar  3 20:09:13 2021 - [emperor] stop the uwsgi instance /etc/uwsgi/apps-enabled/teus_back.ini
+Wed Mar  3 18:09:13 2021 - received message 0 from emperor
+SIGINT/SIGQUIT received...killing workers...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+worker 4 buried after 1 seconds
+goodbye to uWSGI.
+Wed Mar  3 20:09:15 2021 - [emperor] removed uwsgi instance /etc/uwsgi/apps-enabled/teus_back.ini
+Wed Mar  3 20:09:16 2021 - The Emperor is buried.
+*** Starting uWSGI 2.0.19.1 (64bit) on [Wed Mar  3 20:09:16 2021] ***
+compiled with version: 7.5.0 on 26 February 2021 15:46:55
+os: Linux-4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018
+nodename: vps-36418.vps-default-host.net
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/teus-django-vue/teus_back
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 7709
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+*** starting uWSGI Emperor ***
+*** has_emperor mode detected (fd: 5) ***
+[uWSGI] getting INI configuration from /etc/uwsgi/apps-enabled/teus_back.ini
+open("./python_plugin.so"): No such file or directory [core/utils.c line 3732]
+!!! UNABLE to load uWSGI plugin: ./python_plugin.so: cannot open shared object file: No such file or directory !!!
+*** Starting uWSGI 2.0.19.1 (64bit) on [Wed Mar  3 20:09:16 2021] ***
+compiled with version: 7.5.0 on 26 February 2021 15:46:55
+os: Linux-4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018
+nodename: vps-36418.vps-default-host.net
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/teus-django-vue/teus_back
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/teus-django-vue/teus_back
+your processes number limit is 7709
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+VirtualHosting mode enabled.
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /var/run/uwsgi/teus.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.6.9 (default, Oct  8 2020, 12:12:24)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/teus/
+Set PythonHome to /home/teus/
+Python main interpreter initialized at 0x55d5c613a480
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+added /home/teus/bin/python3 to pythonpath.
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55d5c613a480 pid: 5572 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 5572)
+Wed Mar  3 20:09:17 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini has been spawned
+spawned uWSGI worker 1 (pid: 5574, cores: 1)
+spawned uWSGI worker 2 (pid: 5575, cores: 1)
+spawned uWSGI worker 3 (pid: 5576, cores: 1)
+spawned uWSGI worker 4 (pid: 5577, cores: 1)
+Wed Mar  3 20:09:17 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is ready to accept requests
+api-teus.maximusapp.com [pid: 5577|app: 0|req: 1/1] 159.224.213.215 () {40 vars in 614 bytes} [Wed Mar  3 18:09:45 2021] DELETE /api/info/delete-container/5/ => generated 18 bytes in 114 msecs (HTTP/1.1 200) 7 headers in 225 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Wed Mar  3 20:09:45 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+api-teus.maximusapp.com [pid: 5574|app: 0|req: 1/2] 159.224.213.215 () {44 vars in 856 bytes} [Wed Mar  3 18:09:49 2021] GET /api/info/get-containers-list/ => generated 404 bytes in 112 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Wed Mar  3 20:09:49 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+api-teus.maximusapp.com [pid: 5575|app: 0|req: 1/3] 159.224.213.215 () {44 vars in 857 bytes} [Wed Mar  3 18:09:53 2021] DELETE /api/info/delete-container/5/ => generated 18 bytes in 113 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Wed Mar  3 20:09:53 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+api-teus.maximusapp.com [pid: 5574|app: 0|req: 2/4] 159.224.213.215 () {44 vars in 856 bytes} [Wed Mar  3 18:09:56 2021] GET /api/info/get-containers-list/ => generated 404 bytes in 9 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.19.1 (64bit) on [Wed Mar  3 20:12:31 2021] ***
+compiled with version: 7.5.0 on 26 February 2021 15:46:55
+os: Linux-4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018
+nodename: vps-36418.vps-default-host.net
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/teus-django-vue/teus_back
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 7709
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+*** starting uWSGI Emperor ***
+*** has_emperor mode detected (fd: 5) ***
+[uWSGI] getting INI configuration from /etc/uwsgi/apps-enabled/teus_back.ini
+open("./python_plugin.so"): No such file or directory [core/utils.c line 3732]
+!!! UNABLE to load uWSGI plugin: ./python_plugin.so: cannot open shared object file: No such file or directory !!!
+*** Starting uWSGI 2.0.19.1 (64bit) on [Wed Mar  3 20:12:31 2021] ***
+compiled with version: 7.5.0 on 26 February 2021 15:46:55
+os: Linux-4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018
+nodename: vps-36418.vps-default-host.net
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/teus-django-vue/teus_back
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/teus-django-vue/teus_back
+your processes number limit is 7709
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+VirtualHosting mode enabled.
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /var/run/uwsgi/teus.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.6.9 (default, Oct  8 2020, 12:12:24)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/teus/
+Set PythonHome to /home/teus/
+Python main interpreter initialized at 0x562fd3f32480
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+added /home/teus/bin/python3 to pythonpath.
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x562fd3f32480 pid: 5724 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 5724)
+Wed Mar  3 20:12:31 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini has been spawned
+spawned uWSGI worker 1 (pid: 5726, cores: 1)
+spawned uWSGI worker 2 (pid: 5727, cores: 1)
+spawned uWSGI worker 3 (pid: 5728, cores: 1)
+spawned uWSGI worker 4 (pid: 5729, cores: 1)
+Wed Mar  3 20:12:31 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is ready to accept requests
+api-teus.maximusapp.com [pid: 5729|app: 0|req: 1/1] 159.224.213.215 () {44 vars in 856 bytes} [Wed Mar  3 18:12:34 2021] GET /api/info/get-containers-list/ => generated 404 bytes in 125 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Wed Mar  3 20:12:34 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+{}
+1
+api-teus.maximusapp.com [pid: 5726|app: 0|req: 1/2] 159.224.213.215 () {44 vars in 857 bytes} [Wed Mar  3 18:12:36 2021] DELETE /api/info/delete-container/1/ => generated 18 bytes in 114 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Wed Mar  3 20:12:36 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+api-teus.maximusapp.com [pid: 5727|app: 0|req: 1/3] 159.224.213.215 () {44 vars in 856 bytes} [Wed Mar  3 18:12:38 2021] GET /api/info/get-containers-list/ => generated 404 bytes in 114 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Wed Mar  3 20:12:38 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+*** Starting uWSGI 2.0.19.1 (64bit) on [Wed Mar  3 20:13:56 2021] ***
+compiled with version: 7.5.0 on 26 February 2021 15:46:55
+os: Linux-4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018
+nodename: vps-36418.vps-default-host.net
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/teus-django-vue/teus_back
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 7709
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+*** starting uWSGI Emperor ***
+*** has_emperor mode detected (fd: 5) ***
+[uWSGI] getting INI configuration from /etc/uwsgi/apps-enabled/teus_back.ini
+open("./python_plugin.so"): No such file or directory [core/utils.c line 3732]
+!!! UNABLE to load uWSGI plugin: ./python_plugin.so: cannot open shared object file: No such file or directory !!!
+*** Starting uWSGI 2.0.19.1 (64bit) on [Wed Mar  3 20:13:56 2021] ***
+compiled with version: 7.5.0 on 26 February 2021 15:46:55
+os: Linux-4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018
+nodename: vps-36418.vps-default-host.net
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/teus-django-vue/teus_back
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/teus-django-vue/teus_back
+your processes number limit is 7709
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+VirtualHosting mode enabled.
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /var/run/uwsgi/teus.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.6.9 (default, Oct  8 2020, 12:12:24)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/teus/
+Set PythonHome to /home/teus/
+Python main interpreter initialized at 0x5584081e0480
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+added /home/teus/bin/python3 to pythonpath.
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x5584081e0480 pid: 5794 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 5794)
+Wed Mar  3 20:13:56 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini has been spawned
+spawned uWSGI worker 1 (pid: 5796, cores: 1)
+spawned uWSGI worker 2 (pid: 5797, cores: 1)
+spawned uWSGI worker 3 (pid: 5798, cores: 1)
+spawned uWSGI worker 4 (pid: 5799, cores: 1)
+Wed Mar  3 20:13:56 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is ready to accept requests
+update or delete on table "info_container" violates foreign key constraint "containers_userpropo_container_id_7ef388e9_fk_info_cont" on table "containers_userproposition"
+DETAIL:  Key (id)=(5) is still referenced from table "containers_userproposition".
+
+{}
+5
+api-teus.maximusapp.com [pid: 5799|app: 0|req: 1/1] 159.224.213.215 () {40 vars in 614 bytes} [Wed Mar  3 18:13:58 2021] DELETE /api/info/delete-container/5/ => generated 18 bytes in 113 msecs (HTTP/1.1 200) 7 headers in 225 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Wed Mar  3 20:13:58 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+api-teus.maximusapp.com [pid: 5796|app: 0|req: 1/2] 159.224.213.215 () {48 vars in 899 bytes} [Wed Mar  3 18:14:38 2021] OPTIONS /api/info/delete-container/7/ => generated 0 bytes in 2 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Wed Mar  3 20:14:38 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+{}
+7
+Internal Server Error: /api/info/delete-container/7/
+Traceback (most recent call last):
+  File "/home/teus/lib/python3.6/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/teus/lib/python3.6/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/teus/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/teus/lib/python3.6/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/teus/lib/python3.6/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "./info/views.py", line 64, in delete
+    "container_id": container.id
+AttributeError: 'tuple' object has no attribute 'id'
+api-teus.maximusapp.com [pid: 5797|app: 0|req: 1/3] 159.224.213.215 () {44 vars in 857 bytes} [Wed Mar  3 18:14:38 2021] DELETE /api/info/delete-container/7/ => generated 81801 bytes in 152 msecs (HTTP/1.1 500) 7 headers in 226 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Wed Mar  3 20:14:38 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+api-teus.maximusapp.com [pid: 5796|app: 0|req: 2/4] 159.224.213.215 () {44 vars in 856 bytes} [Wed Mar  3 18:14:43 2021] GET /api/info/get-containers-list/ => generated 254 bytes in 113 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5796|app: 0|req: 3/5] 159.224.213.215 () {44 vars in 821 bytes} [Wed Mar  3 18:21:38 2021] GET /api/info/get-cities-list/ => generated 73 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 232 bytes (2 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 5797|app: 0|req: 2/6] 159.224.213.215 () {44 vars in 835 bytes} [Wed Mar  3 18:21:40 2021] GET /api/containers/get-requests-list => generated 379 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 5799|app: 0|req: 2/7] 159.224.213.215 () {48 vars in 888 bytes} [Wed Mar  3 18:21:48 2021] GET /api/containers/get-requests-list => generated 379 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 239 bytes (2 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 5796|app: 0|req: 4/8] 159.224.213.215 () {44 vars in 835 bytes} [Wed Mar  3 18:25:58 2021] GET /api/containers/get-requests-list => generated 379 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5796|app: 0|req: 5/9] 159.224.213.215 () {44 vars in 803 bytes} [Wed Mar  3 19:32:03 2021] GET /api/info/get-lines-list/ => generated 152 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5796|app: 0|req: 6/10] 188.130.176.181 () {44 vars in 819 bytes} [Thu Mar  4 09:08:15 2021] GET /api/info/get-cities-list/ => generated 73 bytes in 8 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date",
+                containers_userproposition.end_date "end date"
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 5796|app: 0|req: 7/11] 159.224.213.215 () {44 vars in 836 bytes} [Thu Mar  4 09:19:20 2021] GET //api/containers/get-proposition-list => generated 436 bytes in 8 msecs (HTTP/1.1 200) 7 headers in 207 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5797|app: 0|req: 3/12] 159.224.213.215 () {44 vars in 856 bytes} [Thu Mar  4 09:19:25 2021] GET /api/info/get-containers-list/ => generated 254 bytes in 8 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5796|app: 0|req: 8/13] 159.224.213.215 () {42 vars in 886 bytes} [Thu Mar  4 09:20:20 2021] GET /api/info/delete-container/1/ => generated 97 bytes in 7 msecs (HTTP/1.1 200) 7 headers in 225 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+api-teus.maximusapp.com [pid: 5797|app: 0|req: 4/14] 159.224.213.215 () {42 vars in 807 bytes} [Thu Mar  4 09:20:20 2021] GET /favicon.ico => generated 2543 bytes in 4 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5796|app: 0|req: 9/15] 159.224.213.215 () {44 vars in 993 bytes} [Thu Mar  4 09:26:38 2021] GET /api/info/get-lines-list/ => generated 152 bytes in 10 msecs (HTTP/1.1 200) 7 headers in 201 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+api-teus.maximusapp.com [pid: 5797|app: 0|req: 5/16] 159.224.213.215 () {44 vars in 932 bytes} [Thu Mar  4 09:26:38 2021] GET /favicon.ico => generated 2543 bytes in 4 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5799|app: 0|req: 3/17] 159.224.213.215 () {44 vars in 819 bytes} [Thu Mar  4 09:26:40 2021] GET /api/info/get-lines-list/ => generated 152 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5798|app: 0|req: 1/18] 159.224.213.215 () {50 vars in 899 bytes} [Thu Mar  4 09:26:42 2021] OPTIONS /api/user/profile/ => generated 0 bytes in 2 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Thu Mar  4 11:26:42 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+api-teus.maximusapp.com [pid: 5796|app: 0|req: 10/19] 159.224.213.215 () {46 vars in 873 bytes} [Thu Mar  4 09:26:42 2021] GET /api/user/profile/ => generated 158 bytes in 8 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5797|app: 0|req: 6/20] 159.224.213.215 () {44 vars in 789 bytes} [Thu Mar  4 09:26:47 2021] GET /api/info/get-city/2/ => generated 37 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+Not Found: /api/info/get-container/4/
+api-teus.maximusapp.com [pid: 5798|app: 0|req: 2/21] 159.224.213.215 () {44 vars in 799 bytes} [Thu Mar  4 09:26:49 2021] GET /api/info/get-container/4/ => generated 23 bytes in 111 msecs (HTTP/1.1 404) 8 headers in 264 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5796|app: 0|req: 11/22] 159.224.213.215 () {50 vars in 877 bytes} [Thu Mar  4 09:26:50 2021] OPTIONS /api/user/profile/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5797|app: 0|req: 7/23] 159.224.213.215 () {46 vars in 851 bytes} [Thu Mar  4 09:26:50 2021] GET /api/user/profile/ => generated 158 bytes in 8 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5799|app: 0|req: 4/24] 159.224.213.215 () {50 vars in 881 bytes} [Thu Mar  4 09:26:54 2021] OPTIONS /api/user/profile/1/ => generated 0 bytes in 1 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+user_id
+api-teus.maximusapp.com [pid: 5796|app: 0|req: 12/25] 159.224.213.215 () {46 vars in 855 bytes} [Thu Mar  4 09:26:54 2021] GET /api/user/profile/1/ => generated 149 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 258 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5799|app: 0|req: 5/26] 159.224.213.215 () {46 vars in 1113 bytes} [Thu Mar  4 09:26:54 2021] GET /admin/containers/userproposition/2/change/ => generated 14996 bytes in 103 msecs (HTTP/1.1 200) 9 headers in 470 bytes (1 switches on core 0)
+Not Found: /static/admin/css/nav_sidebar.css
+api-teus.maximusapp.com [pid: 5797|app: 0|req: 8/27] 159.224.213.215 () {44 vars in 946 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/css/nav_sidebar.css => generated 2606 bytes in 10 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/css/base.css
+api-teus.maximusapp.com [pid: 5796|app: 0|req: 13/28] 159.224.213.215 () {44 vars in 932 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/css/base.css => generated 2585 bytes in 13 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/css/forms.css
+api-teus.maximusapp.com [pid: 5797|app: 0|req: 9/29] 159.224.213.215 () {44 vars in 934 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/css/forms.css => generated 2588 bytes in 20 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/css/responsive.css
+api-teus.maximusapp.com [pid: 5799|app: 0|req: 6/30] 159.224.213.215 () {44 vars in 944 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/css/responsive.css => generated 2603 bytes in 20 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5798|app: 0|req: 3/31] 159.224.213.215 () {44 vars in 893 bytes} [Thu Mar  4 09:26:55 2021] GET /admin/jsi18n/ => generated 3187 bytes in 25 msecs (HTTP/1.1 200) 6 headers in 197 bytes (1 switches on core 0)
+Not Found: /static/admin/js/calendar.js
+Not Found: /static/admin/js/vendor/jquery/jquery.js
+api-teus.maximusapp.com [pid: 5799|app: 0|req: 7/32] 159.224.213.215 () {44 vars in 921 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/js/calendar.js => generated 2591 bytes in 7 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5796|app: 0|req: 14/33] 159.224.213.215 () {44 vars in 945 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/js/vendor/jquery/jquery.js => generated 2627 bytes in 8 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/jquery.init.js
+api-teus.maximusapp.com [pid: 5797|app: 0|req: 10/34] 159.224.213.215 () {44 vars in 927 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/js/jquery.init.js => generated 2600 bytes in 4 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/admin/DateTimeShortcuts.js
+api-teus.maximusapp.com [pid: 5798|app: 0|req: 4/35] 159.224.213.215 () {44 vars in 951 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/js/admin/DateTimeShortcuts.js => generated 2636 bytes in 5 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/core.js
+api-teus.maximusapp.com [pid: 5796|app: 0|req: 15/36] 159.224.213.215 () {44 vars in 913 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/js/core.js => generated 2579 bytes in 4 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/actions.js
+Not Found: /static/admin/js/urlify.js
+Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+api-teus.maximusapp.com [pid: 5797|app: 0|req: 11/38] 159.224.213.215 () {44 vars in 957 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/js/admin/RelatedObjectLookups.js => generated 2645 bytes in 12 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5799|app: 0|req: 8/38] 159.224.213.215 () {44 vars in 919 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/js/actions.js => generated 2588 bytes in 12 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5798|app: 0|req: 5/39] 159.224.213.215 () {44 vars in 917 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/js/urlify.js => generated 2585 bytes in 5 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/vendor/xregexp/xregexp.js
+Not Found: /static/admin/js/calendar.js
+Not Found: /static/admin/js/prepopulate.js
+api-teus.maximusapp.com [pid: 5796|app: 0|req: 16/40] 159.224.213.215 () {44 vars in 927 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/js/prepopulate.js => generated 2600 bytes in 12 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5797|app: 0|req: 12/41] 159.224.213.215 () {44 vars in 949 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/js/vendor/xregexp/xregexp.js => generated 2633 bytes in 8 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5799|app: 0|req: 9/42] 159.224.213.215 () {44 vars in 921 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/js/calendar.js => generated 2591 bytes in 5 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/prepopulate_init.js
+Not Found: /static/admin/js/jquery.init.js
+api-teus.maximusapp.com [pid: 5798|app: 0|req: 6/43] 159.224.213.215 () {44 vars in 937 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/js/prepopulate_init.js => generated 2615 bytes in 11 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/nav_sidebar.js
+api-teus.maximusapp.com [pid: 5796|app: 0|req: 17/44] 159.224.213.215 () {44 vars in 927 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/js/nav_sidebar.js => generated 2600 bytes in 8 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5797|app: 0|req: 13/45] 159.224.213.215 () {44 vars in 927 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/js/jquery.init.js => generated 2600 bytes in 5 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/img/icon-changelink.svg
+Not Found: /static/admin/img/icon-addlink.svg
+Not Found: /static/admin/js/admin/DateTimeShortcuts.js
+api-teus.maximusapp.com [pid: 5799|app: 0|req: 10/46] 159.224.213.215 () {44 vars in 1000 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/img/icon-changelink.svg => generated 2618 bytes in 12 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5798|app: 0|req: 7/47] 159.224.213.215 () {44 vars in 994 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/img/icon-addlink.svg => generated 2609 bytes in 8 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5796|app: 0|req: 18/48] 159.224.213.215 () {44 vars in 951 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/js/admin/DateTimeShortcuts.js => generated 2636 bytes in 5 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/core.js
+Not Found: /static/admin/img/icon-deletelink.svg
+api-teus.maximusapp.com [pid: 5797|app: 0|req: 14/49] 159.224.213.215 () {44 vars in 1000 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/img/icon-deletelink.svg => generated 2618 bytes in 8 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5799|app: 0|req: 11/50] 159.224.213.215 () {44 vars in 913 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/js/core.js => generated 2579 bytes in 7 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/change_form.js
+api-teus.maximusapp.com [pid: 5798|app: 0|req: 8/51] 159.224.213.215 () {44 vars in 927 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/js/change_form.js => generated 2600 bytes in 4 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+api-teus.maximusapp.com [pid: 5796|app: 0|req: 19/52] 159.224.213.215 () {44 vars in 957 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/js/admin/RelatedObjectLookups.js => generated 2645 bytes in 4 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/actions.js
+api-teus.maximusapp.com [pid: 5797|app: 0|req: 15/53] 159.224.213.215 () {44 vars in 919 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/js/actions.js => generated 2588 bytes in 3 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/urlify.js
+api-teus.maximusapp.com [pid: 5799|app: 0|req: 12/54] 159.224.213.215 () {44 vars in 917 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/js/urlify.js => generated 2585 bytes in 4 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/prepopulate.js
+api-teus.maximusapp.com [pid: 5798|app: 0|req: 9/55] 159.224.213.215 () {44 vars in 927 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/js/prepopulate.js => generated 2600 bytes in 4 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/vendor/xregexp/xregexp.js
+api-teus.maximusapp.com [pid: 5796|app: 0|req: 20/56] 159.224.213.215 () {44 vars in 949 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/js/vendor/xregexp/xregexp.js => generated 2633 bytes in 4 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/css/responsive.css
+api-teus.maximusapp.com [pid: 5797|app: 0|req: 16/57] 159.224.213.215 () {44 vars in 944 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/css/responsive.css => generated 2603 bytes in 4 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/img/icon-changelink.svg
+Not Found: /static/admin/img/icon-addlink.svg
+api-teus.maximusapp.com [pid: 5799|app: 0|req: 13/58] 159.224.213.215 () {44 vars in 1000 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/img/icon-changelink.svg => generated 2618 bytes in 7 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5798|app: 0|req: 10/59] 159.224.213.215 () {44 vars in 994 bytes} [Thu Mar  4 09:26:55 2021] GET /static/admin/img/icon-addlink.svg => generated 2609 bytes in 4 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/img/icon-deletelink.svg
+api-teus.maximusapp.com [pid: 5796|app: 0|req: 21/60] 159.224.213.215 () {44 vars in 1000 bytes} [Thu Mar  4 09:26:56 2021] GET /static/admin/img/icon-deletelink.svg => generated 2618 bytes in 7 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/prepopulate_init.js
+api-teus.maximusapp.com [pid: 5797|app: 0|req: 17/61] 159.224.213.215 () {44 vars in 937 bytes} [Thu Mar  4 09:26:56 2021] GET /static/admin/js/prepopulate_init.js => generated 2615 bytes in 5 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/change_form.js
+api-teus.maximusapp.com [pid: 5799|app: 0|req: 14/62] 159.224.213.215 () {44 vars in 927 bytes} [Thu Mar  4 09:26:56 2021] GET /static/admin/js/change_form.js => generated 2600 bytes in 4 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 5798|app: 0|req: 11/63] 159.224.213.215 () {46 vars in 851 bytes} [Thu Mar  4 09:26:56 2021] GET /api/user/profile/ => generated 158 bytes in 9 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date",
+                containers_userproposition.end_date "end date"
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 5796|app: 0|req: 22/64] 159.224.213.215 () {44 vars in 1015 bytes} [Thu Mar  4 09:26:58 2021] GET /api/containers/get-proposition-list => generated 436 bytes in 14 msecs (HTTP/1.1 200) 7 headers in 207 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date",
+                containers_userproposition.end_date "end date"
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 5797|app: 0|req: 18/65] 159.224.213.215 () {44 vars in 819 bytes} [Thu Mar  4 09:27:02 2021] GET /api/containers/get-proposition-list => generated 436 bytes in 7 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+Not Found: /
+api-teus.maximusapp.com [pid: 5796|app: 0|req: 23/66] 149.154.161.19 () {40 vars in 711 bytes} [Thu Mar  4 09:53:26 2021] GET / => generated 2492 bytes in 4 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date",
+                containers_userproposition.end_date "end date"
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 5796|app: 0|req: 24/67] 159.224.213.215 () {44 vars in 819 bytes} [Thu Mar  4 09:53:59 2021] GET /api/containers/get-proposition-list => generated 436 bytes in 8 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date",
+                containers_userproposition.end_date "end date"
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 5796|app: 0|req: 25/68] 159.224.213.215 () {44 vars in 870 bytes} [Thu Mar  4 09:59:18 2021] GET /api/containers/get-proposition-list => generated 436 bytes in 8 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date",
+                containers_userproposition.end_date "end date"
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 5796|app: 0|req: 26/69] 159.224.213.215 () {44 vars in 835 bytes} [Thu Mar  4 10:03:08 2021] GET /api/containers/get-proposition-list => generated 436 bytes in 6 msecs (HTTP/1.1 200) 7 headers in 207 bytes (1 switches on core 0)

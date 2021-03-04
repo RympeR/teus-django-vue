@@ -88,8 +88,8 @@ class ContainerSerializer(serializers.ModelSerializer):
         container = get_object_or_404(Container, pk=container_id)
         try:
             container = container.delete()
-        except Exception:
-            pass
+        except Exception as e:
+            print(e)
         return container
 
     @staticmethod

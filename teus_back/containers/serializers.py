@@ -13,7 +13,7 @@ class RequestSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserRequest
-        fields = ('__all__')
+        fields = '__all__'
 
     def create(self, validated_data):
         print(validated_data)
@@ -51,7 +51,7 @@ class DealSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Deal
-        fields = ('__all__')
+        fields = '__all__'
 
     def create(self, validated_data):
         print(validated_data)
@@ -95,7 +95,7 @@ class PropositionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserProposition
-        fields = ('__all__')
+        fields = '__all__'
 
     def create(self, validated_data):
         print(validated_data)

@@ -9,7 +9,7 @@ class CitySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = City
-        fields = ('__all__')
+        fields = '__all__'
 
     @staticmethod
     def get(city_id):
@@ -50,7 +50,7 @@ class ContainerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Container
-        fields = ('__all__')
+        fields = '__all__'
 
     @staticmethod
     def get(container_id):
@@ -97,7 +97,7 @@ class LineSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Line
-        fields = ('__all__')
+        fields = '__all__'
 
     @staticmethod
     def get(line_id):

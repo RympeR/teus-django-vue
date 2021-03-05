@@ -19,7 +19,7 @@ const mutations = {
 const actions = {
     getList({commit}) {
         return new Promise((resolve, reject) => {
-            axios.get(process.env.VUE_APP_HOST+'/api/containers/get-requests-list', {
+            axios.get(process.env.VUE_APP_HOST+'/api/containers/get-deal-list', {
                     // params: this.linesSearch,
                     // headers: {
                     //     Authoriz ation: token
@@ -33,13 +33,15 @@ const actions = {
                         el.amount = {
                             amount: el.amount,
                         };
-                        el.user = {
-                            name: el.user.name,
-                            phone: el.user.name + ' ' + el.user.phone
-                        }
-                        el.date = {
-                            date: el.date,
+                        el.first_user = {
+                            name: el.first_user.name,
+                            phone: el.first_user.name + ' ' + el.first_user.phone
                         };
+                        el.sec_user = {
+                            name: el.sec_user.name,
+                            phone: el.sec_user.name + ' ' + el.sec_user.phone
+                        };
+                        
                         
                     });
                     commit('setList', list);
@@ -54,7 +56,7 @@ const actions = {
     },
     getItem({commit}, id) {
         return new Promise((resolve, reject) => {
-            axios.get(process.env.VUE_APP_HOST + `/api/containers/get-request/${id}/`, {
+            axios.get(process.env.VUE_APP_HOST + `/api/containers/get-deal/${id}/`, {
                     // params: this.linesSearch,
                     // headers: {
                     //     Authorization: token
@@ -73,7 +75,7 @@ const actions = {
         let confirmDelete = confirm('Вы действительно хотите удалить этот запрос?');
         if (confirmDelete) {
             return new Promise((resolve, reject) => {
-                axios.delete(`${process.env.VUE_APP_HOST}/api/containers/delete-request/${id}/`)
+                axios.delete(`${process.env.VUE_APP_HOST}/api/containers/delete-deal/${id}/`)
                     .then(response => {
                         state.list = state.list.filter(element => element.id !== id);
                         resolve(response.data);
@@ -88,9 +90,9 @@ const actions = {
     getFilteredItems({commit, state}, obj){
         console.log(obj)
         console.log(state)
-        var str = `${process.env.VUE_APP_HOST}/api/containers/get-requests-list?`;
+        var str = `${process.env.VUE_APP_HOST}/api/containers/get-deal-list?`;
         for (var key in obj) {
-            if (str != `${process.env.VUE_APP_HOST}/api/containers/get-requests-list?`) {
+            if (str != `${process.env.VUE_APP_HOST}/api/containers/get-deal-list?`) {
                 str += "&";
             }
             str += key + "=" + encodeURIComponent(obj[key]);
@@ -105,16 +107,18 @@ const actions = {
                 console.log(list)
                 
                 list.forEach((el) => {
-                    el.date = {
-                        date: el.date,
-                    };
-                    el.user = {
-                        name: el.user.name,
-                        phone: el.user.name + ' ' + el.user.phone
-                    }
                     el.amount = {
                         amount: el.amount,
                     };
+                    el.first_user = {
+                        name: el.first_user.name,
+                        phone: el.first_user.name + ' ' + el.first_user.phone
+                    };
+                    el.sec_user = {
+                        name: el.sec_user.name,
+                        phone: el.sec_user.name + ' ' + el.sec_user.phone
+                    };
+                    
                 });
                 commit('setList', list);
                 resolve(list);
@@ -127,7 +131,13 @@ const actions = {
     saveItem({state}, obj) {
         console.log(state)
         console.log(obj.id)
-        
+        obj.user_request = obj.first_user.id;
+        obj.user_proposition = obj.sec_user.id;
+        obj.line = obj.line.id;
+        obj.container = obj.container.id;
+        obj.city = obj.city.id;
+        obj.handshake_time = obj.handshake;
+        console.log(obj)
         let formData = new FormData();
         
         Object.keys(obj).map(function (key) {
@@ -138,7 +148,7 @@ const actions = {
         if (obj.id) {
             return new Promise((resolve, reject) => {
                 axios
-                    .put(process.env.VUE_APP_HOST + '/api/containers/update-request/' + obj.id + '/', formData, {
+                    .put(process.env.VUE_APP_HOST + '/api/containers/update-deal/' + obj.id + '/', formData, {
                             headers: {
                                 'Content-Type': 'multipart/form-data'
                             },
@@ -156,7 +166,7 @@ const actions = {
             })
         } else {
             return new Promise((resolve, reject) => {
-                axios.post(process.env.VUE_APP_HOST + '/api/info/create-request/', formData, {
+                axios.post(process.env.VUE_APP_HOST + '/api/info/create-deal/', formData, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                         },

@@ -71,11 +71,12 @@ class ContainerSerializer(serializers.ModelSerializer):
         container = get_object_or_404(
             Container, pk=validated_data['container_id'])
         container.name = validated_data['name'][0]
-        container.save()
         try:
             container.image = validated_data['image'][0]
-        except KeyError:
+        except KeyError as e:
+            print(e)
             container.image = container.image
+        container.save()
         return container
 
     @staticmethod

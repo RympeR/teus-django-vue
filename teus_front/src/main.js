@@ -6,6 +6,8 @@ import axios from 'axios'
 import store from './store/store'
 import {BootstrapVue, BootstrapVueIcons} from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
+import datePicker from 'vue-bootstrap-datetimepicker';
+import 'pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import CKEditor from '@ckeditor/ckeditor5-vue';
 import VuePlyr from 'vue-plyr'
@@ -17,6 +19,7 @@ Vue.use(wysiwyg, {}); // config is optional. more below
 // Vue.use(VueReCaptcha, { siteKey: "6LfElv4ZAAAAABvyLHoYldVbc-588RAvG-yWAhhG" });
 Vue.use(VuePlyr);
 Vue.use( CKEditor );
+Vue.use(datePicker);
 
 
 
@@ -28,7 +31,6 @@ Vue.component("table-thumbnail", TableThumbnail);
 import CustomMixin from '@/mixins/CustomMixin'
 
 Vue.mixin(CustomMixin);
-
 
 
 console.log(axios)

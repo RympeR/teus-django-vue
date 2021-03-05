@@ -3,10 +3,7 @@
         <div class="form__item">
             <span class="form__label">Номер телефона</span>
             <div class="form__control">
-                <b-form-input class="short"
-                    type="text"
-                    v-model="user.phone"
-                />
+                    {{users.item.phone}}
             </div>
         </div>
         <div class="form__item">
@@ -14,7 +11,7 @@
             <div class="form__control">
                 <b-form-input class="short"
                     type="text"
-                    v-model="user.last_name"
+                    v-model="users.item.last_name"
                 />
             </div>
         </div>
@@ -23,7 +20,8 @@
             <div class="form__control">
                 <b-form-input class="short"
                     type="text"
-                    v-model="user.first_name"
+                    required
+                    v-model="users.item.first_name"
                 />
             </div>
         </div>
@@ -31,24 +29,24 @@
         <div class="form__item">
             <span class="form__label">Аватар</span>
             <div class="form__control">
-                <template v-if="image">
+                <template v-if="users.item.image">
                     <div class="img__thumbnail">
                         <div class="img__thumbnail-img">
-                            <b-img :id="`field-${user.id}`"
-                                :src="image" width="80"
-                                v-b-modal="'modal__thumbnail' + user.id"
+                            <b-img :id="`field-${users.item.id}`"
+                                :src="users.item.image" width="80"
+                                v-b-modal="'modal__thumbnail' + users.item.id"
                             />
                         </div>
-                        <b-modal :id="'modal__thumbnail' + user.id" scrollable hide-footer centered class="modal-dialog-auto">
-                            <b-img :src="image" fluid/>
+                        <b-modal :id="'modal__thumbnail' + users.item.id" scrollable hide-footer centered class="modal-dialog-auto">
+                            <b-img :src="users.item.image" fluid/>
                         </b-modal>
                         <b-button type="button" class="media-delete" variant="link" @click="deleteImg">Удалить</b-button>
                     </div>
                 </template>
                 <template v-else>
                     <b-form-file
-                        :id="`field-${user.image}`"
-                        v-model="user.image"
+                        :id="`field-${users.image}`"
+                        v-model="users.image"
                         plain
                     />
                 </template>
@@ -64,19 +62,18 @@
 </template>
 
 <script>
-import UserMixin from '@/mixins/user/UserMixin';
+import { mapState } from 'vuex'
 
 export default {
     name: 'UserForm',
-    mixins: [UserMixin],
+
     data () {
         return {
-            id: null,
+            id: this.$route.params.id,
             alert: false
         }
     },
     created() {
-        this.id = this.$route.params.id;
         if (this.id){
             this.$store.state.breadcrumbs = [
                 {text: 'Главная', to: {name: 'home'}},
@@ -90,24 +87,45 @@ export default {
                 {text: 'Создать', to: {name: 'student-create'}}
             ];
         }
-        if (this.$route.params.id)
-            this.getUser(this.$route.params.id);
+        if (this.id) {
+            this.$store.dispatch('users/getItem', this.id)
+                .then(item => {
+                    console.log(item)
+                })
+                .catch(error => {
+                    console.log(error)
+                });
+        }
+    },
+    computed: {
+        ...mapState(['users']),
     },
     methods: {
         processFile(event) {
-            this.user.image = event[0]
+            this.user.item.image = event[0]
         },
         goSave($event){
+            
             $event.preventDefault();
-            let data = Object.assign({}, this.user);
-            this.saveUser(data, this.$route.params.id);
-            this.alert = true;
+            let data = Object.assign({}, this.users.item);
+            data.id = this.id
+            data.image = this.users.image;
+
+            this.$store.dispatch('users/saveItem', data)
+                .then(item => {
+                    console.log(item)
+                    this.templateShowSuccess();
+                    this.goBack();
+                })
+                .catch(error => {
+                    console.log(error)
+                });
         },
         deleteImg() {
             let confirmDelete = confirm('Удалить фото?');
             if (confirmDelete) {
-                this.image = null;
-                this.user.image = [];
+                this.users.image = null;
+                this.users.item.image = null;
             }
         } 
     },

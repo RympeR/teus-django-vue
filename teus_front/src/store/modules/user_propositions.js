@@ -39,8 +39,7 @@ const actions = {
                             phone: el.user.name + ' ' + el.user.phone
                         }
                         el.date = {
-                            filter: el.date.start + ' - ' + el.date.end,
-                            date: el.date.start + ' - ' + el.date.end,
+                            date: el.date,
                         };
                         
                     });
@@ -113,7 +112,7 @@ const actions = {
                         amount: el.amount,
                     };
                     el.date = {
-                        date: el.date.start + ' - ' + el.date.end,
+                        date: el.date,
                     };
                     
                 });
@@ -128,7 +127,10 @@ const actions = {
     saveItem({state}, obj) {
         console.log(state)
         console.log(obj.id)
-        
+        obj.user = obj.user.id;
+        obj.line = obj.line.id;
+        obj.container = obj.container.id;
+        obj.city = obj.city.id;
         let formData = new FormData();
         
         Object.keys(obj).map(function (key) {

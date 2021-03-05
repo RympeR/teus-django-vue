@@ -2,7 +2,7 @@
   <b-row>
     <b-col>
       <div class="mb-4">
-        <b-button @cick="resetFilters" variant="primary" size="md">
+        <b-button @click="resetFilters" variant="primary" v-show="filtered" size="md">
           Очистить фильтры
         </b-button>
       </div>
@@ -21,6 +21,7 @@
               <template v-if="field.key === 'user'">
                 {{ field.label }}
                 <input
+                  class='input'
                   :placeholder="field.label"
                   @input="getFilteredPropositions(search)"
                   v-model="search.user_name"
@@ -29,6 +30,7 @@
               <template v-else-if="field.key === 'line'">
                 {{ field.label }}
                 <input
+                  class='input'
                   :placeholder="field.label"
                   @input="getFilteredPropositions(search)"
                   v-model="search.line_name"
@@ -37,6 +39,7 @@
               <template v-else-if="field.key === 'city'">
                 {{ field.label }}
                 <input
+                  class='input'
                   v-model="search.city_name"
                   @input="getFilteredPropositions(search)"
                   :placeholder="field.label"
@@ -45,6 +48,7 @@
               <template v-else-if="field.key === 'container'">
                 {{ field.label }}
                 <input
+                  class='input'
                   v-model="search.container_name"
                   @input="getFilteredPropositions(search)"
                   :placeholder="field.label"
@@ -53,6 +57,7 @@
               <template v-else-if="field.key === 'amount'">
                 {{ field.label }}
                 <input
+                  class='input'
                   v-model="search.amount"
                   @input="getFilteredPropositions(search)"
                   :placeholder="field.label"
@@ -125,11 +130,11 @@
                 <div class="table__actions">
                   <b-button
                     class="btn_edit"
-                    :to="{ name: 'requests-update', params: { id: item.id } }"
+                    :to="{ name: 'proposition-update', params: { id: item.id } }"
                   ></b-button>
                   <b-button
                     class="btn_delete"
-                    @click="deleteUserRequest(item.id)"
+                    @click="deleteUserProposition(item.id)"
                   />
                 </div>
               </template>
@@ -144,11 +149,6 @@
         v-model="currentPage"
         :total-rows="rows"
         :per-page="perPage"
-        first-text="First"
-        prev-text="Prev"
-        next-text="Next"
-        last-text="Last"
-
       ></b-pagination>
     </b-col>
   </b-row>
@@ -198,10 +198,24 @@ export default {
     },
     ...mapState(["user_propositions"]),
   },
+  watch:{
+    search:{
+      handler: function(a, b){
+        console.log(a + ' ' + b)
+            for(let key in this.search){
+              if (this.search[key]){
+                this.filtered = true
+                break
+              }   
+            }
+          },
+      deep: true
+    } 
+  },
   created() {
     this.$store.state.breadcrumbs = [
       { text: "Главная", to: { name: "home" } },
-      { text: "Заяки", to: { name: "proposition" } },
+      { text: "Предложения", to: { name: "proposition" } },
     ];
 
     this.getUserPropositions().then((list) => {
@@ -211,13 +225,25 @@ export default {
   methods: {
     ...mapActions({
       saveUserRequest: "user_propositions/saveItem",
-      deleteUserRequest: "user_propositions/deleteItem",
+      deleteUserProposition: "user_propositions/deleteItem",
       getUserPropositions: "user_propositions/getList",
       getFilteredPropositions: "user_propositions/getFilteredItems",
     }),
 	resetFilters(){
-
-	},
+        this.filtered = false;
+        this.search = {
+          user_name: "",
+          line_name: "",
+          city_name: "",
+          container_name: "",
+          amount: "",
+          request_date: "",
+          request_end_date: "",
+        }
+        this.getUserPropositions().then((list) => {
+          console.log(list);
+        });
+    },
   },
 };
 </script>

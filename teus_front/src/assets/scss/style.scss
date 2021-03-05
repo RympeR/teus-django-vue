@@ -114,6 +114,10 @@ body {
 .table-responsive{
     overflow: initial !important;
 }
+.table > thead > tr > th{
+    vertical-align: top;
+}
+
 .btn.btn_edit,
 .btn.btn_delete,
 .btn.btn_updown,
@@ -227,6 +231,10 @@ body {
     // padding: 10px 0 0;
 }
 
+input.input{
+    width: 66%;
+    display: block;
+}
 
 .alert.alert-custom {
     position: fixed;

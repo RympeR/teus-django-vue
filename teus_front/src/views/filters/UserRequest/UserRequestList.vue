@@ -2,7 +2,7 @@
   <b-row>
     <b-col>
       <div class="mb-4">
-        <b-button @cick="resetFilters" variant="primary" size="md">
+        <b-button @click="resetFilters" variant="primary" size="md" v-show="filtered">
           Очистить фильтры
         </b-button>
       </div>
@@ -18,40 +18,45 @@
           <b-tr>
             <b-th v-for="field in fields" :key="field.key">
               <template v-if="field.key === 'user'">
-                {{ field.label }}
+                <div class="stick-top">{{ field.label }}
                 <input
+                  class='input'
                   :placeholder="field.label"
                   @input="getFilteredRequests(search)"
                   v-model="search.user_name"
-                />
+                /></div>
               </template>
               <template v-else-if="field.key === 'line'">
-                {{ field.label }}
+                <div class="stick-top">{{ field.label }}</div>
                 <input
+                  class='input'
                   :placeholder="field.label"
                   @input="getFilteredRequests(search)"
                   v-model="search.line_name"
                 />
               </template>
               <template v-else-if="field.key === 'city'">
-                {{ field.label }}
+                <div class="stick-top">{{ field.label }}</div>
                 <input
+                  class='input'
                   v-model="search.city_name"
                   @input="getFilteredRequests(search)"
                   :placeholder="field.label"
                 />
               </template>
               <template v-else-if="field.key === 'container'">
-                {{ field.label }}
+                <div class="stick-top">{{ field.label }}</div>
                 <input
+                  class='input'
                   v-model="search.container_name"
                   @input="getFilteredRequests(search)"
                   :placeholder="field.label"
                 />
               </template>
               <template v-else-if="field.key === 'amount'">
-                {{ field.label }}
+                <div class="stick-top">{{ field.label }}</div>
                 <input
+                  class='input'
                   v-model="search.amount"
                   @input="getFilteredRequests(search)"
                   :placeholder="field.label"
@@ -70,6 +75,19 @@
                   @input="getFilteredRequests(search)"
                   size="sm"
                   v-model="search.request_date"
+                  class="mb-2"
+                ></b-form-datepicker>
+                <b-form-datepicker
+                  locale="ru"
+                  placeholder="до"
+                  :dateFormatOptions="{
+                    day: 'numeric',
+                    month: 'short',
+                    year: 'numeric',
+                  }"
+                  @input="getFilteredPropositions(search)"
+                  size="sm"
+                  v-model="search.request_end_date"
                   class="mb-2"
                 ></b-form-datepicker>
               </template>
@@ -130,10 +148,6 @@
         v-model="currentPage"
         :total-rows="rows"
         :per-page="perPage"
-        first-text="First"
-        prev-text="Prev"
-        next-text="Next"
-        last-text="Last"
         aria-controls="item-table"
       ></b-pagination>
     </b-col>
@@ -159,6 +173,7 @@ export default {
 
         { key: "actions", label: "" },
       ],
+      filtered: false,
       activePage: 1,
       search: {
         user_name: "",
@@ -167,10 +182,25 @@ export default {
         container_name: "",
         amount: "",
         request_date: "",
+        request_end_date: "",
       },
       perPage: 1,
       currentPage: 1,
     };
+  },
+  watch:{
+    search:{
+      handler: function(a, b){
+            console.log(a + ' ' + b)
+            for(let key in this.search){
+              if (this.search[key]){
+                this.filtered = true
+                break
+              }   
+            }
+          },
+      deep: true
+    } 
   },
   computed: {
     ...mapState(["user_requests"]),
@@ -203,9 +233,21 @@ export default {
       getUserRequests: "user_requests/getList",
       getFilteredRequests: "user_requests/getFilteredItems",
     }),
-	resetFilters(){
-
-	},
+    resetFilters(){
+        this.filtered = false;
+        this.search = {
+          user_name: "",
+          line_name: "",
+          city_name: "",
+          container_name: "",
+          amount: "",
+          request_date: "",
+          request_end_date: "",
+        }
+        this.getUserRequests().then((list) => {
+          console.log(list);
+        });
+    },
   },
 };
 </script>

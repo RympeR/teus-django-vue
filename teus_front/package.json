@@ -20,6 +20,7 @@
     "object-to-formdata": "^3.0.9",
     "vue": "^2.6.12",
     "vue-audio": "0.0.12",
+    "vue-bootstrap-datetimepicker": "^5.0.1",
     "vue-moment": "^4.1.0",
     "vue-plyr": "^6.0.4",
     "vue-quill-editor": "^3.0.6",

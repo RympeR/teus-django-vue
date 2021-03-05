@@ -2,7 +2,7 @@
     <b-row>
         <b-col>
             <b-table hover outlined head-variant="light"
-                :items="users" 
+                :items="users.list" 
                 :fields="fields"
                 :filter="filter"
                 >
@@ -19,7 +19,7 @@
                     <div class="table__actions">
                         <b-button class="btn_edit" :to="{name: 'student-update', params: {id: data.item.id}}"></b-button>
                         <!--<btn-turn :turn="true"/>-->
-                        <b-button class="btn_delete" @click="deleteUser(data.item.id)"/>
+                        <b-button class="btn_delete" @click="deleteItem(data.item.id)"/>
                     </div>
                 </template>
             </b-table>
@@ -29,11 +29,16 @@
 </template>
 
 <script>
-import UserMixin from '@/mixins/user/UserMixin'
+import { mapState, mapActions } from 'vuex'
 
 export default {
     name: "UserList",
-    mixins: [UserMixin],
+    computed: {
+        ...mapState(['users']),
+    },
+    methods: {
+        ...mapActions('users', ['saveItem', 'deleteItem', 'getList'])
+    },
     data () {
         return {
             fields: [
@@ -60,7 +65,9 @@ export default {
             is_admin: false,
             is_staff: false
         };
-        this.getUsers()
+        this.getList().then(list => {
+            console.log(list)
+        })
     },
 }
 </script>

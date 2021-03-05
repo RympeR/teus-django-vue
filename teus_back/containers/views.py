@@ -196,7 +196,7 @@ class RequestsList(APIView):
 
     def get(self, request):
         print(request.GET)
-        data = self.userfilter.get_requests(request, 'postgres', '1111')
+        data = self.userfilter.get_requests(request, 'teus_dev', 'teus_dev')
         result = {
             "results": []
         }
@@ -237,7 +237,7 @@ class PropositionList(APIView):
     userfilter = UserFilter()
 
     def get(self, request):
-        data = self.userfilter.get_propositions(request, 'postgres', '1111')
+        data = self.userfilter.get_propositions(request, 'teus_dev', 'teus_dev')
         result = {
             "results": []
         }
@@ -280,7 +280,7 @@ class DealsList(APIView):
 
     def get(self, request):
         print(request.GET)
-        data = self.userfilter.get_deals(request, 'postgres', '1111')
+        data = self.userfilter.get_deals(request, 'teus_dev', 'teus_dev')
         result = {
             "results": []
         }

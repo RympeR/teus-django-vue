@@ -23,7 +23,7 @@
                 <span class="sidebar__icon">
                     <img src="@/assets/img/icons/63.png" alt="">
                 </span>
-                <b-link class="sidebar__link" :to="{name: 'proposition'}">Заявки</b-link>
+                <b-link class="sidebar__link" :to="{name: 'proposition'}">Предложения</b-link>
             </div>
             <div class="sidebar__item">
                 <span class="sidebar__icon">

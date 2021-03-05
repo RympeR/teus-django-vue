@@ -38,7 +38,7 @@ const actions = {
                             phone: el.user.name + ' ' + el.user.phone
                         }
                         el.date = {
-                            date: el.date,
+                            date: el.date.start + ' - ' + el.date.end,
                         };
                         
                     });
@@ -105,15 +105,15 @@ const actions = {
                 console.log(list)
                 
                 list.forEach((el) => {
-                    el.date = {
-                        date: el.date,
-                    };
                     el.user = {
                         name: el.user.name,
                         phone: el.user.name + ' ' + el.user.phone
                     }
                     el.amount = {
                         amount: el.amount,
+                    };
+                    el.date = {
+                        date: el.date.start + ' - ' + el.date.end,
                     };
                 });
                 commit('setList', list);
@@ -127,7 +127,10 @@ const actions = {
     saveItem({state}, obj) {
         console.log(state)
         console.log(obj.id)
-        
+        obj.user = obj.user.id;
+        obj.line = obj.line.id;
+        obj.container = obj.container.id;
+        obj.city = obj.city.id;
         let formData = new FormData();
         
         Object.keys(obj).map(function (key) {
@@ -140,7 +143,7 @@ const actions = {
                 axios
                     .put(process.env.VUE_APP_HOST + '/api/containers/update-request/' + obj.id + '/', formData, {
                             headers: {
-                                'Content-Type': 'multipart/form-data'
+                                // 'Content-Type': 'multipart/form-data'
                             },
                         }
                     )

@@ -37,11 +37,11 @@
 </template>
 
 <script>
-import UserMixin from '@/mixins/user/UserMixin';
+
 
 export default {
     name: 'UserForm',
-    mixins: [UserMixin],
+
     data () {
         return {
             id: null,

@@ -3,6 +3,7 @@ import axios from 'axios'
 const state = () => ({
     list: [],
     item: {},
+    image: null,
 })
 
 const mutations = {
@@ -19,7 +20,7 @@ const actions = {
         commit
     }) {
         return new Promise((resolve, reject) => {
-            axios.get(process.env.VUE_APP_HOST + '/api/info/get-lines-list/', {
+            axios.get(process.env.VUE_APP_HOST + '/api/user/profile/', {
                     // params: this.linesSearch,
                     // headers: {
                     //     Authoriz ation: token
@@ -27,8 +28,15 @@ const actions = {
                 })
                 .then(response => {
                     let list = response.data.results;
-                    commit('setList', list);
                     console.log(list)
+                    list.forEach((el) => {
+                        // el= {
+                        //     id : el.id,
+                        //     name : el.name + ' ' + el.phone
+                        // }
+                        console.log(el)
+                    });
+                    commit('setList', list);
                     resolve(list);
                 })
                 .catch(response => {
@@ -41,7 +49,7 @@ const actions = {
         commit
     }, id) {
         return new Promise((resolve, reject) => {
-            axios.get(process.env.VUE_APP_HOST + `/api/info/get-line/${id}/`, {
+            axios.get(process.env.VUE_APP_HOST + `/api/user/profile/${id}/`, {
                     // params: this.linesSearch,
                     // headers: {
                     //     Authorization: token
@@ -80,7 +88,7 @@ const actions = {
         }
         console.log(commit)
         console.log(this)
-        deleteRequest('/api/info/delete-line/', id)
+        deleteRequest('/api/user/delete-profile/', id)
             // state.list = state.list.filter(element => element.id !== id);
     },
     
@@ -99,7 +107,7 @@ const actions = {
                   
                 axios
                     .put(
-                        process.env.VUE_APP_HOST + '/api/info/update-line/' + obj.id + '/',
+                        process.env.VUE_APP_HOST + '/api/user/update-profile/' + obj.id + '/',
                         formData, {
                             headers: {
                                 'Content-Type': 'multipart/form-data'
@@ -119,7 +127,7 @@ const actions = {
         } else {
             return new Promise((resolve, reject) => {
                 axios.post(
-                        process.env.VUE_APP_HOST + '/api/info/create-line/',
+                        process.env.VUE_APP_HOST + '/api/user/create-profile/',
                         formData, {
                             headers: {
                                 'Content-Type': 'multipart/form-data',

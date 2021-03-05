@@ -2,7 +2,7 @@
   <b-row>
     <b-col>
       <div class="mb-4">
-        <b-button @cick="resetFilters" variant="primary" size="md">
+        <b-button @click="resetFilters" variant="primary" v-show="filtered" size="md">
           Очистить фильтры
         </b-button>
       </div>
@@ -17,17 +17,28 @@
         <b-thead head-variant="light">
           <b-tr>
             <b-th v-for="field in fields" :key="field.key">
-              <template v-if="field.key === 'user'">
+              <template v-if="field.key === 'first_user'">
                 {{ field.label }}
                 <input
+                  class='input'
                   :placeholder="field.label"
                   @input="getFilteredDeals(search)"
-                  v-model="search.user_name"
+                  v-model="search.first_user_name"
+                />
+              </template>
+              <template v-else-if="field.key === 'sec_user'">
+                {{ field.label }}
+                <input
+                  class='input'
+                  :placeholder="field.label"
+                  @input="getFilteredDeals(search)"
+                  v-model="search.sec_user_name"
                 />
               </template>
               <template v-else-if="field.key === 'line'">
                 {{ field.label }}
                 <input
+                  class='input'
                   :placeholder="field.label"
                   @input="getFilteredDeals(search)"
                   v-model="search.line_name"
@@ -36,6 +47,7 @@
               <template v-else-if="field.key === 'city'">
                 {{ field.label }}
                 <input
+                  class='input'
                   v-model="search.city_name"
                   @input="getFilteredDeals(search)"
                   :placeholder="field.label"
@@ -44,6 +56,7 @@
               <template v-else-if="field.key === 'container'">
                 {{ field.label }}
                 <input
+                  class='input'
                   v-model="search.container_name"
                   @input="getFilteredDeals(search)"
                   :placeholder="field.label"
@@ -52,12 +65,13 @@
               <template v-else-if="field.key === 'amount'">
                 {{ field.label }}
                 <input
+                  class='input'
                   v-model="search.amount"
                   @input="getFilteredDeals(search)"
                   :placeholder="field.label"
                 />
               </template>
-              <template v-else-if="field.key === 'date'">
+              <template v-else-if="field.key === 'handshake'">
                 {{ field.label }}
                 <b-form-datepicker
                   locale="ru"
@@ -69,7 +83,20 @@
                   }"
                   @input="getFilteredDeals(search)"
                   size="sm"
-                  v-model="search.request_date"
+                  v-model="search.handshake"
+                  class="mb-2"
+                ></b-form-datepicker>
+                <b-form-datepicker
+                  locale="ru"
+                  placeholder="до"
+                  :dateFormatOptions="{
+                    day: 'numeric',
+                    month: 'short',
+                    year: 'numeric',
+                  }"
+                  @input="getFilteredPropositions(search)"
+                  size="sm"
+                  v-model="search.handshake_end"
                   class="mb-2"
                 ></b-form-datepicker>
               </template>
@@ -83,7 +110,16 @@
         <b-tbody>
           <b-tr v-for="item in lists" :key="item.id">
             <b-td v-for="field in fields" :key="field.key">
-              <template v-if="field.key === 'user'">
+              <template v-if="field.key === 'first_user'">
+                <b-link
+                  :to="{
+                    name: 'student-update',
+                    params: { id: item[field.key].id },
+                  }"
+                  >{{ item[field.key].phone }}</b-link
+                >
+              </template>
+              <template v-else-if="field.key === 'sec_user'">
                 <b-link
                   :to="{
                     name: 'student-update',
@@ -104,14 +140,14 @@
               <template v-else-if="field.key === 'amount'">
                 {{ item.amount.amount }}
               </template>
-              <template v-else-if="field.key === 'date'">
-                {{ item[field.key].date }}
+              <template v-else-if="field.key === 'handshake'">
+                {{ item[field.key] }}
               </template>
               <template v-else-if="field.key === 'actions'">
                 <div class="table__actions">
                   <b-button
                     class="btn_edit"
-                    :to="{ name: 'requests-update', params: { id: item.id } }"
+                    :to="{ name: 'deals-update', params: { id: item.id } }"
                   ></b-button>
                   <b-button
                     class="btn_delete"
@@ -130,10 +166,6 @@
         v-model="currentPage"
         :total-rows="rows"
         :per-page="perPage"
-        first-text="First"
-        prev-text="Prev"
-        next-text="Next"
-        last-text="Last"
         aria-controls="item-table"
       ></b-pagination>
     </b-col>
@@ -150,23 +182,26 @@ export default {
       fields: [
         { key: "index", label: "#" },
         { key: "id", label: "ID" },
-        { key: "user", label: "Пользователь" },
+        { key: "first_user", label: "Пользователь предложение" },
+        { key: "sec_user", label: "Пользователь запрос" },
         { key: "line", label: "Линия" },
         { key: "city", label: "Город" },
         { key: "container", label: "Контейнер" },
         { key: "amount", label: "Кол-во" },
-        { key: "date", label: "Дата" },
+        { key: "handshake", label: "Дата рукопожатия" },
 
         { key: "actions", label: "" },
       ],
       activePage: 1,
       search: {
-        user_name: "",
+        first_user_name: "",
+        sec_user_name: "",
         line_name: "",
         city_name: "",
         container_name: "",
         amount: "",
-        request_date: "",
+        handshake: "",
+        handshake_end: "",
       },
       perPage: 1,
       currentPage: 1,
@@ -185,11 +220,24 @@ export default {
       );
     },
   },
-
+  watch:{
+    search:{
+      handler: function(a, b){
+        console.log(a + ' ' + b)
+            for(let key in this.search){
+              if (this.search[key]){
+                this.filtered = true
+                break
+              }   
+            }
+          },
+      deep: true
+    } 
+  },
   created() {
     this.$store.state.breadcrumbs = [
       { text: "Главная", to: { name: "home" } },
-      { text: "Запросы", to: { name: "deals" } },
+      { text: "Сделки", to: { name: "deals" } },
     ];
 
     this.getUserDeal().then((list) => {
@@ -204,7 +252,20 @@ export default {
       getFilteredDeals: "deals/getFilteredItems",
     }),
     resetFilters(){
-
+      this.filtered=false
+      this.search = {
+        first_user_name: "",
+        sec_user_name: "",
+        line_name: "",
+        city_name: "",
+        container_name: "",
+        amount: "",
+        handshake: "",
+        handshake_end: "",
+      }
+      this.getUserDeal().then((list) => {
+        console.log(list);
+      });
 	},
   },
 };

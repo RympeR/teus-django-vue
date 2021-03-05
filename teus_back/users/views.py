@@ -95,7 +95,7 @@ class UserListAPI(APIView):
             except ValueError:
                 image_url = ''
             users_list[ind]['image'] = image_url
-
+        print(users_list)
         return Response(
             {
                 "results": users_list

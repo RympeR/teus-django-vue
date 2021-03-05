@@ -57,11 +57,9 @@ class ContainerAPI(APIView):
 
     def delete(self, request, container_id):
         container = ContainerSerializer.delete(container_id)
-        print(request.data)
-        print(container_id)
         return Response(
             {
-                "container_id": container.id
+                "container_id": container_id
             }
         )
 

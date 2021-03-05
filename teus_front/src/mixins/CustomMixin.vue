@@ -31,7 +31,7 @@ export default {
         }
     },
     mounted() {
-        // console.log('mounted')
+        console.log('mounted')
     },
     methods: {
         transformDate(date) {

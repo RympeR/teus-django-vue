@@ -9036,3 +9036,7 @@ None
             join info_container on containers_userproposition.container_id = info_container.id
         ;
 api-teus.maximusapp.com [pid: 6263|app: 0|req: 2/5] 159.224.213.215 () {46 vars in 1046 bytes} [Fri Mar  5 20:12:35 2021] GET /api/containers/get-proposition-list => generated 415 bytes in 37 msecs (HTTP/1.1 200) 7 headers in 207 bytes (1 switches on core 0)
+Not Found: /
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 3/6] 46.37.215.223 () {42 vars in 828 bytes} [Sat Mar  6 11:31:08 2021] GET / => generated 2597 bytes in 21 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 3/7] 46.37.215.223 () {42 vars in 777 bytes} [Sat Mar  6 11:31:08 2021] GET /favicon.ico => generated 2648 bytes in 17 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)

@@ -9040,3 +9040,1378 @@ Not Found: /
 api-teus.maximusapp.com [pid: 6262|app: 0|req: 3/6] 46.37.215.223 () {42 vars in 828 bytes} [Sat Mar  6 11:31:08 2021] GET / => generated 2597 bytes in 21 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
 Not Found: /favicon.ico
 api-teus.maximusapp.com [pid: 6263|app: 0|req: 3/7] 46.37.215.223 () {42 vars in 777 bytes} [Sat Mar  6 11:31:08 2021] GET /favicon.ico => generated 2648 bytes in 17 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+<QuerySet [{'id': 1, 'phone': '09409324', 'first_name': 'test', 'last_name': 'тест', 'company': 'test', 'image': 'http://api-teus.maximusapp.com/media/test_img_2_gPzFy04.jpeg', 'push_on': False}]>
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 4/8] 188.130.176.181 () {44 vars in 803 bytes} [Sat Mar  6 11:56:17 2021] GET /api/user/profile/ => generated 188 bytes in 21 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 4/9] 188.130.176.181 () {44 vars in 833 bytes} [Sat Mar  6 11:56:19 2021] GET /api/containers/get-requests-list => generated 477 bytes in 20 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QueryDict: {'user_name': [''], 'line_name': [''], 'city_name': [''], 'container_name': [''], 'amount': [''], 'request_date': ['2021-03-10'], 'request_end_date': ['']}>
+
+
+
+
+
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        
+where
+ containers_userrequest.request_date >= '2021-03-10';
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 5/10] 188.130.176.181 () {44 vars in 1030 bytes} [Sat Mar  6 11:56:28 2021] GET /api/containers/get-requests-list?user_name=&line_name=&city_name=&container_name=&amount=&request_date=2021-03-10&request_end_date= => generated 14 bytes in 20 msecs (HTTP/1.1 200) 8 headers in 238 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 5/11] 188.130.176.181 () {44 vars in 833 bytes} [Sat Mar  6 11:56:33 2021] GET /api/containers/get-requests-list => generated 477 bytes in 27 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QueryDict: {'user_name': ['3'], 'line_name': [''], 'city_name': [''], 'container_name': [''], 'amount': [''], 'request_date': [''], 'request_end_date': ['']}>
+
+3
+
+
+
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        
+where
+users_user.first_name like '%3%';
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 6/12] 188.130.176.181 () {44 vars in 1012 bytes} [Sat Mar  6 11:56:40 2021] GET /api/containers/get-requests-list?user_name=3&line_name=&city_name=&container_name=&amount=&request_date=&request_end_date= => generated 14 bytes in 20 msecs (HTTP/1.1 200) 8 headers in 238 bytes (1 switches on core 0)
+<QueryDict: {'user_name': ['32'], 'line_name': [''], 'city_name': [''], 'container_name': [''], 'amount': [''], 'request_date': [''], 'request_end_date': ['']}>
+
+32
+
+
+
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        
+where
+users_user.first_name like '%32%';
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 6/13] 188.130.176.181 () {44 vars in 1014 bytes} [Sat Mar  6 11:56:41 2021] GET /api/containers/get-requests-list?user_name=32&line_name=&city_name=&container_name=&amount=&request_date=&request_end_date= => generated 14 bytes in 21 msecs (HTTP/1.1 200) 8 headers in 238 bytes (1 switches on core 0)
+<QueryDict: {'user_name': ['324'], 'line_name': [''], 'city_name': [''], 'container_name': [''], 'amount': [''], 'request_date': [''], 'request_end_date': ['']}>
+
+324
+
+
+
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        
+where
+users_user.first_name like '%324%';
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 7/14] 188.130.176.181 () {44 vars in 1016 bytes} [Sat Mar  6 11:56:42 2021] GET /api/containers/get-requests-list?user_name=324&line_name=&city_name=&container_name=&amount=&request_date=&request_end_date= => generated 14 bytes in 20 msecs (HTTP/1.1 200) 8 headers in 238 bytes (1 switches on core 0)
+<QueryDict: {'user_name': ['32'], 'line_name': [''], 'city_name': [''], 'container_name': [''], 'amount': [''], 'request_date': [''], 'request_end_date': ['']}>
+
+32
+
+
+
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        
+where
+users_user.first_name like '%32%';
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 7/15] 188.130.176.181 () {44 vars in 1014 bytes} [Sat Mar  6 11:56:44 2021] GET /api/containers/get-requests-list?user_name=32&line_name=&city_name=&container_name=&amount=&request_date=&request_end_date= => generated 14 bytes in 19 msecs (HTTP/1.1 200) 8 headers in 238 bytes (1 switches on core 0)
+<QueryDict: {'user_name': ['3'], 'line_name': [''], 'city_name': [''], 'container_name': [''], 'amount': [''], 'request_date': [''], 'request_end_date': ['']}>
+
+3
+
+
+
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        
+where
+users_user.first_name like '%3%';
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 8/16] 188.130.176.181 () {44 vars in 1012 bytes} [Sat Mar  6 11:56:44 2021] GET /api/containers/get-requests-list?user_name=3&line_name=&city_name=&container_name=&amount=&request_date=&request_end_date= => generated 14 bytes in 18 msecs (HTTP/1.1 200) 8 headers in 238 bytes (1 switches on core 0)
+<QueryDict: {'user_name': [''], 'line_name': [''], 'city_name': [''], 'container_name': [''], 'amount': [''], 'request_date': [''], 'request_end_date': ['']}>
+
+
+
+
+
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 8/17] 188.130.176.181 () {44 vars in 1010 bytes} [Sat Mar  6 11:56:44 2021] GET /api/containers/get-requests-list?user_name=&line_name=&city_name=&container_name=&amount=&request_date=&request_end_date= => generated 477 bytes in 18 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QueryDict: {'user_name': ['0'], 'line_name': [''], 'city_name': [''], 'container_name': [''], 'amount': [''], 'request_date': [''], 'request_end_date': ['']}>
+
+0
+
+
+
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        
+where
+users_user.first_name like '%0%';
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 9/18] 188.130.176.181 () {44 vars in 1012 bytes} [Sat Mar  6 11:56:46 2021] GET /api/containers/get-requests-list?user_name=0&line_name=&city_name=&container_name=&amount=&request_date=&request_end_date= => generated 14 bytes in 20 msecs (HTTP/1.1 200) 8 headers in 238 bytes (1 switches on core 0)
+<QueryDict: {'user_name': ['09'], 'line_name': [''], 'city_name': [''], 'container_name': [''], 'amount': [''], 'request_date': [''], 'request_end_date': ['']}>
+
+09
+
+
+
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        
+where
+users_user.first_name like '%09%';
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 9/19] 188.130.176.181 () {44 vars in 1014 bytes} [Sat Mar  6 11:56:46 2021] GET /api/containers/get-requests-list?user_name=09&line_name=&city_name=&container_name=&amount=&request_date=&request_end_date= => generated 14 bytes in 19 msecs (HTTP/1.1 200) 8 headers in 238 bytes (1 switches on core 0)
+<QueryDict: {'user_name': ['094'], 'line_name': [''], 'city_name': [''], 'container_name': [''], 'amount': [''], 'request_date': [''], 'request_end_date': ['']}>
+
+094
+
+
+
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        
+where
+users_user.first_name like '%094%';
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 10/20] 188.130.176.181 () {44 vars in 1016 bytes} [Sat Mar  6 11:56:47 2021] GET /api/containers/get-requests-list?user_name=094&line_name=&city_name=&container_name=&amount=&request_date=&request_end_date= => generated 14 bytes in 19 msecs (HTTP/1.1 200) 8 headers in 238 bytes (1 switches on core 0)
+<QueryDict: {'user_name': ['09'], 'line_name': [''], 'city_name': [''], 'container_name': [''], 'amount': [''], 'request_date': [''], 'request_end_date': ['']}>
+
+09
+
+
+
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        
+where
+users_user.first_name like '%09%';
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 10/21] 188.130.176.181 () {44 vars in 1014 bytes} [Sat Mar  6 11:56:47 2021] GET /api/containers/get-requests-list?user_name=09&line_name=&city_name=&container_name=&amount=&request_date=&request_end_date= => generated 14 bytes in 22 msecs (HTTP/1.1 200) 8 headers in 238 bytes (1 switches on core 0)
+<QueryDict: {'user_name': ['0'], 'line_name': [''], 'city_name': [''], 'container_name': [''], 'amount': [''], 'request_date': [''], 'request_end_date': ['']}>
+
+0
+
+
+
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        
+where
+users_user.first_name like '%0%';
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 11/22] 188.130.176.181 () {44 vars in 1012 bytes} [Sat Mar  6 11:56:48 2021] GET /api/containers/get-requests-list?user_name=0&line_name=&city_name=&container_name=&amount=&request_date=&request_end_date= => generated 14 bytes in 22 msecs (HTTP/1.1 200) 8 headers in 238 bytes (1 switches on core 0)
+<QueryDict: {'user_name': [''], 'line_name': [''], 'city_name': [''], 'container_name': [''], 'amount': [''], 'request_date': [''], 'request_end_date': ['']}>
+
+
+
+
+
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 11/23] 188.130.176.181 () {44 vars in 1010 bytes} [Sat Mar  6 11:56:48 2021] GET /api/containers/get-requests-list?user_name=&line_name=&city_name=&container_name=&amount=&request_date=&request_end_date= => generated 477 bytes in 20 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QueryDict: {'user_name': ['3'], 'line_name': [''], 'city_name': [''], 'container_name': [''], 'amount': [''], 'request_date': [''], 'request_end_date': ['']}>
+
+3
+
+
+
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        
+where
+users_user.first_name like '%3%';
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 12/24] 188.130.176.181 () {44 vars in 1012 bytes} [Sat Mar  6 11:57:06 2021] GET /api/containers/get-requests-list?user_name=3&line_name=&city_name=&container_name=&amount=&request_date=&request_end_date= => generated 14 bytes in 20 msecs (HTTP/1.1 200) 8 headers in 238 bytes (1 switches on core 0)
+<QueryDict: {'user_name': ['32'], 'line_name': [''], 'city_name': [''], 'container_name': [''], 'amount': [''], 'request_date': [''], 'request_end_date': ['']}>
+
+32
+
+
+
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        
+where
+users_user.first_name like '%32%';
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 12/25] 188.130.176.181 () {44 vars in 1014 bytes} [Sat Mar  6 11:57:06 2021] GET /api/containers/get-requests-list?user_name=32&line_name=&city_name=&container_name=&amount=&request_date=&request_end_date= => generated 14 bytes in 21 msecs (HTTP/1.1 200) 8 headers in 238 bytes (1 switches on core 0)
+<QueryDict: {'user_name': ['324'], 'line_name': [''], 'city_name': [''], 'container_name': [''], 'amount': [''], 'request_date': [''], 'request_end_date': ['']}>
+
+324
+
+
+
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        
+where
+users_user.first_name like '%324%';
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 13/26] 188.130.176.181 () {44 vars in 1016 bytes} [Sat Mar  6 11:57:07 2021] GET /api/containers/get-requests-list?user_name=324&line_name=&city_name=&container_name=&amount=&request_date=&request_end_date= => generated 14 bytes in 19 msecs (HTTP/1.1 200) 8 headers in 238 bytes (1 switches on core 0)
+<QuerySet [{'id': 1, 'phone': '09409324', 'first_name': 'test', 'last_name': 'тест', 'company': 'test', 'image': 'http://api-teus.maximusapp.com/media/test_img_2_gPzFy04.jpeg', 'push_on': False}]>
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 14/27] 188.130.176.181 () {44 vars in 803 bytes} [Sat Mar  6 11:58:30 2021] GET /api/user/profile/ => generated 188 bytes in 24 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+None
+
+            select
+                containers_deal.id,
+                info_city.id "city_id", info_city.name "city name",
+				user1.id "user1_id", user1.first_name "user1_name", user1.phone "user1 phone",
+                user2.id "user2_id", user2.first_name "user2_name", user2.phone "user2 phone",
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_deal.amount "amount",
+                containers_deal.handshake_time "handshake_time"
+                from containers_deal
+            join info_city on containers_deal.city_id = info_city.id
+            join info_line on containers_deal.line_id = info_line.id
+			join users_user as user2 on containers_deal.user_proposition_id = user2.id
+            join users_user as user1 on containers_deal.user_request_id = user1.id
+            join info_container on containers_deal.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 13/28] 188.130.176.181 () {44 vars in 825 bytes} [Sat Mar  6 11:58:35 2021] GET /api/containers/get-deal-list => generated 14 bytes in 27 msecs (HTTP/1.1 200) 8 headers in 238 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 15/29] 188.130.176.181 () {44 vars in 817 bytes} [Sat Mar  6 11:59:05 2021] GET /api/info/get-lines-list/ => generated 152 bytes in 16 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 14/30] 188.130.176.181 () {48 vars in 998 bytes} [Sat Mar  6 11:59:08 2021] POST /api/info/create-line/ => generated 14 bytes in 18 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 16/31] 188.130.176.181 () {44 vars in 817 bytes} [Sat Mar  6 11:59:08 2021] GET /api/info/get-lines-list/ => generated 183 bytes in 16 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 15/32] 188.130.176.181 () {44 vars in 819 bytes} [Sat Mar  6 11:59:31 2021] GET /api/info/get-cities-list/ => generated 73 bytes in 18 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 17/33] 188.130.176.181 () {44 vars in 827 bytes} [Sat Mar  6 11:59:33 2021] GET /api/info/get-containers-list/ => generated 254 bytes in 22 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 16/34] 188.130.176.181 () {44 vars in 819 bytes} [Sat Mar  6 11:59:38 2021] GET /api/info/get-container/5/ => generated 162 bytes in 17 msecs (HTTP/1.1 200) 8 headers in 258 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 18/35] 188.130.176.181 () {48 vars in 867 bytes} [Sat Mar  6 11:59:43 2021] OPTIONS /api/info/update-container/5/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+{'container_id': ['5'], 'name': ['tуые'], 'id': ['5'], 'image': [<InMemoryUploadedFile: test_img_1.jpg (image/jpeg)>]}
+http://api-teus.maximusapp.com/media/test_img_1.jpg
+api-teus.maximusapp.com [pid: 6264|app: 0|req: 1/36] 188.130.176.181 () {48 vars in 1015 bytes} [Sat Mar  6 11:59:43 2021] PUT /api/info/update-container/5/ => generated 97 bytes in 182 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Sat Mar  6 13:59:43 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 19/37] 188.130.176.181 () {44 vars in 827 bytes} [Sat Mar  6 11:59:43 2021] GET /api/info/get-containers-list/ => generated 189 bytes in 21 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 17/38] 188.130.176.181 () {44 vars in 819 bytes} [Sat Mar  6 11:59:45 2021] GET /api/info/get-container/5/ => generated 97 bytes in 18 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+{'container_id': ['5'], 'name': ['tуые2'], 'id': ['5'], 'image': [<InMemoryUploadedFile: test_img_2.jpeg (image/jpeg)>]}
+http://api-teus.maximusapp.com/media/test_img_2_kMHSgYi.jpeg
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 20/39] 188.130.176.181 () {48 vars in 1017 bytes} [Sat Mar  6 11:59:51 2021] PUT /api/info/update-container/5/ => generated 107 bytes in 21 msecs (HTTP/1.1 200) 8 headers in 258 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 18/40] 188.130.176.181 () {44 vars in 827 bytes} [Sat Mar  6 11:59:51 2021] GET /api/info/get-containers-list/ => generated 199 bytes in 20 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date"
+                
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 21/41] 188.130.176.181 () {44 vars in 839 bytes} [Sat Mar  6 11:59:53 2021] GET /api/containers/get-proposition-list => generated 416 bytes in 20 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QuerySet [{'id': 1, 'phone': '09409324', 'first_name': 'test', 'last_name': 'тест', 'company': 'test', 'image': 'http://api-teus.maximusapp.com/media/test_img_2_gPzFy04.jpeg', 'push_on': False}]>
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 19/42] 188.130.176.181 () {44 vars in 803 bytes} [Sat Mar  6 11:59:54 2021] GET /api/user/profile/ => generated 188 bytes in 19 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QuerySet [{'id': 1, 'phone': '09409324', 'first_name': 'test', 'last_name': 'тест', 'company': 'test', 'image': 'http://api-teus.maximusapp.com/media/test_img_2_gPzFy04.jpeg', 'push_on': False}]>
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 22/43] 188.130.176.181 () {44 vars in 803 bytes} [Sat Mar  6 11:59:56 2021] GET /api/user/profile/ => generated 188 bytes in 22 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 20/44] 188.130.176.181 () {44 vars in 833 bytes} [Sat Mar  6 12:00:00 2021] GET /api/containers/get-requests-list => generated 479 bytes in 21 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date"
+                
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 23/45] 188.130.176.181 () {44 vars in 839 bytes} [Sat Mar  6 12:00:01 2021] GET /api/containers/get-proposition-list => generated 416 bytes in 20 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 21/46] 188.130.176.181 () {44 vars in 833 bytes} [Sat Mar  6 12:00:03 2021] GET /api/containers/get-requests-list => generated 479 bytes in 21 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date"
+                
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 24/47] 188.130.176.181 () {44 vars in 839 bytes} [Sat Mar  6 12:00:05 2021] GET /api/containers/get-proposition-list => generated 416 bytes in 20 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+None
+
+            select
+                containers_deal.id,
+                info_city.id "city_id", info_city.name "city name",
+				user1.id "user1_id", user1.first_name "user1_name", user1.phone "user1 phone",
+                user2.id "user2_id", user2.first_name "user2_name", user2.phone "user2 phone",
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_deal.amount "amount",
+                containers_deal.handshake_time "handshake_time"
+                from containers_deal
+            join info_city on containers_deal.city_id = info_city.id
+            join info_line on containers_deal.line_id = info_line.id
+			join users_user as user2 on containers_deal.user_proposition_id = user2.id
+            join users_user as user1 on containers_deal.user_request_id = user1.id
+            join info_container on containers_deal.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 22/48] 188.130.176.181 () {44 vars in 825 bytes} [Sat Mar  6 12:00:07 2021] GET /api/containers/get-deal-list => generated 14 bytes in 21 msecs (HTTP/1.1 200) 8 headers in 238 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 25/49] 188.130.176.181 () {44 vars in 817 bytes} [Sat Mar  6 12:00:09 2021] GET /api/info/get-lines-list/ => generated 183 bytes in 15 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 23/50] 188.130.176.181 () {44 vars in 819 bytes} [Sat Mar  6 12:00:11 2021] GET /api/info/get-cities-list/ => generated 73 bytes in 17 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 26/51] 188.130.176.181 () {44 vars in 827 bytes} [Sat Mar  6 12:00:12 2021] GET /api/info/get-containers-list/ => generated 199 bytes in 21 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 24/52] 188.130.176.181 () {44 vars in 833 bytes} [Sat Mar  6 12:00:13 2021] GET /api/containers/get-requests-list => generated 479 bytes in 21 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QuerySet [{'id': 1, 'phone': '09409324', 'first_name': 'test', 'last_name': 'тест', 'company': 'test', 'image': 'http://api-teus.maximusapp.com/media/test_img_2_gPzFy04.jpeg', 'push_on': False}]>
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 27/53] 188.130.176.181 () {44 vars in 803 bytes} [Sat Mar  6 12:00:20 2021] GET /api/user/profile/ => generated 188 bytes in 19 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+user_id
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 25/54] 188.130.176.181 () {44 vars in 807 bytes} [Sat Mar  6 12:00:23 2021] GET /api/user/profile/1/ => generated 163 bytes in 17 msecs (HTTP/1.1 200) 8 headers in 258 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date"
+                
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 28/55] 188.130.176.181 () {44 vars in 839 bytes} [Sat Mar  6 12:00:25 2021] GET /api/containers/get-proposition-list => generated 416 bytes in 20 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QueryDict: {'user_id': ['1'], 'phone': ['09409324'], 'first_name': ['test'], 'last_name': ['тест'], 'company': ['test'], 'image': [<InMemoryUploadedFile: test_img_3.jpg (image/jpeg)>]}>
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 26/56] 188.130.176.181 () {48 vars in 1010 bytes} [Sat Mar  6 12:01:02 2021] POST /api/user/create-profile/ => generated 13 bytes in 16 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date"
+                
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 29/57] 188.130.176.181 () {44 vars in 839 bytes} [Sat Mar  6 12:01:02 2021] GET /api/containers/get-proposition-list => generated 416 bytes in 19 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6265|app: 0|req: 2/59] 188.130.176.181 () {44 vars in 817 bytes} [Sat Mar  6 12:01:06 2021] GET /api/info/get-lines-list/ => generated 183 bytes in 69 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 30/59] 188.130.176.181 () {44 vars in 819 bytes} [Sat Mar  6 12:01:06 2021] GET /api/info/get-cities-list/ => generated 73 bytes in 66 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6264|app: 0|req: 2/60] 188.130.176.181 () {44 vars in 827 bytes} [Sat Mar  6 12:01:06 2021] GET /api/info/get-containers-list/ => generated 199 bytes in 88 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 27/61] 188.130.176.181 () {44 vars in 835 bytes} [Sat Mar  6 12:01:06 2021] GET /api/containers/get-proposition/1/ => generated 206 bytes in 103 msecs (HTTP/1.1 200) 8 headers in 258 bytes (1 switches on core 0)
+<QuerySet [{'id': 1, 'phone': '09409324', 'first_name': 'test', 'last_name': 'тест', 'company': 'test', 'image': 'http://api-teus.maximusapp.com/media/test_img_2_gPzFy04.jpeg', 'push_on': False}, {'id': 2, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3.jpg', 'push_on': False}]>
+api-teus.maximusapp.com [pid: 6265|app: 0|req: 3/62] 188.130.176.181 () {44 vars in 803 bytes} [Sat Mar  6 12:01:06 2021] GET /api/user/profile/ => generated 335 bytes in 37 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date"
+                
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 31/63] 188.130.176.181 () {44 vars in 839 bytes} [Sat Mar  6 12:01:08 2021] GET /api/containers/get-proposition-list => generated 416 bytes in 21 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QueryDict: {'user_id': ['1'], 'phone': ['09409324'], 'first_name': ['test'], 'last_name': ['тест'], 'company': ['test'], 'image': [<InMemoryUploadedFile: test_img_3.jpg (image/jpeg)>]}>
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 28/64] 188.130.176.181 () {48 vars in 1010 bytes} [Sat Mar  6 12:01:13 2021] POST /api/user/create-profile/ => generated 13 bytes in 16 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date"
+                
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 32/65] 188.130.176.181 () {44 vars in 839 bytes} [Sat Mar  6 12:01:13 2021] GET /api/containers/get-proposition-list => generated 416 bytes in 20 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date"
+                
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 29/66] 188.130.176.181 () {44 vars in 839 bytes} [Sat Mar  6 12:01:19 2021] GET /api/containers/get-proposition-list => generated 416 bytes in 19 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QueryDict: {'user_id': ['1'], 'phone': ['09409324'], 'first_name': ['test'], 'last_name': ['тест'], 'company': ['test'], 'image': [<InMemoryUploadedFile: test_img_3.jpg (image/jpeg)>]}>
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 33/67] 188.130.176.181 () {48 vars in 1010 bytes} [Sat Mar  6 12:01:49 2021] POST /api/user/create-profile/ => generated 13 bytes in 21 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date"
+                
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 30/68] 188.130.176.181 () {44 vars in 839 bytes} [Sat Mar  6 12:01:49 2021] GET /api/containers/get-proposition-list => generated 416 bytes in 21 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QuerySet [{'id': 1, 'phone': '09409324', 'first_name': 'test', 'last_name': 'тест', 'company': 'test', 'image': 'http://api-teus.maximusapp.com/media/test_img_2_gPzFy04.jpeg', 'push_on': False}, {'id': 2, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3.jpg', 'push_on': False}, {'id': 3, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3_GsyipWs.jpg', 'push_on': False}, {'id': 4, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3_221XcNY.jpg', 'push_on': False}]>
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 34/69] 188.130.176.181 () {44 vars in 803 bytes} [Sat Mar  6 12:02:30 2021] GET /api/user/profile/ => generated 645 bytes in 28 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date"
+                
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 35/70] 188.130.176.181 () {44 vars in 839 bytes} [Sat Mar  6 12:03:15 2021] GET /api/containers/get-proposition-list => generated 416 bytes in 20 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QuerySet [{'id': 1, 'phone': '09409324', 'first_name': 'test', 'last_name': 'тест', 'company': 'test', 'image': 'http://api-teus.maximusapp.com/media/test_img_2_gPzFy04.jpeg', 'push_on': False}, {'id': 2, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3.jpg', 'push_on': False}, {'id': 3, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3_GsyipWs.jpg', 'push_on': False}, {'id': 4, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3_221XcNY.jpg', 'push_on': False}]>
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 31/71] 188.130.176.181 () {44 vars in 803 bytes} [Sat Mar  6 12:03:21 2021] GET /api/user/profile/ => generated 645 bytes in 25 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+user_id
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 36/72] 188.130.176.181 () {44 vars in 807 bytes} [Sat Mar  6 12:03:23 2021] GET /api/user/profile/1/ => generated 163 bytes in 18 msecs (HTTP/1.1 200) 8 headers in 258 bytes (1 switches on core 0)
+<QuerySet [{'id': 1, 'phone': '09409324', 'first_name': 'test', 'last_name': 'тест', 'company': 'test', 'image': 'http://api-teus.maximusapp.com/media/test_img_2_gPzFy04.jpeg', 'push_on': False}, {'id': 2, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3.jpg', 'push_on': False}, {'id': 3, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3_GsyipWs.jpg', 'push_on': False}, {'id': 4, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3_221XcNY.jpg', 'push_on': False}]>
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 32/73] 188.130.176.181 () {44 vars in 803 bytes} [Sat Mar  6 12:03:25 2021] GET /api/user/profile/ => generated 645 bytes in 27 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date"
+                
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 37/74] 188.130.176.181 () {44 vars in 839 bytes} [Sat Mar  6 12:03:26 2021] GET /api/containers/get-proposition-list => generated 416 bytes in 19 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QuerySet [{'id': 1, 'phone': '09409324', 'first_name': 'test', 'last_name': 'тест', 'company': 'test', 'image': 'http://api-teus.maximusapp.com/media/test_img_2_gPzFy04.jpeg', 'push_on': False}, {'id': 2, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3.jpg', 'push_on': False}, {'id': 3, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3_GsyipWs.jpg', 'push_on': False}, {'id': 4, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3_221XcNY.jpg', 'push_on': False}]>
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 33/75] 188.130.176.181 () {44 vars in 803 bytes} [Sat Mar  6 12:03:29 2021] GET /api/user/profile/ => generated 645 bytes in 25 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 38/76] 188.130.176.181 () {44 vars in 833 bytes} [Sat Mar  6 12:03:32 2021] GET /api/containers/get-requests-list => generated 479 bytes in 25 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QuerySet [{'id': 1, 'phone': '09409324', 'first_name': 'test', 'last_name': 'тест', 'company': 'test', 'image': 'http://api-teus.maximusapp.com/media/test_img_2_gPzFy04.jpeg', 'push_on': False}, {'id': 2, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3.jpg', 'push_on': False}, {'id': 3, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3_GsyipWs.jpg', 'push_on': False}, {'id': 4, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3_221XcNY.jpg', 'push_on': False}]>
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 39/77] 188.130.176.181 () {44 vars in 817 bytes} [Sat Mar  6 12:03:35 2021] GET /api/info/get-lines-list/ => generated 183 bytes in 54 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 34/78] 188.130.176.181 () {44 vars in 827 bytes} [Sat Mar  6 12:03:35 2021] GET /api/containers/get-request/1/ => generated 230 bytes in 82 msecs (HTTP/1.1 200) 8 headers in 258 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6265|app: 0|req: 4/79] 188.130.176.181 () {44 vars in 827 bytes} [Sat Mar  6 12:03:35 2021] GET /api/info/get-containers-list/ => generated 199 bytes in 81 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6264|app: 0|req: 3/80] 188.130.176.181 () {44 vars in 803 bytes} [Sat Mar  6 12:03:35 2021] GET /api/user/profile/ => generated 645 bytes in 92 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 40/81] 188.130.176.181 () {44 vars in 819 bytes} [Sat Mar  6 12:03:35 2021] GET /api/info/get-cities-list/ => generated 73 bytes in 44 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+user_id
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 35/82] 188.130.176.181 () {44 vars in 807 bytes} [Sat Mar  6 12:03:39 2021] GET /api/user/profile/1/ => generated 163 bytes in 17 msecs (HTTP/1.1 200) 8 headers in 258 bytes (1 switches on core 0)
+<QuerySet [{'id': 1, 'phone': '09409324', 'first_name': 'test', 'last_name': 'тест', 'company': 'test', 'image': 'http://api-teus.maximusapp.com/media/test_img_2_gPzFy04.jpeg', 'push_on': False}, {'id': 2, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3.jpg', 'push_on': False}, {'id': 3, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3_GsyipWs.jpg', 'push_on': False}, {'id': 4, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3_221XcNY.jpg', 'push_on': False}]>
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 41/83] 188.130.176.181 () {44 vars in 803 bytes} [Sat Mar  6 12:03:40 2021] GET /api/user/profile/ => generated 645 bytes in 26 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date"
+                
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 36/84] 188.130.176.181 () {44 vars in 839 bytes} [Sat Mar  6 12:03:42 2021] GET /api/containers/get-proposition-list => generated 416 bytes in 21 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QuerySet [{'id': 1, 'phone': '09409324', 'first_name': 'test', 'last_name': 'тест', 'company': 'test', 'image': 'http://api-teus.maximusapp.com/media/test_img_2_gPzFy04.jpeg', 'push_on': False}, {'id': 2, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3.jpg', 'push_on': False}, {'id': 3, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3_GsyipWs.jpg', 'push_on': False}, {'id': 4, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3_221XcNY.jpg', 'push_on': False}]>
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 37/85] 188.130.176.181 () {44 vars in 819 bytes} [Sat Mar  6 12:03:43 2021] GET /api/info/get-cities-list/ => generated 73 bytes in 67 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 42/86] 188.130.176.181 () {44 vars in 827 bytes} [Sat Mar  6 12:03:43 2021] GET /api/info/get-containers-list/ => generated 199 bytes in 90 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6265|app: 0|req: 5/87] 188.130.176.181 () {44 vars in 803 bytes} [Sat Mar  6 12:03:43 2021] GET /api/user/profile/ => generated 645 bytes in 103 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6264|app: 0|req: 4/88] 188.130.176.181 () {44 vars in 835 bytes} [Sat Mar  6 12:03:43 2021] GET /api/containers/get-proposition/1/ => generated 206 bytes in 111 msecs (HTTP/1.1 200) 8 headers in 258 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 38/89] 188.130.176.181 () {44 vars in 817 bytes} [Sat Mar  6 12:03:44 2021] GET /api/info/get-lines-list/ => generated 183 bytes in 38 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 43/90] 188.130.176.181 () {44 vars in 819 bytes} [Sat Mar  6 12:04:31 2021] GET /api/info/get-cities-list/ => generated 73 bytes in 17 msecs (HTTP/1.1 200) 8 headers in 232 bytes (1 switches on core 0)
+<QueryDict: {'name': ['Одесса']}>
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 39/91] 188.130.176.181 () {48 vars in 998 bytes} [Sat Mar  6 12:05:00 2021] POST /api/info/create-city/ => generated 13 bytes in 18 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 44/92] 188.130.176.181 () {44 vars in 819 bytes} [Sat Mar  6 12:05:00 2021] GET /api/info/get-cities-list/ => generated 104 bytes in 21 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 40/93] 188.130.176.181 () {44 vars in 819 bytes} [Sat Mar  6 12:05:03 2021] GET /api/info/get-cities-list/ => generated 104 bytes in 16 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 45/94] 188.130.176.181 () {44 vars in 833 bytes} [Sat Mar  6 12:05:07 2021] GET /api/containers/get-requests-list => generated 479 bytes in 19 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 41/95] 46.37.215.223 () {44 vars in 839 bytes} [Sat Mar  6 12:05:28 2021] GET /api/info/get-lines-list/ => generated 183 bytes in 17 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 46/96] 46.37.215.223 () {44 vars in 841 bytes} [Sat Mar  6 12:05:28 2021] GET /api/info/get-cities-list/ => generated 104 bytes in 19 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date"
+                
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 42/97] 46.37.215.223 () {44 vars in 868 bytes} [Sat Mar  6 12:05:29 2021] GET /api/containers/get-proposition-list => generated 416 bytes in 23 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 47/98] 46.37.215.223 () {44 vars in 859 bytes} [Sat Mar  6 12:05:29 2021] GET /api/containers/get-requests-list => generated 479 bytes in 19 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QuerySet [{'id': 1, 'phone': '09409324', 'first_name': 'test', 'last_name': 'тест', 'company': 'test', 'image': 'http://api-teus.maximusapp.com/media/test_img_2_gPzFy04.jpeg', 'push_on': False}, {'id': 2, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3.jpg', 'push_on': False}, {'id': 3, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3_GsyipWs.jpg', 'push_on': False}, {'id': 4, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3_221XcNY.jpg', 'push_on': False}]>
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 43/99] 46.37.215.223 () {44 vars in 833 bytes} [Sat Mar  6 12:05:30 2021] GET /api/user/profile/ => generated 645 bytes in 26 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+user_id
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 48/100] 46.37.215.223 () {44 vars in 846 bytes} [Sat Mar  6 12:05:35 2021] GET /api/user/profile/2/ => generated 135 bytes in 17 msecs (HTTP/1.1 200) 8 headers in 258 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 49/101] 188.130.176.181 () {44 vars in 817 bytes} [Sat Mar  6 12:05:38 2021] GET /api/info/get-lines-list/ => generated 183 bytes in 61 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6264|app: 0|req: 5/102] 188.130.176.181 () {44 vars in 819 bytes} [Sat Mar  6 12:05:38 2021] GET /api/info/get-cities-list/ => generated 104 bytes in 64 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 44/103] 188.130.176.181 () {44 vars in 827 bytes} [Sat Mar  6 12:05:38 2021] GET /api/containers/get-request/1/ => generated 230 bytes in 91 msecs (HTTP/1.1 200) 8 headers in 258 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6265|app: 0|req: 6/104] 188.130.176.181 () {44 vars in 827 bytes} [Sat Mar  6 12:05:38 2021] GET /api/info/get-containers-list/ => generated 199 bytes in 78 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+<QuerySet [{'id': 1, 'phone': '09409324', 'first_name': 'test', 'last_name': 'тест', 'company': 'test', 'image': 'http://api-teus.maximusapp.com/media/test_img_2_gPzFy04.jpeg', 'push_on': False}, {'id': 2, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3.jpg', 'push_on': False}, {'id': 3, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3_GsyipWs.jpg', 'push_on': False}, {'id': 4, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3_221XcNY.jpg', 'push_on': False}]>
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 50/105] 188.130.176.181 () {44 vars in 803 bytes} [Sat Mar  6 12:05:38 2021] GET /api/user/profile/ => generated 645 bytes in 37 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 45/106] 188.130.176.181 () {44 vars in 833 bytes} [Sat Mar  6 12:05:41 2021] GET /api/containers/get-requests-list => generated 479 bytes in 21 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QuerySet [{'id': 1, 'phone': '09409324', 'first_name': 'test', 'last_name': 'тест', 'company': 'test', 'image': 'http://api-teus.maximusapp.com/media/test_img_2_gPzFy04.jpeg', 'push_on': False}, {'id': 2, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3.jpg', 'push_on': False}, {'id': 3, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3_GsyipWs.jpg', 'push_on': False}, {'id': 4, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3_221XcNY.jpg', 'push_on': False}]>
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 51/107] 188.130.176.181 () {44 vars in 803 bytes} [Sat Mar  6 12:05:58 2021] GET /api/user/profile/ => generated 645 bytes in 28 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date"
+                
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 46/108] 46.37.215.223 () {44 vars in 868 bytes} [Sat Mar  6 12:06:02 2021] GET /api/containers/get-proposition-list => generated 416 bytes in 19 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+
+t
+
+
+
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date"
+                
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        
+where
+users_user.first_name like '%t%';
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 52/109] 46.37.215.223 () {44 vars in 1047 bytes} [Sat Mar  6 12:06:05 2021] GET /api/containers/get-proposition-list?user_name=t&line_name=&city_name=&container_name=&amount=&request_date=&request_end_date= => generated 416 bytes in 19 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+
+te
+
+
+
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date"
+                
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        
+where
+users_user.first_name like '%te%';
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 47/110] 46.37.215.223 () {44 vars in 1049 bytes} [Sat Mar  6 12:06:05 2021] GET /api/containers/get-proposition-list?user_name=te&line_name=&city_name=&container_name=&amount=&request_date=&request_end_date= => generated 416 bytes in 19 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+
+tes
+
+
+
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date"
+                
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        
+where
+users_user.first_name like '%tes%';
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 53/111] 46.37.215.223 () {44 vars in 1051 bytes} [Sat Mar  6 12:06:05 2021] GET /api/containers/get-proposition-list?user_name=tes&line_name=&city_name=&container_name=&amount=&request_date=&request_end_date= => generated 416 bytes in 21 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+
+test
+
+
+
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date"
+                
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        
+where
+users_user.first_name like '%test%';
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 48/112] 46.37.215.223 () {44 vars in 1053 bytes} [Sat Mar  6 12:06:05 2021] GET /api/containers/get-proposition-list?user_name=test&line_name=&city_name=&container_name=&amount=&request_date=&request_end_date= => generated 416 bytes in 19 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date"
+                
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 54/113] 46.37.215.223 () {44 vars in 868 bytes} [Mon Mar  8 07:48:26 2021] GET /api/containers/get-proposition-list => generated 416 bytes in 19 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+Not Found: /
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 55/114] 149.154.161.1 () {40 vars in 710 bytes} [Mon Mar  8 07:51:08 2021] GET / => generated 2597 bytes in 21 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+<QuerySet [{'id': 1, 'phone': '09409324', 'first_name': 'test', 'last_name': 'тест', 'company': 'test', 'image': 'http://api-teus.maximusapp.com/media/test_img_2_gPzFy04.jpeg', 'push_on': False}, {'id': 2, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3.jpg', 'push_on': False}, {'id': 3, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3_GsyipWs.jpg', 'push_on': False}, {'id': 4, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3_221XcNY.jpg', 'push_on': False}]>
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 56/115] 46.37.215.223 () {44 vars in 833 bytes} [Mon Mar  8 08:04:25 2021] GET /api/user/profile/ => generated 645 bytes in 26 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+user_id
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 49/116] 46.37.215.223 () {44 vars in 846 bytes} [Mon Mar  8 08:04:26 2021] GET /api/user/profile/2/ => generated 135 bytes in 21 msecs (HTTP/1.1 200) 8 headers in 258 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 57/117] 46.37.215.223 () {48 vars in 902 bytes} [Mon Mar  8 08:04:30 2021] OPTIONS /api/user/update-profile/2/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+<QueryDict: {'user_id': ['2'], 'phone': ['0'], 'first_name': ['t'], 'last_name': ['test'], 'company': ['t'], 'id': ['2']}>
+{'user_id': ['2'], 'phone': ['0'], 'first_name': ['t'], 'last_name': ['test'], 'company': ['t'], 'id': ['2']}
+cathched key
+api-teus.maximusapp.com [pid: 6264|app: 0|req: 6/118] 46.37.215.223 () {48 vars in 1046 bytes} [Mon Mar  8 08:04:30 2021] PUT /api/user/update-profile/2/ => generated 137 bytes in 22 msecs (HTTP/1.1 200) 8 headers in 258 bytes (1 switches on core 0)
+user_id
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 58/119] 46.37.215.223 () {44 vars in 846 bytes} [Mon Mar  8 08:04:36 2021] GET /api/user/profile/2/ => generated 137 bytes in 19 msecs (HTTP/1.1 200) 8 headers in 258 bytes (1 switches on core 0)
+<QuerySet [{'id': 1, 'phone': '09409324', 'first_name': 'test', 'last_name': 'тест', 'company': 'test', 'image': 'http://api-teus.maximusapp.com/media/test_img_2_gPzFy04.jpeg', 'push_on': False}, {'id': 2, 'phone': '0', 'first_name': 't', 'last_name': 'test', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3.jpg', 'push_on': False}, {'id': 3, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3_GsyipWs.jpg', 'push_on': False}, {'id': 4, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3_221XcNY.jpg', 'push_on': False}]>
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 50/120] 46.37.215.223 () {44 vars in 833 bytes} [Mon Mar  8 08:04:38 2021] GET /api/user/profile/ => generated 647 bytes in 31 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 59/121] 46.37.215.223 () {48 vars in 896 bytes} [Mon Mar  8 08:04:44 2021] OPTIONS /api/user/delete-profile/2/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6265|app: 0|req: 7/122] 46.37.215.223 () {44 vars in 854 bytes} [Mon Mar  8 08:04:44 2021] DELETE /api/user/delete-profile/2/ => generated 13 bytes in 28 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+<QuerySet [{'id': 1, 'phone': '09409324', 'first_name': 'test', 'last_name': 'тест', 'company': 'test', 'image': 'http://api-teus.maximusapp.com/media/test_img_2_gPzFy04.jpeg', 'push_on': False}, {'id': 3, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3_GsyipWs.jpg', 'push_on': False}, {'id': 4, 'phone': '0', 'first_name': 't', 'last_name': 'т', 'company': 't', 'image': 'http://api-teus.maximusapp.com/media/test_img_3_221XcNY.jpg', 'push_on': False}]>
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 60/123] 46.37.215.223 () {44 vars in 833 bytes} [Mon Mar  8 08:04:49 2021] GET /api/user/profile/ => generated 498 bytes in 27 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 51/124] 46.37.215.223 () {48 vars in 896 bytes} [Mon Mar  8 08:04:51 2021] OPTIONS /api/user/delete-profile/3/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6265|app: 0|req: 8/125] 46.37.215.223 () {44 vars in 854 bytes} [Mon Mar  8 08:04:51 2021] DELETE /api/user/delete-profile/3/ => generated 13 bytes in 27 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 61/126] 46.37.215.223 () {48 vars in 896 bytes} [Mon Mar  8 08:04:53 2021] OPTIONS /api/user/delete-profile/4/ => generated 0 bytes in 0 msecs (HTTP/1.1 200) 9 headers in 428 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 52/127] 46.37.215.223 () {44 vars in 854 bytes} [Mon Mar  8 08:04:53 2021] DELETE /api/user/delete-profile/4/ => generated 13 bytes in 27 msecs (HTTP/1.1 200) 8 headers in 257 bytes (1 switches on core 0)
+<QuerySet [{'id': 1, 'phone': '09409324', 'first_name': 'test', 'last_name': 'тест', 'company': 'test', 'image': 'http://api-teus.maximusapp.com/media/test_img_2_gPzFy04.jpeg', 'push_on': False}]>
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 62/128] 46.37.215.223 () {44 vars in 833 bytes} [Mon Mar  8 08:04:54 2021] GET /api/user/profile/ => generated 188 bytes in 20 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 63/129] 188.130.176.181 () {44 vars in 819 bytes} [Mon Mar  8 12:18:46 2021] GET /api/info/get-cities-list/ => generated 104 bytes in 16 msecs (HTTP/1.1 200) 8 headers in 233 bytes (2 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 53/130] 188.130.176.181 () {44 vars in 833 bytes} [Mon Mar  8 12:18:47 2021] GET /api/containers/get-requests-list => generated 479 bytes in 22 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QuerySet [{'id': 1, 'phone': '09409324', 'first_name': 'test', 'last_name': 'тест', 'company': 'test', 'image': 'http://api-teus.maximusapp.com/media/test_img_2_gPzFy04.jpeg', 'push_on': False}]>
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 64/131] 188.130.176.181 () {44 vars in 803 bytes} [Mon Mar  8 12:18:48 2021] GET /api/user/profile/ => generated 188 bytes in 19 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date"
+                
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 54/132] 188.130.176.181 () {44 vars in 839 bytes} [Mon Mar  8 12:18:51 2021] GET /api/containers/get-proposition-list => generated 416 bytes in 19 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+None
+
+            select
+                containers_deal.id,
+                info_city.id "city_id", info_city.name "city name",
+				user1.id "user1_id", user1.first_name "user1_name", user1.phone "user1 phone",
+                user2.id "user2_id", user2.first_name "user2_name", user2.phone "user2 phone",
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_deal.amount "amount",
+                containers_deal.handshake_time "handshake_time"
+                from containers_deal
+            join info_city on containers_deal.city_id = info_city.id
+            join info_line on containers_deal.line_id = info_line.id
+			join users_user as user2 on containers_deal.user_proposition_id = user2.id
+            join users_user as user1 on containers_deal.user_request_id = user1.id
+            join info_container on containers_deal.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 65/133] 188.130.176.181 () {44 vars in 825 bytes} [Mon Mar  8 12:18:55 2021] GET /api/containers/get-deal-list => generated 14 bytes in 21 msecs (HTTP/1.1 200) 8 headers in 238 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 55/134] 188.130.176.181 () {44 vars in 817 bytes} [Mon Mar  8 12:18:59 2021] GET /api/info/get-lines-list/ => generated 183 bytes in 15 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 66/135] 188.130.176.181 () {44 vars in 819 bytes} [Mon Mar  8 12:18:59 2021] GET /api/info/get-cities-list/ => generated 104 bytes in 18 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 56/136] 188.130.176.181 () {44 vars in 817 bytes} [Mon Mar  8 12:19:00 2021] GET /api/info/get-lines-list/ => generated 183 bytes in 16 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 67/137] 188.130.176.181 () {44 vars in 827 bytes} [Mon Mar  8 12:19:02 2021] GET /api/info/get-containers-list/ => generated 199 bytes in 20 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 57/138] 188.130.176.181 () {44 vars in 819 bytes} [Mon Mar  8 12:19:05 2021] GET /api/info/get-cities-list/ => generated 104 bytes in 21 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 68/139] 188.130.176.181 () {44 vars in 817 bytes} [Mon Mar  8 12:19:08 2021] GET /api/info/get-lines-list/ => generated 183 bytes in 18 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 58/140] 188.130.176.181 () {44 vars in 819 bytes} [Mon Mar  8 12:19:09 2021] GET /api/info/get-cities-list/ => generated 104 bytes in 18 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 69/141] 188.130.176.181 () {44 vars in 817 bytes} [Mon Mar  8 12:19:10 2021] GET /api/info/get-lines-list/ => generated 183 bytes in 16 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+None
+
+            select
+                containers_deal.id,
+                info_city.id "city_id", info_city.name "city name",
+				user1.id "user1_id", user1.first_name "user1_name", user1.phone "user1 phone",
+                user2.id "user2_id", user2.first_name "user2_name", user2.phone "user2 phone",
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_deal.amount "amount",
+                containers_deal.handshake_time "handshake_time"
+                from containers_deal
+            join info_city on containers_deal.city_id = info_city.id
+            join info_line on containers_deal.line_id = info_line.id
+			join users_user as user2 on containers_deal.user_proposition_id = user2.id
+            join users_user as user1 on containers_deal.user_request_id = user1.id
+            join info_container on containers_deal.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 59/142] 188.130.176.181 () {44 vars in 825 bytes} [Mon Mar  8 12:19:11 2021] GET /api/containers/get-deal-list => generated 14 bytes in 19 msecs (HTTP/1.1 200) 8 headers in 238 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date"
+                
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 70/143] 188.130.176.181 () {44 vars in 839 bytes} [Mon Mar  8 12:19:12 2021] GET /api/containers/get-proposition-list => generated 416 bytes in 19 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 60/144] 188.130.176.181 () {44 vars in 833 bytes} [Mon Mar  8 12:19:12 2021] GET /api/containers/get-requests-list => generated 479 bytes in 20 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QuerySet [{'id': 1, 'phone': '09409324', 'first_name': 'test', 'last_name': 'тест', 'company': 'test', 'image': 'http://api-teus.maximusapp.com/media/test_img_2_gPzFy04.jpeg', 'push_on': False}]>
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 71/145] 188.130.176.181 () {44 vars in 803 bytes} [Mon Mar  8 12:19:12 2021] GET /api/user/profile/ => generated 188 bytes in 20 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 72/146] 159.224.213.215 () {44 vars in 821 bytes} [Tue Mar  9 09:27:31 2021] GET /api/info/get-cities-list/ => generated 104 bytes in 19 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+<QuerySet [{'id': 1, 'phone': '09409324', 'first_name': 'test', 'last_name': 'тест', 'company': 'test', 'image': 'http://api-teus.maximusapp.com/media/test_img_2_gPzFy04.jpeg', 'push_on': False}]>
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 61/147] 159.224.213.215 () {44 vars in 805 bytes} [Tue Mar  9 09:27:39 2021] GET /api/user/profile/ => generated 188 bytes in 19 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+None
+
+            select
+                containers_deal.id,
+                info_city.id "city_id", info_city.name "city name",
+				user1.id "user1_id", user1.first_name "user1_name", user1.phone "user1 phone",
+                user2.id "user2_id", user2.first_name "user2_name", user2.phone "user2 phone",
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_deal.amount "amount",
+                containers_deal.handshake_time "handshake_time"
+                from containers_deal
+            join info_city on containers_deal.city_id = info_city.id
+            join info_line on containers_deal.line_id = info_line.id
+			join users_user as user2 on containers_deal.user_proposition_id = user2.id
+            join users_user as user1 on containers_deal.user_request_id = user1.id
+            join info_container on containers_deal.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 73/148] 159.224.213.215 () {44 vars in 827 bytes} [Tue Mar  9 09:27:40 2021] GET /api/containers/get-deal-list => generated 14 bytes in 20 msecs (HTTP/1.1 200) 8 headers in 238 bytes (1 switches on core 0)

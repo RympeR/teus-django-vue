@@ -31,13 +31,17 @@ const actions = {
                     console.log(list)
                     
                     list.forEach((el) => {
+                        el.phone = {
+                            id: el.user.id,
+                            phone: el.user.phone
+                        }
+                        el.user = {
+                            id: el.user.id,
+                            name: el.user.name,
+                        }
                         el.amount = {
                             amount: el.amount,
                         };
-                        el.user = {
-                            name: el.user.name,
-                            phone: el.user.name + ' ' + el.user.phone
-                        }
                         el.date = {
                             date: el.date,
                         };
@@ -104,9 +108,13 @@ const actions = {
                 console.log(list)
                 
                 list.forEach((el) => {
+                    el.phone = {
+                        id: el.user.id,
+                        phone: el.user.phone
+                    }
                     el.user = {
+                        id: el.user.id,
                         name: el.user.name,
-                        phone: el.user.name + ' ' + el.user.phone
                     }
                     el.amount = {
                         amount: el.amount,

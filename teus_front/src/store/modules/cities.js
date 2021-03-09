@@ -1,6 +1,7 @@
 // import axios from '@/plugins/axios'
 import axios from 'axios'
 
+
 const state = () => ({
     list: [],
     item: {},

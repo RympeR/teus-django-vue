@@ -12,6 +12,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import CKEditor from '@ckeditor/ckeditor5-vue';
 import VuePlyr from 'vue-plyr'
 import wysiwyg from "vue-wysiwyg";
+import UtilsPlugin from './plugins/utils';
 
 Vue.use(wysiwyg, {}); // config is optional. more below
 
@@ -20,18 +21,13 @@ Vue.use(wysiwyg, {}); // config is optional. more below
 Vue.use(VuePlyr);
 Vue.use( CKEditor );
 Vue.use(datePicker);
-
+Vue.use(UtilsPlugin)
 
 
 import BtnTurn from "@/components/BtnTurn";
 import TableThumbnail from "@/components/TableThumbnail";
 Vue.component("btn-turn", BtnTurn);
 Vue.component("table-thumbnail", TableThumbnail);
-
-import CustomMixin from '@/mixins/CustomMixin'
-
-Vue.mixin(CustomMixin);
-
 
 console.log(axios)
 

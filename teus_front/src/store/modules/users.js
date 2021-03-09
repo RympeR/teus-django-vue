@@ -82,7 +82,31 @@ const actions = {
             })
         }
     },
-
+    getFilteredItems({commit, state}, obj){
+        console.log(obj)
+        console.log(state)
+        var str = `${process.env.VUE_APP_HOST}/api/user/get-users-list?`;
+        for (var key in obj) {
+            if (str != `${process.env.VUE_APP_HOST}/api/user/get-users-list?`) {
+                str += "&";
+            }
+            str += key + "=" + encodeURIComponent(obj[key]);
+        }
+        console.log(str)
+        return new Promise((resolve, reject) =>{
+            axios
+            .get(str)
+            .then(response => {
+                let list = response.data.results;
+                
+                commit('setList', list);
+                resolve(list);
+            })
+            .catch(response => {
+                reject(response.error);
+            })
+        })
+    },
     saveItem({
         commit
     }, obj) {
@@ -109,8 +133,9 @@ const actions = {
                         }
                     )
                     .then(function (response) {
-                        this.templateShowSuccess(response);
-                        this.getItem(obj.id)
+                        console.log(this)
+                        state.item = {};
+                        resolve(response.data);
                     })
                     .catch(function (response) {
                         console.log(response);
@@ -129,8 +154,8 @@ const actions = {
                         }
                     )
                     .then(function (response) {
+                        state.item = {};
                         resolve(response.data)
-                        this.goBack()
                     })
                     .catch(function (response) {
                         reject(response.error);

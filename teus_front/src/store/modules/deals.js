@@ -17,32 +17,40 @@ const mutations = {
 }
 
 const actions = {
-    getList({commit}) {
+    getList({ commit }) {
         return new Promise((resolve, reject) => {
-            axios.get(process.env.VUE_APP_HOST+'/api/containers/get-deal-list', {
-                    // params: this.linesSearch,
-                    // headers: {
-                    //     Authoriz ation: token
-                    // }
-                })
+            axios.get(process.env.VUE_APP_HOST + '/api/containers/get-deal-list', {
+                // params: this.linesSearch,
+                // headers: {
+                //     Authoriz ation: token
+                // }
+            })
                 .then(response => {
                     let list = response.data.results;
                     console.log(list)
-                   
+
                     list.forEach((el) => {
                         el.amount = {
                             amount: el.amount,
                         };
-                        el.first_user = {
-                            name: el.first_user.name,
-                            phone: el.first_user.name + ' ' + el.first_user.phone
+                        el.first_user_phone = {
+                            id: el.first_user.id,
+                            phone: el.first_user.phone
                         };
-                        el.sec_user = {
-                            name: el.sec_user.name,
-                            phone: el.sec_user.name + ' ' + el.sec_user.phone
+                        el.first_user_name = {
+                            id: el.first_user.id,
+                            name: el.first_user.name
                         };
-                        
-                        
+                        el.sec_user_phone = {
+                            id: el.sec_user.id,
+                            phone: el.sec_user.phone
+                        };
+                        el.sec_user_name = {
+                            id: el.sec_user.id,
+                            name: el.sec_user.name
+                        };
+
+
                     });
                     commit('setList', list);
 
@@ -54,14 +62,14 @@ const actions = {
                 })
         })
     },
-    getItem({commit}, id) {
+    getItem({ commit }, id) {
         return new Promise((resolve, reject) => {
             axios.get(process.env.VUE_APP_HOST + `/api/containers/get-deal/${id}/`, {
-                    // params: this.linesSearch,
-                    // headers: {
-                    //     Authorization: token
-                    // }
-                })
+                // params: this.linesSearch,
+                // headers: {
+                //     Authorization: token
+                // }
+            })
                 .then(response => {
                     commit('setItem', response.data);
                     resolve(response.data)
@@ -70,8 +78,8 @@ const actions = {
                     reject(response.error);
                 })
         })
-    }, 
-    deleteItem({state}, id) {
+    },
+    deleteItem({ state }, id) {
         let confirmDelete = confirm('Вы действительно хотите удалить этот запрос?');
         if (confirmDelete) {
             return new Promise((resolve, reject) => {
@@ -87,7 +95,7 @@ const actions = {
             })
         }
     },
-    getFilteredItems({commit, state}, obj){
+    getFilteredItems({ commit, state }, obj) {
         console.log(obj)
         console.log(state)
         var str = `${process.env.VUE_APP_HOST}/api/containers/get-deal-list?`;
@@ -98,37 +106,47 @@ const actions = {
             str += key + "=" + encodeURIComponent(obj[key]);
         }
         console.log(str)
-        return new Promise((resolve, reject) =>{
+        return new Promise((resolve, reject) => {
             axios
-            .get(str)
-            .then(response => {
-                let list = response.data.results;
-                
-                console.log(list)
-                
-                list.forEach((el) => {
-                    el.amount = {
-                        amount: el.amount,
-                    };
-                    el.first_user = {
-                        name: el.first_user.name,
-                        phone: el.first_user.name + ' ' + el.first_user.phone
-                    };
-                    el.sec_user = {
-                        name: el.sec_user.name,
-                        phone: el.sec_user.name + ' ' + el.sec_user.phone
-                    };
-                    
-                });
-                commit('setList', list);
-                resolve(list);
-            })
-            .catch(response => {
-                reject(response.error);
-            })
+                .get(str)
+                .then(response => {
+                    let list = response.data.results;
+
+                    console.log(list)
+
+                    list.forEach((el) => {
+                        el.amount = {
+                            amount: el.amount,
+                        };
+                        el.first_user_phone = {
+                            id: el.first_user.id,
+                            phone: el.first_user.phone
+                        };
+                        el.first_user_name = {
+                            id: el.first_user.id,
+                            name: el.first_user.name
+                        };
+                        el.sec_user_phone = {
+                            id: el.sec_user.id,
+                            phone: el.sec_user.phone
+                        };
+                        el.sec_user_name = {
+                            id: el.sec_user.id,
+                            name: el.sec_user.name
+                        };
+
+
+                    });
+
+                    commit('setList', list);
+                    resolve(list);
+                })
+                .catch(response => {
+                    reject(response.error);
+                })
         })
     },
-    saveItem({state}, obj) {
+    saveItem({ state }, obj) {
         console.log(state)
         console.log(obj.id)
         obj.user_request = obj.first_user.id;
@@ -139,20 +157,20 @@ const actions = {
         obj.handshake_time = obj.handshake;
         console.log(obj)
         let formData = new FormData();
-        
+
         Object.keys(obj).map(function (key) {
             if (obj[key])
                 formData.append(key, obj[key]);
         });
-        
+
         if (obj.id) {
             return new Promise((resolve, reject) => {
                 axios
                     .put(process.env.VUE_APP_HOST + '/api/containers/update-deal/' + obj.id + '/', formData, {
-                            headers: {
-                                'Content-Type': 'multipart/form-data'
-                            },
-                        }
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        },
+                    }
                     )
                     .then(response => {
                         console.log(this)
@@ -167,10 +185,10 @@ const actions = {
         } else {
             return new Promise((resolve, reject) => {
                 axios.post(process.env.VUE_APP_HOST + '/api/info/create-deal/', formData, {
-                        headers: {
-                            'Content-Type': 'multipart/form-data',
-                        },
-                    })
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                })
                     .then(response => {
                         state.item = {};
                         resolve(response.data)

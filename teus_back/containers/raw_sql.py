@@ -1,7 +1,7 @@
 from .psycopg_sql import *
-class UserFilter:
 
-    
+
+class UserFilter:
 
     def where_add(self, query):
         if 'where' not in query:
@@ -65,6 +65,7 @@ class UserFilter:
                     else:
                         query += f"\n {field_name} >= {param}"
         return query
+
     def get_users(self, request, login, password):
         base_query = '''
             select * from users_user 
@@ -87,6 +88,7 @@ class UserFilter:
             query = base_query + ';'
             result = execute_select_query(login, password, query)
         return result
+
     def get_propositions(self, request, login, password):
         base_query = '''
             select
@@ -97,7 +99,6 @@ class UserFilter:
                 info_container.id "container id", info_container.name "container name",
                 containers_userproposition.amount "amount",
                 containers_userproposition.start_date "date"
-                
                 from containers_userproposition
             join info_city on containers_userproposition.city_id = info_city.id
             join users_user on containers_userproposition.user_id = users_user.id
@@ -110,6 +111,8 @@ class UserFilter:
                 request, query, 'city_name', 'info_city.name')
             query = self.add_and_case(
                 request, query,  'user_name', 'users_user.first_name')
+            query = self.add_and_case(
+                request, query,  'user_phone', 'users_user.phone')
             query = self.add_and_case(
                 request, query, 'line_name', 'info_line.name')
             query = self.add_and_case(
@@ -155,6 +158,8 @@ class UserFilter:
             query = self.add_and_case(
                 request, query,  'user_name', 'users_user.first_name')
             query = self.add_and_case(
+                request, query,  'user_phone', 'users_user.phone')
+            query = self.add_and_case(
                 request, query, 'line_name', 'info_line.name')
             query = self.add_and_case(
                 request, query,  'container_name', 'info_container.name')
@@ -197,7 +202,11 @@ class UserFilter:
             query = self.add_and_case(
                 request, query,  'first_user_name', 'user1.first_name')
             query = self.add_and_case(
+                request, query,  'first_user_phone', 'user1.phone')
+            query = self.add_and_case(
                 request, query,  'sec_user_name', 'user2.first_name')
+            query = self.add_and_case(
+                request, query,  'sec_user_phone', 'user2.phone')
             query = self.add_and_case(
                 request, query, 'line_name', 'info_line.name')
             query = self.add_and_case(

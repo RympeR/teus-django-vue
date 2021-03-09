@@ -22,7 +22,7 @@
 				<b-thead head-variant="light">
 					<b-tr>
 						<b-th v-for="field in fields" :key="field.key">
-							<template v-if="field.key === 'first_user'">
+							<template v-if="field.key === 'first_user_name'">
 								{{ field.label }}
 								<input
 									class="input"
@@ -32,25 +32,51 @@
 								/>
 								<b-form-datalist
 									id="user-list"
-									:options="users_names"
+									:options="search_existing_list.first_users_names"
 								>
 								</b-form-datalist>
 							</template>
-							<template v-else-if="field.key === 'sec_user'">
+							<template v-else-if="field.key === 'first_user_phone'">
+								{{ field.label }}
+								<input
+									class="input"
+									@input="getFilteredDeals(search)"
+									v-model="search.first_user_phone"
+									list="user-f-p-list"
+								/>
+								<b-form-datalist
+									id="user-f-p-list"
+									:options="search_existing_list.first_users_phones"
+								></b-form-datalist>
+							</template>
+							<template v-else-if="field.key === 'sec_user_name'">
 								{{ field.label }}
 								<input
 									class="input"
 									@input="getFilteredDeals(search)"
 									v-model="search.sec_user_name"
-									list="user-sec-list"
+									list="user-s-n-list"
 								/>
 								<b-form-datalist
-									id="user-sec-list"
-									:options="users_names"
+									id="user-s-n-list"
+									:options="search_existing_list.first_users_names"
+								></b-form-datalist>
+							</template>
+							<template v-else-if="field.key === 'sec_user_phone'">
+								{{ field.label }}
+								<input
+									class="input"
+									@input="getFilteredDeals(search)"
+									v-model="search.sec_user_phone"
+									list="user-s-p-list"
+								/>
+								<b-form-datalist
+									id="user-s-p-list"
+									:options="search_existing_list.first_users_phones"
 								></b-form-datalist>
 							</template>
 							<template v-else-if="field.key === 'line'">
-								{{ field.label }}
+								<div class="stick-top">{{ field.label }}</div>
 								<input
 									class="input"
 									:placeholder="field.label"
@@ -60,12 +86,12 @@
 								/>
 								<b-form-datalist
 									id="line-list"
-									:options="lines_names"
+									:options="search_existing_list.lines"
 								>
 								</b-form-datalist>
 							</template>
 							<template v-else-if="field.key === 'city'">
-								{{ field.label }}
+								<div class="stick-top">{{ field.label }}</div>
 								<input
 									class="input"
 									v-model="search.city_name"
@@ -75,12 +101,12 @@
 								/>
 								<b-form-datalist
 									id="city-list"
-									:options="cities_names"
+									:options="search_existing_list.cities"
 								>
 								</b-form-datalist>
 							</template>
 							<template v-else-if="field.key === 'container'">
-								{{ field.label }}
+								<div class="stick-top">{{ field.label }}</div>
 								<input
 									class="input"
 									v-model="search.container_name"
@@ -90,12 +116,12 @@
 								/>
 								<b-form-datalist
 									id="container-list"
-									:options="containers_names"
+									:options="search_existing_list.containers"
 								>
 								</b-form-datalist>
 							</template>
 							<template v-else-if="field.key === 'amount'">
-								{{ field.label }}
+								<div class="stick-top">{{ field.label }}</div>
 								<input
 									class="input"
 									v-model="search.amount"
@@ -126,7 +152,7 @@
 										month: 'short',
 										year: 'numeric',
 									}"
-									@input="getFilteredPropositions(search)"
+									@input="getFilteredDeals(search)"
 									size="sm"
 									v-model="search.handshake_end"
 									class="mb-2"
@@ -143,7 +169,16 @@
 				<b-tbody>
 					<b-tr v-for="item in lists" :key="item.id">
 						<b-td v-for="field in fields" :key="field.key">
-							<template v-if="field.key === 'first_user'">
+							<template v-if="field.key === 'first_user_name'">
+								<b-link
+									:to="{
+										name: 'student-update',
+										params: { id: item[field.key].id },
+									}"
+									>{{ item[field.key].name }}</b-link
+								>
+							</template>
+							<template v-else-if="field.key === 'first_user_phone'">
 								<b-link
 									:to="{
 										name: 'student-update',
@@ -152,7 +187,16 @@
 									>{{ item[field.key].phone }}</b-link
 								>
 							</template>
-							<template v-else-if="field.key === 'sec_user'">
+							<template v-else-if="field.key === 'sec_user_name'">
+								<b-link
+									:to="{
+										name: 'student-update',
+										params: { id: item[field.key].id },
+									}"
+									>{{ item[field.key].name }}</b-link
+								>
+							</template>
+							<template v-else-if="field.key === 'sec_user_phone'">
 								<b-link
 									:to="{
 										name: 'student-update',
@@ -198,12 +242,13 @@
 					</b-tr>
 				</b-tbody>
 			</b-table-simple>
-			<b-pagination
-				v-model="currentPage"
-				:total-rows="rows"
-				:per-page="perPage"
-				aria-controls="item-table"
-			></b-pagination>
+			<template v-if="deals.list.length > perPage">
+				<b-pagination
+					v-model="currentPage"
+					:total-rows="rows"
+					:per-page="perPage"
+				></b-pagination>
+			</template>
 		</b-col>
 	</b-row>
 </template>
@@ -218,8 +263,10 @@ export default {
 			fields: [
 				{ key: "index", label: "#" },
 				{ key: "id", label: "ID" },
-				{ key: "first_user", label: "Пользователь предложение" },
-				{ key: "sec_user", label: "Пользователь запрос" },
+				{ key: "first_user_name", label: "Предложение имя" },
+				{ key: "first_user_phone", label: "Предложение телефон" },
+				{ key: "sec_user_name", label: "Запрос имя" },
+				{ key: "sec_user_phone", label: "Запрос телефон" },
 				{ key: "line", label: "Линия" },
 				{ key: "city", label: "Город" },
 				{ key: "container", label: "Контейнер" },
@@ -232,6 +279,8 @@ export default {
 			search: {
 				first_user_name: "",
 				sec_user_name: "",
+				first_user_phone: "",
+				sec_user_phone: "",
 				line_name: "",
 				city_name: "",
 				container_name: "",
@@ -239,12 +288,16 @@ export default {
 				handshake: "",
 				handshake_end: "",
 			},
+			filtered: false,
 			perPage: 1,
 			currentPage: 1,
-			lines_names: [],
-			cities_names: [],
-			containers_names: [],
-			users_names: [],
+			search_existing_list:{
+				lines:[],
+				cities: [],
+				first_users_names: [],
+				first_users_phones: [],
+				containers: [],
+			}
 		};
 	},
 	computed: {
@@ -274,25 +327,25 @@ export default {
 			deep: true,
 		},
 	},
-	created() {
+	async created() {
 		this.$store.state.breadcrumbs = [
 			{ text: "Главная", to: { name: "home" } },
 			{ text: "Сделки", to: { name: "deals" } },
 		];
 
-		this.getUserDeal().then((list) => {
+		await this.getUserDeal().then((list) => {
 			console.log(list);
 		});
-		this.getLines().then((list) => {
+		await this.getLines().then((list) => {
 			console.log(list);
 		});
-		this.getContainers().then((list) => {
+		await this.getContainers().then((list) => {
 			console.log(list);
 		});
-		this.getCities().then((list) => {
+		await this.getCities().then((list) => {
 			console.log(list);
 		});
-		this.$store
+		await this.$store
 			.dispatch("users/getList")
 			.then((item) => {
 				console.log(item);
@@ -300,18 +353,22 @@ export default {
 			.catch((error) => {
 				console.log(error);
 			});
-		this.lines.list.forEach((e) => {
-			this.lines_names.push(e.name);
+		this.deals.list.forEach((el) => {
+			console.log(el)
+			this.search_existing_list.lines.push(el.line.name)
+			this.search_existing_list.cities.push(el.city.name)
+			this.search_existing_list.containers.push(el.container.name)
+			this.search_existing_list.first_users_names.push(el.first_user.name)
+			this.search_existing_list.first_users_phones.push(el.first_user.phone)
 		});
-		this.users.list.forEach((e) => {
-			this.users_names.push(e.first_name);
-		});
-		this.cities.list.forEach((e) => {
-			this.cities_names.push(e.name);
-		});
-		this.containers.list.forEach((e) => {
-			this.containers_names.push(e.name);
-		});
+		console.log('----')
+		console.log(this.deals.list)
+		console.log('----')
+		this.search_existing_list.lines = [...new Set(this.search_existing_list.lines)]
+		this.search_existing_list.cities = [...new Set(this.search_existing_list.cities)]
+		this.search_existing_list.containers = [...new Set(this.search_existing_list.containers)]
+		this.search_existing_list.first_users_names = [...new Set(this.search_existing_list.first_users_names)]
+		this.search_existing_list.first_users_phones = [...new Set(this.search_existing_list.first_users_phones)]
 	},
 	methods: {
 		...mapActions({
@@ -329,6 +386,8 @@ export default {
 			this.search = {
 				first_user_name: "",
 				sec_user_name: "",
+				first_user_phone: "",
+				sec_user_phone: "",
 				line_name: "",
 				city_name: "",
 				container_name: "",

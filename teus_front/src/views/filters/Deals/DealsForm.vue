@@ -127,6 +127,7 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
+import Vue from "vue";
 
 export default {
 	name: "DealsForm",
@@ -207,8 +208,16 @@ export default {
 				.dispatch("deals/saveItem", data)
 				.then((item) => {
 					console.log(item);
-					this.templateShowSuccess();
-					if (!data.id) this.goBack();
+					Vue.templateShowSuccess();
+					if (!data.id) Vue.goBack();
+					else this.$store
+							.dispatch("deals/getItem", this.$route.params.id)
+							.then((item) => {
+								console.log(item);
+							})
+							.catch((error) => {
+								console.log(error);
+							});
 				})
 				.catch((error) => {
 					console.log(error);

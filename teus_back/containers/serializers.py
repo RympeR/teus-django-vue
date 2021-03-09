@@ -40,8 +40,8 @@ class RequestSerializer(serializers.ModelSerializer):
         instance.amount = validated_data.get('amount', instance.amount)
         instance.request_date = validated_data.get(
             'request_date', instance.request_date)
-        instance.request_date = validated_data.get(
-            'end_date', instance.request_date)
+        instance.end_date = validated_data.get(
+            'end_date', instance.end_date)
         instance.save()
         return instance
 

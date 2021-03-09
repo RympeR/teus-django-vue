@@ -4,14 +4,15 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import UserSerializer
 from rest_framework import permissions
-from rest_framework.parsers import FileUploadParser, MultiPartParser
+from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from rest_framework.renderers import JSONRenderer
 from rest_framework.decorators import permission_classes, renderer_classes
 from containers.raw_sql import UserFilter
+
 @renderer_classes((JSONRenderer,))
 @permission_classes((permissions.AllowAny,))
 class UserAPI(APIView):
-    parser_classes = (MultiPartParser,)
+    parser_classes = (MultiPartParser, FormParser, JSONParser, )
 
     def get(self, *args, **kwargs):
         print(*kwargs.keys())
@@ -82,7 +83,7 @@ class UserAPI(APIView):
 @permission_classes((permissions.AllowAny,))
 @renderer_classes((JSONRenderer,))
 class UserListAPI(APIView):
-    parser_classes = (MultiPartParser,)
+    parser_classes = (MultiPartParser, FormParser, JSONParser, )
     def get(self, *args, **kwargs):
         users = UserSerializer.getList()
         users_list = users.values()
@@ -105,6 +106,7 @@ class UserListAPI(APIView):
 class UsersList(APIView):
     renderer_classes = (JSONRenderer,)
     permission_classes = (permissions.AllowAny, )
+    parser_classes = (MultiPartParser, FormParser, JSONParser, )
     userfilter = UserFilter()
 
     def get(self, request):
@@ -115,15 +117,17 @@ class UsersList(APIView):
         }
         for ind, row in enumerate(data):
             domain = self.request.get_host()
-            path_image = f'/media/{row[4]}'
+            print(f'\t\t{row[5]}')
+            path_image = f'/media/{row[5]}'
             image_url = 'http://{domain}{path}'.format(
                 domain=domain, path=path_image)
+            print(image_url)
             result['results'].append({
                 "id": row[0],
                 "phone": row[1],
-                "last_name": row[2],
-                "first_name": row[3],
-                "iamge": image_url,
+                "last_name": row[3],
+                "first_name": row[2],
+                "image": image_url,
             })
         return Response(
             {

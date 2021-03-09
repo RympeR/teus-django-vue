@@ -124,6 +124,7 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
+import Vue from "vue";
 
 export default {
 	name: "UserPropositionForm",
@@ -147,7 +148,7 @@ export default {
 		if (this.id) {
 			this.$store.state.breadcrumbs = [
 				{ text: "Главная", to: { name: "home" } },
-				{ text: "Предложения", to: { name: "propositions" } },
+				{ text: "Предложения", to: { name: "proposition" } },
 				{
 					text: "Редактировать",
 					to: {
@@ -159,7 +160,7 @@ export default {
 		} else {
 			this.$store.state.breadcrumbs = [
 				{ text: "Главная", to: { name: "home" } },
-				{ text: "Предложения", to: { name: "propositions" } },
+				{ text: "Предложения", to: { name: "proposition" } },
 				{ text: "Создать", to: { name: "propositions-create" } },
 			];
 		}
@@ -209,8 +210,16 @@ export default {
 				.dispatch("user_propositions/saveItem", data)
 				.then((item) => {
 					console.log(item);
-					this.templateShowSuccess();
-					if (!data.id) this.goBack();
+					Vue.templateShowSuccess();
+					if (!data.id) Vue.goBack();
+					else this.$store
+							.dispatch("user_propositions/getItem", this.$route.params.id)
+							.then((item) => {
+								console.log(item);
+							})
+							.catch((error) => {
+								console.log(error);
+							});
 				})
 				.catch((error) => {
 					console.log(error);

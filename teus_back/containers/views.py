@@ -380,3 +380,4 @@ class DealsList(APIView):
                 "results": result['results']
             }
         )
+

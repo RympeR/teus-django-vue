@@ -10415,3 +10415,316 @@ None
             join info_container on containers_deal.container_id = info_container.id
         ;
 api-teus.maximusapp.com [pid: 6262|app: 0|req: 73/148] 159.224.213.215 () {44 vars in 827 bytes} [Tue Mar  9 09:27:40 2021] GET /api/containers/get-deal-list => generated 14 bytes in 20 msecs (HTTP/1.1 200) 8 headers in 238 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date"
+                
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 74/149] 159.224.213.215 () {44 vars in 870 bytes} [Tue Mar  9 09:42:32 2021] GET /api/containers/get-proposition-list => generated 416 bytes in 20 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+
+w
+
+
+
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date"
+                
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        
+where
+users_user.first_name like '%w%';
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 62/150] 159.224.213.215 () {44 vars in 1049 bytes} [Tue Mar  9 09:42:35 2021] GET /api/containers/get-proposition-list?user_name=w&line_name=&city_name=&container_name=&amount=&request_date=&request_end_date= => generated 14 bytes in 18 msecs (HTTP/1.1 200) 8 headers in 238 bytes (1 switches on core 0)
+
+
+
+
+
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date"
+                
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 75/151] 159.224.213.215 () {44 vars in 1047 bytes} [Tue Mar  9 09:42:36 2021] GET /api/containers/get-proposition-list?user_name=&line_name=&city_name=&container_name=&amount=&request_date=&request_end_date= => generated 416 bytes in 20 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 63/152] 159.224.213.215 () {44 vars in 861 bytes} [Tue Mar  9 09:42:38 2021] GET /api/containers/get-requests-list => generated 479 bytes in 20 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 76/153] 159.224.213.215 () {44 vars in 993 bytes} [Tue Mar  9 09:42:51 2021] GET /api/info/get-lines-list/ => generated 183 bytes in 23 msecs (HTTP/1.1 200) 7 headers in 201 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 64/154] 159.224.213.215 () {44 vars in 932 bytes} [Tue Mar  9 09:42:51 2021] GET /favicon.ico => generated 2648 bytes in 18 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 77/155] 159.224.213.215 () {44 vars in 835 bytes} [Tue Mar  9 09:42:59 2021] GET /api/containers/get-requests-list => generated 479 bytes in 20 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 65/156] 159.224.213.215 () {46 vars in 1113 bytes} [Tue Mar  9 09:43:05 2021] GET /admin/containers/userproposition/2/change/ => generated 14649 bytes in 113 msecs (HTTP/1.1 200) 9 headers in 470 bytes (1 switches on core 0)
+Not Found: /static/admin/css/base.css
+Not Found: /static/admin/css/nav_sidebar.css
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 78/158] 159.224.213.215 () {44 vars in 932 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/css/base.css => generated 2690 bytes in 47 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6265|app: 0|req: 9/158] 159.224.213.215 () {44 vars in 946 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/css/nav_sidebar.css => generated 2711 bytes in 47 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/css/forms.css
+api-teus.maximusapp.com [pid: 6264|app: 0|req: 7/159] 159.224.213.215 () {44 vars in 934 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/css/forms.css => generated 2693 bytes in 47 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Response to request with pk a98bcac5-c513-4e42-bdd8-9ce34020fb28 has content type text/javascript but was unable to parse it
+Not Found: /static/admin/css/responsive.css
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 79/160] 159.224.213.215 () {44 vars in 944 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/css/responsive.css => generated 2708 bytes in 47 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/vendor/jquery/jquery.js
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 66/161] 159.224.213.215 () {44 vars in 945 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/js/vendor/jquery/jquery.js => generated 2732 bytes in 44 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6265|app: 0|req: 10/162] 159.224.213.215 () {44 vars in 893 bytes} [Tue Mar  9 09:43:05 2021] GET /admin/jsi18n/ => generated 14990 bytes in 57 msecs (HTTP/1.1 200) 6 headers in 198 bytes (1 switches on core 0)
+Not Found: /static/admin/js/jquery.init.js
+Not Found: /static/admin/js/calendar.js
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 67/164] 159.224.213.215 () {44 vars in 927 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/js/jquery.init.js => generated 2705 bytes in 48 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 80/164] 159.224.213.215 () {44 vars in 921 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/js/calendar.js => generated 2696 bytes in 48 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/admin/DateTimeShortcuts.js
+api-teus.maximusapp.com [pid: 6265|app: 0|req: 11/165] 159.224.213.215 () {44 vars in 951 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/js/admin/DateTimeShortcuts.js => generated 2741 bytes in 32 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/core.js
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 81/166] 159.224.213.215 () {44 vars in 913 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/js/core.js => generated 2684 bytes in 43 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/actions.js
+Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 68/168] 159.224.213.215 () {44 vars in 957 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/js/admin/RelatedObjectLookups.js => generated 2750 bytes in 41 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6264|app: 0|req: 8/168] 159.224.213.215 () {44 vars in 919 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/js/actions.js => generated 2693 bytes in 41 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/urlify.js
+api-teus.maximusapp.com [pid: 6265|app: 0|req: 12/169] 159.224.213.215 () {44 vars in 917 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/js/urlify.js => generated 2690 bytes in 49 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/prepopulate.js
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 82/170] 159.224.213.215 () {44 vars in 927 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/js/prepopulate.js => generated 2705 bytes in 45 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/vendor/xregexp/xregexp.js
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 69/171] 159.224.213.215 () {44 vars in 949 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/js/vendor/xregexp/xregexp.js => generated 2738 bytes in 45 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/vendor/jquery/jquery.js
+api-teus.maximusapp.com [pid: 6264|app: 0|req: 9/172] 159.224.213.215 () {44 vars in 945 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/js/vendor/jquery/jquery.js => generated 2732 bytes in 32 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/prepopulate_init.js
+api-teus.maximusapp.com [pid: 6265|app: 0|req: 13/173] 159.224.213.215 () {44 vars in 937 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/js/prepopulate_init.js => generated 2720 bytes in 32 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/calendar.js
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 70/174] 159.224.213.215 () {44 vars in 921 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/js/calendar.js => generated 2696 bytes in 30 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/nav_sidebar.js
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 83/175] 159.224.213.215 () {44 vars in 927 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/js/nav_sidebar.js => generated 2705 bytes in 33 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/jquery.init.js
+api-teus.maximusapp.com [pid: 6264|app: 0|req: 10/176] 159.224.213.215 () {44 vars in 927 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/js/jquery.init.js => generated 2705 bytes in 31 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/img/icon-changelink.svg
+api-teus.maximusapp.com [pid: 6265|app: 0|req: 14/177] 159.224.213.215 () {44 vars in 1000 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/img/icon-changelink.svg => generated 2723 bytes in 33 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/admin/DateTimeShortcuts.js
+Not Found: /static/admin/img/icon-addlink.svg
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 71/178] 159.224.213.215 () {44 vars in 951 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/js/admin/DateTimeShortcuts.js => generated 2741 bytes in 31 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 84/179] 159.224.213.215 () {44 vars in 994 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/img/icon-addlink.svg => generated 2714 bytes in 33 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/core.js
+Not Found: /static/admin/js/change_form.js
+api-teus.maximusapp.com [pid: 6264|app: 0|req: 11/180] 159.224.213.215 () {44 vars in 913 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/js/core.js => generated 2684 bytes in 26 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6265|app: 0|req: 15/181] 159.224.213.215 () {44 vars in 927 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/js/change_form.js => generated 2705 bytes in 33 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 85/182] 159.224.213.215 () {44 vars in 957 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/js/admin/RelatedObjectLookups.js => generated 2750 bytes in 16 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/actions.js
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 72/183] 159.224.213.215 () {44 vars in 919 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/js/actions.js => generated 2693 bytes in 17 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/urlify.js
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 86/184] 159.224.213.215 () {44 vars in 917 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/js/urlify.js => generated 2690 bytes in 16 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/prepopulate.js
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 73/185] 159.224.213.215 () {44 vars in 927 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/js/prepopulate.js => generated 2705 bytes in 16 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/vendor/xregexp/xregexp.js
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 87/186] 159.224.213.215 () {44 vars in 949 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/js/vendor/xregexp/xregexp.js => generated 2738 bytes in 16 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/css/responsive.css
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 74/187] 159.224.213.215 () {44 vars in 944 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/css/responsive.css => generated 2708 bytes in 48 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/img/icon-addlink.svg
+api-teus.maximusapp.com [pid: 6265|app: 0|req: 16/188] 159.224.213.215 () {44 vars in 994 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/img/icon-addlink.svg => generated 2714 bytes in 47 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/img/icon-changelink.svg
+api-teus.maximusapp.com [pid: 6264|app: 0|req: 12/189] 159.224.213.215 () {44 vars in 1000 bytes} [Tue Mar  9 09:43:05 2021] GET /static/admin/img/icon-changelink.svg => generated 2723 bytes in 49 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/prepopulate_init.js
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 88/190] 159.224.213.215 () {44 vars in 937 bytes} [Tue Mar  9 09:43:06 2021] GET /static/admin/js/prepopulate_init.js => generated 2720 bytes in 32 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /static/admin/js/change_form.js
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 75/191] 159.224.213.215 () {44 vars in 927 bytes} [Tue Mar  9 09:43:06 2021] GET /static/admin/js/change_form.js => generated 2705 bytes in 28 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date"
+                
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 6265|app: 0|req: 17/192] 159.224.213.215 () {44 vars in 841 bytes} [Tue Mar  9 09:43:07 2021] GET /api/containers/get-proposition-list => generated 416 bytes in 19 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date"
+                
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 89/193] 159.224.213.215 () {44 vars in 1015 bytes} [Tue Mar  9 09:43:08 2021] GET /api/containers/get-proposition-list => generated 416 bytes in 26 msecs (HTTP/1.1 200) 7 headers in 207 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 76/194] 159.224.213.215 () {44 vars in 943 bytes} [Tue Mar  9 09:43:10 2021] GET /favicon.ico => generated 2648 bytes in 19 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date"
+                
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 90/195] 159.224.213.215 () {48 vars in 894 bytes} [Tue Mar  9 09:43:12 2021] GET /api/containers/get-proposition-list => generated 416 bytes in 21 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QueryDict: {}>
+None
+None
+None
+None
+None
+
+            select
+                containers_userrequest.id,
+                info_city.id "city id", info_city.name "city name", 
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userrequest.amount "amount",
+                containers_userrequest.request_date "date",
+                containers_userrequest.end_date "end date"
+                from containers_userrequest
+            join info_city on containers_userrequest.city_id = info_city.id
+            join users_user on containers_userrequest.user_id = users_user.id
+            join info_line on containers_userrequest.line_id = info_line.id
+            join info_container on containers_userrequest.container_id = info_container.id  
+        ;
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 77/196] 159.224.213.215 () {44 vars in 835 bytes} [Tue Mar  9 09:43:14 2021] GET /api/containers/get-requests-list => generated 479 bytes in 21 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+<QuerySet [{'id': 1, 'phone': '09409324', 'first_name': 'test', 'last_name': 'тест', 'company': 'test', 'image': 'http://api-teus.maximusapp.com/media/test_img_2_gPzFy04.jpeg', 'push_on': False}]>
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 91/197] 159.224.213.215 () {44 vars in 819 bytes} [Tue Mar  9 09:43:17 2021] GET /api/info/get-lines-list/ => generated 183 bytes in 48 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 78/198] 159.224.213.215 () {44 vars in 805 bytes} [Tue Mar  9 09:43:17 2021] GET /api/user/profile/ => generated 188 bytes in 67 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6264|app: 0|req: 13/199] 159.224.213.215 () {44 vars in 829 bytes} [Tue Mar  9 09:43:17 2021] GET /api/info/get-containers-list/ => generated 199 bytes in 82 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 92/200] 159.224.213.215 () {44 vars in 821 bytes} [Tue Mar  9 09:43:17 2021] GET /api/info/get-cities-list/ => generated 104 bytes in 47 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6265|app: 0|req: 18/201] 159.224.213.215 () {44 vars in 829 bytes} [Tue Mar  9 09:43:17 2021] GET /api/containers/get-request/1/ => generated 230 bytes in 95 msecs (HTTP/1.1 200) 8 headers in 258 bytes (1 switches on core 0)
+None
+None
+None
+None
+None
+
+            select
+                containers_userproposition.id,
+                info_city.id "city_id", info_city.name "city name", 
+                users_user.id "user_id", users_user.first_name "user name", users_user.phone "user phone", 
+                info_line.id "line id", info_line.name "line name",
+                info_container.id "container id", info_container.name "container name",
+                containers_userproposition.amount "amount",
+                containers_userproposition.start_date "date"
+                
+                from containers_userproposition
+            join info_city on containers_userproposition.city_id = info_city.id
+            join users_user on containers_userproposition.user_id = users_user.id
+            join info_line on containers_userproposition.line_id = info_line.id
+            join info_container on containers_userproposition.container_id = info_container.id
+        ;
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 93/202] 159.224.213.215 () {44 vars in 841 bytes} [Tue Mar  9 09:43:20 2021] GET /api/containers/get-proposition-list => generated 416 bytes in 21 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6264|app: 0|req: 14/203] 159.224.213.215 () {44 vars in 819 bytes} [Tue Mar  9 09:43:21 2021] GET /api/info/get-lines-list/ => generated 183 bytes in 61 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6262|app: 0|req: 94/204] 159.224.213.215 () {44 vars in 821 bytes} [Tue Mar  9 09:43:21 2021] GET /api/info/get-cities-list/ => generated 104 bytes in 67 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6265|app: 0|req: 19/205] 159.224.213.215 () {44 vars in 829 bytes} [Tue Mar  9 09:43:21 2021] GET /api/info/get-containers-list/ => generated 199 bytes in 80 msecs (HTTP/1.1 200) 8 headers in 233 bytes (1 switches on core 0)
+<QuerySet [{'id': 1, 'phone': '09409324', 'first_name': 'test', 'last_name': 'тест', 'company': 'test', 'image': 'http://api-teus.maximusapp.com/media/test_img_2_gPzFy04.jpeg', 'push_on': False}]>
+api-teus.maximusapp.com [pid: 6263|app: 0|req: 79/206] 159.224.213.215 () {44 vars in 837 bytes} [Tue Mar  9 09:43:21 2021] GET /api/containers/get-proposition/1/ => generated 206 bytes in 97 msecs (HTTP/1.1 200) 8 headers in 258 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 6264|app: 0|req: 15/207] 159.224.213.215 () {44 vars in 805 bytes} [Tue Mar  9 09:43:21 2021] GET /api/user/profile/ => generated 188 bytes in 39 msecs (HTTP/1.1 200) 8 headers in 239 bytes (1 switches on core 0)

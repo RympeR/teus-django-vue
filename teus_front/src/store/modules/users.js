@@ -65,34 +65,27 @@ const actions = {
         })
     },
     deleteItem({
-        commit
+        state
     }, id) {
-        function deleteRequest(address, id) {
-            let confirmDelete = confirm('Удаление этого пользователя также удалит все его запросы, заявки и чаты. Действительно удалить?');
-            if (confirmDelete) {
-                return new Promise((resolve, reject) => {
-                    axios
-                        .delete(process.env.VUE_APP_HOST + address + id + '/', {
-                            headers: {},
-                        })
-                        .then(function (response) {
-                            resolve(response.data)
-                            return true
-                        })
-                        .catch(function (response) {
-                            reject(response.error);
-                        })
-                })
-            } else
-                return false
+        let confirmDelete = confirm('Удаление этого пользователя также удалит все его запросы, заявки и чаты. Действительно удалить?');
+        if (confirmDelete) {
+            return new Promise((resolve, reject) => {
+                axios.delete(`${process.env.VUE_APP_HOST}/api/user/delete-profile/${id}/`)
+                    .then(response => {
+                        state.list = state.list.filter(element => element.id !== id);
+                        resolve(response.data);
+                    })
+                    .catch(response => {
+                        console.log(response.error);
+                        reject(response.error);
+                    })
+            })
         }
-        console.log(commit)
-        console.log(this)
-        deleteRequest('/api/user/delete-profile/', id)
-            // state.list = state.list.filter(element => element.id !== id);
     },
-    
-    saveItem({commit}, obj) {
+
+    saveItem({
+        commit
+    }, obj) {
         console.log(commit)
         console.log(obj.id)
         let formData = new FormData();
@@ -104,7 +97,7 @@ const actions = {
         console.log(obj)
         if (obj.id) {
             return new Promise((resolve, reject) => {
-                  
+
                 axios
                     .put(
                         process.env.VUE_APP_HOST + '/api/user/update-profile/' + obj.id + '/',

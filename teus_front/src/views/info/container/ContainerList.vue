@@ -50,7 +50,7 @@ export default {
             fields: [
                 { key: 'index', label: '#'},
                 { key: 'id', label: 'ID'},
-                { key: 'name', label: 'Название'},
+                { key: 'name', label: 'Название', sortable: true},
                 { key: 'image', label: 'Иконка'},
                 { key: 'actions', label: ''},
 

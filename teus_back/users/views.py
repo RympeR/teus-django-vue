@@ -7,7 +7,7 @@ from rest_framework import permissions
 from rest_framework.parsers import FileUploadParser, MultiPartParser
 from rest_framework.renderers import JSONRenderer
 from rest_framework.decorators import permission_classes, renderer_classes
-
+from containers.raw_sql import UserFilter
 @renderer_classes((JSONRenderer,))
 @permission_classes((permissions.AllowAny,))
 class UserAPI(APIView):
@@ -99,5 +99,34 @@ class UserListAPI(APIView):
         return Response(
             {
                 "results": users_list
+            }
+        )
+
+class UsersList(APIView):
+    renderer_classes = (JSONRenderer,)
+    permission_classes = (permissions.AllowAny, )
+    userfilter = UserFilter()
+
+    def get(self, request):
+        print(request.GET)
+        data = self.userfilter.get_users(request, 'postgres', '1111')
+        result = {
+            "results": []
+        }
+        for ind, row in enumerate(data):
+            domain = self.request.get_host()
+            path_image = f'/media/{row[4]}'
+            image_url = 'http://{domain}{path}'.format(
+                domain=domain, path=path_image)
+            result['results'].append({
+                "id": row[0],
+                "phone": row[1],
+                "last_name": row[2],
+                "first_name": row[3],
+                "iamge": image_url,
+            })
+        return Response(
+            {
+                "results": result['results']
             }
         )

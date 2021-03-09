@@ -37,7 +37,7 @@ console.log(axios)
 Vue.prototype.$axios = axios.create({
     baseURL: process.env.VUE_APP_HOST
 });
-
+Vue.prototype.$axios.defaults.baseURL = process.env.VUE_APP_HOST;
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons);

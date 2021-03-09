@@ -123,14 +123,14 @@ class UserFilter:
                 request, query,  'request_date', 'request_end_date', 'containers_userproposition.start_date')
             query = self.add_between_case(request, query, 'request_date',
                                           'request_end_date', 'containers_userproposition.end_date',  or_=True)
-            query += ';'
+            query += 'order by "date";'
             print(query)
             result = execute_select_query(login, password, query)
 
         except Exception as e:
             print(e)
             print('failed')
-            query = base_query + ';'
+            query = base_query + 'order by "date";'
             result = execute_select_query(login, password, query)
         return result
 
@@ -167,13 +167,13 @@ class UserFilter:
                 request, query, 'amount', 'amount', str_=False)
             query = self.add_between_case(
                 request, query,  'request_date', 'request_end_date', 'containers_userrequest.request_date')
-            query += ';'
+            query += 'order by "date", "end_date";'
             print(query)
             result = execute_select_query(login, password, query)
 
         except Exception as e:
             print(e)
-            query = base_query + ';'
+            query = base_query + 'order by "date", "end_date";'
             result = execute_select_query(login, password, query)
         return result
 
@@ -215,12 +215,12 @@ class UserFilter:
                 request, query, 'amount', 'amount', str_=False)
             query = self.add_between_case(
                 request, query,  'handshake', 'handshake_end', 'containers_deal.handshake_time')
-            query += ';'
+            query += 'order by containers_deal.handshake_time;'
             print(query)
             result = execute_select_query(login, password, query)
 
         except Exception as e:
             print(e)
-            query = base_query + ';'
+            query = base_query + 'order by containers_deal.handshake_time;'
             result = execute_select_query(login, password, query)
         return result

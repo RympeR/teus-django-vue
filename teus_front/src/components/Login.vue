@@ -5,13 +5,13 @@
                 <h1 class="login__title">Панель управления</h1>
                 <b-form @submit="login($event)" class="login__form">
                     <b-form-group label-cols-sm="4"
-                                  label="E-mail"
+                                  label="Login"
                     >
                         <b-form-input
                             v-model="email"
-                            type="email"
+                            type="text"
                             required
-                            placeholder="Введите ваш E-mail"
+                            placeholder="Введите ваш Login"
                         />
                     </b-form-group>
 

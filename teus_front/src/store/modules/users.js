@@ -30,10 +30,6 @@ const actions = {
                     let list = response.data.results;
                     console.log(list)
                     list.forEach((el) => {
-                        // el= {
-                        //     id : el.id,
-                        //     name : el.name + ' ' + el.phone
-                        // }
                         console.log(el)
                     });
                     commit('setList', list);

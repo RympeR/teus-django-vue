@@ -151,6 +151,7 @@ const actions = {
                 axios
                     .put(process.env.VUE_APP_HOST + '/api/containers/update-request/' + obj.id + '/', formData, {
                             headers: {
+                                // token: token,
                                 // 'Content-Type': 'multipart/form-data'
                             },
                         }

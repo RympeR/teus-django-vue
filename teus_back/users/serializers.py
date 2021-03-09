@@ -1,6 +1,6 @@
 from django.db.models.fields import NullBooleanField
 from rest_framework import serializers
-from .models import User
+from .models import User, Admin
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
 
@@ -32,16 +32,17 @@ class UserSerializer(serializers.ModelSerializer):
             image = validated_data['image']
         except KeyError:
             image = None
-        
+        token = validated_data['token']
         user = User(
             phone=phone,
             first_name=first_name,
             last_name=last_name,
             company=company,
-            image=image
+            image=image,
+            token=token
         )
         user.save()
-        return user.id
+        return user.token
 
     @staticmethod
     def update(validated_data):
@@ -92,3 +93,22 @@ class UserSerializer(serializers.ModelSerializer):
     def getList():
         users = User.objects.all()
         return users
+
+class AdminSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Admin
+        fields = '__all__'
+    
+    def create(self, validate_data):
+        print(validate_data)
+        admin = Admin.objects.create(
+            login=validate_data.get('login'),
+            password=validate_data.get('password'),
+            token=validate_data.get['token']
+        )
+        return admin.token
+
+    def update(self, instance, validated_data):
+        instance.password = validated_data.pop('password', instance.password)
+        instance.save()
+        return instance

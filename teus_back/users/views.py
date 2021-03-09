@@ -1,13 +1,15 @@
 from django.http import request
+from django.shortcuts import get_object_or_404
 from rest_framework import generics, permissions, filters
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializers import UserSerializer
+from .serializers import UserSerializer, AdminSerializer
 from rest_framework import permissions
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from rest_framework.renderers import JSONRenderer
 from rest_framework.decorators import permission_classes, renderer_classes
 from containers.raw_sql import UserFilter
+from .models import User, Admin
 
 @renderer_classes((JSONRenderer,))
 @permission_classes((permissions.AllowAny,))
@@ -15,76 +17,111 @@ class UserAPI(APIView):
     parser_classes = (MultiPartParser, FormParser, JSONParser, )
 
     def get(self, *args, **kwargs):
-        print(*kwargs.keys())
-        user = UserSerializer.getProfile(**kwargs)
-        domain = self.request.get_host()
         try:
-            path_image = user.image.url
-            image_url = 'http://{domain}{path}'.format(
-                domain=domain, path=path_image)
-        except ValueError:
-            image_url = ''
-        return Response(
-            {
-                "user_id": user.id,
-                "phone": user.phone,
-                "image": image_url,
-                "first_name": user.first_name,
-                "last_name": user.last_name,
-                "company": user.company
-            }
-        )
-
+            print(self.request.headers)
+            user = User.objects.get(token=self.request.headers['token'])
+        except Exception:
+            user = None
+        if user:
+            user = UserSerializer.getProfile(**kwargs)
+            domain = self.request.get_host()
+            try:
+                path_image = user.image.url
+                image_url = 'http://{domain}{path}'.format(
+                    domain=domain, path=path_image)
+            except ValueError:
+                image_url = ''
+            return Response(
+                {
+                    "user_id": user.id,
+                    "phone": user.phone,
+                    "image": image_url,
+                    "first_name": user.first_name,
+                    "last_name": user.last_name,
+                    "company": user.company
+                }
+            )
+        else:
+            return Response(
+                {
+                    "status": "invalid token"
+                }
+            )
     def post(self, *args, **kwargs):
-
-        print(self.request.data)
-        user_id = UserSerializer.create(self.request.data)
+        data = dict(self.request.data)  
+        print(type(data['phone'][0]))
+        data['token'] = User.generate_token(data['phone'][0])
+        print(data['token'])
+        user_token = UserSerializer.create(data)
         return Response(
             {
-                "user_id": user_id
+                "status": "ok",
+                "token": user_token
             }
         )
+
 
     def put(self, *args, **kwargs):
-        print(self.request.data)
-        data = dict(self.request.data)
-        print(data)
-        data['user_id'] = kwargs['user_id']
-        user = UserSerializer.update(data)
-        domain = self.request.get_host()
         try:
-            path_image = user.image.url
-            image_url = 'http://{domain}{path}'.format(
-                domain=domain, path=path_image)
-        except ValueError:
-            image_url = ''
-        return Response(
-            {
-                "user_id": user.id,
-                "image": image_url,
-                "phone": user.phone,
-                "first_name": user.first_name,
-                "last_name": user.last_name,
-                "company": user.company
-            }
-        )
+            user = User.objects.get(token=self.request.headers['token'])
+        except Exception:
+            user = None
+        if user:
+            data = dict(self.request.data)
+            data['user_id'] = kwargs['user_id']
+            user = UserSerializer.update(data)
+            domain = self.request.get_host()
+            try:
+                path_image = user.image.url
+                image_url = 'http://{domain}{path}'.format(
+                    domain=domain, path=path_image)
+            except ValueError:
+                image_url = ''
+            return Response(
+                {
+                    "user_id": user.id,
+                    "image": image_url,
+                    "phone": user.phone,
+                    "first_name": user.first_name,
+                    "last_name": user.last_name,
+                    "company": user.company
+                }
+            )
+        else:
+            return Response(
+                {
+                    "status": "invalid token"
+                }
+            )
 
     def delete(self, *args, **kwargs):
-        user = UserSerializer.deleteUser(
-            **kwargs
-        )
-        return Response(
-            {
-                "user_id": user[0]
-            }
-        )
-
+        try:
+            user = User.objects.get(token=self.request.headers['token'])
+        except Exception:
+            user = None
+        if user:
+            user = UserSerializer.deleteUser(
+                **kwargs
+            )
+            return Response(
+                {
+                    "user_id": user[0]
+                }
+            )
+        else:
+            return Response(
+                {
+                    "status": "invalid token"
+                }
+            )
 
 @permission_classes((permissions.AllowAny,))
 @renderer_classes((JSONRenderer,))
 class UserListAPI(APIView):
     parser_classes = (MultiPartParser, FormParser, JSONParser, )
     def get(self, *args, **kwargs):
+
+
         users = UserSerializer.getList()
         users_list = users.values()
         domain = self.request.get_host()
@@ -99,10 +136,10 @@ class UserListAPI(APIView):
         print(users_list)
         return Response(
             {
-                "results": users_list
+                "results": users_list,
+                "status": "ok"
             }
         )
-
 class UsersList(APIView):
     renderer_classes = (JSONRenderer,)
     permission_classes = (permissions.AllowAny, )
@@ -110,7 +147,7 @@ class UsersList(APIView):
     userfilter = UserFilter()
 
     def get(self, request):
-        print(request.GET)
+
         data = self.userfilter.get_users(request, 'postgres', '1111')
         result = {
             "results": []
@@ -134,3 +171,83 @@ class UsersList(APIView):
                 "results": result['results']
             }
         )
+       
+
+class AdminAPI(APIView):
+    renderer_classes = (JSONRenderer,)
+    permission_classes = (permissions.AllowAny, )
+    parser_classes = (MultiPartParser, FormParser, JSONParser, )
+    userfilter = UserFilter()
+    
+    def post(self, *args, **kwargs):
+        try:
+            admin = Admin.objects.filter(
+                login=self.request.data['email'],
+                password=self.request.data['password']
+            )[0]
+        except Exception as e:
+            print(e)
+            admin = None
+        print(admin)
+        print(self.request.data)
+        if admin:
+            return Response(
+                {
+                    "status": True,
+                    "id": admin.id,
+                    "login": admin.login,
+                    "password": admin.password,
+                    "token": admin.token
+                }
+            )
+        else:
+            return Response(
+                {
+                    "status": False
+                }
+            )
+
+    def get(self, *args, **kwargs):
+        data =  dict(self.request.data)
+        data['token'] =Admin.generate_token(data['email'][0])
+        admin = AdminSerializer(data=data)
+        if admin.is_valid():
+            return Response(
+                {
+                    "status": True,
+                    "token": admin.data['token']
+                }
+            )
+        else:
+            return Response(
+                {
+                    "status": False,
+                    "data": admin.data
+                }
+            )
+
+
+    def put(self, *args, **kwargs):
+        try:
+            admin = Admin.objects.get(token=self.request.headers['token'])
+        except Exception:
+            admin = None
+        if admin:
+            instance = self.get_object(admin.token)
+            admin = AdminSerializer(
+                instance=instance, data=self.request.data)
+            if admin.is_valid():
+                admin.save()
+                return Response({
+                    "id": admin.data['id']
+                })
+            else:
+                return Response(
+                    admin.data
+                )
+        else:
+            return Response(
+                {
+                    "status": "invalid token"
+                }
+            )

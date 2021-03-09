@@ -215,7 +215,7 @@ export default {
         .then((item) => {
           console.log(item);
           this.templateShowSuccess();
-          this.goBack();
+          if (!data.id) this.goBack();
         })
         .catch((error) => {
           console.log(error);

@@ -65,7 +65,28 @@ class UserFilter:
                     else:
                         query += f"\n {field_name} >= {param}"
         return query
+    def get_users(self, request, login, password):
+        base_query = '''
+            select * from users_user 
+        '''
+        try:
+            query = base_query
+            query = self.add_and_case(
+                request, query, 'first_name', 'users_user.first_name')
+            query = self.add_and_case(
+                request, query,  'last_name', 'users_user.last_name')
+            query = self.add_and_case(
+                request, query, 'phone', 'users_user.phone')
+            query += ';'
+            print(query)
+            result = execute_select_query(login, password, query)
 
+        except Exception as e:
+            print(e)
+            print('failed')
+            query = base_query + ';'
+            result = execute_select_query(login, password, query)
+        return result
     def get_propositions(self, request, login, password):
         base_query = '''
             select

@@ -36,7 +36,7 @@ export default {
             fields: [
                 { key: 'index', label: '#'},
                 { key: 'id', label: 'ID'},
-                { key: 'name', label: 'Название'},
+                { key: 'name', label: 'Название', sortable: true},
                 { key: 'actions', label: ''},
 
             ],

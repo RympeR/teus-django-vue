@@ -10,7 +10,6 @@
                             <b-form-input class="short"
                                 type="text"
                                 required
-                                placeholder="ru"
                                 v-model="containers.item.name"
                             />
                         </div>
@@ -117,7 +116,8 @@ export default {
                 .then(item => {
                     console.log(item)
                     this.templateShowSuccess();
-                    this.goBack();
+                    if(!data.id)
+                        this.goBack();
                 })
                 .catch(error => {
                     console.log(error)

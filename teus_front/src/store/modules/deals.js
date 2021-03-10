@@ -66,9 +66,9 @@ const actions = {
         return new Promise((resolve, reject) => {
             axios.get(process.env.VUE_APP_HOST + `/api/containers/get-deal/${id}/`, {
                 // params: this.linesSearch,
-                // headers: {
-                //     Authorization: token
-                // }
+                headers: {
+                    Authorization: "tset",
+                },
             })
                 .then(response => {
                     commit('setItem', response.data);
@@ -168,6 +168,7 @@ const actions = {
                 axios
                     .put(process.env.VUE_APP_HOST + '/api/containers/update-deal/' + obj.id + '/', formData, {
                         headers: {
+                            Authorization: "tset",
                             'Content-Type': 'multipart/form-data'
                         },
                     }
@@ -186,6 +187,7 @@ const actions = {
             return new Promise((resolve, reject) => {
                 axios.post(process.env.VUE_APP_HOST + '/api/info/create-deal/', formData, {
                     headers: {
+                        Authorization: "tset",
                         'Content-Type': 'multipart/form-data',
                     },
                 })

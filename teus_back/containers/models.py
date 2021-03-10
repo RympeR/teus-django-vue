@@ -20,6 +20,7 @@ class UserProposition(models.Model):
     line = models.ForeignKey(Line, related_name='line_proposition', on_delete=models.CASCADE, null=True, blank=True)
     container = models.ForeignKey(Container, related_name='container_proposition', on_delete=models.CASCADE, null=True, blank=True)
     start_date = models.DateField(verbose_name='start date', null=True, blank=True)
+    end_date = models.DateField(verbose_name='end date', null=True, blank=True)
 
 class Deal(models.Model):
     user_request = models.ForeignKey(User, related_name='deal_user_request', on_delete=models.CASCADE)

@@ -17,9 +17,9 @@ const mutations = {
 }
 
 const actions = {
-    getItem({commit}, id) {
+    getItem({commit}) {
         return new Promise((resolve, reject) => {
-            axios.get(process.env.VUE_APP_HOST + `/api/info/get-city/${id}/`, {
+            axios.get(process.env.VUE_APP_HOST + `/api/user/admin/profile/`, {
                     // params: this.linesSearch,
                     // headers: {
                     //     Authorization: token

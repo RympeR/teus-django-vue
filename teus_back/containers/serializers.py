@@ -131,7 +131,8 @@ class PropositionSerializer(serializers.ModelSerializer):
             line=validated_data.pop('line', None),
             container=validated_data.pop('container', None),
             amount=validated_data.get('amount', None),
-            start_date=validated_data.get('start_date', None)
+            start_date=validated_data.get('start_date', None),
+            end_date=validated_data.get('end_date', None)
         )
         return user_proposition
 
@@ -144,6 +145,8 @@ class PropositionSerializer(serializers.ModelSerializer):
         instance.amount = validated_data.get('amount', instance.amount)
         instance.start_date = validated_data.get(
             'start_date', instance.start_date)
+        instance.end_date = validated_data.get(
+            'end_date', instance.end_date)
         instance.save()
         return instance
 

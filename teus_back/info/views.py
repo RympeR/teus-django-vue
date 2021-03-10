@@ -7,14 +7,19 @@ from .serializers import CitySerializer, ContainerSerializer, LineSerializer
 from rest_framework import permissions
 from rest_framework.parsers import MultiPartParser
 from rest_framework.renderers import JSONRenderer
-from rest_framework.decorators import permission_classes, renderer_classes, api_view, parser_classes
+from rest_framework.decorators import permission_classes, renderer_classes, api_view, parser_classes, authentication_classes
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication 
 
+class CsrfExemptSessionAuthentication(SessionAuthentication):
+
+    def enforce_csrf(self, request):
+        return
 
 @renderer_classes((JSONRenderer,))
 @permission_classes((permissions.AllowAny,))
 class ContainerAPI(APIView):
     parser_classes = (MultiPartParser,)
-
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
     def get(self, *args, **kwargs):
         container = ContainerSerializer.get(**kwargs)
         domain = self.request.get_host()
@@ -39,7 +44,6 @@ class ContainerAPI(APIView):
 
     def put(self, *args, **kwargs):
         data = dict(self.request.data)
-        print(data)
         data['container_id'] = kwargs['container_id']
         container = ContainerSerializer.put(data)
         domain = self.request.get_host()
@@ -67,6 +71,7 @@ class ContainerAPI(APIView):
 @api_view(['GET'])
 @parser_classes((MultiPartParser, ))
 @renderer_classes((JSONRenderer,))
+@authentication_classes((CsrfExemptSessionAuthentication, BasicAuthentication))
 @permission_classes((permissions.AllowAny,))
 def get_containers_list(request):
     containers = ContainerSerializer.get_list()
@@ -89,7 +94,7 @@ def get_containers_list(request):
 @permission_classes((permissions.AllowAny,))
 class CityAPI(APIView):
     parser_classes = (MultiPartParser,)
-
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
     def get(self, *args, **kwargs):
         city = CitySerializer.get(**kwargs)
         return Response(
@@ -130,6 +135,7 @@ class CityAPI(APIView):
 
 @api_view(['GET'])
 @renderer_classes((JSONRenderer,))
+@authentication_classes((CsrfExemptSessionAuthentication, BasicAuthentication))
 @parser_classes((MultiPartParser, ))
 @permission_classes((permissions.AllowAny,))
 def get_cities_list(request):
@@ -147,7 +153,7 @@ def get_cities_list(request):
 @permission_classes((permissions.AllowAny,))
 class LineAPI(APIView):
     parser_classes = (MultiPartParser,)
-
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
     def get(self, *args, **kwargs):
         line = LineSerializer.get(**kwargs)
         return Response(
@@ -188,6 +194,7 @@ class LineAPI(APIView):
 @api_view(['GET'])
 @parser_classes((MultiPartParser, ))
 @renderer_classes((JSONRenderer,))
+@authentication_classes((CsrfExemptSessionAuthentication, BasicAuthentication))
 @permission_classes((permissions.AllowAny,))
 def get_lines_list(request):
     lines = LineSerializer.get_list()

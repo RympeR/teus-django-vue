@@ -1,14 +1,18 @@
 from django.db.models.fields import NullBooleanField
 from rest_framework import serializers
-from .models import User, Admin
+from .models import User
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
 
+
 class UserSerializer(serializers.ModelSerializer):
-    
+
     class Meta:
         model = User
-        fields = '__all__'
+        exclude = (
+            'is_admin',
+            'password'
+        )
 
     @staticmethod
     def create(validated_data):
@@ -66,14 +70,11 @@ class UserSerializer(serializers.ModelSerializer):
         try:
             user.image = validated_data['image'][0]
         except KeyError:
-            print('cathched key')
             try:
                 user.image = getattr(user, 'image', None)
             except ValueError:
-                print('value 1 key')
                 user.image = None
         except ValueError:
-            print('value 2 key')
             user.image = None
         user.save()
         return user
@@ -91,24 +92,11 @@ class UserSerializer(serializers.ModelSerializer):
 
     @staticmethod
     def getList():
-        users = User.objects.all()
+        users = User.objects.filter(is_admin=False)
         return users
 
-class AdminSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Admin
-        fields = '__all__'
-    
-    def create(self, validate_data):
-        print(validate_data)
-        admin = Admin.objects.create(
-            login=validate_data.get('login'),
-            password=validate_data.get('password'),
-            token=validate_data.get['token']
-        )
-        return admin.token
-
-    def update(self, instance, validated_data):
-        instance.password = validated_data.pop('password', instance.password)
+    @staticmethod
+    def update_password(instance, password):
+        instance.password = password
         instance.save()
         return instance

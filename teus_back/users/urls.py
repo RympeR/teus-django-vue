@@ -9,7 +9,8 @@ urlpatterns = [
     path('delete-profile/<int:user_id>/', UserAPI.as_view(), name='UserDelete'),
     path('get-users-list', UsersList.as_view() ,name='UsersFilterList'),
     
-    path('create-admin/', AdminAPI.as_view(), name='UserCreate'),
+    # path('create-admin/', AdminAPI.as_view(), name='UserCreate'),
+    path('admin/profile/', AdminAPI.as_view(), name='UserProfile'),
     path('admin/', AdminAPI.as_view(), name='UserProfile'),
     path('change-password/', AdminAPI.as_view(), name='UserUpdate'),
 ]

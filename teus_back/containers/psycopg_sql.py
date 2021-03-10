@@ -2,20 +2,20 @@ import psycopg2
 
 
 def execute_query(user, password, query):
-    # conn = psycopg2.connect(
-    #     host="localhost",
-    #     database="teus",
-    #     user='teus_dev',
-    #     password='teus_dev',
-    #     port='5432'
-    # )
     conn = psycopg2.connect(
         host="localhost",
         database="teus",
-        user='postgres',
-        password='1111',
+        user='teus_dev',
+        password='teus_dev',
         port='5432'
     )
+    # conn = psycopg2.connect(
+    #     host="localhost",
+    #     database="teus",
+    #     user='postgres',
+    #     password='1111',
+    #     port='5432'
+    # )
 
 
     cursor = conn.cursor()
@@ -25,20 +25,20 @@ def execute_query(user, password, query):
 
 
 def execute_select_query(user, password, query, f_all=True):
-    conn = psycopg2.connect(
-        host="localhost",
-        database="teus",
-        user='postgres',
-        password='1111',
-        port='5432'
-    )
     # conn = psycopg2.connect(
     #     host="localhost",
     #     database="teus",
-    #     user='teus_dev',
-    #     password='teus_dev',
+    #     user='postgres',
+    #     password='1111',
     #     port='5432'
     # )
+    conn = psycopg2.connect(
+        host="localhost",
+        database="teus",
+        user='teus_dev',
+        password='teus_dev',
+        port='5432'
+    )
     cursor = conn.cursor()
     cursor.execute(query)
     if f_all:

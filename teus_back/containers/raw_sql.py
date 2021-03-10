@@ -8,11 +8,23 @@ class UserFilter:
             query += '\nwhere'
         return query
 
-    def add_and_case(self, request, query, param_name, field_name, str_=True):
-        print(request.GET.get(param_name, None))
-        if request.GET.get(param_name, None) not in ('empty', '', None):
+    # TODO-- UPDATE METHOD
+    def add_in_case(self, request, query, param_name, field_name):
+        if request.query_params.get(param_name, None) not in ('empty', '', None):
             query = self.where_add(query)
-            param = request.GET[param_name]
+            param = request.query_params[param_name]
+            if query.split('\n')[-1].strip() != 'where':
+                for value in param:
+                    query += f"\nand {field_name} in '%'"
+            else:
+                for value in param:
+                    query += f"\n{field_name} like '%{param}%'"
+        return query
+
+    def add_and_case(self, request, query, param_name, field_name, str_=True):
+        if request.query_params.get(param_name, None) not in ('empty', '', None):
+            query = self.where_add(query)
+            param = request.query_params[param_name]
             if query.split('\n')[-1].strip() != 'where':
                 if str_:
                     query += f"\nand {field_name} like '%{param}%'"
@@ -23,13 +35,14 @@ class UserFilter:
                     query += f"\n{field_name} like '%{param}%'"
                 else:
                     query += f"\n{field_name}= {param}"
+        
         return query
 
     def add_between_case(self, request, query, param_name, param_end_name, field_name, str_=True, or_=False):
-        if request.GET.get(param_name, None) not in ('empty', '', None):
+        if request.query_params.get(param_name, None) not in ('empty', '', None):
             query = self.where_add(query)
-            param = request.GET[param_name]
-            param_end = request.GET.get(param_end_name, None)
+            param = request.query_params[param_name]
+            param_end = request.query_params.get(param_end_name, None)
             if query.split('\n')[-1].strip() != 'where':
                 if not or_:
                     if str_:
@@ -68,7 +81,8 @@ class UserFilter:
 
     def get_users(self, request, login, password):
         base_query = '''
-            select * from users_user 
+            select * from users_user
+                where is_admin = false
         '''
         try:
             query = base_query
@@ -98,7 +112,8 @@ class UserFilter:
                 info_line.id "line id", info_line.name "line name",
                 info_container.id "container id", info_container.name "container name",
                 containers_userproposition.amount "amount",
-                containers_userproposition.start_date "date"
+                containers_userproposition.start_date "date",
+                containers_userproposition.end_date "end_date"
                 from containers_userproposition
             join info_city on containers_userproposition.city_id = info_city.id
             join users_user on containers_userproposition.user_id = users_user.id
@@ -123,7 +138,7 @@ class UserFilter:
                 request, query,  'request_date', 'request_end_date', 'containers_userproposition.start_date')
             query = self.add_between_case(request, query, 'request_date',
                                           'request_end_date', 'containers_userproposition.end_date',  or_=True)
-            query += 'order by "date";'
+            query += 'order by "date", "end_date";'
             print(query)
             result = execute_select_query(login, password, query)
 

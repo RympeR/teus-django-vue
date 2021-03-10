@@ -17,16 +17,22 @@ import locale
 from datetime import date
 from users.models import *
 from info.models import *
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication 
 
+class CsrfExemptSessionAuthentication(SessionAuthentication):
+
+    def enforce_csrf(self, request):
+        return
 
 class RequestAPI(APIView):
     permission_classes = (permissions.AllowAny, )
     renderer_classes = (JSONRenderer,)
     parser_classes = (MultiPartParser, FormParser, JSONParser, )
-
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
     def get(self, request, request_id):
         try:
-            user = User.objects.get(token=self.request.headers['token'])
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
         except Exception:
             user = None
         if user:
@@ -65,7 +71,8 @@ class RequestAPI(APIView):
 
     def post(self, request):
         try:
-            user = User.objects.get(token=self.request.headers['token'])
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
         except Exception:
             user = None
         if user:
@@ -91,7 +98,8 @@ class RequestAPI(APIView):
 
     def put(self, request, request_id):
         try:
-            user = User.objects.get(token=self.request.headers['token'])
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
         except Exception:
             user = None
         if user:
@@ -116,7 +124,8 @@ class RequestAPI(APIView):
 
     def delete(self, request, request_id):
         try:
-            user = User.objects.get(token=self.request.headers['token'])
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
         except Exception:
             user = None
         if user:
@@ -138,10 +147,11 @@ class PropositionAPI(APIView):
     permission_classes = (permissions.AllowAny, )
     renderer_classes = (JSONRenderer,)
     parser_classes = (MultiPartParser, FormParser, JSONParser, )
-
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
     def get(self, request, proposition_id):
         try:
-            user = User.objects.get(token=self.request.headers['token'])
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
         except Exception:
             user = None
         if user:
@@ -167,7 +177,8 @@ class PropositionAPI(APIView):
                         "id": proposition.line.id,
                         "name": proposition.line.name,
                     },
-                    "start_date": proposition.start_date
+                    "start_date": proposition.start_date,
+                    "end_date": proposition.end_date
                 }
             )
         else:
@@ -179,16 +190,19 @@ class PropositionAPI(APIView):
 
     def post(self, request):
         try:
-            user = User.objects.get(token=self.request.headers['token'])
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
         except Exception:
             user = None
         if user:
             user_proposition = PropositionSerializer(data=request.data)
             if user_proposition.is_valid():
                 user_proposition.save()
-                return Response({
+                response = Response({
                     "id": user_proposition.data['id']
                 })
+                response["Access-Control-Allow-Origin"] = 'Authorization'
+                return response
             else:
                 return Response(
                     user_proposition.data
@@ -202,7 +216,8 @@ class PropositionAPI(APIView):
 
     def put(self, request, proposition_id):
         try:
-            user = User.objects.get(token=self.request.headers['token'])
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
         except Exception:
             user = None
         if user:
@@ -230,7 +245,8 @@ class PropositionAPI(APIView):
 
     def delete(self, request, proposition_id):
         try:
-            user = User.objects.get(token=self.request.headers['token'])
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
         except Exception:
             user = None
         if user:
@@ -252,10 +268,11 @@ class DealAPI(APIView):
     permission_classes = (permissions.AllowAny, )
     renderer_classes = (JSONRenderer,)
     parser_classes = (MultiPartParser, FormParser, JSONParser, )
-
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
     def get(self, request, deal_id):
         try:
-            user = User.objects.get(token=self.request.headers['token'])
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
         except Exception:
             user = None
         if user:
@@ -303,7 +320,8 @@ class DealAPI(APIView):
 
     def post(self, request):
         try:
-            user = User.objects.get(token=self.request.headers['token'])
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
         except Exception:
             user = None
         if user:
@@ -330,7 +348,8 @@ class DealAPI(APIView):
 
     def put(self, request, deal_id=None):
         try:
-            user = User.objects.get(token=self.request.headers['token'])
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
         except Exception:
             user = None
         if user:
@@ -355,7 +374,8 @@ class DealAPI(APIView):
 
     def delete(self, request, deal_id):
         try:
-            user = User.objects.get(token=self.request.headers['token'])
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
         except Exception:
             user = None
         if user:
@@ -374,7 +394,8 @@ class DealAPI(APIView):
             )
 
 
-locale.setlocale(locale.LC_TIME, "rus")
+locale.setlocale(locale.LC_TIME, "ru_RU.utf8")
+# locale.setlocale(locale.LC_TIME, "ru")
 
 
 def datetowords(string):
@@ -386,10 +407,11 @@ class RequestsList(APIView):
     renderer_classes = (JSONRenderer,)
     permission_classes = (permissions.AllowAny, )
     userfilter = UserFilter()
-
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
     def get(self, request):
         try:
-            user = User.objects.get(token=self.request.headers['token'])
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
         except Exception:
             user = None
         if user:
@@ -440,10 +462,11 @@ class PropositionList(APIView):
     renderer_classes = (JSONRenderer,)
     permission_classes = (permissions.AllowAny, )
     userfilter = UserFilter()
-
     def get(self, request):
+        print(request.query_params)
         try:
-            user = User.objects.get(token=self.request.headers['token'])
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
         except Exception:
             user = None
         if user:
@@ -477,7 +500,10 @@ class PropositionList(APIView):
                     "name": row[9]
                 },
                 "amount": row[10],
-                "date": row[11].strftime('%d %B %Y')
+                "date": {
+                    "start": row[11].strftime('%d %B %Y'),
+                    "end": row[12].strftime('%d %B %Y')
+                }
             })
         return Response(
             {
@@ -490,11 +516,12 @@ class DealsList(APIView):
     renderer_classes = (JSONRenderer,)
     permission_classes = (permissions.AllowAny, )
     userfilter = UserFilter()
-
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
     def get(self, request):
 
         try:
-            user = User.objects.get(token=self.request.headers['token'])
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
         except Exception:
             user = None
         if user:
@@ -539,3 +566,96 @@ class DealsList(APIView):
                 "results": result['results']
             }
         )
+
+class FilteredDeals(APIView):
+    renderer_classes = (JSONRenderer,)
+    permission_classes = (permissions.AllowAny, )
+    userfilter = UserFilter()
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+
+    def get(self, request):
+        try:
+            user = User.objects.get(
+                token=request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            return Response(
+                {
+                    "id": '3'
+                }
+            )
+        else:
+            return Response(
+                {
+                    "status": "invalid token"
+                }
+            )
+class FilteredRequests(APIView):
+    renderer_classes = (JSONRenderer,)
+    permission_classes = (permissions.AllowAny, )
+    userfilter = UserFilter()
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+
+    def get(self, request):
+        try:
+            user = User.objects.get(
+                token=request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            return Response(
+                {
+                    "id": '3'
+                }
+            )
+        else:
+            return Response(
+                {
+                    "status": "invalid token"
+                }
+            )
+
+class FilteredPropositions(APIView):
+    renderer_classes = (JSONRenderer,)
+    permission_classes = (permissions.AllowAny, )
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+    parser_classes = (MultiPartParser, FormParser, JSONParser, )
+    def get(self, request):
+        try:
+            user = User.objects.get(
+                token=request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            _filter =  UserProposition.objects.get(
+                pk=request.data['id']
+            )
+            limit = request.data.get('limit', 20)
+            offset = request.data.get('offset', 0)
+            results = UserProposition.objects.filter(
+                Q(city__name__contains=_filter.city.name) &
+                Q(container__name__contains=_filter.container.name) &
+                Q(user__first_name__contains=_filter.user.first_name) &
+                Q(user__phone__contains=_filter.user.phone) &
+                Q(line__name__contains=_filter.line.name) &
+                (
+                    Q(start_date__range=(_filter.start_date, _filter.end_date)) or
+                    Q(end_date__range=(_filter.start_date, _filter.end_date))
+                ) & 
+                Q(amount=_filter.amount)
+
+            )
+            return Response(
+                {
+                    "results": results[offset: offset+limit+1]
+                }
+            )
+        else:
+            return Response(
+                {
+                    "status": "invalid token"
+                }
+            )
+
+    

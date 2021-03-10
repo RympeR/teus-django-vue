@@ -1,14 +1,12 @@
 <template>
   <b-form @submit="goSave($event)">
     <div class="form__item">
+      <span class="form__label">Текущий логин</span>
+      {{changePassword.login}}
+    </div>
+    <div class="form__item">
       <span class="form__label">Текущий пароль</span>
-      <div class="form__control">
-        <b-form-input
-          class="short"
-          type="text"
-          v-model="changePassword.current_password"
-        />
-      </div>
+      {{changePassword.password}}
     </div>
     <div class="form__item">
       <span class="form__label">Новый пароль</span>
@@ -16,7 +14,7 @@
         <b-form-input
           class="short"
           type="text"
-          v-model="changePassword.password"
+          v-model="changePassword.new_password"
         />
       </div>
     </div>
@@ -40,7 +38,8 @@
 </template>
 
 <script>
-import Vue from 'vue';
+import Vue from 'vue'
+import axios from 'axios'
 
 export default {
   name: "UserForm",
@@ -49,10 +48,12 @@ export default {
     return {
       id: null,
       changePassword: {
-        current_password: null,
+        login: null,
         password: null,
+        new_password: null,
         password_confirm: null,
       },
+      admin:{}
     };
   },
   created() {
@@ -60,38 +61,49 @@ export default {
       { text: "Главная", to: { name: "home" } },
       { text: "Изменить пароль", to: { name: "change-password" } },
     ];
+    new Promise((resolve, reject) => {
+            axios.get(`/api/user/admin/profile/`, {
+              headers: {
+                Authorization: 'tset'
+              }
+            })
+                .then(response => {
+                    console.log(response)
+                    this.changePassword = response.data 
+                    resolve(response.data)
+                })
+                .catch(response => {
+                    reject(response.error);
+                })
+    })
   },
   methods: {
+
     goSave($event) {
       $event.preventDefault();
       let self = this;
 
       let formData = new FormData();
       let obj = this.changePassword;
-      if (obj.password == obj.password_confirm) {
+      if (obj.new_password == obj.password_confirm) {
         Object.keys(obj).map(function(key) {
           if (obj[key]) formData.append(key, obj[key]);
         });
         console.log(obj)
-        this.$axios
+        axios
           .put(
-            process.env.VUE_APP_HOST + "/api/user/change-password/",
+            "/api/user/change-password/",
             formData,
             {
               headers: {
                 Authorization: "tset",
-                "Content-Type": "multipart/form-data",
               },
             }
           )
           .then(function(response) {
             console.log(response)
             Vue.templateShowSuccess();
-            self.changePassword = {
-              current_password: null,
-              password: null,
-              password_confirm: null,
-            };
+            self.changePassword = response.data
           })
           .catch(function(response) {
             console.log(response);

@@ -20,10 +20,10 @@ const actions = {
     getList({commit}) {
         return new Promise((resolve, reject) => {
             axios.get(process.env.VUE_APP_HOST+'/api/containers/get-proposition-list', {
-                    // params: this.linesSearch,
-                    // headers: {
-                    //     Authoriz ation: token
-                    // }
+                    params: this.linesSearch,
+                    headers: {
+                        Authorization: "tset",
+                    }
                 })
                 .then(response => {
                     let list = response.data.results;
@@ -43,7 +43,7 @@ const actions = {
                             amount: el.amount,
                         };
                         el.date = {
-                            date: el.date,
+                            date: el.date.start + ' - ' + el.date.end,
                         };
                         
                     });
@@ -59,9 +59,9 @@ const actions = {
     getItem({commit}, id) {
         return new Promise((resolve, reject) => {
             axios.get(process.env.VUE_APP_HOST + `/api/containers/get-proposition/${id}/`, {
-                    // headers: {
-                    //     Authorization: token
-                    // }
+                    headers: {
+                        Authorization: "tset",
+                    }
                 })
                 .then(response => {
                     commit('setItem', response.data);
@@ -120,7 +120,7 @@ const actions = {
                         amount: el.amount,
                     };
                     el.date = {
-                        date: el.date,
+                        date: el.date.start + ' - ' + el.date.end,
                     };
                     
                 });
@@ -151,6 +151,7 @@ const actions = {
                 axios
                     .put(process.env.VUE_APP_HOST + '/api/containers/update-proposition/' + obj.id + '/', formData, {
                             headers: {
+                                Authorization: "tset",
                                 'Content-Type': 'multipart/form-data'
                             },
                         }
@@ -169,6 +170,7 @@ const actions = {
             return new Promise((resolve, reject) => {
                 axios.post(process.env.VUE_APP_HOST + '/api/info/create-proposition/', formData, {
                         headers: {
+                            Authorization: "tset",
                             'Content-Type': 'multipart/form-data',
                         },
                     })

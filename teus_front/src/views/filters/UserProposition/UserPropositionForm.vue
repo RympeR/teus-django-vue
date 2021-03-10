@@ -93,7 +93,7 @@
 					</div>
 				</div>
 				<div class="form__item">
-					<span class="form__label">Дата</span>
+					<span class="form__label">Дата начала</span>
 					<div class="form__control">
 						<div class="row">
 							<div class="col-6">
@@ -109,6 +109,26 @@
 									class="mb-2"
 								></b-form-datepicker>
 							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form__item">
+					<span class="form__label">Дата конца</span>
+					<div class="form__control">
+						<div class="row">
+						<div class="col-6">
+							<b-form-datepicker
+							locale="ru"
+							:dateFormatOptions="{
+								day: 'numeric',
+								month: 'short',
+								year: 'numeric',
+							}"
+							size="sm"
+							v-model="user_propositions.item.end_date"
+							class="mb-2"
+							></b-form-datepicker>
+						</div>
 						</div>
 					</div>
 				</div>

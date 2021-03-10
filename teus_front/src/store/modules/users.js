@@ -47,9 +47,9 @@ const actions = {
         return new Promise((resolve, reject) => {
             axios.get(process.env.VUE_APP_HOST + `/api/user/profile/${id}/`, {
                     // params: this.linesSearch,
-                    // headers: {
-                    //     Authorization: token
-                    // }
+                    headers: {
+                        Authorization: "tset",
+                    }
                 })
                 .then(response => {
                     commit('setItem', response.data);
@@ -66,7 +66,13 @@ const actions = {
         let confirmDelete = confirm('Удаление этого пользователя также удалит все его запросы, заявки и чаты. Действительно удалить?');
         if (confirmDelete) {
             return new Promise((resolve, reject) => {
-                axios.delete(`${process.env.VUE_APP_HOST}/api/user/delete-profile/${id}/`)
+                axios.delete(`${process.env.VUE_APP_HOST}/api/user/delete-profile/${id}/`,
+                {
+                    headers: {
+                      Authorization: "tset",
+                    },
+                  }
+                )
                     .then(response => {
                         state.list = state.list.filter(element => element.id !== id);
                         resolve(response.data);
@@ -123,6 +129,7 @@ const actions = {
                         process.env.VUE_APP_HOST + '/api/user/update-profile/' + obj.id + '/',
                         formData, {
                             headers: {
+                                Authorization: "tset",
                                 'Content-Type': 'multipart/form-data'
                             },
 
@@ -144,6 +151,7 @@ const actions = {
                         process.env.VUE_APP_HOST + '/api/user/create-profile/',
                         formData, {
                             headers: {
+                                Authorization: "tset",
                                 'Content-Type': 'multipart/form-data',
                             },
 

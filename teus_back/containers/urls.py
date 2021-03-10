@@ -11,9 +11,11 @@ urlpatterns = [
 
     path('get-proposition/<int:proposition_id>/', PropositionAPI.as_view() ,name='PropositionProfile'),
     path('get-proposition-list', PropositionList.as_view() ,name='PropositionFullList'),
+    path('proposition-list/', FilteredPropositions.as_view() ,name='PropositionFilteredList'),
     path('create-proposition/', PropositionAPI.as_view() ,name='PropositionCreate'),
     path('update-proposition/<int:proposition_id>/', PropositionAPI.as_view() ,name='PropositionUpdate'),
     path('delete-proposition/<int:proposition_id>/', PropositionAPI.as_view() ,name='PropositionDelete'),
+
 
     path('get-deal/<int:deal_id>/', DealAPI.as_view() ,name='DealProfile'),
     path('get-deal-list', DealsList.as_view() ,name='DealFullList'),

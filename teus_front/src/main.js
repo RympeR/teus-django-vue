@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import axios from 'axios'
-// import axios from './plugins/axios'
-import store from './store/store'
+// import axios from 'axios'
+import axios from './plugins/axios'
+import store from './store'
 import {BootstrapVue, BootstrapVueIcons} from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import datePicker from 'vue-bootstrap-datetimepicker';
@@ -29,15 +29,17 @@ import TableThumbnail from "@/components/TableThumbnail";
 Vue.component("btn-turn", BtnTurn);
 Vue.component("table-thumbnail", TableThumbnail);
 
-console.log(axios)
+
 
 // axios = axios.create({
 //     baseURL: process.env.VUE_APP_HOST
 // });
-Vue.prototype.$axios = axios.create({
-    baseURL: process.env.VUE_APP_HOST
-});
-Vue.prototype.$axios.defaults.baseURL = process.env.VUE_APP_HOST;
+// Vue.prototype.$axios = axios.create({
+//     baseURL: process.env.VUE_APP_HOST
+// });
+// Vue.prototype.$axios.defaults.baseURL = process.env.VUE_APP_HOST;
+console.log(axios)
+
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons);
@@ -66,5 +68,6 @@ router.beforeEach((to, from, next) => {
 new Vue({
   store,
   router,
+  axios,
   render: h => h(App),
 }).$mount('#app');

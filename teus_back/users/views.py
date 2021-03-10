@@ -10,6 +10,7 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework.decorators import permission_classes, renderer_classes
 from containers.raw_sql import UserFilter
 from .models import User, Admin
+from rest_framework import status
 
 @renderer_classes((JSONRenderer,))
 @permission_classes((permissions.AllowAny,))
@@ -19,7 +20,7 @@ class UserAPI(APIView):
     def get(self, *args, **kwargs):
         try:
             print(self.request.headers)
-            user = User.objects.get(token=self.request.headers['token'])
+            user = User.objects.get(token=self.request.headers['Authorization'])
         except Exception:
             user = None
         if user:
@@ -39,7 +40,7 @@ class UserAPI(APIView):
                     "first_name": user.first_name,
                     "last_name": user.last_name,
                     "company": user.company
-                }
+                }, status=status.HTTP_200_OK
             )
         else:
             return Response(
@@ -57,13 +58,13 @@ class UserAPI(APIView):
             {
                 "status": "ok",
                 "token": user_token
-            }
+            }, status=status.HTTP_200_OK
         )
 
 
     def put(self, *args, **kwargs):
         try:
-            user = User.objects.get(token=self.request.headers['token'])
+            user = User.objects.get(token=self.request.headers['Authorization'])
         except Exception:
             user = None
         if user:
@@ -85,7 +86,7 @@ class UserAPI(APIView):
                     "first_name": user.first_name,
                     "last_name": user.last_name,
                     "company": user.company
-                }
+                }, status=status.HTTP_200_OK
             )
         else:
             return Response(
@@ -96,7 +97,7 @@ class UserAPI(APIView):
 
     def delete(self, *args, **kwargs):
         try:
-            user = User.objects.get(token=self.request.headers['token'])
+            user = User.objects.get(token=self.request.headers['Authorization'])
         except Exception:
             user = None
         if user:
@@ -106,7 +107,7 @@ class UserAPI(APIView):
             return Response(
                 {
                     "user_id": user[0]
-                }
+                }, status=status.HTTP_200_OK
             )
         else:
             return Response(
@@ -138,7 +139,7 @@ class UserListAPI(APIView):
             {
                 "results": users_list,
                 "status": "ok"
-            }
+            }, status=status.HTTP_200_OK
         )
 class UsersList(APIView):
     renderer_classes = (JSONRenderer,)
@@ -166,11 +167,13 @@ class UsersList(APIView):
                 "first_name": row[2],
                 "image": image_url,
             })
-        return Response(
-            {
-                "results": result['results']
-            }
-        )
+            response = Response(
+                {
+                    "results": result['results']
+                }, status=status.HTTP_200_OK
+            )
+            response["Access-Control-Allow-Origin"] = 'Authorization'
+        return response
        
 
 class AdminAPI(APIView):
@@ -198,7 +201,7 @@ class AdminAPI(APIView):
                     "login": admin.login,
                     "password": admin.password,
                     "token": admin.token
-                }
+                }, status=status.HTTP_200_OK
             )
         else:
             return Response(
@@ -216,7 +219,7 @@ class AdminAPI(APIView):
                 {
                     "status": True,
                     "token": admin.data['token']
-                }
+                }, status=status.HTTP_200_OK
             )
         else:
             return Response(
@@ -226,21 +229,22 @@ class AdminAPI(APIView):
                 }
             )
 
-
     def put(self, *args, **kwargs):
+        print('maded')
         try:
-            admin = Admin.objects.get(token=self.request.headers['token'])
+            admin = Admin.objects.get(token=self.request.headers['Authorization'])
         except Exception:
             admin = None
         if admin:
-            instance = self.get_object(admin.token)
             admin = AdminSerializer(
-                instance=instance, data=self.request.data)
+                instance=admin, data=self.request.data)
             if admin.is_valid():
                 admin.save()
-                return Response({
+                response = Response({
                     "id": admin.data['id']
-                })
+                }, status=status.HTTP_200_OK)
+                response["Access-Control-Allow-Origin"] = 'Authorization'
+                return response
             else:
                 return Response(
                     admin.data

@@ -40,6 +40,8 @@
 </template>
 
 <script>
+import Vue from 'vue';
+
 export default {
   name: "UserForm",
 
@@ -66,24 +68,25 @@ export default {
 
       let formData = new FormData();
       let obj = this.changePassword;
-      if (obj.password == password_confirm) {
+      if (obj.password == obj.password_confirm) {
         Object.keys(obj).map(function(key) {
           if (obj[key]) formData.append(key, obj[key]);
         });
-
+        console.log(obj)
         this.$axios
           .put(
             process.env.VUE_APP_HOST + "/api/user/change-password/",
             formData,
             {
               headers: {
-                token: "tset",
+                Authorization: "tset",
                 "Content-Type": "multipart/form-data",
               },
             }
           )
           .then(function(response) {
-            self.templateShowSuccess(response);
+            console.log(response)
+            Vue.templateShowSuccess();
             self.changePassword = {
               current_password: null,
               password: null,
@@ -92,8 +95,10 @@ export default {
           })
           .catch(function(response) {
             console.log(response);
-            self.templateShowError(response);
+            Vue.templateShowError(response);
           });
+      } else {
+        alert('missed')
       }
     },
   },

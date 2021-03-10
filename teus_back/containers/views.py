@@ -17,246 +17,410 @@ import locale
 from datetime import date
 from users.models import *
 from info.models import *
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication 
 
+class CsrfExemptSessionAuthentication(SessionAuthentication):
+
+    def enforce_csrf(self, request):
+        return
 
 class RequestAPI(APIView):
     permission_classes = (permissions.AllowAny, )
     renderer_classes = (JSONRenderer,)
     parser_classes = (MultiPartParser, FormParser, JSONParser, )
-    
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
     def get(self, request, request_id):
-        user_request = RequestSerializer.get_request(request_id)
-        return Response(
-            {
-                "id": user_request.id,
-                "user":{
-                    "id": user_request.user.id,
-                    "name": user_request.user.first_name,
-                    "phone": user_request.user.phone
-                },
-                "amount": user_request.amount,
-                "city": {
-                    "id": user_request.city.id,
-                    "name": user_request.city.name,
-                },
-                "container": {
-                    "id": user_request.container.id,
-                    "name": user_request.container.name,
-                },
-                "line": {
-                    "id": user_request.line.id,
-                    "name": user_request.line.name,
-                },
-                "request_date": user_request.request_date,
-                "end_date": user_request.end_date
-            }
-        )
-
-    def post(self, request):
-        user_request = RequestSerializer(data=request.data)
-        if user_request.is_valid():
-            user_request.save()
-            return Response({
-                "id": user_request.data['id']
-            })
+        try:
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            user_request = RequestSerializer.get_request(request_id)
+            return Response(
+                {
+                    "id": user_request.id,
+                    "user": {
+                        "id": user_request.user.id,
+                        "name": user_request.user.first_name,
+                        "phone": user_request.user.phone
+                    },
+                    "amount": user_request.amount,
+                    "city": {
+                        "id": user_request.city.id,
+                        "name": user_request.city.name,
+                    },
+                    "container": {
+                        "id": user_request.container.id,
+                        "name": user_request.container.name,
+                    },
+                    "line": {
+                        "id": user_request.line.id,
+                        "name": user_request.line.name,
+                    },
+                    "request_date": user_request.request_date,
+                    "end_date": user_request.end_date
+                }
+            )
         else:
             return Response(
-                user_request.data
+                {
+                    "status": "invalid token"
+                }
+            )
+
+    def post(self, request):
+        try:
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            user_request = RequestSerializer(data=request.data)
+            if user_request.is_valid():
+                user_request.save()
+                return Response({
+                    "id": user_request.data['id']
+                })
+            else:
+                return Response(
+                    user_request.data
+                )
+        else:
+            return Response(
+                {
+                    "status": "invalid token"
+                }
             )
 
     def get_object(self, request_id):
         return UserRequest.objects.get(pk=request_id)
 
     def put(self, request, request_id):
-        print(self.request.data)
-        # data = self.request.data
-        # data['user'] = data['user']['id']
-        # data['line'] = data['line']['id']
-        # data['container'] = data['container']['id']
-        # data['city'] = data['city']['id']
-        instance = self.get_object(request_id)
-        user_request = RequestSerializer(instance=instance, data=request.data)
-        if user_request.is_valid():
-            user_request.save()
-            return Response({
-                "id": user_request.data['id']
-            })
+        try:
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            instance = self.get_object(request_id)
+            user_request = RequestSerializer(
+                instance=instance, data=request.data)
+            if user_request.is_valid():
+                user_request.save()
+                return Response({
+                    "id": user_request.data['id']
+                })
+            else:
+                return Response(
+                    user_request.data
+                )
         else:
             return Response(
-                user_request.data
+                {
+                    "status": "invalid token"
+                }
             )
 
     def delete(self, request, request_id):
-        request_obj = RequestSerializer.delete(request_id)
-        return Response(
-            {
-                "id": request_id
-            }
-        )
+        try:
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            request_obj = RequestSerializer.delete(request_id)
+            return Response(
+                {
+                    "id": request_id
+                }
+            )
+        else:
+            return Response(
+                {
+                    "status": "invalid token"
+                }
+            )
 
 
 class PropositionAPI(APIView):
     permission_classes = (permissions.AllowAny, )
     renderer_classes = (JSONRenderer,)
     parser_classes = (MultiPartParser, FormParser, JSONParser, )
-
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
     def get(self, request, proposition_id):
-        proposition = PropositionSerializer.get_propos(proposition_id)
-        return Response(
-            {
-                "id": proposition.id,
-                "user":{
-                    "id": proposition.user.id,
-                    "name": proposition.user.first_name,
-                    "phone": proposition.user.phone
-                },
-                "amount": proposition.amount,
-                "city": {
-                    "id": proposition.city.id,
-                    "name": proposition.city.name,
-                },
-                "container": {
-                    "id": proposition.container.id,
-                    "name": proposition.container.name,
-                },
-                "line": {
-                    "id": proposition.line.id,
-                    "name": proposition.line.name,
-                },
-                "start_date": proposition.start_date
-            }
-        )
-
-    def post(self, request):
-        user_proposition = PropositionSerializer(data=request.data)
-        if user_proposition.is_valid():
-            user_proposition.save()
-            return Response({
-                "id": user_proposition.data['id']
-            })
+        try:
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            proposition = PropositionSerializer.get_propos(proposition_id)
+            return Response(
+                {
+                    "id": proposition.id,
+                    "user": {
+                        "id": proposition.user.id,
+                        "name": proposition.user.first_name,
+                        "phone": proposition.user.phone
+                    },
+                    "amount": proposition.amount,
+                    "city": {
+                        "id": proposition.city.id,
+                        "name": proposition.city.name,
+                    },
+                    "container": {
+                        "id": proposition.container.id,
+                        "name": proposition.container.name,
+                    },
+                    "line": {
+                        "id": proposition.line.id,
+                        "name": proposition.line.name,
+                    },
+                    "start_date": proposition.start_date,
+                    "end_date": proposition.end_date
+                }
+            )
         else:
             return Response(
-                user_proposition.data
+                {
+                    "status": "invalid token"
+                }
+            )
+
+    def post(self, request):
+        try:
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            user_proposition = PropositionSerializer(data=request.data)
+            if user_proposition.is_valid():
+                user_proposition.save()
+                response = Response({
+                    "id": user_proposition.data['id']
+                })
+                response["Access-Control-Allow-Origin"] = 'Authorization'
+                return response
+            else:
+                return Response(
+                    user_proposition.data
+                )
+        else:
+            return Response(
+                {
+                    "status": "invalid token"
+                }
             )
 
     def put(self, request, proposition_id):
-        instance = self.get_object(proposition_id)
-        user_proposition = PropositionSerializer(
-            instance=instance, data=request.data)
-        if user_proposition.is_valid():
-            user_proposition.save()
-            return Response({
-                "id": user_proposition.data['id']
-            })
+        try:
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            instance = self.get_object(proposition_id)
+            user_proposition = PropositionSerializer(
+                instance=instance, data=request.data)
+            if user_proposition.is_valid():
+                user_proposition.save()
+                return Response({
+                    "id": user_proposition.data['id']
+                })
+            else:
+                return Response(
+                    user_proposition.data
+                )
         else:
             return Response(
-                user_proposition.data
+                {
+                    "status": "invalid token"
+                }
             )
 
     def get_object(self, proposition_id):
         return UserProposition.objects.get(pk=proposition_id)
 
     def delete(self, request, proposition_id):
-        proposition_obj = PropositionSerializer.delete(proposition_id)
-        return Response(
-            {
-                "id": proposition_id
-            }
-        )
+        try:
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            proposition_obj = PropositionSerializer.delete(proposition_id)
+            return Response(
+                {
+                    "id": proposition_id
+                }
+            )
+        else:
+            return Response(
+                {
+                    "status": "invalid token"
+                }
+            )
 
 
 class DealAPI(APIView):
     permission_classes = (permissions.AllowAny, )
     renderer_classes = (JSONRenderer,)
     parser_classes = (MultiPartParser, FormParser, JSONParser, )
-
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
     def get(self, request, deal_id):
-        deal = DealSerializer.get_deal(deal_id)
-        
-        return Response(
-            {
-                "id": deal.id,
-                "first_user":{
-                    "id": deal.user_request.id,
-                    "name": deal.user_request.first_name,
-                    "phone": deal.user_request.phone
-                },
-                "sec_user":{
-                    "id": deal.user_proposition.id,
-                    "name": deal.user_proposition.first_name,
-                    "phone": deal.user_proposition.phone
-                },
-                "amount": deal.amount,
-                "city": {
-                    "id": deal.city.id,
-                    "name": deal.city.name,
-                },
-                "container": {
-                    "id": deal.container.id,
-                    "name": deal.container.name,
-                },
-                "line": {
-                    "id": deal.line.id,
-                    "name": deal.line.name,
-                },
-                "amount": deal.amount,
-                "handshake": {
-                    "handshake": deal.handshake_time.strftime('%H:%M:%S %d %b %Y'),
-                    "raw_handshake": deal.handshake_time
+        try:
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            deal = DealSerializer.get_deal(deal_id)
+
+            return Response(
+                {
+                    "id": deal.id,
+                    "first_user": {
+                        "id": deal.user_request.id,
+                        "name": deal.user_request.first_name,
+                        "phone": deal.user_request.phone
+                    },
+                    "sec_user": {
+                        "id": deal.user_proposition.id,
+                        "name": deal.user_proposition.first_name,
+                        "phone": deal.user_proposition.phone
+                    },
+                    "amount": deal.amount,
+                    "city": {
+                        "id": deal.city.id,
+                        "name": deal.city.name,
+                    },
+                    "container": {
+                        "id": deal.container.id,
+                        "name": deal.container.name,
+                    },
+                    "line": {
+                        "id": deal.line.id,
+                        "name": deal.line.name,
+                    },
+                    "amount": deal.amount,
+                    "handshake": {
+                        "handshake": deal.handshake_time.strftime('%H:%M:%S %d %b %Y'),
+                        "raw_handshake": deal.handshake_time
+                    }
                 }
-            }
-        )
+            )
+        else:
+            return Response(
+                {
+                    "status": "invalid token"
+                }
+            )
 
     def post(self, request):
-        deal = DealSerializer(data=request.data)
-        if deal.is_valid():
-            deal.save()
-            return Response({
-                "id": deal.data['id']
-            })
+        try:
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            deal = DealSerializer(data=request.data)
+            if deal.is_valid():
+                deal.save()
+                return Response({
+                    "id": deal.data['id']
+                })
+            else:
+                print(deal.data)
+                return Response({
+                    "id": deal.data
+                })
         else:
-            print(deal.data)
-            return Response({
-                "id": deal.data
-            })
+            return Response(
+                {
+                    "status": "invalid token"
+                }
+            )
 
     def get_object(self, deal_id):
         return Deal.objects.get(pk=deal_id)
 
     def put(self, request, deal_id=None):
-        instance = self.get_object(deal_id)
-        deal = DealSerializer(instance=instance, data=request.data)
-        if deal.is_valid():
-            deal.save()
-            return Response({
-                "id": deal.data['id']
-            })
+        try:
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            instance = self.get_object(deal_id)
+            deal = DealSerializer(instance=instance, data=request.data)
+            if deal.is_valid():
+                deal.save()
+                return Response({
+                    "id": deal.data['id']
+                })
+            else:
+                print(deal.data)
+                return Response({
+                    "id": deal.data
+                })
         else:
-            print(deal.data)
-            return Response({
-                "id": deal.data
-            })
+            return Response(
+                {
+                    "status": "invalid token"
+                }
+            )
 
     def delete(self, request, deal_id):
-        deal_obj = DealSerializer.delete_deal(deal_id)
+        try:
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            deal_obj = DealSerializer.delete_deal(deal_id)
 
-        return Response(
-            {
-                "id": deal_id
-            }
-        )
+            return Response(
+                {
+                    "id": deal_id
+                }
+            )
+        else:
+            return Response(
+                {
+                    "status": "invalid token"
+                }
+            )
 
-        return date(day=day_, month=month_, year=year_).strftime('%d %B %Y')
+
+locale.setlocale(locale.LC_TIME, "ru_RU.utf8")
+# locale.setlocale(locale.LC_TIME, "ru")
+
+
+def datetowords(string):
+    day_, month_, year_ = [int(i) for i in reversed(string.split('-'))]
+    return date(day=day_, month=month_, year=year_).strftime('%d %B %Y')
 
 
 class RequestsList(APIView):
     renderer_classes = (JSONRenderer,)
     permission_classes = (permissions.AllowAny, )
     userfilter = UserFilter()
-
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
     def get(self, request):
-        print(request.GET)
         data = self.userfilter.get_requests(request, 'teus_dev', 'teus_dev')
+        try:
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            data = self.userfilter.get_requests(request, 'postgres', '1111')
+        else:
+            request.GET = {}
+            data = self.userfilter.get_requests(request, 'postgres', '1111')
+
         result = {
             "results": []
         }
@@ -285,7 +449,7 @@ class RequestsList(APIView):
                     "start": row[11].strftime('%d %B %Y'),
                     "end": row[12].strftime('%d %B %Y')
                 }
-                
+
 
             })
         return Response(
@@ -299,9 +463,20 @@ class PropositionList(APIView):
     renderer_classes = (JSONRenderer,)
     permission_classes = (permissions.AllowAny, )
     userfilter = UserFilter()
-
     def get(self, request):
         data = self.userfilter.get_propositions(request, 'teus_dev', 'teus_dev')
+        try:
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            data = self.userfilter.get_propositions(
+                request, 'postgres', '1111')
+        else:
+            request.GET = {}
+            data = self.userfilter.get_propositions(
+                request, 'postgres', '1111')
         result = {
             "results": []
         }
@@ -326,7 +501,10 @@ class PropositionList(APIView):
                     "name": row[9]
                 },
                 "amount": row[10],
-                "date": row[11].strftime('%d %B %Y')
+                "date": {
+                    "start": row[11].strftime('%d %B %Y'),
+                    "end": row[12].strftime('%d %B %Y')
+                }
             })
         return Response(
             {
@@ -339,10 +517,20 @@ class DealsList(APIView):
     renderer_classes = (JSONRenderer,)
     permission_classes = (permissions.AllowAny, )
     userfilter = UserFilter()
-
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
     def get(self, request):
-        print(request.GET)
         data = self.userfilter.get_deals(request, 'teus_dev', 'teus_dev')
+
+        try:
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            data = self.userfilter.get_deals(request, 'postgres', '1111')
+        else:
+            request.GET = {}
+            data = self.userfilter.get_deals(request, 'postgres', '1111')
         result = {
             "results": []
         }
@@ -381,3 +569,95 @@ class DealsList(APIView):
             }
         )
 
+class FilteredDeals(APIView):
+    renderer_classes = (JSONRenderer,)
+    permission_classes = (permissions.AllowAny, )
+    userfilter = UserFilter()
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+
+    def get(self, request):
+        try:
+            user = User.objects.get(
+                token=request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            return Response(
+                {
+                    "id": '3'
+                }
+            )
+        else:
+            return Response(
+                {
+                    "status": "invalid token"
+                }
+            )
+class FilteredRequests(APIView):
+    renderer_classes = (JSONRenderer,)
+    permission_classes = (permissions.AllowAny, )
+    userfilter = UserFilter()
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+
+    def get(self, request):
+        try:
+            user = User.objects.get(
+                token=request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            return Response(
+                {
+                    "id": '3'
+                }
+            )
+        else:
+            return Response(
+                {
+                    "status": "invalid token"
+                }
+            )
+
+class FilteredPropositions(APIView):
+    renderer_classes = (JSONRenderer,)
+    permission_classes = (permissions.AllowAny, )
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+    parser_classes = (MultiPartParser, FormParser, JSONParser, )
+    def get(self, request):
+        try:
+            user = User.objects.get(
+                token=request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            _filter =  UserProposition.objects.get(
+                pk=request.data['id']
+            )
+            limit = request.data.get('limit', 20)
+            offset = request.data.get('offset', 0)
+            results = UserProposition.objects.filter(
+                Q(city__name__contains=_filter.city.name) &
+                Q(container__name__contains=_filter.container.name) &
+                Q(user__first_name__contains=_filter.user.first_name) &
+                Q(user__phone__contains=_filter.user.phone) &
+                Q(line__name__contains=_filter.line.name) &
+                (
+                    Q(start_date__range=(_filter.start_date, _filter.end_date)) or
+                    Q(end_date__range=(_filter.start_date, _filter.end_date))
+                ) & 
+                Q(amount=_filter.amount)
+
+            )
+            return Response(
+                {
+                    "results": results[offset: offset+limit+1]
+                }
+            )
+        else:
+            return Response(
+                {
+                    "status": "invalid token"
+                }
+            )
+
+    

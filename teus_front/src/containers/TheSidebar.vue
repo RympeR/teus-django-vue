@@ -50,7 +50,13 @@
                 </span>
                 <b-link class="sidebar__link" :to="{name: 'containers'}">Типы контейнеров</b-link>
             </div>
-            
+            <hr>
+            <div class="sidebar__item">
+                <span class="sidebar__icon">
+                    <img src="@/assets/img/icons/passwor.png" alt="">
+                </span>
+                <b-link class="sidebar__link" :to="{name: 'change-password'}">Изменить пароль</b-link>
+            </div>
             
             
         </ul>

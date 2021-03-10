@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios'
+import axios from '@/plugins/axios'
 import lines from './modules/lines'
 import cities from './modules/cities'
 import containers from './modules/containers'
@@ -8,6 +8,7 @@ import users from './modules/users'
 import user_propositions from './modules/user_propositions'
 import user_requests from './modules/user_requests'
 import deals from './modules/deals'
+import admin from './modules/admin'
 
 Vue.use(Vuex);
 
@@ -42,16 +43,21 @@ export default new Vuex.Store({
             console.log(user)
             return new Promise((resolve, reject) => {
                 commit('auth_request');
-                axios.post('http://edunav-back.maximustest.ru/ru/api/user/admin-login/', {
-                    email: user.email,
-                    password: user.password
-                })
+                let formData = new FormData();
+                Object.keys(user).map(function (key) {
+                    if (user[key])
+                        formData.append(key, user[key]);
+                });
+                console.log(this)
+                axios.post(process.env.VUE_APP_HOST + '/api/user/admin/', formData)
                 .then(response => {
                     console.log(response);
-                    const token = response.data.auth_token;
+                    const token = response.data.token;
                     localStorage.setItem('token', token);
+                    // Vue.prototype.$axios.defaults.common['token'] = token;
+                    axios.defaults.headers.common['Authorization'] = token;
+                    console.log(axios)
                     commit('auth_success', token);
-                    // axios.defaults.headers.common['Authorization'] = token
                     resolve(response)
                 })
                 .catch(response => {
@@ -66,6 +72,8 @@ export default new Vuex.Store({
             return new Promise((resolve, reject) => {
                 commit('logout');
                 localStorage.removeItem('token');
+                // Vue.prototype.$axios.defaults.headers.common['token'] = '';
+                delete axios.defaults.headers.common['Authorization'];
                 // delete axios.defaults.headers.common['Authorization']
                 resolve();
                 console.log(reject)
@@ -89,5 +97,6 @@ export default new Vuex.Store({
         user_propositions,
         user_requests,
         deals,
+        admin,
     }
 })

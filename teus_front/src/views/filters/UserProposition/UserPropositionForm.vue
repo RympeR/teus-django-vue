@@ -93,7 +93,7 @@
 					</div>
 				</div>
 				<div class="form__item">
-					<span class="form__label">Дата</span>
+					<span class="form__label">Дата начала</span>
 					<div class="form__control">
 						<div class="row">
 							<div class="col-6">
@@ -112,6 +112,26 @@
 						</div>
 					</div>
 				</div>
+				<div class="form__item">
+					<span class="form__label">Дата конца</span>
+					<div class="form__control">
+						<div class="row">
+						<div class="col-6">
+							<b-form-datepicker
+							locale="ru"
+							:dateFormatOptions="{
+								day: 'numeric',
+								month: 'short',
+								year: 'numeric',
+							}"
+							size="sm"
+							v-model="user_propositions.item.end_date"
+							class="mb-2"
+							></b-form-datepicker>
+						</div>
+						</div>
+					</div>
+				</div>
 			</b-tab>
 		</b-tabs>
 		<div class="form__item form__item_submit">
@@ -124,6 +144,7 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
+import Vue from "vue";
 
 export default {
 	name: "UserPropositionForm",
@@ -147,7 +168,7 @@ export default {
 		if (this.id) {
 			this.$store.state.breadcrumbs = [
 				{ text: "Главная", to: { name: "home" } },
-				{ text: "Предложения", to: { name: "propositions" } },
+				{ text: "Предложения", to: { name: "proposition" } },
 				{
 					text: "Редактировать",
 					to: {
@@ -159,7 +180,7 @@ export default {
 		} else {
 			this.$store.state.breadcrumbs = [
 				{ text: "Главная", to: { name: "home" } },
-				{ text: "Предложения", to: { name: "propositions" } },
+				{ text: "Предложения", to: { name: "proposition" } },
 				{ text: "Создать", to: { name: "propositions-create" } },
 			];
 		}
@@ -209,8 +230,16 @@ export default {
 				.dispatch("user_propositions/saveItem", data)
 				.then((item) => {
 					console.log(item);
-					this.templateShowSuccess();
-					if (!data.id) this.goBack();
+					Vue.templateShowSuccess();
+					if (!data.id) Vue.goBack();
+					else this.$store
+							.dispatch("user_propositions/getItem", this.$route.params.id)
+							.then((item) => {
+								console.log(item);
+							})
+							.catch((error) => {
+								console.log(error);
+							});
 				})
 				.catch((error) => {
 					console.log(error);

@@ -21,22 +21,26 @@ const actions = {
         return new Promise((resolve, reject) => {
             axios.get(process.env.VUE_APP_HOST+'/api/containers/get-requests-list', {
                     // params: this.linesSearch,
-                    // headers: {
-                    //     Authoriz ation: token
-                    // }
+                    headers: {
+                        Authorization: "tset",
+                    }
                 })
                 .then(response => {
                     let list = response.data.results;
                     console.log(list)
                    
                     list.forEach((el) => {
+                        el.phone = {
+                            id: el.user.id,
+                            phone: el.user.phone
+                        }
+                        el.user = {
+                            id: el.user.id,
+                            name: el.user.name,
+                        }
                         el.amount = {
                             amount: el.amount,
                         };
-                        el.user = {
-                            name: el.user.name,
-                            phone: el.user.name + ' ' + el.user.phone
-                        }
                         el.date = {
                             date: el.date.start + ' - ' + el.date.end,
                         };
@@ -56,9 +60,9 @@ const actions = {
         return new Promise((resolve, reject) => {
             axios.get(process.env.VUE_APP_HOST + `/api/containers/get-request/${id}/`, {
                     // params: this.linesSearch,
-                    // headers: {
-                    //     Authorization: token
-                    // }
+                    headers: {
+                        Authorization: "tset",
+                    }
                 })
                 .then(response => {
                     commit('setItem', response.data);
@@ -73,7 +77,13 @@ const actions = {
         let confirmDelete = confirm('Вы действительно хотите удалить этот запрос?');
         if (confirmDelete) {
             return new Promise((resolve, reject) => {
-                axios.delete(`${process.env.VUE_APP_HOST}/api/containers/delete-request/${id}/`)
+                axios.delete(`${process.env.VUE_APP_HOST}/api/containers/delete-request/${id}/`,
+                {
+                    headers: {
+                      Authorization: "tset",
+                    },
+                  }
+                )
                     .then(response => {
                         state.list = state.list.filter(element => element.id !== id);
                         resolve(response.data);
@@ -105,9 +115,13 @@ const actions = {
                 console.log(list)
                 
                 list.forEach((el) => {
+                    el.phone = {
+                        id: el.user.id,
+                        phone: el.user.phone
+                    }
                     el.user = {
+                        id: el.user.id,
                         name: el.user.name,
-                        phone: el.user.name + ' ' + el.user.phone
                     }
                     el.amount = {
                         amount: el.amount,
@@ -143,6 +157,7 @@ const actions = {
                 axios
                     .put(process.env.VUE_APP_HOST + '/api/containers/update-request/' + obj.id + '/', formData, {
                             headers: {
+                                Authorization: "tset",
                                 // 'Content-Type': 'multipart/form-data'
                             },
                         }
@@ -161,6 +176,7 @@ const actions = {
             return new Promise((resolve, reject) => {
                 axios.post(process.env.VUE_APP_HOST + '/api/info/create-request/', formData, {
                         headers: {
+                            Authorization: "tset",
                             'Content-Type': 'multipart/form-data',
                         },
                     })

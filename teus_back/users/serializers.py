@@ -4,11 +4,15 @@ from .models import User
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
 
+
 class UserSerializer(serializers.ModelSerializer):
-    
+
     class Meta:
         model = User
-        fields = '__all__'
+        exclude = (
+            'is_admin',
+            'password'
+        )
 
     @staticmethod
     def create(validated_data):
@@ -32,16 +36,17 @@ class UserSerializer(serializers.ModelSerializer):
             image = validated_data['image']
         except KeyError:
             image = None
-        
+        token = validated_data['token']
         user = User(
             phone=phone,
             first_name=first_name,
             last_name=last_name,
             company=company,
-            image=image
+            image=image,
+            token=token
         )
         user.save()
-        return user.id
+        return user.token
 
     @staticmethod
     def update(validated_data):
@@ -65,14 +70,11 @@ class UserSerializer(serializers.ModelSerializer):
         try:
             user.image = validated_data['image'][0]
         except KeyError:
-            print('cathched key')
             try:
                 user.image = getattr(user, 'image', None)
             except ValueError:
-                print('value 1 key')
                 user.image = None
         except ValueError:
-            print('value 2 key')
             user.image = None
         user.save()
         return user
@@ -90,5 +92,11 @@ class UserSerializer(serializers.ModelSerializer):
 
     @staticmethod
     def getList():
-        users = User.objects.all()
+        users = User.objects.filter(is_admin=False)
         return users
+
+    @staticmethod
+    def update_password(instance, password):
+        instance.password = password
+        instance.save()
+        return instance

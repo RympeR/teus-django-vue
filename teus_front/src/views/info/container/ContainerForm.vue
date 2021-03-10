@@ -58,6 +58,7 @@
 <script>
 
 import { mapState } from 'vuex'
+import Vue from "vue";
 
 export default {
     name: 'ContainerForm',
@@ -115,9 +116,15 @@ export default {
             this.$store.dispatch('containers/saveItem', data)
                 .then(item => {
                     console.log(item)
-                    this.templateShowSuccess();
-                    if(!data.id)
-                        this.goBack();
+                    Vue.templateShowSuccess();
+                    if(!data.id) Vue.goBack();
+                    else this.$store.dispatch('containers/getItem', this.$route.params.id)
+                            .then(item => {
+                                console.log(item)
+                            })
+                            .catch(error => {
+                                console.log(error)
+                            });
                 })
                 .catch(error => {
                     console.log(error)

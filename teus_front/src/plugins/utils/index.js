@@ -1,48 +1,19 @@
-<script>
-import {freeSet} from '@coreui/icons'
+import { freeSet } from '@coreui/icons'
+import router from '@/router'
+const UtilsPlugin = {}
 
-export default {
-    name: 'CustomMixin',
-    freeSet,
-    data() {
-        return {
-            static_data: {
-                sex: {
-                    0: "Ж",
-                    1: "М",
-                },
-                golandTypes: {
-                    R: "R",
-                    I: "I",
-                    A: "A",
-                    S: "S",
-                    E: "E",
-                    C: "C",
-                },
-                valueTypes: {
-                    achievement: "Achievement",
-                    independence: "Independence",
-                    recognition: "Recognition",
-                    relationships: "Relationships",
-                    support: "Support",
-                    working_conditions: "Working Conditions",
-                },
-            },
+UtilsPlugin.install = function(Vue) {
+        console.log('Installing');
+        Vue.freeSet = function () {
+            return freeSet
         }
-    },
-    mounted() {
-        console.log('mounted')
-    },
-    methods: {
-        transformDate(date) {
+        Vue.transformDate = function (date) {
             console.log(date)
-            console.log(this.$moment(String(date)).tz("UTC").format('YYYY-MM-DDTH:mm'))
+            console.log(Vue.$moment(String(date)).tz("UTC").format('YYYY-MM-DDTH:mm'))
             console.log('--------------------')
-            return this.$moment(String(date)).tz("UTC").format('YYYY-MM-DDTH:mm')
-        },
-        templateShowSuccess(response, text = "Сохранено") {
-            console.log(response);
-            // alert(text);
+            return Vue.$moment(String(date)).tz("UTC").format('YYYY-MM-DDTH:mm')
+        }
+        Vue.templateShowSuccess = function (text = "Сохранено") {
             let alertSuccess = document.createElement('div');
             alertSuccess.classList = 'alert alert-success alert-custom';
             alertSuccess.innerText = text;
@@ -50,8 +21,8 @@ export default {
             setTimeout(function () {
                 document.querySelector('.alert-custom').remove();
             }, 5000);
-        },
-        collectError(response) {
+        }
+        Vue.collectError = function (response) {
             console.log(response);
             let text = '';
             try {
@@ -77,17 +48,17 @@ export default {
                 text = response.response.status + ': Неизвестная ошибка';
             }
             return text;
-        },
-        templateShowError(response) {
-            alert(this.collectError(response));
-        },
-        deleteRequest(address, id) {
-            const self = this;
+        }
+        Vue.templateShowError = function (response) {
+            alert(Vue.collectError(response));
+        }
+        Vue.deleteRequest = function (address, id) {
+            const self = Vue;
             let confirmDelete = confirm('Удалить?');
             if (confirmDelete) {
-                this.$store.dispatch('token')
+                Vue.$store.dispatch('token')
                     .then((token) => {
-                        this.$axios
+                        Vue.$axios
                             .delete(process.env.VUE_APP_HOST + address + id + '/', {
                                 headers: {
                                     Authorization: token
@@ -104,10 +75,10 @@ export default {
                         console.log(response)
                     })
                 return true
-            }else
+            } else
                 return false
-        },
-        templateShowDeleted(response) {
+        }
+        Vue.templateShowDeleted = function (response) {
             console.log(response);
             // alert(text);
             let alertSuccess = document.createElement('div');
@@ -117,22 +88,22 @@ export default {
             setTimeout(function () {
                 document.querySelector('.alert-custom').remove();
             }, 5000);
-        },
-        goBack() {
-            this.$router.go(-1)
-        },
-        toSelectArray(data, text) {
+        }
+        Vue.goBack = function () {
+            router.go(-1)
+        }
+        Vue.toSelectArray = function (data, text) {
             let response = [];
-            response.push({value: null, text: text});
+            response.push({ value: null, text: text });
             for (let [key, value] of Object.entries(data)) {
-                response.push({value: key, text: value});
+                response.push({ value: key, text: value });
             }
             return response
-        },
-        getCurrentTimestamp() {
+        }
+        Vue.getCurrentTimestamp = function () {
             return new Date().getTime();
-        },
-        removeFromArray(arr) {
+        }
+        Vue.removeFromArray = function (arr) {
             let what, a = arguments, L = a.length, ax;
             while (L > 1 && arr.length) {
                 what = a[--L];
@@ -141,10 +112,11 @@ export default {
                 }
             }
             return arr;
-        },
-        recalculatePercent(total, current) {
+        }
+
+        Vue.recalculatePercent = function (total, current) {
             return ((current * 100) / total);
-        },
-    },
-}
-</script>
+        }
+    }
+
+export default UtilsPlugin

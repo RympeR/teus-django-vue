@@ -17,28 +17,9 @@ const mutations = {
 }
 
 const actions = {
-    getList({commit}) {
+    getItem({commit}) {
         return new Promise((resolve, reject) => {
-            axios.get(process.env.VUE_APP_HOST + '/api/info/get-cities-list/', {
-                    // params: this.linesSearch,
-                    // headers: {
-                    //     Authoriz ation: token
-                    // }
-                })
-                .then(response => {
-                    let list = response.data.results;
-                    commit('setList', list);
-                    console.log(list)
-                    resolve(list);
-                })
-                .catch(response => {
-                    reject(response.error);
-                })
-        })
-    },
-    getItem({commit}, id) {
-        return new Promise((resolve, reject) => {
-            axios.get(process.env.VUE_APP_HOST + `/api/info/get-city/${id}/`, {
+            axios.get(process.env.VUE_APP_HOST + `/api/user/admin/profile/`, {
                     // params: this.linesSearch,
                     // headers: {
                     //     Authorization: token
@@ -53,23 +34,6 @@ const actions = {
                 })
         })
     }, 
-    deleteItem({state}, id) {
-        let confirmDelete = confirm('Удаление города приводит к удалению всех заявок и запросов где он использовался.');
-        if (confirmDelete) {
-            return new Promise((resolve, reject) => {
-                axios.delete(`${process.env.VUE_APP_HOST}/api/info/delete-city/${id}/`)
-                    .then(response => {
-                        state.list = state.list.filter(element => element.id !== id);
-                        resolve(response.data);
-                    })
-                    .catch(response => {
-                        console.log(response.error);
-                        reject(response.error);
-                    })
-            })
-        }
-    },
-    
     saveItem({state}, obj) {
         console.log(state)
         console.log(obj.id)
@@ -84,8 +48,9 @@ const actions = {
         if (obj.id) {
             return new Promise((resolve, reject) => {
                 axios
-                    .put(process.env.VUE_APP_HOST + '/api/info/update-city/' + obj.id + '/', formData, {
+                    .put(process.env.VUE_APP_HOST + '/api/info/change-password/' + obj.id + '/', formData, {
                             headers: {
+                                token: 'tset',
                                 'Content-Type': 'multipart/form-data'
                             },
                         }

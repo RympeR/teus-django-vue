@@ -22,6 +22,7 @@
 			>
 				<b-thead head-variant="light">
 					<b-tr>
+						
 						<b-th v-for="field in fields" :key="field.key">
 							<template v-if="field.key === 'user'">
 								{{ field.label }}
@@ -34,9 +35,26 @@
 								/>
 								<b-form-datalist
 									id="user-list"
-									:options="users_names"
+									:options="search_existing_list.users_names"
 								></b-form-datalist>
+
 							</template>
+							<template v-else-if="field.key === 'phone'">
+								{{ field.label }}
+								<input
+									class="input"
+									:placeholder="field.label"
+									@input="getFilteredPropositions(search)"
+									v-model="search.user_phone"
+									list="phone-list"
+								/>
+								<b-form-datalist
+									id="phone-list"
+									:options="search_existing_list.users_phones"
+								></b-form-datalist>
+
+							</template>
+
 							<template v-else-if="field.key === 'line'">
 								{{ field.label }}
 								<input
@@ -48,7 +66,7 @@
 								/>
 								<b-form-datalist
 									id="line-list"
-									:options="lines_names"
+									:options="search_existing_list.lines"
 								>
 								</b-form-datalist>
 							</template>
@@ -63,7 +81,7 @@
 								/>
 								<b-form-datalist
 									id="city-list"
-									:options="cities_names"
+									:options="search_existing_list.cities"
 								>
 								</b-form-datalist>
 							</template>
@@ -78,7 +96,7 @@
 								/>
 								<b-form-datalist
 									id="container-list"
-									:options="containers_names"
+									:options="search_existing_list.containers"
 								>
 								</b-form-datalist>
 							</template>
@@ -124,6 +142,7 @@
 							</template>
 							<template v-else>
 								{{ field.label }}
+								
 							</template>
 						</b-th>
 					</b-tr>
@@ -132,6 +151,15 @@
 					<b-tr v-for="item in lists" :key="item.id">
 						<b-td v-for="field in fields" :key="field.key">
 							<template v-if="field.key === 'user'">
+								<b-link
+									:to="{
+										name: 'student-update',
+										params: { id: item[field.key].id },
+									}"
+									>{{ item[field.key].name }}</b-link
+								>
+							</template>
+							<template v-else-if="field.key === 'phone'">
 								<b-link
 									:to="{
 										name: 'student-update',
@@ -177,11 +205,14 @@
 					</b-tr>
 				</b-tbody>
 			</b-table-simple>
-			<b-pagination
-				v-model="currentPage"
-				:total-rows="rows"
-				:per-page="perPage"
-			></b-pagination>
+			<template v-if="user_propositions.list.length > perPage">
+				<b-pagination
+					v-model="currentPage"
+					:total-rows="rows"
+					:per-page="perPage"
+				></b-pagination>
+			</template>
+			
 		</b-col>
 	</b-row>
 </template>
@@ -197,6 +228,7 @@ export default {
 				{ key: "index", label: "#" },
 				{ key: "id", label: "ID" },
 				{ key: "user", label: "Пользователь" },
+				{ key: "phone", label: "Телефон" },
 				{ key: "line", label: "Линия" },
 				{ key: "city", label: "Город" },
 				{ key: "container", label: "Контейнер" },
@@ -206,6 +238,7 @@ export default {
 			],
 			search: {
 				user_name: "",
+				user_phone: "",
 				line_name: "",
 				city_name: "",
 				container_name: "",
@@ -213,12 +246,16 @@ export default {
 				request_date: "",
 				request_end_date: "",
 			},
+			filtered: false,
 			perPage: 1,
 			currentPage: 1,
-			lines_names: [],
-			cities_names: [],
-			containers_names: [],
-			users_names: [],
+			search_existing_list:{
+				lines:[],
+				cities: [],
+				users_names: [],
+				containers: [],
+				users_phones: [],
+			}
 		};
 	},
 	computed: {
@@ -254,25 +291,25 @@ export default {
 			deep: true,
 		},
 	},
-	created() {
+	async created() {
 		this.$store.state.breadcrumbs = [
 			{ text: "Главная", to: { name: "home" } },
 			{ text: "Предложения", to: { name: "proposition" } },
 		];
 
-		this.getUserPropositions().then((list) => {
+		await this.getUserPropositions().then((list) => {
 			console.log(list);
 		});
-		this.getLines().then((list) => {
+		await this.getLines().then((list) => {
 			console.log(list);
 		});
-		this.getContainers().then((list) => {
+		await this.getContainers().then((list) => {
 			console.log(list);
 		});
-		this.getCities().then((list) => {
+		await this.getCities().then((list) => {
 			console.log(list);
 		});
-		this.$store
+		await this.$store
 			.dispatch("users/getList")
 			.then((item) => {
 				console.log(item);
@@ -280,18 +317,18 @@ export default {
 			.catch((error) => {
 				console.log(error);
 			});
-		this.lines.list.forEach((e) => {
-			this.lines_names.push(e.name);
+		this.user_propositions.list.forEach((e) => {
+			this.search_existing_list.lines.push(e.line.name)
+			this.search_existing_list.cities.push(e.city.name)
+			this.search_existing_list.containers.push(e.container.name)
+			this.search_existing_list.users_names.push(e.user.name)
+			this.search_existing_list.users_phones.push(e.phone.phone)
 		});
-		this.users.list.forEach((e) => {
-			this.users_names.push(e.first_name);
-		});
-		this.cities.list.forEach((e) => {
-			this.cities_names.push(e.name);
-		});
-		this.containers.list.forEach((e) => {
-			this.containers_names.push(e.name);
-		});
+		this.search_existing_list.lines = [...new Set(this.search_existing_list.lines)]
+		this.search_existing_list.cities = [...new Set(this.search_existing_list.cities)]
+		this.search_existing_list.containers = [...new Set(this.search_existing_list.containers)]
+		this.search_existing_list.users_names = [...new Set(this.search_existing_list.users_names)]
+		this.search_existing_list.users_phones = [...new Set(this.search_existing_list.users_phones)]
 	},
 	methods: {
 		...mapActions({

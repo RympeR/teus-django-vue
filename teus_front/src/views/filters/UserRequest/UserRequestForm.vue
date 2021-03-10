@@ -138,6 +138,7 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
+import Vue from "vue";
 
 export default {
   name: "UserRequestForm",
@@ -210,12 +211,22 @@ export default {
       e.preventDefault();
       let data = Object.assign({}, this.user_requests.item);
       data.id = this.id;
+      console.log(data);
       this.$store
         .dispatch("user_requests/saveItem", data)
         .then((item) => {
           console.log(item);
-          this.templateShowSuccess();
-          if (!data.id) this.goBack();
+          Vue.templateShowSuccess();
+          if (!data.id) Vue.goBack();
+          else
+            this.$store
+              .dispatch("user_requests/getItem", this.$route.params.id)
+              .then((item) => {
+                console.log(item);
+              })
+              .catch((error) => {
+                console.log(error);
+              });
         })
         .catch((error) => {
           console.log(error);

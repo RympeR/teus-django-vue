@@ -29,6 +29,7 @@
 <script>
 
 import { mapState } from 'vuex'
+import Vue from 'vue'
 
 export default {
     name: 'LineForm',
@@ -73,12 +74,20 @@ export default {
             e.preventDefault();
             let data = Object.assign({}, this.lines.item);
             data.id = this.id
+            console.log(data)
             this.$store.dispatch('lines/saveItem', data)
                 .then(item => {
                     console.log(item)
-                    this.templateShowSuccess();
-                    if(!data.id)
-                        this.goBack();
+
+                    Vue.templateShowSuccess();
+                    if(!data.id) Vue.goBack();
+                    else this.$store.dispatch('lines/getItem', this.$route.params.id)
+                            .then(item => {
+                                console.log(item)
+                            })
+                            .catch(error => {
+                                console.log(error)
+                            });
                 })
                 .catch(error => {
                     console.log(error)

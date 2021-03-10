@@ -86,11 +86,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'teus.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-DATABASES = {
+DATABASES ={
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'teus',
@@ -100,18 +96,6 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'teus',
-#         'USER': 'postgres',
-#         'PASSWORD': '1111',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
-# Password validation
-# https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {

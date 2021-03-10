@@ -409,6 +409,7 @@ class RequestsList(APIView):
     userfilter = UserFilter()
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
     def get(self, request):
+        data = self.userfilter.get_requests(request, 'teus_dev', 'teus_dev')
         try:
             user = User.objects.get(
                 token=self.request.headers['Authorization'])
@@ -463,7 +464,7 @@ class PropositionList(APIView):
     permission_classes = (permissions.AllowAny, )
     userfilter = UserFilter()
     def get(self, request):
-        print(request.query_params)
+        data = self.userfilter.get_propositions(request, 'teus_dev', 'teus_dev')
         try:
             user = User.objects.get(
                 token=self.request.headers['Authorization'])
@@ -518,6 +519,7 @@ class DealsList(APIView):
     userfilter = UserFilter()
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
     def get(self, request):
+        data = self.userfilter.get_deals(request, 'teus_dev', 'teus_dev')
 
         try:
             user = User.objects.get(

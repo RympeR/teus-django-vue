@@ -12,5 +12,5 @@ urlpatterns = [
     # path('create-admin/', AdminAPI.as_view(), name='UserCreate'),
     path('admin/profile/', AdminAPI.as_view(), name='UserProfile'),
     path('admin/', AdminAPI.as_view(), name='UserProfile'),
-    path('change-password/', AdminAPI.as_view(), name='UserUpdate'),
+    path('change-password/', ChangePasswordAPI.as_view(), name='UserUpdate'),
 ]

@@ -9,7 +9,13 @@ def execute_query(user, password, query):
         password='teus_dev',
         port='5432'
     )
-
+    # conn = psycopg2.connect(
+    #     host="localhost",
+    #     database="teus",
+    #     user='postgres',
+    #     password='1111',
+    #     port='5432'
+    # )
 
     cursor = conn.cursor()
     cursor.execute(query)

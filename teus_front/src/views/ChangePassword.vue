@@ -91,7 +91,7 @@ export default {
         });
         console.log(obj)
         axios
-          .put(
+          .post(
             "/api/user/change-password/",
             formData,
             {

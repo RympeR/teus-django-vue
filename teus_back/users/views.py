@@ -211,33 +211,10 @@ class AdminAPI(APIView):
             return Response(
                 {
                     "status": "failure"
-                }
+                }, status=status.HTTP_404_NOT_FOUND
             )
 
 
-    def put(self, request):
-        try:
-            user = User.objects.get(token=request.headers['Authorization'])
-        except Exception as e:
-            print(e)
-            user = None
-        print(User)
-        if user:
-            print( request.data)
-            user = UserSerializer.update_password(user, request.data['new_password'])
-            return Response(
-                {
-                     "user_id": user.id,
-                    "login": user.first_name,
-                    "password": user.password
-                }
-            )
-        else:
-            return Response(
-                {
-                    "status": "failure"
-                }
-            )
 
     def get(self, request):
         try :
@@ -252,7 +229,39 @@ class AdminAPI(APIView):
         if user:
             return Response(
                 {
+                    "status": True,
                     "user_id": user.id,
+                    "login": user.first_name,
+                    "password": user.password
+                }
+            )
+        else:
+            print(request.headers['Authorization'])
+            print(user)
+            return Response(
+                {
+                    "status": False
+                }, status=status.HTTP_423_LOCKED
+            )
+
+class ChangePasswordAPI(APIView):
+    permission_classes= permissions.AllowAny,
+    parser_classes= (MultiPartParser, FormParser, JSONParser,)
+    renderer_classes= JSONRenderer,
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+    def post(self, *args, **kwargs):
+        try:
+            user = User.objects.get(token=self.request.headers['Authorization'])
+        except Exception as e:
+            print(e)
+            user = None
+        print(User)
+        if user:
+            print( self.request.data)
+            user = UserSerializer.update_password(user, self.request.data['new_password'])
+            return Response(
+                {
+                     "user_id": user.id,
                     "login": user.first_name,
                     "password": user.password
                 }

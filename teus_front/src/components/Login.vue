@@ -41,9 +41,9 @@
         </b-container>
     </div>
 </template>
-
+<script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" async defer></script>
 <script>
-
+import Vue from 'vue';
 export default {
     name: 'Login',
     data() {
@@ -68,7 +68,7 @@ export default {
                 })
                 .catch(response => {
                     console.log(response)
-                    // self.validation_text = self.collectError(response);
+                    // this.validation_text = Vue.collectError(response);
                     this.loading = false;
                     this.validation = false;
                 })

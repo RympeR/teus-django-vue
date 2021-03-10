@@ -4,7 +4,7 @@
             <div class="mb-4">
 				<b-button
 					@click="resetFilters"
-					variant="primary"
+					variant="warning"
 					v-show="filtered"
 					size="md"
 				>
@@ -28,12 +28,7 @@
 										:placeholder="field.label"
 										@input="getFilteredItems(search)"
 										v-model="search.phone"
-										list="user-phone"
 									/>
-									<b-form-datalist
-										id="user-phone"
-										:options="search_existing_list.phone"
-									></b-form-datalist>
 								</div>
 							</template>
 							<template v-else-if="field.key === 'last_name'">

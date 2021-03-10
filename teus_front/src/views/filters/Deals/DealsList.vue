@@ -4,7 +4,7 @@
 			<div class="mb-4">
 				<b-button
 					@click="resetFilters"
-					variant="primary"
+					variant="warning"
 					v-show="filtered"
 					size="md"
 				>
@@ -42,12 +42,8 @@
 									class="input"
 									@input="getFilteredDeals(search)"
 									v-model="search.first_user_phone"
-									list="user-f-p-list"
 								/>
-								<b-form-datalist
-									id="user-f-p-list"
-									:options="search_existing_list.first_users_phones"
-								></b-form-datalist>
+
 							</template>
 							<template v-else-if="field.key === 'sec_user_name'">
 								{{ field.label }}
@@ -68,12 +64,7 @@
 									class="input"
 									@input="getFilteredDeals(search)"
 									v-model="search.sec_user_phone"
-									list="user-s-p-list"
 								/>
-								<b-form-datalist
-									id="user-s-p-list"
-									:options="search_existing_list.first_users_phones"
-								></b-form-datalist>
 							</template>
 							<template v-else-if="field.key === 'line'">
 								<div class="stick-top">{{ field.label }}</div>
@@ -270,7 +261,7 @@ export default {
 				{ key: "line", label: "Линия" },
 				{ key: "city", label: "Город" },
 				{ key: "container", label: "Контейнер" },
-				{ key: "amount", label: "Кол-во" },
+				{ key: "amount", label: "Кол-во", sortable: true },
 				{ key: "handshake", label: "Дата рукопожатия" },
 
 				{ key: "actions", label: "" },

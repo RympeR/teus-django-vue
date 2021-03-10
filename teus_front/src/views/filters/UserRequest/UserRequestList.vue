@@ -4,7 +4,7 @@
 			<div class="mb-4">
 				<b-button
 					@click="resetFilters"
-					variant="primary"
+					variant="warning"
 					size="md"
 					v-show="filtered"
 				>
@@ -45,12 +45,7 @@
 									:placeholder="field.label"
 									@input="getFilteredRequests(search)"
 									v-model="search.user_phone"
-									list="phone-list"
 								/>
-								<b-form-datalist
-									id="phone-list"
-									:options="search_existing_list.users_phones"
-								></b-form-datalist>
 
 							</template>
 							<template v-else-if="field.key === 'line'">
@@ -228,7 +223,7 @@ export default {
 				{ key: "line", label: "Линия" },
 				{ key: "city", label: "Город" },
 				{ key: "container", label: "Контейнер" },
-				{ key: "amount", label: "Кол-во" },
+				{ key: "amount", label: "Кол-во", sortable: true },
 				{ key: "date", label: "Дата" },
 				{ key: "actions", label: "" },
 			],

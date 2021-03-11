@@ -39,7 +39,7 @@
 
 <script>
 import Vue from 'vue'
-import axios from 'axios'
+import axios from '@/plugins/axios'
 
 export default {
   name: "UserForm",

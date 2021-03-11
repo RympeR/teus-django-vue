@@ -40,15 +40,9 @@
           <span class="form__label">Город</span>
           <div class="form__control">
             <div class="row">
+              
               <div class="col-6">
-                <b-form-select
-                  v-model="user_requests.item.city.id"
-                  :options="cities.list"
-                  class="mb-3"
-                  value-field="id"
-                  text-field="name"
-                  disabled-field="notEnabled"
-                ></b-form-select>
+                {{city_names}}
               </div>
             </div>
           </div>
@@ -82,6 +76,16 @@
                   placeholder="ru"
                   v-model="user_requests.item.amount"
                 />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form__item">
+          <span class="form__label">Статус</span>
+          <div class="form__control">
+            <div class="row">
+              <div class="col-12">
+                {{user_requests.item.status}}
               </div>
             </div>
           </div>
@@ -147,6 +151,7 @@ export default {
     return {
       id: this.$route.params.id,
       alert: false,
+      city_names: [],
     };
   },
   computed: {
@@ -179,6 +184,10 @@ export default {
           console.log(error);
         });
     }
+    this.user_requests.item.city.forEach(el => {
+      this.city_names.push(el.name)
+    });
+    this.city_names = this.city_names.join(', ')
     this.getLines().then((list) => {
       console.log(list);
     });

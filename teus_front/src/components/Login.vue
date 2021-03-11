@@ -52,7 +52,7 @@ export default {
             password: '',
             remember: false,
             validation: true,
-            validation_text: 'Пароль не подходит! Хе-хе :)',
+            validation_text: 'Имя пользователя и пароль не совпадают.',
         }
     },
     methods: {

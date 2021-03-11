@@ -229,6 +229,7 @@ export default {
 				{ key: "container", label: "Контейнер" },
 				{ key: "amount", label: "Кол-во" , sortable: true},
 				{ key: "date", label: "Дата" },
+				{ key: "status", label: "Статус" },
 				{ key: "actions", label: "" },
 			],
 			search: {

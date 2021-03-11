@@ -204,6 +204,7 @@
 					:per-page="perPage"
 				></b-pagination>
 			</template>
+
 		</b-col>
 	</b-row>
 </template>
@@ -225,6 +226,7 @@ export default {
 				{ key: "container", label: "Контейнер" },
 				{ key: "amount", label: "Кол-во", sortable: true },
 				{ key: "date", label: "Дата" },
+				{ key: "status", label: "Статус" },
 				{ key: "actions", label: "" },
 			],
 			filtered: false,
@@ -239,7 +241,7 @@ export default {
 				request_date: "",
 				request_end_date: "",
 			},
-			perPage: 1,
+			perPage: 3,
 			currentPage: 1,
 			search_existing_list:{
 				lines:[],
@@ -311,11 +313,13 @@ export default {
 			});
 		this.user_requests.list.forEach((e) => {
 			this.search_existing_list.lines.push(e.line.name)
-			this.search_existing_list.cities.push(e.city.name)
 			this.search_existing_list.containers.push(e.container.name)
 			this.search_existing_list.users_names.push(e.user.name)
 			this.search_existing_list.users_phones.push(e.phone.phone)
 		});
+		this.cities.list.forEach((el)=>{
+			this.search_existing_list.cities.push(el.name)
+		})
 		this.search_existing_list.lines = [...new Set(this.search_existing_list.lines)]
 		this.search_existing_list.cities = [...new Set(this.search_existing_list.cities)]
 		this.search_existing_list.containers = [...new Set(this.search_existing_list.containers)]

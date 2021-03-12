@@ -9,6 +9,8 @@ STATUSES = (
     (2, 'в архиве'),
     (3, 'удален'),
 )
+
+
 class UserRequest(models.Model):
     user = models.ForeignKey(User, related_name='user', on_delete=models.CASCADE)
     amount = models.IntegerField(verbose_name='amount', null=True, blank=True)
@@ -18,8 +20,10 @@ class UserRequest(models.Model):
     request_date = models.DateField(verbose_name='date', null=True, blank=True)
     end_date = models.DateField(verbose_name='end date', null=True, blank=True)
     status = models.CharField(max_length=20, choices=STATUSES, default='в работе')
+
     class Meta:
         ordering = ['-end_date']
+
 
 class UserProposition(models.Model):
     user = models.ForeignKey(User, related_name='user_proposition', on_delete=models.CASCADE)
@@ -30,8 +34,11 @@ class UserProposition(models.Model):
     start_date = models.DateField(verbose_name='start date', null=True, blank=True)
     end_date = models.DateField(verbose_name='end date', null=True, blank=True)
     status = models.CharField(max_length=20, choices=STATUSES, default='в работе')
+
     class Meta:
         ordering = ['-end_date']
+
+
 class Deal(models.Model):
     user_request = models.ForeignKey(User, related_name='deal_user_request', on_delete=models.CASCADE)
     user_proposition = models.ForeignKey(User, related_name='deal_user_proposition', on_delete=models.CASCADE)

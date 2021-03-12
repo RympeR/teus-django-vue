@@ -220,13 +220,13 @@ class AdminAPI(APIView):
         try :
             print(request.headers)
             user = User.objects.get(
-                Q(token=request.headers['Authorization']) &
-                Q(is_admin=True)
+                Q(token=request.headers['Authorization']) 
             )
         except Exception as e:
             print(e)
             user = None
         if user:
+            print(f'\n\ngot {user}\n\n') 
             return Response(
                 {
                     "status": True,
@@ -259,13 +259,16 @@ class ChangePasswordAPI(APIView):
         if user:
             print( self.request.data)
             user = UserSerializer.update_password(user, self.request.data['new_password'])
-            return Response(
+            print(f"{user} updated")
+            response = Response(
                 {
                      "user_id": user.id,
                     "login": user.first_name,
                     "password": user.password
                 }
             )
+            print(f"\n\n\t{response}\n\n")
+            return response
         else:
             return Response(
                 {

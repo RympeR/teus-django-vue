@@ -140,7 +140,7 @@
   },
   {
     "type": "GET",
-    "url": "/api/containers/get-api-proposition/",
+    "url": "/api/containers/proposition-list/",
     "title": "2.1 Get propositions",
     "name": "2.1_Get_propositions",
     "group": "Propositions",
@@ -178,8 +178,8 @@
             "group": "Parameter",
             "type": "id",
             "optional": false,
-            "field": "request_id",
-            "description": "<p>Request to filter (not required)</p>"
+            "field": "id",
+            "description": "<p>Request id to filter (not required)</p>"
           }
         ]
       }
@@ -571,6 +571,85 @@
         {
           "title": "Success-Response:",
           "content": "HTTP/1.1 200 OK\n{\n    \"id\": 1,\n    \"user\": {\n        \"id\": 1,\n        \"name\": \"test46655\",\n        \"phone\": \"094093409\"\n    },\n    \"amount\": 5,\n    \"city\": {\n        \"id\": 1,\n        \"name\": \"test23\"\n    },\n    \"container\": {\n        \"id\": 1,\n        \"name\": \"tests5\"\n    },\n    \"line\": {\n        \"id\": 1,\n        \"name\": \"test277\"\n    },\n    \"start_date\": 1615410000.0,\n    \"end_date\": 1615410000.0\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 without token\n{\n    \"status\": \"invalid token\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "apidoc/rules.py",
+    "groupTitle": "Propositions"
+  },
+  {
+    "type": "PUT",
+    "url": "/api/containers/mark-proposition-status/",
+    "title": "2.5 Mark proposition status by id",
+    "name": "3.5_Mark_proposition_status_by_id",
+    "group": "Propositions",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Users unique token</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Proposition id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p>Proposition status one of в работе | в архиве | удален</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Request id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p>Proposition status</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"id\": 1,\n    \"status\": \"в архиве\"\n}",
           "type": "json"
         }
       ]
@@ -993,6 +1072,85 @@
         {
           "title": "Success-Response:",
           "content": "HTTP/1.1 200 OK\n{\n    \"id\": 1,\n    \"user\": {\n        \"id\": 1,\n        \"name\": \"test46655\",\n        \"phone\": \"094093409\"\n    },\n    \"amount\": 5,\n    \"city\": {\n        \"id\": 1,\n        \"name\": \"test23\"\n    },\n    \"container\": {\n        \"id\": 1,\n        \"name\": \"tests5\"\n    },\n    \"line\": {\n        \"id\": 1,\n        \"name\": \"test277\"\n    },\n    \"request_date\": 1615410000.0,\n    \"end_date\": 1615410000.0\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 without token\n{\n    \"status\": \"invalid token\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "apidoc/rules.py",
+    "groupTitle": "Requests"
+  },
+  {
+    "type": "PUT",
+    "url": "/api/containers/mark-request-status/",
+    "title": "3.5 Mark request status by id",
+    "name": "3.5_Mark_request_status_by_id",
+    "group": "Requests",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Users unique token</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Request id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p>Request status one of в работе | в архиве | удален</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Request id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p>Proposition status</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"id\": 1,\n    \"status\": \"в архиве\"\n}",
           "type": "json"
         }
       ]

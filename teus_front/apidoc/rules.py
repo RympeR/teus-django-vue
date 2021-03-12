@@ -110,14 +110,14 @@
 """
 
 """
-    @api {GET} /api/containers/get-api-proposition/ 2.1 Get propositions
+    @api {GET} /api/containers/proposition-list/ 2.1 Get propositions
     @apiName 2.1 Get propositions
     @apiGroup Propositions
     @apiHeader {String} Authorization Users unique token
 
     @apiParam {Number} limit Pagination limit (not required)
     @apiParam {Number} offset Pagination offset (not required)
-    @apiParam {id} request_id Request to filter (not required)
+    @apiParam {id} id Request id to filter (not required)
 
     @apiSuccess {Object} results result objects list
     @apiSuccess {Number} id Proposition id

@@ -42,16 +42,8 @@ const actions = {
                             amount: el.amount,
                         };
                         console.log(el.date)
-                        var date_start = new Date(el.date.start);
-                        var date_end = new Date(el.date.end);
-                        var year_start = date_start.getFullYear();
-                        var month_start = ("0" + (date_start.getMonth() + 1)).slice(-2);
-                        var day_start = ("0" + date_start.getDate()).slice(-2);
-                        var year_end = date_end.getFullYear();
-                        var month_end = ("0" + (date_end.getMonth() + 1)).slice(-2);
-                        var day_end = ("0" + date_end.getDate()).slice(-2);
                         el.date = {
-                            date: year_start + "-" + month_start + "-" + day_start + ' - ' + year_end + "-" + month_end + "-" + day_end
+                            date: el.date.start + ' - ' + el.date.end
                         };
                         
                     });
@@ -74,6 +66,17 @@ const actions = {
                     }
                 })
                 .then(response => {
+                    var date_start = new Date(response.data.request_date * 1000);
+                    var date_end = new Date(response.data.end_date * 1000);
+                    var year_start = date_start.getFullYear();
+                    var month_start = ("0" + (date_start.getMonth() + 1)).slice(-2);
+                    var day_start = ("0" + date_start.getDate()).slice(-2);
+                    var year_end = date_end.getFullYear();
+                    var month_end = ("0" + (date_end.getMonth() + 1)).slice(-2);
+                    var day_end = ("0" + date_end.getDate()).slice(-2);
+                    response.data.request_date=year_start + "-" + month_start + "-" + day_start 
+                    response.data.end_date=year_end + "-" + month_end + "-" + day_end
+                    console.log(response.data)
                     commit('setItem', response.data);
                     resolve(response.data)
                 })
@@ -135,16 +138,8 @@ const actions = {
                     el.amount = {
                         amount: el.amount,
                     };
-                    var date_start = new Date(el.date.start);
-                    var date_end = new Date(el.date.end);
-                    var year_start = date_start.getFullYear();
-                    var month_start = ("0" + (date_start.getMonth() + 1)).slice(-2);
-                    var day_start = ("0" + date_start.getDate()).slice(-2);
-                    var year_end = date_end.getFullYear();
-                    var month_end = ("0" + (date_end.getMonth() + 1)).slice(-2);
-                    var day_end = ("0" + date_end.getDate()).slice(-2);
                     el.date = {
-                        date: year_start + "-" + month_start + "-" + day_start + ' - ' + year_end + "-" + month_end + "-" + day_end
+                        date: el.date.start + ' - ' + el.date.end
                     };
                 });
                 commit('setList', list);

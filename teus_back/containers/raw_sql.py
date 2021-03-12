@@ -142,14 +142,14 @@ class UserFilter:
                 request, query,  'request_date', 'request_end_date', 'containers_userproposition.start_date')
             query = self.add_between_case(request, query, 'request_date',
                                           'request_end_date', 'containers_userproposition.end_date',  or_=True)
-            query += 'order by "date", "end_date";'
+            query += 'order by "date" desc, "end_date" desc;'
             print(query)
             result = execute_select_query(login, password, query)
 
         except Exception as e:
             print(e)
             print('failed')
-            query = base_query + 'order by "date";'
+            query = base_query + 'order by "date" desc;'
             result = execute_select_query(login, password, query)
         return result
 
@@ -192,7 +192,7 @@ class UserFilter:
                 request, query,  'request_date', 'request_end_date', 'containers_userrequest.request_date')
             query += '''
                group by 1,3,5,6,7,8,9,10,4
-                order by "date", "end_date";'''
+                order by "date", "end_date" desc;'''
             print(query)
             result = execute_select_query(login, password, query)
 
@@ -200,7 +200,7 @@ class UserFilter:
             print(e)
             query = base_query + '''
                 group by 1,3,5,6,7,8,9,10,4
-                order by "date", "end_date";'''
+                order by "date" desc, "end_date" desc;'''
             result = execute_select_query(login, password, query)
         return result
 
@@ -242,12 +242,12 @@ class UserFilter:
                 request, query, 'amount', 'amount', str_=False)
             query = self.add_between_case(
                 request, query,  'handshake', 'handshake_end', 'containers_deal.handshake_time')
-            query += 'order by containers_deal.handshake_time;'
+            query += 'order by containers_deal.handshake_time desc;'
             print(query)
             result = execute_select_query(login, password, query)
 
         except Exception as e:
             print(e)
-            query = base_query + 'order by containers_deal.handshake_time;'
+            query = base_query + 'order by containers_deal.handshake_time desc;'
             result = execute_select_query(login, password, query)
         return result

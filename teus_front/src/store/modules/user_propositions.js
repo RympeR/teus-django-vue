@@ -76,8 +76,8 @@ const actions = {
                 })
                 .then(response => {
                     console.log(response.data)
-                    var date_start = new Date(response.data.start_date);
-                    var date_end = new Date(response.data.end_date);
+                    var date_start = new Date(response.data.start_date * 1000);
+                    var date_end = new Date(response.data.end_date * 1000);
                     var year_start = date_start.getFullYear();
                     var month_start = ("0" + (date_start.getMonth() + 1)).slice(-2);
                     var day_start = ("0" + date_start.getDate()).slice(-2);

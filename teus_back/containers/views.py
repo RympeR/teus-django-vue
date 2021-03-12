@@ -585,7 +585,6 @@ class DealsList(APIView):
                 },
                 "amount": row[13],
                 "handshake": row[14].strftime('%H:%M:%S %d %b %Y'),
-                "status": row[15],
             })
         return Response(
             {
@@ -898,8 +897,8 @@ class FilteredPropositions(APIView):
                 )
             else:
                 propositons = UserProposition.objects.all()
-            limit = request.data.get('limit', 20)
-            offset = request.data.get('offset', 0)
+            limit = int(request.data.get('limit', 20))
+            offset = int(request.data.get('offset', 0))
             results = []
             domain = request.get_host()
             for proposition in propositons:
@@ -942,7 +941,7 @@ class FilteredPropositions(APIView):
                 })
             return Response(
                 {
-                    "results": results[offset: offset+limit+1]
+                    "results": results[offset: offset+limit]
                 }
             )
         else:

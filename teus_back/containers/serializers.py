@@ -4,6 +4,61 @@ from info.serializers import ContainerSerializer, LineSerializer, CitySerializer
 from users.serializers import UserSerializer
 
 
+class UserRequsetSerializer(serializers.ModelSerializer):
+    user = serializers.PrimaryKeyRelatedField(
+        read_only=False, queryset=User.objects.all())
+    container = serializers.PrimaryKeyRelatedField(
+        read_only=False, queryset=Container.objects.all())
+    city = serializers.PrimaryKeyRelatedField(
+        read_only=False, queryset=City.objects.all(), many=True)
+    line = serializers.PrimaryKeyRelatedField(
+        read_only=False, queryset=Line.objects.all())
+
+    class Meta:
+        model = UserRequest
+        fields = '__all__'
+
+    def create(self, validated_data):
+        user_request = UserRequest.objects.create(
+            user=validated_data.get('user'),
+            line=validated_data.pop('line', None),
+            container=validated_data.pop('container', None),
+            amount=validated_data.get('amount', None),
+            request_date=validated_data.get('request_date', None),
+            end_date=validated_data.get('end_date', None)
+        )
+        user_request.city.set(validated_data.pop('city'))
+        user_request.save()
+        return user_request
+
+class UserPropositionsSerializer(serializers.ModelSerializer):
+    user = serializers.PrimaryKeyRelatedField(
+        read_only=False, queryset=User.objects.all())
+    container = serializers.PrimaryKeyRelatedField(
+        read_only=False, queryset=Container.objects.all())
+    city = serializers.PrimaryKeyRelatedField(
+        read_only=False, queryset=City.objects.all())
+    line = serializers.PrimaryKeyRelatedField(
+        read_only=False, queryset=Line.objects.all())
+
+    class Meta:
+        model = UserRequest
+        fields = '__all__'
+
+    def create(self, validated_data):
+        print(validated_data)
+        user_proposition = UserProposition.objects.create(
+            user=validated_data.get('user'),
+            city=validated_data.pop('city', None),
+            line=validated_data.pop('line', None),
+            container=validated_data.pop('container', None),
+            amount=validated_data.get('amount', None),
+            start_date=validated_data['start_date'],
+            end_date=validated_data.get('end_date', None),
+            
+        )
+        return user_proposition
+
 class RequestSerializer(serializers.ModelSerializer):
 
     user = serializers.PrimaryKeyRelatedField(
@@ -11,7 +66,7 @@ class RequestSerializer(serializers.ModelSerializer):
     container = serializers.PrimaryKeyRelatedField(
         read_only=False, queryset=Container.objects.all())
     city = serializers.PrimaryKeyRelatedField(
-        read_only=False, queryset=City.objects.all())
+        read_only=False, queryset=City.objects.all(), many=True)
     line = serializers.PrimaryKeyRelatedField(
         read_only=False, queryset=Line.objects.all())
 
@@ -32,8 +87,9 @@ class RequestSerializer(serializers.ModelSerializer):
         return user_request
 
     def update(self, instance, validated_data):
+        # print(validated_data)
         instance.user = validated_data.pop('user', instance.user)
-        instance.city = validated_data.pop('city', instance.city)
+        instance.city.set(validated_data.pop('city', instance.city))
         instance.line = validated_data.pop('line', instance.line)
         instance.container = validated_data.pop(
             'container', instance.container)
@@ -42,6 +98,8 @@ class RequestSerializer(serializers.ModelSerializer):
             'request_date', instance.request_date)
         instance.end_date = validated_data.get(
             'end_date', instance.end_date)
+        instance.status = validated_data.get(
+            'status', instance.status)
         instance.save()
         return instance
 
@@ -95,6 +153,7 @@ class DealSerializer(serializers.ModelSerializer):
             'container', instance.container)
         instance.amount = validated_data.get('amount', instance.amount)
         instance.handshake_time = instance.handshake_time
+        
         instance.save()
         return instance
 
@@ -147,6 +206,8 @@ class PropositionSerializer(serializers.ModelSerializer):
             'start_date', instance.start_date)
         instance.end_date = validated_data.get(
             'end_date', instance.end_date)
+        instance.status = validated_data.get(
+            'status', instance.status)
         instance.save()
         return instance
 

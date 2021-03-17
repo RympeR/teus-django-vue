@@ -31,7 +31,10 @@ class UserAPI(APIView):
         except Exception:
             user = None
         if user:
-            user = UserSerializer.getProfile(**kwargs)
+            try:
+                user = UserSerializer.getProfile(**kwargs)
+            except Exception:
+                pass
             domain = self.request.get_host()
             try:
                 path_image = user.image.url
@@ -273,5 +276,107 @@ class ChangePasswordAPI(APIView):
             return Response(
                 {
                     "status": "failure"
+                }
+            )
+
+
+
+@renderer_classes((JSONRenderer,))
+@permission_classes((permissions.AllowAny,))
+class UserTokenAPI(APIView):
+    parser_classes = (MultiPartParser, FormParser, JSONParser, )
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+
+    def get(self, *args, **kwargs):
+        try:
+            print(self.request.headers)
+            user = User.objects.get(token=self.request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            domain = self.request.get_host()
+            try:
+                path_image = user.image.url
+                image_url = 'http://{domain}{path}'.format(
+                    domain=domain, path=path_image)
+            except ValueError:
+                image_url = ''
+            return Response(
+                {
+                    "user_id": user.id,
+                    "phone": user.phone,
+                    "image": image_url,
+                    "first_name": user.first_name,
+                    "last_name": user.last_name,
+                    "company": user.company
+                }, status=status.HTTP_200_OK
+            )
+        else:
+            return Response(
+                {
+                    "status": "invalid token"
+                }
+            )
+    
+    def post(self, *args, **kwargs):
+        data = dict(self.request.data)  
+        data['token'] = User.generate_token(data['phone'][0])
+        user_token = UserSerializer.create(data)
+        return Response(
+            {
+                "status": "ok",
+                "token": user_token
+            }, status=status.HTTP_200_OK
+        )
+
+
+    def put(self, *args, **kwargs):
+        try:
+            user = User.objects.get(token=self.request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            data = dict(self.request.data)
+            data['user_id'] = user.id
+            user = UserSerializer.update(data)
+            domain = self.request.get_host()
+            try:
+                path_image = user.image.url
+                image_url = 'http://{domain}{path}'.format(
+                    domain=domain, path=path_image)
+            except ValueError:
+                image_url = ''
+            return Response(
+                {
+                    "user_id": user.id,
+                    "image": image_url,
+                    "phone": user.phone,
+                    "first_name": user.first_name,
+                    "last_name": user.last_name,
+                    "company": user.company
+                }, status=status.HTTP_200_OK
+            )
+        else:
+            return Response(
+                {
+                    "status": "invalid token"
+                }
+            )
+
+    def delete(self, *args, **kwargs):
+        try:
+            user = User.objects.get(token=self.request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            return Response(
+                {
+                    "user_id": user[0]
+                }, status=status.HTTP_200_OK
+            )
+        else:
+            return Response(
+                {
+                    "status": "invalid token"
                 }
             )

@@ -89,23 +89,13 @@ WSGI_APPLICATION = 'teus.wsgi.application'
 DATABASES ={
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'teus',
+        'NAME': 'teus_dev',
         'USER': 'teus_dev',
         'PASSWORD': 'teus_dev',
         'HOST': 'localhost',
         'PORT': '5432',
     }
 }
-# DATABASES ={
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'teus',
-#         'USER': 'postgres',
-#         'PASSWORD': '1111',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',

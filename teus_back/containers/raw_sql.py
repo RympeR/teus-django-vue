@@ -113,8 +113,10 @@ class UserFilter:
                 info_container.id "container id", info_container.name "container name",
                 containers_userproposition.amount "amount",
                 containers_userproposition.start_date "date",
-                containers_userproposition.end_date "end_date"
+                containers_userproposition.end_date "end_date",
+                containers_userproposition.status "status"
                 from containers_userproposition
+            
             join info_city on containers_userproposition.city_id = info_city.id
             join users_user on containers_userproposition.user_id = users_user.id
             join info_line on containers_userproposition.line_id = info_line.id
@@ -134,37 +136,41 @@ class UserFilter:
                 request, query,  'container_name', 'info_container.name')
             query = self.add_and_case(
                 request, query, 'amount', 'amount', str_=False)
+            query = self.add_and_case(
+                request, query, 'status', 'status', str_=False)
             query = self.add_between_case(
                 request, query,  'request_date', 'request_end_date', 'containers_userproposition.start_date')
             query = self.add_between_case(request, query, 'request_date',
                                           'request_end_date', 'containers_userproposition.end_date',  or_=True)
-            query += 'order by "date", "end_date";'
+            query += 'order by "date" desc, "end_date" desc;'
             print(query)
             result = execute_select_query(login, password, query)
 
         except Exception as e:
             print(e)
             print('failed')
-            query = base_query + 'order by "date";'
+            query = base_query + 'order by "date" desc;'
             result = execute_select_query(login, password, query)
         return result
 
     def get_requests(self, request, login, password):
         base_query = '''
-            select
+              select
                 containers_userrequest.id,
-                info_city.id "city id", info_city.name "city name", 
-                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone", 
+                 array_agg(info_city.name),
+                users_user.id "user id", users_user.first_name "user name", users_user.phone "user phone",
                 info_line.id "line id", info_line.name "line name",
                 info_container.id "container id", info_container.name "container name",
                 containers_userrequest.amount "amount",
                 containers_userrequest.request_date "date",
-                containers_userrequest.end_date "end date"
-                from containers_userrequest
-            join info_city on containers_userrequest.city_id = info_city.id
+                containers_userrequest.end_date "end date",
+                containers_userrequest.status "status"
+             from containers_userrequest
+            join containers_userrequest_city on containers_userrequest.id = containers_userrequest_city.userrequest_id
+            join info_city on containers_userrequest_city.city_id = info_city.id
             join users_user on containers_userrequest.user_id = users_user.id
             join info_line on containers_userrequest.line_id = info_line.id
-            join info_container on containers_userrequest.container_id = info_container.id  
+            join info_container on containers_userrequest.container_id = info_container.id
         '''
         try:
             query = base_query
@@ -180,15 +186,21 @@ class UserFilter:
                 request, query,  'container_name', 'info_container.name')
             query = self.add_and_case(
                 request, query, 'amount', 'amount', str_=False)
+            query = self.add_and_case(
+                request, query, 'status', 'status', str_=False)
             query = self.add_between_case(
                 request, query,  'request_date', 'request_end_date', 'containers_userrequest.request_date')
-            query += 'order by "date", "end_date";'
+            query += '''
+               group by 1,3,5,6,7,8,9,10,4
+                order by "date", "end_date" desc;'''
             print(query)
             result = execute_select_query(login, password, query)
 
         except Exception as e:
             print(e)
-            query = base_query + 'order by "date", "end_date";'
+            query = base_query + '''
+                group by 1,3,5,6,7,8,9,10,4
+                order by "date" desc, "end_date" desc;'''
             result = execute_select_query(login, password, query)
         return result
 
@@ -230,12 +242,12 @@ class UserFilter:
                 request, query, 'amount', 'amount', str_=False)
             query = self.add_between_case(
                 request, query,  'handshake', 'handshake_end', 'containers_deal.handshake_time')
-            query += 'order by containers_deal.handshake_time;'
+            query += 'order by containers_deal.handshake_time desc;'
             print(query)
             result = execute_select_query(login, password, query)
 
         except Exception as e:
             print(e)
-            query = base_query + 'order by containers_deal.handshake_time;'
+            query = base_query + 'order by containers_deal.handshake_time desc;'
             result = execute_select_query(login, password, query)
         return result

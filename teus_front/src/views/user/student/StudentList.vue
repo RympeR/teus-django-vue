@@ -76,6 +76,7 @@
 							<template v-if="field.key === 'image'">
                                 <template>
                                     <table-thumbnail v-if="item[field.key]"
+										:id="item.id"
                                         :src="item[field.key]"
                                     />
                                 </template>

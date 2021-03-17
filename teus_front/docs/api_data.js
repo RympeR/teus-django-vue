@@ -1,5 +1,699 @@
 define({ "api": [
   {
+    "type": "POST",
+    "url": "/api/chat/create-room/",
+    "title": "5.1 Create room",
+    "name": "5.1_Create_room",
+    "group": "Chat",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Users unique token</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "request_id",
+            "description": "<p>Id of request</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "proposition_id",
+            "description": "<p>Id of proposition</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>room id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "date",
+            "description": "<p>datetime of creating room timestamp</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "boolean",
+            "optional": false,
+            "field": "first_mark",
+            "description": "<p>handshake first mark</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "boolean",
+            "optional": false,
+            "field": "second_mark",
+            "description": "<p>handshake second mark</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "request_id",
+            "description": "<p>Id of request</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "proposition_id",
+            "description": "<p>Id of proposition</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"id\": 6,\n    \"date\": 1615979863.412638,\n    \"first_mark\": false,\n    \"second_mark\": false,\n    \"request_id\": 2,\n    \"proposition_id\": 2\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 without token\n{\n    \"status\": \"invalid token\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "apidoc/rules.py",
+    "groupTitle": "Chat"
+  },
+  {
+    "type": "PUT",
+    "url": "/api/chat/update-room/{int:pk}",
+    "title": "5.2 Update room",
+    "name": "5.2_Update_room",
+    "group": "Chat",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Users unique token</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "pk",
+            "description": "<p>Room id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "request_id",
+            "description": "<p>Id of request</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "proposition_id",
+            "description": "<p>Id of proposition</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>room id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "date",
+            "description": "<p>datetime of creating room timestamp</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "boolean",
+            "optional": false,
+            "field": "first_mark",
+            "description": "<p>handshake first mark</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "boolean",
+            "optional": false,
+            "field": "second_mark",
+            "description": "<p>handshake second mark</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "request_id",
+            "description": "<p>Id of request</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "proposition_id",
+            "description": "<p>Id of proposition</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"id\": 6,\n    \"date\": 1615979863.412638,\n    \"first_mark\": false,\n    \"second_mark\": false,\n    \"request_id\": 2,\n    \"proposition_id\": 2\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 without token\n{\n    \"status\": \"invalid token\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "apidoc/rules.py",
+    "groupTitle": "Chat"
+  },
+  {
+    "type": "DELETE",
+    "url": "/api/chat/delete-room/{int:pk}",
+    "title": "5.3 Delete room",
+    "name": "5.3_Delete_room",
+    "group": "Chat",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Users unique token</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "pk",
+            "description": "<p>Room id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 204 No Content\n{\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 without token\n{\n    \"status\": \"invalid token\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "apidoc/rules.py",
+    "groupTitle": "Chat"
+  },
+  {
+    "type": "POST",
+    "url": "/api/chat/create-message/",
+    "title": "5.4 Create message",
+    "name": "5.4_Create_message",
+    "group": "Chat",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Users unique token</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "room",
+            "description": "<p>Id of room</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "user",
+            "description": "<p>Id of user</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "text",
+            "description": "<p>messgge text (not required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "object",
+            "optional": false,
+            "field": "attachment",
+            "description": "<p>File attachment (not required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>message id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "date",
+            "description": "<p>datetime of creating room timestamp</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "boolean",
+            "optional": false,
+            "field": "text",
+            "description": "<p>text message ( can be null )</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "boolean",
+            "optional": false,
+            "field": "attachment",
+            "description": "<p>attachemnt file link ( can be null )</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "room",
+            "description": "<p>Id of room</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "user",
+            "description": "<p>Id of sender user</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"id\": 2,\n    \"date\": 1615911583.265012,\n    \"text\": null,\n    \"attachment\": \"http://api-teus.maximusapp.com/media/PHZ_0733_XRWHViz.jpg\",\n    \"room\": 4,\n    \"user\": 2\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 without token\n{\n    \"status\": \"invalid token\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "apidoc/rules.py",
+    "groupTitle": "Chat"
+  },
+  {
+    "type": "GET",
+    "url": "api/chat/messages/{int:pk}",
+    "title": "5.5 Get messages in chat",
+    "name": "5.5_Get_messages_in_chat",
+    "group": "Chat",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Users unique token</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "pk",
+            "description": "<p>Room id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "results",
+            "description": "<p>list of message objects</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n     \"results\": [\n        {\n            \"id\": 2,\n            \"room_id\": 4,\n            \"user_id\": 2,\n            \"text\": null,\n            \"attachment\": \"http://api-teus.maximusapp.com/media/PHZ_0733_XRWHViz.jpg\",\n            \"date\": 1615845600.0\n        },\n        {\n            \"id\": 1,\n            \"room_id\": 4,\n            \"user_id\": 1,\n            \"text\": \"teste\",\n            \"attachment\": null,\n            \"date\": 1615845600.0\n        }\n    ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 without token\n{\n    \"status\": \"invalid token\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "apidoc/rules.py",
+    "groupTitle": "Chat"
+  },
+  {
+    "type": "GET",
+    "url": "api/chat/rooms-proposition/{int:pk}",
+    "title": "5.6 Get chats by proposition id",
+    "name": "5.6_Get_chats_by_proposition_id",
+    "group": "Chat",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Users unique token</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "pk",
+            "description": "<p>Proposition id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "results",
+            "description": "<p>list of chat objects</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"results\": [\n        {\n            \"id\": 4,\n            \"user_request_id\": 1,\n            \"user_proposition_id\": 1,\n            \"date\": 1615845600.0,\n            \"first_mark\": false,\n            \"second_mark\": false\n        }\n    ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 without token\n{\n    \"status\": \"invalid token\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "apidoc/rules.py",
+    "groupTitle": "Chat"
+  },
+  {
+    "type": "GET",
+    "url": "api/chat/rooms-request/{int:pk}",
+    "title": "5.6 Get chats by request id",
+    "name": "5.6_Get_chats_by_request_id",
+    "group": "Chat",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Users unique token</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "pk",
+            "description": "<p>Request id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "results",
+            "description": "<p>list of chat objects</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"results\": [\n        {\n            \"id\": 4,\n            \"user_request_id\": 1,\n            \"user_proposition_id\": 1,\n            \"date\": 1615845600.0,\n            \"first_mark\": false,\n            \"second_mark\": false\n        }\n    ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 without token\n{\n    \"status\": \"invalid token\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "apidoc/rules.py",
+    "groupTitle": "Chat"
+  },
+  {
+    "type": "POST",
+    "url": "ws://api/chat/ws/chat/{int:room_name}/",
+    "title": "5.7 Send message ( works with sockets )",
+    "name": "5.7_Send_message",
+    "group": "Chat",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "room",
+            "description": "<p>room id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>message text</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "user",
+            "description": "<p>user id</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "apidoc/rules.py",
+    "groupTitle": "Chat"
+  },
+  {
+    "type": "PUT",
+    "url": "/api/chat/handshake/{int:pk}",
+    "title": "5.8 Handshake",
+    "name": "5.8_Handshake",
+    "group": "Chat",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Users unique token</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "pk",
+            "description": "<p>Room id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "handshake",
+            "description": "<p>First or second user (1 | 2)&lt;- values</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 but needs handshake\n{\n    \"status\": \"needs second handshake\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"success\": 200,\n    \"status\": \"processed\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 without token\n{\n    \"status\": \"invalid token\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "apidoc/rules.py",
+    "groupTitle": "Chat"
+  },
+  {
     "type": "GET",
     "url": "/api/info/get-containers-list/",
     "title": "4.1 Get containers",

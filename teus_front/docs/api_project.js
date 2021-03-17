@@ -8,7 +8,8 @@ define({
     "User",
     "Propositions",
     "Requests",
-    "Info"
+    "Info",
+    "Chat"
   ],
   "template": {
     "withCompare": true,
@@ -19,7 +20,7 @@ define({
   "apidoc": "0.3.0",
   "generator": {
     "name": "apidoc",
-    "time": "2021-03-12T10:44:02.272Z",
+    "time": "2021-03-17T11:41:48.655Z",
     "url": "https://apidocjs.com",
     "version": "0.26.0"
   }

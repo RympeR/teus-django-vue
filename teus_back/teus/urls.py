@@ -7,6 +7,7 @@ urlpatterns = [
     path('api/', include('rest_framework.urls')),
     path('api/info/', include('info.urls')),
     path('api/user/', include('users.urls')),
+    path('api/chat/', include('chat.urls')),
     path('api/containers/', include('containers.urls')),
     path('silk/', include('silk.urls', namespace='silk')),
     path('auth/', include('djoser.urls')),

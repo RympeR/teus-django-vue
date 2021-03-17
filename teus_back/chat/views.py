@@ -243,31 +243,38 @@ class Handshake(APIView):
 
                 room.proposition_id.save()
                 room.request_id.save()
-            room.save()
-            domain = request.get_host()
-            url = f"http://{domain}/api/containers/create-deal/"
+                room.save()
+                domain = request.get_host()
+                url = f"http://{domain}/api/containers/create-deal/"
 
-            payload = {
-                        'user_request': user_request,
-                       'amount': amount,
-                       'city': city,
-                       'line': line,
-                       'container': container,
-                       'user_proposition': user_proposition
-            }
-            headers = {
-                'Authorization': 'tset'
-            }
-
-            response = requests.request(
-                "POST", url, headers=headers, json=payload)
-
-            print(response.text)
-            return Response(
-                {
-                    "success": response.status_code
+                payload = {
+                            'user_request': user_request,
+                        'amount': amount,
+                        'city': city,
+                        'line': line,
+                        'container': container,
+                        'user_proposition': user_proposition
                 }
-            )
+                headers = {
+                    'Authorization': 'tset'
+                }
+
+                response = requests.request(
+                    "POST", url, headers=headers, json=payload)
+
+                print(response.text)
+                return Response(
+                    {
+                        "success": response.status_code,
+                        "status": "processed"
+                    }
+                )
+            else:
+                return Response(
+                    {
+                        "status": "needs second handshake"
+                    }
+                )
         else:
             return Response(
                 {

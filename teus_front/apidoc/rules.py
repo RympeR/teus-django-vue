@@ -622,7 +622,7 @@
     @apiGroup Chat
     @apiHeader {String} Authorization Users unique token
 
-    @apiParam {Number} pk Request id
+    @apiParam {Number} pk Room id
     @apiParam {Number} request_id Id of request
     @apiParam {Number} proposition_id Id of proposition
     
@@ -652,31 +652,194 @@
 """
 
 """
-    @api {DELETE} /api/chat/deelte-room/{int:pk} 5.3 Delete room    
+    @api {DELETE} /api/chat/delete-room/{int:pk} 5.3 Delete room    
     @apiName 5.3 Delete room
     @apiGroup Chat
     @apiHeader {String} Authorization Users unique token
 
-    @apiParam {Number} pk Request id
-    @apiParam {Number} request_id Id of request
-    @apiParam {Number} proposition_id Id of proposition
+    @apiParam {Number} pk Room id
 
-    @apiSuccess {number} id room id
+    @apiSuccessExample {json} Success-Response:
+    HTTP/1.1 204 No Content
+    {
+    }
+    
+    @apiErrorExample {json} Error-Response:
+    HTTP/1.1 200 without token
+    {
+        "status": "invalid token"
+    }
+"""
+
+"""
+    @api {POST} /api/chat/create-message/ 5.4 Create message    
+    @apiName 5.4 Create message
+    @apiGroup Chat
+    @apiHeader {String} Authorization Users unique token
+
+    @apiParam {Number} room Id of room
+    @apiParam {Number} user Id of user
+    @apiParam {String} text messgge text (not required)
+    @apiParam {object} attachment File attachment (not required)
+
+    @apiSuccess {number} id message id
     @apiSuccess {Number} date datetime of creating room timestamp
-    @apiSuccess {boolean} first_mark handshake first mark
-    @apiSuccess {boolean} second_mark handshake second mark
-    @apiSuccess {Number} request_id Id of request
-    @apiSuccess {Number} proposition_id Id of proposition
+    @apiSuccess {boolean} text text message ( can be null )
+    @apiSuccess {boolean} attachment attachemnt file link ( can be null )
+    @apiSuccess {Number} room Id of room
+    @apiSuccess {Number} user Id of sender user
 
     @apiSuccessExample {json} Success-Response:
     HTTP/1.1 200 OK
     {
-        "id": 6,
-        "date": 1615979863.412638,
-        "first_mark": false,
-        "second_mark": false,
-        "request_id": 2,
-        "proposition_id": 2
+        "id": 2,
+        "date": 1615911583.265012,
+        "text": null,
+        "attachment": "http://api-teus.maximusapp.com/media/PHZ_0733_XRWHViz.jpg",
+        "room": 4,
+        "user": 2
+    }
+    
+    @apiErrorExample {json} Error-Response:
+    HTTP/1.1 200 without token
+    {
+        "status": "invalid token"
+    }
+"""
+
+"""
+    @api {GET} api/chat/messages/{int:pk} 5.5 Get messages in chat
+    @apiName 5.5 Get messages in chat
+    @apiGroup Chat
+    @apiHeader {String} Authorization Users unique token
+
+    @apiParam {Number} pk Room id
+
+    @apiSuccess {object} results list of message objects
+
+    @apiSuccessExample {json} Success-Response:
+    HTTP/1.1 200 OK
+    {
+         "results": [
+            {
+                "id": 2,
+                "room_id": 4,
+                "user_id": 2,
+                "text": null,
+                "attachment": "http://api-teus.maximusapp.com/media/PHZ_0733_XRWHViz.jpg",
+                "date": 1615845600.0
+            },
+            {
+                "id": 1,
+                "room_id": 4,
+                "user_id": 1,
+                "text": "teste",
+                "attachment": null,
+                "date": 1615845600.0
+            }
+        ]
+    }
+    
+    @apiErrorExample {json} Error-Response:
+    HTTP/1.1 200 without token
+    {
+        "status": "invalid token"
+    }
+"""
+
+"""
+    @api {GET} api/chat/rooms-request/{int:pk} 5.6 Get chats by request id
+    @apiName 5.6 Get chats by request id
+    @apiGroup Chat
+    @apiHeader {String} Authorization Users unique token
+
+    @apiParam {Number} pk Request id
+
+    @apiSuccess {object} results list of chat objects
+
+    @apiSuccessExample {json} Success-Response:
+    HTTP/1.1 200 OK
+    {
+        "results": [
+            {
+                "id": 4,
+                "user_request_id": 1,
+                "user_proposition_id": 1,
+                "date": 1615845600.0,
+                "first_mark": false,
+                "second_mark": false
+            }
+        ]
+    }
+    
+    @apiErrorExample {json} Error-Response:
+    HTTP/1.1 200 without token
+    {
+        "status": "invalid token"
+    }
+"""
+
+"""
+    @api {GET} api/chat/rooms-proposition/{int:pk} 5.6 Get chats by proposition id
+    @apiName 5.6 Get chats by proposition id
+    @apiGroup Chat
+    @apiHeader {String} Authorization Users unique token
+
+    @apiParam {Number} pk Proposition id
+
+    @apiSuccess {object} results list of chat objects
+
+    @apiSuccessExample {json} Success-Response:
+    HTTP/1.1 200 OK
+    {
+        "results": [
+            {
+                "id": 4,
+                "user_request_id": 1,
+                "user_proposition_id": 1,
+                "date": 1615845600.0,
+                "first_mark": false,
+                "second_mark": false
+            }
+        ]
+    }
+    
+    @apiErrorExample {json} Error-Response:
+    HTTP/1.1 200 without token
+    {
+        "status": "invalid token"
+    }
+"""
+
+"""
+    @api {POST} ws://api/chat/ws/chat/{int:room_name}/ 5.7 Send message ( works with sockets )
+    @apiName 5.7 Send message
+    @apiGroup Chat
+
+    @apiParam {Number} room room id
+    @apiParam {String} message message text
+    @apiParam {Number} user user id
+"""
+
+"""
+    @api {PUT} /api/chat/handshake/{int:pk} 5.8 Handshake
+    @apiName 5.8 Handshake
+    @apiGroup Chat
+    @apiHeader {String} Authorization Users unique token
+
+    @apiParam {Number} pk Room id
+    @apiParam {Number} handshake First or second user (1 | 2)<- values
+
+    @apiSuccessExample {json} Success-Response:
+    HTTP/1.1 200 but needs handshake
+    {
+        "status": "needs second handshake"
+    }
+    @apiSuccessExample {json} Success-Response:
+    HTTP/1.1 200 OK
+    {
+        "success": 200,
+        "status": "processed"
     }
     
     @apiErrorExample {json} Error-Response:

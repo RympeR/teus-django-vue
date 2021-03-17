@@ -8,7 +8,8 @@
       "User",
       "Propositions",
       "Requests",
-      "Info"
+      "Info",
+      "Chat"
     ],
     "template": {
         "withCompare": true,

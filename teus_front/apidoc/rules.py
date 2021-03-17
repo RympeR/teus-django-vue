@@ -580,3 +580,108 @@
         ]
     }
 """
+
+
+"""
+    @api {POST} /api/chat/create-room/ 5.1 Create room    
+    @apiName 5.1 Create room
+    @apiGroup Chat
+    @apiHeader {String} Authorization Users unique token
+
+    @apiParam {Number} request_id Id of request
+    @apiParam {Number} proposition_id Id of proposition
+
+    @apiSuccess {number} id room id
+    @apiSuccess {Number} date datetime of creating room timestamp
+    @apiSuccess {boolean} first_mark handshake first mark
+    @apiSuccess {boolean} second_mark handshake second mark
+    @apiSuccess {Number} request_id Id of request
+    @apiSuccess {Number} proposition_id Id of proposition
+
+    @apiSuccessExample {json} Success-Response:
+    HTTP/1.1 200 OK
+    {
+        "id": 6,
+        "date": 1615979863.412638,
+        "first_mark": false,
+        "second_mark": false,
+        "request_id": 2,
+        "proposition_id": 2
+    }
+    
+    @apiErrorExample {json} Error-Response:
+    HTTP/1.1 200 without token
+    {
+        "status": "invalid token"
+    }
+"""
+
+"""
+    @api {PUT} /api/chat/update-room/{int:pk} 5.2 Update room    
+    @apiName 5.2 Update room
+    @apiGroup Chat
+    @apiHeader {String} Authorization Users unique token
+
+    @apiParam {Number} pk Request id
+    @apiParam {Number} request_id Id of request
+    @apiParam {Number} proposition_id Id of proposition
+    
+    @apiSuccess {number} id room id
+    @apiSuccess {Number} date datetime of creating room timestamp
+    @apiSuccess {boolean} first_mark handshake first mark
+    @apiSuccess {boolean} second_mark handshake second mark
+    @apiSuccess {Number} request_id Id of request
+    @apiSuccess {Number} proposition_id Id of proposition
+
+    @apiSuccessExample {json} Success-Response:
+    HTTP/1.1 200 OK
+    {
+        "id": 6,
+        "date": 1615979863.412638,
+        "first_mark": false,
+        "second_mark": false,
+        "request_id": 2,
+        "proposition_id": 2
+    }
+    
+    @apiErrorExample {json} Error-Response:
+    HTTP/1.1 200 without token
+    {
+        "status": "invalid token"
+    }
+"""
+
+"""
+    @api {DELETE} /api/chat/deelte-room/{int:pk} 5.3 Delete room    
+    @apiName 5.3 Delete room
+    @apiGroup Chat
+    @apiHeader {String} Authorization Users unique token
+
+    @apiParam {Number} pk Request id
+    @apiParam {Number} request_id Id of request
+    @apiParam {Number} proposition_id Id of proposition
+
+    @apiSuccess {number} id room id
+    @apiSuccess {Number} date datetime of creating room timestamp
+    @apiSuccess {boolean} first_mark handshake first mark
+    @apiSuccess {boolean} second_mark handshake second mark
+    @apiSuccess {Number} request_id Id of request
+    @apiSuccess {Number} proposition_id Id of proposition
+
+    @apiSuccessExample {json} Success-Response:
+    HTTP/1.1 200 OK
+    {
+        "id": 6,
+        "date": 1615979863.412638,
+        "first_mark": false,
+        "second_mark": false,
+        "request_id": 2,
+        "proposition_id": 2
+    }
+    
+    @apiErrorExample {json} Error-Response:
+    HTTP/1.1 200 without token
+    {
+        "status": "invalid token"
+    }
+"""

@@ -31,6 +31,7 @@ class UserRequsetSerializer(serializers.ModelSerializer):
         user_request.save()
         return user_request
 
+
 class UserPropositionsSerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(
         read_only=False, queryset=User.objects.all())
@@ -42,7 +43,7 @@ class UserPropositionsSerializer(serializers.ModelSerializer):
         read_only=False, queryset=Line.objects.all())
 
     class Meta:
-        model = UserRequest
+        model = UserProposition
         fields = '__all__'
 
     def create(self, validated_data):
@@ -58,6 +59,7 @@ class UserPropositionsSerializer(serializers.ModelSerializer):
             
         )
         return user_proposition
+
 
 class RequestSerializer(serializers.ModelSerializer):
 

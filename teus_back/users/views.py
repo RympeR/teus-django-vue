@@ -398,17 +398,14 @@ class ChangePasswordAPI(APIView):
             user = None
         print(User)
         if user:
-<<<<<<< HEAD
             print( self.request.data)
             user = UserSerializer.update_password(user, self.request.data['new_password'])
             print(f"{user} updated")
             response = Response(
-=======
             print(self.request.data)
             user = UserSerializer.update_password(
                 user, self.request.data['new_password'])
             return Response(
->>>>>>> 53f86fae203015a692c852552d367c6248e1b03e
                 {
                     "user_id": user.id,
                     "login": user.first_name,

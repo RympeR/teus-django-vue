@@ -2,6 +2,8 @@ from django.db import models
 from django.db.models import Q
 import hmac
 import hashlib
+from dateutil.relativedelta import relativedelta
+import datetime
 # Create your models here.
 
 
@@ -31,3 +33,16 @@ class User(models.Model):
     def generate_token(msg):
         return hmac.new(bytes('qwegqwIOOLSegwGEGfef', encoding='utf8'), bytes(msg, encoding='utf8'), hashlib.sha256).hexdigest()
 
+class Phone(models.Model):
+    phone = models.BigIntegerField(db_index=True)
+    code = models.IntegerField('Code', db_index=True)
+    is_checked = models.BooleanField('Is checked', default=False)
+    created_at = models.DateTimeField('Created at', auto_now=True)
+    expires_at = models.DateTimeField('Expires at', default=datetime.date.today() + relativedelta(minutes=20))
+
+    def __str__(self):
+        return str(self.phone)
+
+    class Meta:
+        verbose_name = 'Phone'
+        verbose_name_plural = 'Phones'

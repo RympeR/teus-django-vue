@@ -23507,3 +23507,442 @@ api-teus.maximusapp.com [pid: 30751|app: 0|req: 250/727] 46.37.215.223 () {44 va
 api-teus.maximusapp.com [pid: 30750|app: 0|req: 263/728] 46.37.215.223 () {44 vars in 845 bytes} [Tue Mar 16 08:31:09 2021] GET /api/info/get-cities-list/ => generated 57 bytes in 17 msecs (HTTP/1.1 200) 9 headers in 303 bytes (1 switches on core 0)
 <QuerySet [{'id': 2, 'phone': 'test', 'first_name': 'test', 'last_name': 'test', 'company': 'tset', 'image': 'http://api-teus.maximusapp.com/media/kotik_6WXgBjM.jpg', 'push_on': False, 'token': 'tset1', 'is_admin': False, 'password': None}]>
 api-teus.maximusapp.com [pid: 30751|app: 0|req: 251/729] 46.37.215.223 () {44 vars in 829 bytes} [Tue Mar 16 08:31:09 2021] GET /api/user/profile/ => generated 237 bytes in 27 msecs (HTTP/1.1 200) 9 headers in 310 bytes (1 switches on core 0)
+Not Found: /
+api-teus.maximusapp.com [pid: 30750|app: 0|req: 264/730] 46.37.215.223 () {42 vars in 828 bytes} [Wed Mar 17 11:51:26 2021] GET / => generated 2807 bytes in 18 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+api-teus.maximusapp.com [pid: 30751|app: 0|req: 252/731] 46.37.215.223 () {42 vars in 777 bytes} [Wed Mar 17 11:51:26 2021] GET /favicon.ico => generated 2858 bytes in 23 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /apidoc
+api-teus.maximusapp.com [pid: 30750|app: 0|req: 265/732] 46.37.215.223 () {42 vars in 840 bytes} [Wed Mar 17 11:51:32 2021] GET /apidoc => generated 2843 bytes in 19 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+[emperor] *** RAGNAROK EVOKED ***
+Wed Mar 17 14:10:55 2021 - [emperor] stop the uwsgi instance /etc/uwsgi/apps-enabled/teus_back.ini
+Wed Mar 17 12:10:55 2021 - received message 0 from emperor
+SIGINT/SIGQUIT received...killing workers...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+worker 4 buried after 1 seconds
+goodbye to uWSGI.
+Wed Mar 17 14:10:57 2021 - [emperor] removed uwsgi instance /etc/uwsgi/apps-enabled/teus_back.ini
+Wed Mar 17 14:10:58 2021 - The Emperor is buried.
+*** Starting uWSGI 2.0.19.1 (64bit) on [Wed Mar 17 14:10:58 2021] ***
+compiled with version: 7.5.0 on 26 February 2021 15:46:55
+os: Linux-4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018
+nodename: vps-36418.vps-default-host.net
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/teus-django-vue/teus_back
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 7709
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+*** starting uWSGI Emperor ***
+*** has_emperor mode detected (fd: 5) ***
+[uWSGI] getting INI configuration from /etc/uwsgi/apps-enabled/teus_back.ini
+open("./python_plugin.so"): No such file or directory [core/utils.c line 3732]
+!!! UNABLE to load uWSGI plugin: ./python_plugin.so: cannot open shared object file: No such file or directory !!!
+*** Starting uWSGI 2.0.19.1 (64bit) on [Wed Mar 17 14:10:58 2021] ***
+compiled with version: 7.5.0 on 26 February 2021 15:46:55
+os: Linux-4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018
+nodename: vps-36418.vps-default-host.net
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/teus-django-vue/teus_back
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/teus-django-vue/teus_back
+your processes number limit is 7709
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+VirtualHosting mode enabled.
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /var/run/uwsgi/teus.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.6.9 (default, Jan 26 2021, 15:33:00)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/teus/
+Set PythonHome to /home/teus/
+Python main interpreter initialized at 0x5571b9a10480
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+added /home/teus/bin/python3 to pythonpath.
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x5571b9a10480 pid: 8590 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 8590)
+Wed Mar 17 14:10:59 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini has been spawned
+spawned uWSGI worker 1 (pid: 8592, cores: 1)
+spawned uWSGI worker 2 (pid: 8593, cores: 1)
+spawned uWSGI worker 3 (pid: 8594, cores: 1)
+spawned uWSGI worker 4 (pid: 8595, cores: 1)
+Wed Mar 17 14:10:59 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is ready to accept requests
+Not Found: /
+api-teus.maximusapp.com [pid: 8593|app: 0|req: 1/1] 46.37.215.223 () {42 vars in 828 bytes} [Wed Mar 17 12:11:06 2021] GET / => generated 2916 bytes in 169 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Wed Mar 17 14:11:06 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+Not Found: /api/
+api-teus.maximusapp.com [pid: 8592|app: 0|req: 1/2] 46.37.215.223 () {42 vars in 836 bytes} [Wed Mar 17 12:11:12 2021] GET /api/ => generated 3186 bytes in 168 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Wed Mar 17 14:11:12 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+api-teus.maximusapp.com [pid: 8593|app: 0|req: 2/3] 46.37.215.223 () {42 vars in 846 bytes} [Wed Mar 17 12:11:16 2021] GET /api/chat/ => generated 834 bytes in 26 msecs (HTTP/1.1 200) 6 headers in 180 bytes (1 switches on core 0)
+api-teus.maximusapp.com [pid: 8592|app: 0|req: 2/4] 46.37.215.223 () {44 vars in 906 bytes} [Wed Mar 17 12:11:20 2021] GET /api/chat/4/ => generated 1888 bytes in 24 msecs (HTTP/1.1 200) 6 headers in 181 bytes (1 switches on core 0)
+Not Found: /ws/chat/4/
+api-teus.maximusapp.com [pid: 8595|app: 0|req: 1/5] 46.37.215.223 () {52 vars in 940 bytes} [Wed Mar 17 12:11:20 2021] GET /ws/chat/4/ => generated 2964 bytes in 160 msecs (HTTP/1.1 404) 8 headers in 274 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Wed Mar 17 14:11:20 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+api-teus.maximusapp.com [pid: 8592|app: 0|req: 3/6] 46.37.215.223 () {42 vars in 840 bytes} [Wed Mar 17 12:11:28 2021] GET /api/chat/4/ => generated 1888 bytes in 27 msecs (HTTP/1.1 200) 6 headers in 181 bytes (1 switches on core 0)
+Not Found: /ws/chat/4/
+api-teus.maximusapp.com [pid: 8592|app: 0|req: 4/7] 46.37.215.223 () {52 vars in 930 bytes} [Wed Mar 17 12:11:28 2021] GET /ws/chat/4/ => generated 2964 bytes in 43 msecs (HTTP/1.1 404) 8 headers in 274 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+api-teus.maximusapp.com [pid: 8595|app: 0|req: 2/8] 46.37.215.223 () {42 vars in 792 bytes} [Wed Mar 17 12:11:28 2021] GET /favicon.ico => generated 2967 bytes in 40 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+Not Found: /robots.txt
+api-teus.maximusapp.com [pid: 8594|app: 0|req: 1/9] 46.37.215.223 () {40 vars in 671 bytes} [Wed Mar 17 12:11:28 2021] GET /robots.txt => generated 2964 bytes in 222 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Wed Mar 17 14:11:29 2021 - [emperor] vassal /etc/uwsgi/apps-enabled/teus_back.ini is now loyal
+Not Found: /robots.txt
+api-teus.maximusapp.com [pid: 8592|app: 0|req: 5/10] 46.37.215.223 () {40 vars in 671 bytes} [Wed Mar 17 12:11:29 2021] GET /robots.txt => generated 2964 bytes in 21 msecs (HTTP/1.1 404) 6 headers in 173 bytes (1 switches on core 0)
+[emperor] *** RAGNAROK EVOKED ***
+Wed Mar 17 14:20:46 2021 - [emperor] stop the uwsgi instance /etc/uwsgi/apps-enabled/teus_back.ini
+Wed Mar 17 12:20:46 2021 - received message 0 from emperor
+SIGINT/SIGQUIT received...killing workers...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+worker 4 buried after 1 seconds
+goodbye to uWSGI.
+Wed Mar 17 14:20:48 2021 - [emperor] removed uwsgi instance /etc/uwsgi/apps-enabled/teus_back.ini
+Wed Mar 17 14:20:49 2021 - The Emperor is buried.
+*** Starting uWSGI 2.0.19.1 (64bit) on [Wed Mar 17 15:21:47 2021] ***
+compiled with version: 7.5.0 on 26 February 2021 15:46:55
+os: Linux-4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018
+nodename: vps-36418.vps-default-host.net
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/teus-django-vue/teus_back
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 7709
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+*** starting uWSGI Emperor ***
+[emperor] *** RAGNAROK EVOKED ***
+Wed Mar 17 15:21:53 2021 - The Emperor is buried.
+*** Starting uWSGI 2.0.19.1 (64bit) on [Wed Mar 17 15:21:53 2021] ***
+compiled with version: 7.5.0 on 26 February 2021 15:46:55
+os: Linux-4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018
+nodename: vps-36418.vps-default-host.net
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/teus-django-vue/teus_back
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 7709
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+*** starting uWSGI Emperor ***
+[emperor] *** RAGNAROK EVOKED ***
+Wed Mar 17 15:23:41 2021 - The Emperor is buried.
+*** Starting uWSGI 2.0.19.1 (64bit) on [Wed Mar 17 15:23:41 2021] ***
+compiled with version: 7.5.0 on 26 February 2021 15:46:55
+os: Linux-4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018
+nodename: vps-36418.vps-default-host.net
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/teus-django-vue/teus_back
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 7709
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+*** starting uWSGI Emperor ***
+[emperor] *** RAGNAROK EVOKED ***
+Wed Mar 17 15:42:19 2021 - The Emperor is buried.
+*** Starting uWSGI 2.0.19.1 (64bit) on [Wed Mar 17 15:44:22 2021] ***
+compiled with version: 7.5.0 on 26 February 2021 15:46:55
+os: Linux-4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018
+nodename: vps-36418.vps-default-host.net
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/teus-django-vue/teus_back
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 7709
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+*** starting uWSGI Emperor ***
+[emperor] *** RAGNAROK EVOKED ***
+Wed Mar 17 16:03:36 2021 - The Emperor is buried.
+/opt/ros/indigo/setup.sh: /opt/ros/indigo/setup.sh: No such file or directory
+/opt/ros/indigo/setup.sh: /opt/ros/indigo/setup.sh: No such file or directory
+/opt/ros/indigo/setup.sh: /opt/ros/indigo/setup.sh: No such file or directory
+/opt/ros/indigo/setup.sh: /opt/ros/indigo/setup.sh: No such file or directory
+/opt/ros/indigo/setup.sh: /opt/ros/indigo/setup.sh: No such file or directory
+/opt/ros/indigo/setup.sh: /opt/ros/indigo/setup.sh: No such file or directory
+/opt/ros/indigo/setup.sh: /opt/ros/indigo/setup.sh: No such file or directory
+/opt/ros/indigo/setup.sh: /opt/ros/indigo/setup.sh: No such file or directory
+Traceback (most recent call last):
+  File "/usr/bin/daphne", line 11, in <module>
+    load_entry_point('daphne==1.4.2', 'console_scripts', 'daphne')()
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 144, in entrypoint
+    cls().run(sys.argv[1:])
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 173, in run
+    module_path, object_path = args.channel_layer.split(":", 1)
+ValueError: not enough values to unpack (expected 2, got 1)
+Traceback (most recent call last):
+  File "/usr/bin/daphne", line 11, in <module>
+    load_entry_point('daphne==1.4.2', 'console_scripts', 'daphne')()
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 144, in entrypoint
+    cls().run(sys.argv[1:])
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 173, in run
+    module_path, object_path = args.channel_layer.split(":", 1)
+ValueError: not enough values to unpack (expected 2, got 1)
+Traceback (most recent call last):
+  File "/usr/bin/daphne", line 11, in <module>
+    load_entry_point('daphne==1.4.2', 'console_scripts', 'daphne')()
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 144, in entrypoint
+    cls().run(sys.argv[1:])
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 173, in run
+    module_path, object_path = args.channel_layer.split(":", 1)
+ValueError: not enough values to unpack (expected 2, got 1)
+Traceback (most recent call last):
+  File "/usr/bin/daphne", line 11, in <module>
+    load_entry_point('daphne==1.4.2', 'console_scripts', 'daphne')()
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 144, in entrypoint
+    cls().run(sys.argv[1:])
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 173, in run
+    module_path, object_path = args.channel_layer.split(":", 1)
+ValueError: not enough values to unpack (expected 2, got 1)
+Traceback (most recent call last):
+  File "/usr/bin/daphne", line 11, in <module>
+    load_entry_point('daphne==1.4.2', 'console_scripts', 'daphne')()
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 144, in entrypoint
+    cls().run(sys.argv[1:])
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 173, in run
+    module_path, object_path = args.channel_layer.split(":", 1)
+ValueError: not enough values to unpack (expected 2, got 1)
+Traceback (most recent call last):
+  File "/usr/bin/daphne", line 11, in <module>
+    load_entry_point('daphne==1.4.2', 'console_scripts', 'daphne')()
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 144, in entrypoint
+    cls().run(sys.argv[1:])
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 173, in run
+    module_path, object_path = args.channel_layer.split(":", 1)
+ValueError: not enough values to unpack (expected 2, got 1)
+Traceback (most recent call last):
+  File "/usr/bin/daphne", line 11, in <module>
+    load_entry_point('daphne==1.4.2', 'console_scripts', 'daphne')()
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 144, in entrypoint
+    cls().run(sys.argv[1:])
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 173, in run
+    module_path, object_path = args.channel_layer.split(":", 1)
+ValueError: not enough values to unpack (expected 2, got 1)
+Traceback (most recent call last):
+  File "/usr/bin/daphne", line 11, in <module>
+    load_entry_point('daphne==1.4.2', 'console_scripts', 'daphne')()
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 144, in entrypoint
+    cls().run(sys.argv[1:])
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 173, in run
+    module_path, object_path = args.channel_layer.split(":", 1)
+ValueError: not enough values to unpack (expected 2, got 1)
+usage: daphne [-h] [-p PORT] [-b HOST] [--websocket_timeout WEBSOCKET_TIMEOUT]
+              [--websocket_connect_timeout WEBSOCKET_CONNECT_TIMEOUT]
+              [-u UNIX_SOCKET] [--fd FILE_DESCRIPTOR] [-e SOCKET_STRINGS]
+              [-v VERBOSITY] [-t HTTP_TIMEOUT] [--access-log ACCESS_LOG]
+              [--ping-interval PING_INTERVAL] [--ping-timeout PING_TIMEOUT]
+              [--ws-protocol [WS_PROTOCOLS [WS_PROTOCOLS ...]]]
+              [--root-path ROOT_PATH] [--proxy-headers] [--force-sync]
+              channel_layer
+daphne: error: argument --access-log: expected one argument
+usage: daphne [-h] [-p PORT] [-b HOST] [--websocket_timeout WEBSOCKET_TIMEOUT]
+              [--websocket_connect_timeout WEBSOCKET_CONNECT_TIMEOUT]
+              [-u UNIX_SOCKET] [--fd FILE_DESCRIPTOR] [-e SOCKET_STRINGS]
+              [-v VERBOSITY] [-t HTTP_TIMEOUT] [--access-log ACCESS_LOG]
+              [--ping-interval PING_INTERVAL] [--ping-timeout PING_TIMEOUT]
+              [--ws-protocol [WS_PROTOCOLS [WS_PROTOCOLS ...]]]
+              [--root-path ROOT_PATH] [--proxy-headers] [--force-sync]
+              channel_layer
+daphne: error: argument --access-log: expected one argument
+usage: daphne [-h] [-p PORT] [-b HOST] [--websocket_timeout WEBSOCKET_TIMEOUT]
+              [--websocket_connect_timeout WEBSOCKET_CONNECT_TIMEOUT]
+              [-u UNIX_SOCKET] [--fd FILE_DESCRIPTOR] [-e SOCKET_STRINGS]
+              [-v VERBOSITY] [-t HTTP_TIMEOUT] [--access-log ACCESS_LOG]
+              [--ping-interval PING_INTERVAL] [--ping-timeout PING_TIMEOUT]
+              [--ws-protocol [WS_PROTOCOLS [WS_PROTOCOLS ...]]]
+              [--root-path ROOT_PATH] [--proxy-headers] [--force-sync]
+              channel_layer
+daphne: error: argument --access-log: expected one argument
+usage: daphne [-h] [-p PORT] [-b HOST] [--websocket_timeout WEBSOCKET_TIMEOUT]
+              [--websocket_connect_timeout WEBSOCKET_CONNECT_TIMEOUT]
+              [-u UNIX_SOCKET] [--fd FILE_DESCRIPTOR] [-e SOCKET_STRINGS]
+              [-v VERBOSITY] [-t HTTP_TIMEOUT] [--access-log ACCESS_LOG]
+              [--ping-interval PING_INTERVAL] [--ping-timeout PING_TIMEOUT]
+              [--ws-protocol [WS_PROTOCOLS [WS_PROTOCOLS ...]]]
+              [--root-path ROOT_PATH] [--proxy-headers] [--force-sync]
+              channel_layer
+daphne: error: argument --access-log: expected one argument
+usage: daphne [-h] [-p PORT] [-b HOST] [--websocket_timeout WEBSOCKET_TIMEOUT]
+              [--websocket_connect_timeout WEBSOCKET_CONNECT_TIMEOUT]
+              [-u UNIX_SOCKET] [--fd FILE_DESCRIPTOR] [-e SOCKET_STRINGS]
+              [-v VERBOSITY] [-t HTTP_TIMEOUT] [--access-log ACCESS_LOG]
+              [--ping-interval PING_INTERVAL] [--ping-timeout PING_TIMEOUT]
+              [--ws-protocol [WS_PROTOCOLS [WS_PROTOCOLS ...]]]
+              [--root-path ROOT_PATH] [--proxy-headers] [--force-sync]
+              channel_layer
+daphne: error: argument --access-log: expected one argument
+usage: daphne [-h] [-p PORT] [-b HOST] [--websocket_timeout WEBSOCKET_TIMEOUT]
+              [--websocket_connect_timeout WEBSOCKET_CONNECT_TIMEOUT]
+              [-u UNIX_SOCKET] [--fd FILE_DESCRIPTOR] [-e SOCKET_STRINGS]
+              [-v VERBOSITY] [-t HTTP_TIMEOUT] [--access-log ACCESS_LOG]
+              [--ping-interval PING_INTERVAL] [--ping-timeout PING_TIMEOUT]
+              [--ws-protocol [WS_PROTOCOLS [WS_PROTOCOLS ...]]]
+              [--root-path ROOT_PATH] [--proxy-headers] [--force-sync]
+              channel_layer
+daphne: error: argument --access-log: expected one argument
+usage: daphne [-h] [-p PORT] [-b HOST] [--websocket_timeout WEBSOCKET_TIMEOUT]
+              [--websocket_connect_timeout WEBSOCKET_CONNECT_TIMEOUT]
+              [-u UNIX_SOCKET] [--fd FILE_DESCRIPTOR] [-e SOCKET_STRINGS]
+              [-v VERBOSITY] [-t HTTP_TIMEOUT] [--access-log ACCESS_LOG]
+              [--ping-interval PING_INTERVAL] [--ping-timeout PING_TIMEOUT]
+              [--ws-protocol [WS_PROTOCOLS [WS_PROTOCOLS ...]]]
+              [--root-path ROOT_PATH] [--proxy-headers] [--force-sync]
+              channel_layer
+daphne: error: argument --access-log: expected one argument
+usage: daphne [-h] [-p PORT] [-b HOST] [--websocket_timeout WEBSOCKET_TIMEOUT]
+              [--websocket_connect_timeout WEBSOCKET_CONNECT_TIMEOUT]
+              [-u UNIX_SOCKET] [--fd FILE_DESCRIPTOR] [-e SOCKET_STRINGS]
+              [-v VERBOSITY] [-t HTTP_TIMEOUT] [--access-log ACCESS_LOG]
+              [--ping-interval PING_INTERVAL] [--ping-timeout PING_TIMEOUT]
+              [--ws-protocol [WS_PROTOCOLS [WS_PROTOCOLS ...]]]
+              [--root-path ROOT_PATH] [--proxy-headers] [--force-sync]
+              channel_layer
+daphne: error: argument --access-log: expected one argument
+usage: daphne [-h] [-p PORT] [-b HOST] [--websocket_timeout WEBSOCKET_TIMEOUT]
+              [--websocket_connect_timeout WEBSOCKET_CONNECT_TIMEOUT]
+              [-u UNIX_SOCKET] [--fd FILE_DESCRIPTOR] [-e SOCKET_STRINGS]
+              [-v VERBOSITY] [-t HTTP_TIMEOUT] [--access-log ACCESS_LOG]
+              [--ping-interval PING_INTERVAL] [--ping-timeout PING_TIMEOUT]
+              [--ws-protocol [WS_PROTOCOLS [WS_PROTOCOLS ...]]]
+              [--root-path ROOT_PATH] [--proxy-headers] [--force-sync]
+              channel_layer
+daphne: error: argument --access-log: expected one argument
+usage: daphne [-h] [-p PORT] [-b HOST] [--websocket_timeout WEBSOCKET_TIMEOUT]
+              [--websocket_connect_timeout WEBSOCKET_CONNECT_TIMEOUT]
+              [-u UNIX_SOCKET] [--fd FILE_DESCRIPTOR] [-e SOCKET_STRINGS]
+              [-v VERBOSITY] [-t HTTP_TIMEOUT] [--access-log ACCESS_LOG]
+              [--ping-interval PING_INTERVAL] [--ping-timeout PING_TIMEOUT]
+              [--ws-protocol [WS_PROTOCOLS [WS_PROTOCOLS ...]]]
+              [--root-path ROOT_PATH] [--proxy-headers] [--force-sync]
+              channel_layer
+daphne: error: argument --access-log: expected one argument
+usage: daphne [-h] [-p PORT] [-b HOST] [--websocket_timeout WEBSOCKET_TIMEOUT]
+              [--websocket_connect_timeout WEBSOCKET_CONNECT_TIMEOUT]
+              [-u UNIX_SOCKET] [--fd FILE_DESCRIPTOR] [-e SOCKET_STRINGS]
+              [-v VERBOSITY] [-t HTTP_TIMEOUT] [--access-log ACCESS_LOG]
+              [--ping-interval PING_INTERVAL] [--ping-timeout PING_TIMEOUT]
+              [--ws-protocol [WS_PROTOCOLS [WS_PROTOCOLS ...]]]
+              [--root-path ROOT_PATH] [--proxy-headers] [--force-sync]
+              channel_layer
+daphne: error: argument --access-log: expected one argument
+usage: daphne [-h] [-p PORT] [-b HOST] [--websocket_timeout WEBSOCKET_TIMEOUT]
+              [--websocket_connect_timeout WEBSOCKET_CONNECT_TIMEOUT]
+              [-u UNIX_SOCKET] [--fd FILE_DESCRIPTOR] [-e SOCKET_STRINGS]
+              [-v VERBOSITY] [-t HTTP_TIMEOUT] [--access-log ACCESS_LOG]
+              [--ping-interval PING_INTERVAL] [--ping-timeout PING_TIMEOUT]
+              [--ws-protocol [WS_PROTOCOLS [WS_PROTOCOLS ...]]]
+              [--root-path ROOT_PATH] [--proxy-headers] [--force-sync]
+              channel_layer
+daphne: error: argument --access-log: expected one argument
+Traceback (most recent call last):
+  File "/usr/bin/daphne", line 11, in <module>
+    load_entry_point('daphne==1.4.2', 'console_scripts', 'daphne')()
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 144, in entrypoint
+    cls().run(sys.argv[1:])
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 173, in run
+    module_path, object_path = args.channel_layer.split(":", 1)
+ValueError: not enough values to unpack (expected 2, got 1)
+Traceback (most recent call last):
+  File "/usr/bin/daphne", line 11, in <module>
+    load_entry_point('daphne==1.4.2', 'console_scripts', 'daphne')()
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 144, in entrypoint
+    cls().run(sys.argv[1:])
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 173, in run
+    module_path, object_path = args.channel_layer.split(":", 1)
+ValueError: not enough values to unpack (expected 2, got 1)
+Traceback (most recent call last):
+  File "/usr/bin/daphne", line 11, in <module>
+    load_entry_point('daphne==1.4.2', 'console_scripts', 'daphne')()
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 144, in entrypoint
+    cls().run(sys.argv[1:])
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 173, in run
+    module_path, object_path = args.channel_layer.split(":", 1)
+ValueError: not enough values to unpack (expected 2, got 1)
+Traceback (most recent call last):
+  File "/usr/bin/daphne", line 11, in <module>
+    load_entry_point('daphne==1.4.2', 'console_scripts', 'daphne')()
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 144, in entrypoint
+    cls().run(sys.argv[1:])
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 173, in run
+    module_path, object_path = args.channel_layer.split(":", 1)
+ValueError: not enough values to unpack (expected 2, got 1)
+Traceback (most recent call last):
+  File "/usr/bin/daphne", line 11, in <module>
+    load_entry_point('daphne==1.4.2', 'console_scripts', 'daphne')()
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 144, in entrypoint
+    cls().run(sys.argv[1:])
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 173, in run
+    module_path, object_path = args.channel_layer.split(":", 1)
+ValueError: not enough values to unpack (expected 2, got 1)
+Traceback (most recent call last):
+  File "/usr/bin/daphne", line 11, in <module>
+    load_entry_point('daphne==1.4.2', 'console_scripts', 'daphne')()
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 144, in entrypoint
+    cls().run(sys.argv[1:])
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 173, in run
+    module_path, object_path = args.channel_layer.split(":", 1)
+ValueError: not enough values to unpack (expected 2, got 1)
+Traceback (most recent call last):
+  File "/usr/bin/daphne", line 11, in <module>
+    load_entry_point('daphne==1.4.2', 'console_scripts', 'daphne')()
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 144, in entrypoint
+    cls().run(sys.argv[1:])
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 173, in run
+    module_path, object_path = args.channel_layer.split(":", 1)
+ValueError: not enough values to unpack (expected 2, got 1)
+Traceback (most recent call last):
+  File "/usr/bin/daphne", line 11, in <module>
+    load_entry_point('daphne==1.4.2', 'console_scripts', 'daphne')()
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 144, in entrypoint
+    cls().run(sys.argv[1:])
+  File "/usr/lib/python3/dist-packages/daphne/cli.py", line 173, in run
+    module_path, object_path = args.channel_layer.split(":", 1)
+ValueError: not enough values to unpack (expected 2, got 1)

@@ -4,7 +4,6 @@
     @apiName 1.2 Login
     @apiGroup User
     @apiParam {String} phone User phone number
-    @apiParam {String} code User code from sms
     @apiParam {String} first_name User first name (not required)
     @apiParam {String} last_name User last name (not required)
     @apiParam {String} company User company (not required)

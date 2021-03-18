@@ -1882,13 +1882,6 @@ define({ "api": [
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "code",
-            "description": "<p>User code from sms</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
             "field": "first_name",
             "description": "<p>User first name (not required)</p>"
           },
@@ -1912,6 +1905,13 @@ define({ "api": [
             "optional": false,
             "field": "image",
             "description": "<p>User avatar file</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>Code from sms (not required)</p>"
           }
         ]
       }

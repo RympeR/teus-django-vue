@@ -1863,58 +1863,6 @@
     "groupTitle": "Requests"
   },
   {
-    "type": "GET",
-    "url": "/api/user/sms-code/",
-    "title": "1.1 Get sms code",
-    "name": "1.1_Get_sms_code",
-    "group": "User",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "phone",
-            "description": "<p>User phone number</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "status",
-            "description": "<p>ok or error</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    \"status\": \"ok\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "HTTP/1.1 404 Not Found\n{\n    \"status\": \"error\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "apidoc/rules.py",
-    "groupTitle": "User"
-  },
-  {
     "type": "POST",
     "url": "/api/user/login/",
     "title": "1.2 Login",
@@ -1985,6 +1933,11 @@
           "title": "Success-Response:",
           "content": "HTTP/1.1 200 OK\n{\n    \"status\": \"ok\",\n    \"token\": \"5d337cbe8657d42515363e15cc2c9e3a720a77118d8fef54ee677d8e706f89d4\"\n}",
           "type": "json"
+        },
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 202 Accepted\n{\n    \"user\": [\n        \"This phone is not confirmed, we sent SMS with a confirmation code\"\n    ]\n}",
+          "type": "json"
         }
       ]
     },
@@ -1993,6 +1946,11 @@
         {
           "title": "Error-Response:",
           "content": "HTTP/1.1 200 Not Found\n{\n    \"status\": \"error\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 500 Not Found\n{\n    \"code\": [\n        \"The code is incorrect or expired\"\n    ]\n}",
           "type": "json"
         }
       ]

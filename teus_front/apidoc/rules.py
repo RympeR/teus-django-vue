@@ -1,21 +1,3 @@
-"""
-    @api {GET} /api/user/sms-code/ 1.1 Get sms code
-    @apiName 1.1 Get sms code
-    @apiGroup User
-    @apiParam {String} phone User phone number
-    @apiSuccess {String} status ok or error
-    @apiSuccessExample {json} Success-Response:
-    HTTP/1.1 200 OK
-    {
-        "status": "ok"
-    }
-    @apiErrorExample {json} Error-Response:
-    HTTP/1.1 404 Not Found
-    {
-        "status": "error"
-    }
-    
-"""
 
 """
     @api {POST} /api/user/login/ 1.2 Login
@@ -27,6 +9,7 @@
     @apiParam {String} last_name User last name (not required)
     @apiParam {String} company User company (not required)
     @apiParam {String} image User avatar file
+    @apiParam {String} code Code from sms (not required)
 
     @apiSuccess {String} status ok or error
     @apiSuccessExample {json} Success-Response:
@@ -35,10 +18,24 @@
         "status": "ok",
         "token": "5d337cbe8657d42515363e15cc2c9e3a720a77118d8fef54ee677d8e706f89d4"
     }
+    @apiSuccessExample {json} Success-Response:
+    HTTP/1.1 202 Accepted
+    {
+        "user": [
+            "This phone is not confirmed, we sent SMS with a confirmation code"
+        ]
+    }
     @apiErrorExample {json} Error-Response:
     HTTP/1.1 200 Not Found
     {
         "status": "error"
+    }
+    @apiErrorExample {json} Error-Response:
+    HTTP/1.1 500 Not Found
+    {
+        "code": [
+            "The code is incorrect or expired"
+        ]
     }
 """
 
@@ -70,6 +67,7 @@
     {
         "status": "invalid token"
     }
+
 """
 
 

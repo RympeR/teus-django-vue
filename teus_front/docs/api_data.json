@@ -397,7 +397,7 @@
   },
   {
     "type": "GET",
-    "url": "api/chat/messages/{int:pk}",
+    "url": "/api/chat/messages/{int:pk}",
     "title": "5.5 Get messages in chat",
     "name": "5.5_Get_messages_in_chat",
     "group": "Chat",
@@ -462,7 +462,7 @@
   },
   {
     "type": "GET",
-    "url": "api/chat/rooms-proposition/{int:pk}",
+    "url": "/api/chat/rooms-proposition/{int:pk}",
     "title": "5.6 Get chats by proposition id",
     "name": "5.6_Get_chats_by_proposition_id",
     "group": "Chat",
@@ -527,7 +527,7 @@
   },
   {
     "type": "GET",
-    "url": "api/chat/rooms-request/{int:pk}",
+    "url": "/api/chat/rooms-request/{int:pk}",
     "title": "5.6 Get chats by request id",
     "name": "5.6_Get_chats_by_request_id",
     "group": "Chat",

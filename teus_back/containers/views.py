@@ -38,7 +38,7 @@ class RequestAPI(APIView):
     parser_classes = (MultiPartParser, FormParser, JSONParser, )
     authentication_classes = (
         CsrfExemptSessionAuthentication, BasicAuthentication)
-
+    
     def get(self, request, request_id):
         try:
             user = User.objects.get(
@@ -53,6 +53,7 @@ class RequestAPI(APIView):
                     "id": city.id,
                     "name": city.name,
                 })
+                
             return Response(
                 {
                     "id": user_request.id,
@@ -84,6 +85,7 @@ class RequestAPI(APIView):
             )
 
     def post(self, request):
+        
         try:
             user = User.objects.get(
                 token=self.request.headers['Authorization'])
@@ -173,6 +175,7 @@ class PropositionAPI(APIView):
             user = None
         if user:
             proposition = PropositionSerializer.get_propos(proposition_id)
+            from datetime import datetime
             return Response(
                 {
                     "id": proposition.id,
@@ -660,6 +663,7 @@ class UserRequestsAPI(APIView):
                         "id": city.id,
                         "name": city.name,
                     })
+                from datetime import datetime
                 result.append(
                     {
                         "id": request_.id,
@@ -703,6 +707,7 @@ class UserRequestsAPI(APIView):
         except Exception:
             user = None
         if user:
+            from datetime import datetime
             data = dict(request.data)
             data['user'] = user.id
             data['request_date'] = datetime.utcfromtimestamp(data['request_date']).strftime("%Y-%m-%d")
@@ -779,6 +784,7 @@ class UserPropositionsAPI(APIView):
                 container_image = proposition.container.image.url
                 container_image_url = 'http://{domain}{path}'.format(
                     domain=domain, path=container_image)
+                from datetime import datetime
                 result.append(
                     {
                         "id": proposition.id,
@@ -824,6 +830,7 @@ class UserPropositionsAPI(APIView):
         except Exception:
             user = None
         if user:
+            from datetime import datetime
             data = dict(request.data)
             data['user'] = user.id
             data['start_date'] = datetime.utcfromtimestamp(data['start_date']).strftime("%Y-%m-%d")
@@ -916,6 +923,7 @@ class FilteredPropositions(APIView):
                         domain=domain, path=path_image)
                 else:
                     user_image_url = None
+                from datetime import datetime
                 results.append({
                     "id":  proposition.id,
                     "user": {

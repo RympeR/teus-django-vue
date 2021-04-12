@@ -705,7 +705,7 @@
 """
 
 """
-    @api {GET} api/chat/messages/{int:pk} 5.5 Get messages in chat
+    @api {GET} /api/chat/messages/{int:pk} 5.5 Get messages in chat
     @apiName 5.5 Get messages in chat
     @apiGroup Chat
     @apiHeader {String} Authorization Users unique token
@@ -745,7 +745,7 @@
 """
 
 """
-    @api {GET} api/chat/rooms-request/{int:pk} 5.6 Get chats by request id
+    @api {GET} /api/chat/rooms-request/{int:pk} 5.6 Get chats by request id
     @apiName 5.6 Get chats by request id
     @apiGroup Chat
     @apiHeader {String} Authorization Users unique token
@@ -777,7 +777,7 @@
 """
 
 """
-    @api {GET} api/chat/rooms-proposition/{int:pk} 5.6 Get chats by proposition id
+    @api {GET} /api/chat/rooms-proposition/{int:pk} 5.6 Get chats by proposition id
     @apiName 5.6 Get chats by proposition id
     @apiGroup Chat
     @apiHeader {String} Authorization Users unique token

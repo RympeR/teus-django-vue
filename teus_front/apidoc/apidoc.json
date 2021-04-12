@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "description": "Apidoc for teus project",
     "title": "Teus API",
-    "url" : "http://api-teus.maxmiusapp.com",
+    "url" : "http://api-teus.maximusapp.com",
     "order": [
       "User",
       "Propositions",

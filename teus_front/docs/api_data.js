@@ -1864,9 +1864,9 @@ define({ "api": [
   },
   {
     "type": "POST",
-    "url": "/api/user/login/",
-    "title": "1.2 Login",
-    "name": "1.2_Login",
+    "url": "/api/user/create-profile/",
+    "title": "1.2 Login / authorize",
+    "name": "1.2_Login_/_authorize",
     "group": "User",
     "parameter": {
       "fields": {
@@ -1904,7 +1904,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "image",
-            "description": "<p>User avatar file</p>"
+            "description": "<p>User avatar file (not required)</p>"
           },
           {
             "group": "Parameter",
@@ -2041,7 +2041,7 @@ define({ "api": [
   },
   {
     "type": "PUT",
-    "url": "/api/user/update-user/",
+    "url": "/api/user/api-profile-update/",
     "title": "1.4 Update user",
     "name": "1.4_Update_user",
     "group": "User",

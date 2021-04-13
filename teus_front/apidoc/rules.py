@@ -1,13 +1,13 @@
 
 """
-    @api {POST} /api/user/login/ 1.2 Login
-    @apiName 1.2 Login
+    @api {POST} /api/user/create-profile/ 1.2 Login / authorize
+    @apiName 1.2 Login / authorize
     @apiGroup User
     @apiParam {String} phone User phone number
     @apiParam {String} first_name User first name (not required)
     @apiParam {String} last_name User last name (not required)
     @apiParam {String} company User company (not required)
-    @apiParam {String} image User avatar file
+    @apiParam {String} image User avatar file (not required)
     @apiParam {String} code Code from sms (not required)
 
     @apiSuccess {String} status ok or error
@@ -71,7 +71,7 @@
 
 
 """
-    @api {PUT} /api/user/update-user/ 1.4 Update user
+    @api {PUT} /api/user/api-profile-update/ 1.4 Update user
     @apiName 1.4 Update user
     @apiGroup User
     @apiHeader {String} Authorization Users unique token

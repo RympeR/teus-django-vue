@@ -427,6 +427,60 @@ def datetowords(string):
     return date(day=day_, month=month_, year=year_).strftime('%d %B %Y')
 
 
+class RequestsAPIList(APIView):
+    renderer_classes = (JSONRenderer,)
+    permission_classes = (permissions.AllowAny, )
+    userfilter = UserFilter()
+    authentication_classes = (
+        CsrfExemptSessionAuthentication, BasicAuthentication)
+
+    def get(self, request):
+        data = self.userfilter.get_requests(request, 'teus_dev', 'teus_dev')
+        try:
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            data = self.userfilter.get_requests(request, 'postgres', '1111')
+        else:
+            request.GET = {}
+            data = self.userfilter.get_requests(request, 'postgres', '1111')
+
+        result = {
+            "results": []
+        }
+        for ind, row in enumerate(data):
+            result['results'].append({
+                "id": row[0],
+                "city": {
+                    "name": ', '.join(row[1])
+                },
+                "user": {
+                    "id": row[2],
+                    "name": row[3],
+                    "phone": row[4]
+                },
+                "line": {
+                    "id": row[5],
+                    "name": row[6]
+                },
+                "container": {
+                    "id": row[7],
+                    "name": row[8]
+                },
+                "amount": row[9],
+                "date": {
+                    "start": row[10].strftime('%d %B %Y'),
+                    "end": row[11].strftime('%d %B %Y')
+                },
+                "status": row[12]
+
+            })
+        return Response(
+            result['results']
+        )
+
 class RequestsList(APIView):
     renderer_classes = (JSONRenderer,)
     permission_classes = (permissions.AllowAny, )
@@ -484,6 +538,59 @@ class RequestsList(APIView):
         )
 
 
+class PropositionAPIList(APIView):
+    renderer_classes = (JSONRenderer,)
+    permission_classes = (permissions.AllowAny, )
+    userfilter = UserFilter()
+
+    def get(self, request):
+        data = self.userfilter.get_propositions(
+            request, 'teus_dev', 'teus_dev')
+        try:
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            data = self.userfilter.get_propositions(
+                request, 'postgres', '1111')
+        else:
+            data = self.userfilter.get_propositions(
+                request, 'postgres', '1111')
+        result = {
+            "results": []
+        }
+        for ind, row in enumerate(data):
+            result['results'].append({
+                "id": row[0],
+                "city": {
+                    "id": row[1],
+                    "name": row[2]
+                },
+                "user": {
+                    "id": row[3],
+                    "name": row[4],
+                    "phone": row[5]
+                },
+                "line": {
+                    "id": row[6],
+                    "name": row[7]
+                },
+                "container": {
+                    "id": row[8],
+                    "name": row[9]
+                },
+                "amount": row[10],
+                "date": {
+                    "start": row[11].strftime('%d %B %Y'),
+                    "end": row[12].strftime('%d %B %Y')
+                },
+                "status": row[13]
+            })
+        return Response(
+            result['results']
+        )
+
 class PropositionList(APIView):
     renderer_classes = (JSONRenderer,)
     permission_classes = (permissions.AllowAny, )
@@ -537,6 +644,62 @@ class PropositionList(APIView):
             {
                 "results": result['results']
             }
+        )
+
+
+class DealsAPIList(APIView):
+    renderer_classes = (JSONRenderer,)
+    permission_classes = (permissions.AllowAny, )
+    userfilter = UserFilter()
+    authentication_classes = (
+        CsrfExemptSessionAuthentication, BasicAuthentication)
+
+    def get(self, request):
+        data = self.userfilter.get_deals(request, 'teus_dev', 'teus_dev')
+
+        try:
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            data = self.userfilter.get_deals(request, 'postgres', '1111')
+        else:
+            request.GET = {}
+            data = self.userfilter.get_deals(request, 'postgres', '1111')
+        result = {
+            "results": []
+        }
+        for ind, row in enumerate(data):
+            result['results'].append({
+                "id": row[0],
+                "city": {
+                    "id": row[1],
+                    "name": row[2]
+                },
+                "first_user": {
+                    "id": row[3],
+                    "name": row[4],
+                    "phone": row[5]
+                },
+                "sec_user": {
+                    "id": row[6],
+                    "name": row[7],
+                    "phone": row[8]
+                },
+                "line": {
+                    "id": row[9],
+                    "name": row[10]
+                },
+                "container": {
+                    "id": row[11],
+                    "name": row[12]
+                },
+                "amount": row[13],
+                "handshake": row[14].strftime('%H:%M:%S %d %b %Y'),
+            })
+        return Response(
+            result['results']
         )
 
 
@@ -624,6 +787,80 @@ class FilteredDeals(APIView):
                 }
             )
 
+
+class APIDOCUserRequests(APIView):
+    renderer_classes = (JSONRenderer,)
+    permission_classes = (permissions.AllowAny, )
+    authentication_classes = (
+        CsrfExemptSessionAuthentication, BasicAuthentication)
+    parser_classes = (MultiPartParser, FormParser, JSONParser, )
+
+    def get(self, request):
+        try:
+            user = User.objects.get(
+                token=request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            user_requests = UserRequest.objects.filter(
+                user=user
+            )
+            result = []
+            domain = request.get_host()
+            for request_ in user_requests:
+                try:
+                    path_image = request_.user.image.url
+                except Exception:
+                    path_image = None
+                if path_image:
+                    image_url = 'http://{domain}{path}'.format(
+                        domain=domain, path=path_image)
+                else:
+                    image_url = None
+                container_image = request_.container.image.url
+                container_image_url = 'http://{domain}{path}'.format(
+                    domain=domain, path=container_image)
+                city_result = []
+                for city in request_.city.all():
+                    city_result.append({
+                        "id": city.id,
+                        "name": city.name,
+                    })
+                from datetime import datetime
+                result.append(
+                    {
+                        "id": request_.id,
+                        "user": {
+                            "id": request_.user.id,
+                            "name": request_.user.first_name,
+                            "phone": request_.user.phone,
+                            "image": image_url
+                        },
+                        "amount": request_.amount,
+                        "city": city_result,
+                        "container": {
+                            "id": request_.container.id,
+                            "name": request_.container.name,
+                            "image": container_image_url
+                        },
+                        "line": {
+                            "id": request_.line.id,
+                            "name": request_.line.name,
+                        },
+                        "status": request_.get_status_display(),
+                        "request_date": datetime.timestamp(datetime.strptime(request_.request_date.strftime("%m/%d/%Y"), "%m/%d/%Y")),
+                        "end_date": datetime.timestamp(datetime.strptime(request_.end_date.strftime("%m/%d/%Y"), "%m/%d/%Y"))
+                    }
+                )
+            return Response(
+                    result
+                )
+        else:
+            return Response(
+                {
+                    "status": "invalid token"
+                }
+            )
 
 class UserRequestsAPI(APIView):
     renderer_classes = (JSONRenderer,)
@@ -751,6 +988,77 @@ class UserRequestsAPI(APIView):
                     "status": "invalid token"
                 }
             )
+
+class APDICOUserPropositionsAPI(APIView):
+    renderer_classes = (JSONRenderer,)
+    permission_classes = (permissions.AllowAny, )
+    authentication_classes = (
+        CsrfExemptSessionAuthentication, BasicAuthentication)
+    parser_classes = (MultiPartParser, FormParser, JSONParser, )
+
+    def get(self, request):
+        try:
+            user = User.objects.get(
+                token=request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            user_propositions = UserProposition.objects.filter(
+                user=user
+            )
+            result = []
+            domain = request.get_host()
+            for proposition in user_propositions:
+                try:
+                    path_image = proposition.user.image.url
+                except Exception:
+                    path_image = None
+                if path_image:
+                    image_url = 'http://{domain}{path}'.format(
+                        domain=domain, path=path_image)
+                else:
+                    image_url = None
+                container_image = proposition.container.image.url
+                container_image_url = 'http://{domain}{path}'.format(
+                    domain=domain, path=container_image)
+                from datetime import datetime
+                result.append(
+                    {
+                        "id": proposition.id,
+                        "user": {
+                            "id": proposition.user.id,
+                            "name": proposition.user.first_name,
+                            "phone": proposition.user.phone,
+                            "image": image_url
+                        },
+                        "amount": proposition.amount,
+                        "city": {
+                            "id": proposition.city.id,
+                            "name": proposition.city.name,
+                        },
+                        "container": {
+                            "id": proposition.container.id,
+                            "name": proposition.container.name,
+                            "image": container_image_url
+                        },
+                        "line": {
+                            "id": proposition.line.id,
+                            "name": proposition.line.name,
+                        },
+                        "start_date": datetime.timestamp(datetime.strptime(proposition.start_date.strftime("%m/%d/%Y"), "%m/%d/%Y")),
+                        "end_date": datetime.timestamp(datetime.strptime(proposition.end_date.strftime("%m/%d/%Y"), "%m/%d/%Y"))
+                    }
+                )
+            return Response(
+                result
+            )
+        else:
+            return Response(
+                {
+                    "status": "invalid token"
+                }
+            )
+
 
 class UserPropositionsAPI(APIView):
     renderer_classes = (JSONRenderer,)
@@ -950,9 +1258,7 @@ class FilteredPropositions(APIView):
                     }
                 })
             return Response(
-                {
-                    "results": results[offset: offset+limit]
-                }
+                results[offset: offset+limit]
             )
         else:
             return Response(

@@ -90,6 +90,25 @@ def get_containers_list(request):
     )
 
 
+@api_view(['GET'])
+@parser_classes((MultiPartParser, ))
+@renderer_classes((JSONRenderer,))
+@authentication_classes((CsrfExemptSessionAuthentication, BasicAuthentication))
+@permission_classes((permissions.AllowAny,))
+def get_containers_list_api(request):
+    containers = ContainerSerializer.get_list()
+    containers_list = containers.values()
+    domain = request.get_host()
+    for ind, container in enumerate(containers_list):
+        path_image = containers[ind].image.url
+        image_url = 'http://{domain}{path}'.format(
+            domain=domain, path=path_image)
+        containers_list[ind]['image'] = image_url
+    return Response(
+        containers_list
+    )
+
+
 @renderer_classes((JSONRenderer,))
 @permission_classes((permissions.AllowAny,))
 class CityAPI(APIView):
@@ -131,6 +150,20 @@ class CityAPI(APIView):
                 "city_id": city[0]
             }
         )
+
+
+@api_view(['GET'])
+@renderer_classes((JSONRenderer,))
+@authentication_classes((CsrfExemptSessionAuthentication, BasicAuthentication))
+@parser_classes((MultiPartParser, ))
+@permission_classes((permissions.AllowAny,))
+def get_cities_list_api(request):
+    cities = CitySerializer.get_list()
+    cities_list = cities.values()
+
+    return Response(
+        cities_list
+    )
 
 
 @api_view(['GET'])
@@ -204,4 +237,18 @@ def get_lines_list(request):
         {
             "results": lines_list
         }
+    )
+
+
+@api_view(['GET'])
+@parser_classes((MultiPartParser, ))
+@renderer_classes((JSONRenderer,))
+@authentication_classes((CsrfExemptSessionAuthentication, BasicAuthentication))
+@permission_classes((permissions.AllowAny,))
+def get_lines_list_api(request):
+    lines = LineSerializer.get_list()
+    lines_list = lines.values()
+
+    return Response(
+        lines_list
     )

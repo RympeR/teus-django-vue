@@ -16,7 +16,6 @@ urlpatterns = [
     path('api-profile-get/', UserTokenAPI.as_view(), name='UserProfile'),
     
     
-    
     # path('create-admin/', AdminAPI.as_view(), name='UserCreate'),
     path('admin/profile/', AdminAPI.as_view(), name='UserProfile'),
     path('admin/', AdminAPI.as_view(), name='UserProfile'),

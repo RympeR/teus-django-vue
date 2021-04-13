@@ -91,9 +91,7 @@ class GetRoomsProposition(APIView):
                     }
                 )
             return Response(
-                {
-                    "results": results
-                }
+                results
             )
         else:
             return Response(
@@ -135,9 +133,7 @@ class GetRoomsRequest(APIView):
                     }
                 )
             return Response(
-                {
-                    "results": results
-                }
+                results
             )
         else:
             return Response(
@@ -187,9 +183,7 @@ class GetChatMessages(APIView):
                     },
                 )
             return Response(
-                {
-                    "results": results
-                }
+                results
             )
         else:
             return Response(

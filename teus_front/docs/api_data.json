@@ -442,7 +442,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n     \"results\": [\n        {\n            \"id\": 2,\n            \"room_id\": 4,\n            \"user_id\": 2,\n            \"text\": null,\n            \"attachment\": \"http://api-teus.maximusapp.com/media/PHZ_0733_XRWHViz.jpg\",\n            \"date\": 1615845600.0\n        },\n        {\n            \"id\": 1,\n            \"room_id\": 4,\n            \"user_id\": 1,\n            \"text\": \"teste\",\n            \"attachment\": null,\n            \"date\": 1615845600.0\n        }\n    ]\n}",
+          "content": "HTTP/1.1 200 OK\n{\n    [\n        {\n            \"id\": 2,\n            \"room_id\": 4,\n            \"user_id\": 2,\n            \"text\": null,\n            \"attachment\": \"http://api-teus.maximusapp.com/media/PHZ_0733_XRWHViz.jpg\",\n            \"date\": 1615845600.0\n        },\n        {\n            \"id\": 1,\n            \"room_id\": 4,\n            \"user_id\": 1,\n            \"text\": \"teste\",\n            \"attachment\": null,\n            \"date\": 1615845600.0\n        }\n    ]\n}",
           "type": "json"
         }
       ]
@@ -507,7 +507,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    \"results\": [\n        {\n            \"id\": 4,\n            \"user_request_id\": 1,\n            \"user_proposition_id\": 1,\n            \"date\": 1615845600.0,\n            \"first_mark\": false,\n            \"second_mark\": false\n        }\n    ]\n}",
+          "content": "HTTP/1.1 200 OK\n{\n    [\n        {\n            \"id\": 4,\n            \"user_request_id\": 1,\n            \"user_proposition_id\": 1,\n            \"date\": 1615845600.0,\n            \"first_mark\": false,\n            \"second_mark\": false\n        }\n    ]\n}",
           "type": "json"
         }
       ]
@@ -572,7 +572,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    \"results\": [\n        {\n            \"id\": 4,\n            \"user_request_id\": 1,\n            \"user_proposition_id\": 1,\n            \"date\": 1615845600.0,\n            \"first_mark\": false,\n            \"second_mark\": false\n        }\n    ]\n}",
+          "content": "HTTP/1.1 200 OK\n{\n    [\n        {\n            \"id\": 4,\n            \"user_request_id\": 1,\n            \"user_proposition_id\": 1,\n            \"date\": 1615845600.0,\n            \"first_mark\": false,\n            \"second_mark\": false\n        }\n    ]\n}",
           "type": "json"
         }
       ]
@@ -695,7 +695,7 @@
   },
   {
     "type": "GET",
-    "url": "/api/info/get-containers-list/",
+    "url": "/api/info/get-containers-list-api/",
     "title": "4.1 Get containers",
     "name": "4.1_Get_containers",
     "group": "Info",
@@ -735,7 +735,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n    {\n    \"results\": [\n        {\n            \"id\": 1,\n            \"name\": \"test\",\n            \"image\": \"http://api-teus.maximusapp.com/media/tes_img.jpg\"\n        },\n    ]\n}",
+          "content": "HTTP/1.1 200 OK\n    {\n        [\n            {\n                \"id\": 1,\n                \"name\": \"test\",\n                \"image\": \"http://api-teus.maximusapp.com/media/tes_img.jpg\"\n            },\n        ]\n    }",
           "type": "json"
         }
       ]
@@ -746,7 +746,7 @@
   },
   {
     "type": "GET",
-    "url": "/api/info/get-cities-list/",
+    "url": "/api/info/get-cities-list-api/",
     "title": "4.2 Get cities",
     "name": "4.2_Get_cities",
     "group": "Info",
@@ -779,7 +779,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    \"results\": [\n        {\n            \"id\": 1,\n            \"name\": \"test\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"test2\"\n        },\n    ]\n}",
+          "content": "HTTP/1.1 200 OK\n{\n    [\n        {\n            \"id\": 1,\n            \"name\": \"test\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"test2\"\n        },\n    ]\n}",
           "type": "json"
         }
       ]
@@ -790,7 +790,7 @@
   },
   {
     "type": "GET",
-    "url": "/api/info/get-lines-list/",
+    "url": "/api/info/get-lines-list-api/",
     "title": "4.3 Get lines",
     "name": "4.3_Get_containers",
     "group": "Info",
@@ -823,7 +823,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    \"results\": [\n        {\n            \"id\": 1,\n            \"name\": \"test\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"test2\"\n        },\n    ]\n}",
+          "content": "HTTP/1.1 200 OK\n{\n    [\n        {\n            \"id\": 1,\n            \"name\": \"test\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"test2\"\n        },\n    ]\n}",
           "type": "json"
         }
       ]
@@ -956,7 +956,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n\"results\": [\n    {\n        \"id\": 1,\n        \"user\": {\n            \"id\": 1,\n            \"name\": \"test1\",\n            \"image\": \"http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg\"\n        },\n        \"line\": {\n            \"id\": 1,\n            \"name\": \"test loe\"\n        },\n        \"city\": {\n            \"id\": 1,\n            \"name\": \"test\"\n        },\n        \"container\": {\n            \"id\": 1,\n            \"name\": \"t34t\",\n            \"image\": \"http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg\"\n        },\n        \"date\": {\n            \"start_date\": 1615410000.0,\n            \"end_date\": 1615410000.0\n        }\n    },\n    {\n        \"id\": 6,\n        \"user\": {\n            \"id\": 1,\n            \"name\": \"test1\",\n            \"image\": \"http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg\"\n        },\n        \"line\": {\n            \"id\": 1,\n            \"name\": \"test loe\"\n        },\n        \"city\": {\n            \"id\": 2,\n            \"name\": \"retwh\"\n        },\n        \"container\": {\n            \"id\": 1,\n            \"name\": \"t34t\",\n            \"image\": \"http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg\"\n        },\n        \"date\": {\n            \"start_date\": 1615410000.0,\n            \"end_date\": 1583096400.0\n        }\n    }\n    ]\n}",
+          "content": "HTTP/1.1 200 OK\n{\n    [\n        {\n            \"id\": 1,\n            \"user\": {\n                \"id\": 1,\n                \"name\": \"test1\",\n                \"image\": \"http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg\"\n            },\n            \"line\": {\n                \"id\": 1,\n                \"name\": \"test loe\"\n            },\n            \"city\": {\n                \"id\": 1,\n                \"name\": \"test\"\n            },\n            \"container\": {\n                \"id\": 1,\n                \"name\": \"t34t\",\n                \"image\": \"http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg\"\n            },\n            \"date\": {\n                \"start_date\": 1615410000.0,\n                \"end_date\": 1615410000.0\n            }\n        },\n        {\n            \"id\": 6,\n            \"user\": {\n                \"id\": 1,\n                \"name\": \"test1\",\n                \"image\": \"http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg\"\n            },\n            \"line\": {\n                \"id\": 1,\n                \"name\": \"test loe\"\n            },\n            \"city\": {\n                \"id\": 2,\n                \"name\": \"retwh\"\n            },\n            \"container\": {\n                \"id\": 1,\n                \"name\": \"t34t\",\n                \"image\": \"http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg\"\n            },\n            \"date\": {\n                \"start_date\": 1615410000.0,\n                \"end_date\": 1583096400.0\n            }\n        }\n    ]\n}",
           "type": "json"
         }
       ]
@@ -1363,7 +1363,7 @@
   },
   {
     "type": "GET",
-    "url": "/api/containers/get-api-request/",
+    "url": "/api/containers/get-apidoc-api-request/",
     "title": "3.1 Get user requests",
     "name": "3.1_Get_user_requests",
     "group": "Requests",
@@ -1464,7 +1464,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    \"results\": [\n    {\n        \"id\": 1,\n        \"user\": {\n            \"id\": 3,\n            \"name\": \"test2\",\n            \"phone\": \"03495345455\",\n            \"image\": null\n        },\n        \"amount\": 7,\n        \"city\": [\n            {\n                \"id\": 1,\n                \"name\": \"test\"\n            },\n            {\n                \"id\": 2,\n                \"name\": \"retwh\"\n            }\n        ],\n        \"container\": {\n            \"id\": 2,\n            \"name\": \"34t34t\",\n            \"image\": \"http://api-teus.maximusapp.com/media/testF_iNKjXSm.jpg\"\n        },\n        \"line\": {\n            \"id\": 1,\n            \"name\": \"test loe\"\n        },\n        \"request_date\": 1615410000.0,\n        \"end_date\": 1615410000.0\n    }\n]\n}",
+          "content": "HTTP/1.1 200 OK\n{\n    [\n    {\n        \"id\": 1,\n        \"user\": {\n            \"id\": 3,\n            \"name\": \"test2\",\n            \"phone\": \"03495345455\",\n            \"image\": null\n        },\n        \"amount\": 7,\n        \"city\": [\n            {\n                \"id\": 1,\n                \"name\": \"test\"\n            },\n            {\n                \"id\": 2,\n                \"name\": \"retwh\"\n            }\n        ],\n        \"container\": {\n            \"id\": 2,\n            \"name\": \"34t34t\",\n            \"image\": \"http://api-teus.maximusapp.com/media/testF_iNKjXSm.jpg\"\n        },\n        \"line\": {\n            \"id\": 1,\n            \"name\": \"test loe\"\n        },\n        \"request_date\": 1615410000.0,\n        \"end_date\": 1615410000.0\n    }\n]\n}",
           "type": "json"
         }
       ]

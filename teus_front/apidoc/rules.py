@@ -131,57 +131,57 @@
     @apiSuccessExample {json} Success-Response:
     HTTP/1.1 200 OK
     {
-    "results": [
-        {
-            "id": 1,
-            "user": {
+        [
+            {
                 "id": 1,
-                "name": "test1",
-                "image": "http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg"
+                "user": {
+                    "id": 1,
+                    "name": "test1",
+                    "image": "http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg"
+                },
+                "line": {
+                    "id": 1,
+                    "name": "test loe"
+                },
+                "city": {
+                    "id": 1,
+                    "name": "test"
+                },
+                "container": {
+                    "id": 1,
+                    "name": "t34t",
+                    "image": "http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg"
+                },
+                "date": {
+                    "start_date": 1615410000.0,
+                    "end_date": 1615410000.0
+                }
             },
-            "line": {
-                "id": 1,
-                "name": "test loe"
-            },
-            "city": {
-                "id": 1,
-                "name": "test"
-            },
-            "container": {
-                "id": 1,
-                "name": "t34t",
-                "image": "http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg"
-            },
-            "date": {
-                "start_date": 1615410000.0,
-                "end_date": 1615410000.0
+            {
+                "id": 6,
+                "user": {
+                    "id": 1,
+                    "name": "test1",
+                    "image": "http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg"
+                },
+                "line": {
+                    "id": 1,
+                    "name": "test loe"
+                },
+                "city": {
+                    "id": 2,
+                    "name": "retwh"
+                },
+                "container": {
+                    "id": 1,
+                    "name": "t34t",
+                    "image": "http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg"
+                },
+                "date": {
+                    "start_date": 1615410000.0,
+                    "end_date": 1583096400.0
+                }
             }
-        },
-        {
-            "id": 6,
-            "user": {
-                "id": 1,
-                "name": "test1",
-                "image": "http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg"
-            },
-            "line": {
-                "id": 1,
-                "name": "test loe"
-            },
-            "city": {
-                "id": 2,
-                "name": "retwh"
-            },
-            "container": {
-                "id": 1,
-                "name": "t34t",
-                "image": "http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg"
-            },
-            "date": {
-                "start_date": 1615410000.0,
-                "end_date": 1583096400.0
-            }
-        }
         ]
     }
     @apiErrorExample {json} Error-Response:
@@ -322,7 +322,7 @@
 """
 
 """
-    @api {GET} /api/containers/get-api-request/ 3.1 Get user requests
+    @api {GET} /api/containers/get-apidoc-api-request/ 3.1 Get user requests
     @apiName 3.1 Get user requests
     @apiGroup Requests
     @apiHeader {String} Authorization Users unique token
@@ -343,7 +343,7 @@
     @apiSuccessExample {json} Success-Response:
     HTTP/1.1 200 OK
     {
-        "results": [
+        [
         {
             "id": 1,
             "user": {
@@ -513,7 +513,7 @@
 """
 
 """
-    @api {GET} /api/info/get-containers-list/ 4.1 Get containers    
+    @api {GET} /api/info/get-containers-list-api/ 4.1 Get containers    
     @apiName 4.1 Get containers
     @apiGroup Info
     @apiSuccess {object} results Containers list
@@ -523,18 +523,18 @@
     @apiSuccessExample Success-Response:
     HTTP/1.1 200 OK
         {
-        "results": [
-            {
-                "id": 1,
-                "name": "test",
-                "image": "http://api-teus.maximusapp.com/media/tes_img.jpg"
-            },
-        ]
-    }
+            [
+                {
+                    "id": 1,
+                    "name": "test",
+                    "image": "http://api-teus.maximusapp.com/media/tes_img.jpg"
+                },
+            ]
+        }
 """
 
 """
-    @api {GET} /api/info/get-cities-list/ 4.2 Get cities    
+    @api {GET} /api/info/get-cities-list-api/ 4.2 Get cities    
     @apiName 4.2 Get cities
     @apiGroup Info
     @apiSuccess {object} results Cities list
@@ -543,7 +543,7 @@
     @apiSuccessExample Success-Response:
     HTTP/1.1 200 OK
     {
-        "results": [
+        [
             {
                 "id": 1,
                 "name": "test"
@@ -556,7 +556,7 @@
     }
 """
 """
-    @api {GET} /api/info/get-lines-list/ 4.3 Get lines    
+    @api {GET} /api/info/get-lines-list-api/ 4.3 Get lines    
     @apiName 4.3 Get containers
     @apiGroup Info
     @apiSuccess {object} results Lines list
@@ -565,7 +565,7 @@
     @apiSuccessExample Success-Response:
     HTTP/1.1 200 OK
     {
-        "results": [
+        [
             {
                 "id": 1,
                 "name": "test"
@@ -717,7 +717,7 @@
     @apiSuccessExample {json} Success-Response:
     HTTP/1.1 200 OK
     {
-         "results": [
+        [
             {
                 "id": 2,
                 "room_id": 4,
@@ -757,7 +757,7 @@
     @apiSuccessExample {json} Success-Response:
     HTTP/1.1 200 OK
     {
-        "results": [
+        [
             {
                 "id": 4,
                 "user_request_id": 1,
@@ -789,7 +789,7 @@
     @apiSuccessExample {json} Success-Response:
     HTTP/1.1 200 OK
     {
-        "results": [
+        [
             {
                 "id": 4,
                 "user_request_id": 1,

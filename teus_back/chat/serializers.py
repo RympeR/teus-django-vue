@@ -10,7 +10,7 @@ class TimestampField(serializers.Field):
 
 
 class RoomSerializer(serializers.ModelSerializer):
-
+    
     request_id = UserRequsetSerializer()
     proposition_id = UserPropositionsSerializer()
     date = TimestampField(required=False)

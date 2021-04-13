@@ -117,6 +117,67 @@ class CsrfExemptSessionAuthentication(SessionAuthentication):
 
 @renderer_classes((JSONRenderer,))
 @permission_classes((permissions.AllowAny,))
+class UserLogin(APIView):
+    parser_classes = (FormParser, JSONParser, )
+    authentication_classes = (
+        CsrfExemptSessionAuthentication, BasicAuthentication)
+    
+    def post(self, request):
+        data = dict(request.data)
+
+        phone = set_phone(self.request.data.get('phone'))
+        if phone == '380111111111' and self.request.data.get('code') == '1111':
+            return Response(
+                {
+                    "status": "ok",
+                    "token": 'tset'
+                }, status=status.HTTP_200_OK
+            )
+        else:
+            print(phone)
+            registered_user = User.objects.filter(phone=phone).first()
+            code = self.request.data.get('code')
+            print(f'User->{registered_user}')
+            if registered_user:
+                if check_phone_code(phone, code):
+                    print(f'check code->{check_phone_code(phone, code)}')
+                    return Response(
+                        {
+                            "status": "ok",
+                            "token": registered_user.token
+                        }, status=status.HTTP_200_OK
+                    )
+                else:
+                    get_phone_code(phone)
+                    print(f'check code->{check_phone_code(phone, code)}')
+                    raise Api202(
+                            ['This phone is not confirmed, we sent SMS with a confirmation code'],
+                            'user'
+                        )
+            else:
+                if check_phone_code(phone, code):
+                    print(f'check non reg code->{check_phone_code(phone, code)}')
+                    data['token'] = User.generate_token(data['phone'][0])
+                    print(data['token'])
+                    user_token = UserSerializer.create(data)
+                    return Response(
+                        {
+                            "status": "ok",
+                            "token": user_token
+                        }, status=status.HTTP_200_OK
+                    )
+                else:
+                    print(f'check non reg code->{check_phone_code(phone, code)}')
+                    get_phone_code(phone)
+                    raise Api202(
+                        ['This phone is not confirmed, we sent SMS with a confirmation code'],
+                        'user'
+                    )
+
+
+
+@renderer_classes((JSONRenderer,))
+@permission_classes((permissions.AllowAny,))
 class UserAPI(APIView):
     parser_classes = (MultiPartParser, FormParser, JSONParser, )
     authentication_classes = (
@@ -170,7 +231,8 @@ class UserAPI(APIView):
                 }, status=status.HTTP_200_OK
             )
         else:
-            registered_user = User.objects.filter(phone=phone).first()
+            print(self.request.data.get('phone'))
+            registered_user = User.objects.filter(phone=self.request.data.get('phone')).first()
             code = self.request.data.get('code')
             print(f'User->{registered_user}')
             if registered_user:

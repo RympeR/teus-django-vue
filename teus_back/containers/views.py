@@ -22,7 +22,7 @@ from datetime import date
 from users.models import *
 from info.models import *
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
-
+from rest_framework import status
 
 
 
@@ -802,12 +802,26 @@ class APIDOCUserRequests(APIView):
         except Exception:
             user = None
         if user:
-            user_requests = UserRequest.objects.filter(
-                user=user
-            )
+            if request.GET.get('is_active') == '1':
+                user_requests = UserRequest.objects.filter(
+                    user=user, status='в работе'
+                )
+            else:
+                user_requests = UserRequest.objects.filter(
+                    user=user, status='в архиве'
+                )
+            limit = int(request.data.get('limit', 20))
+            offset = int(request.data.get('offset', 0))
             result = []
             domain = request.get_host()
+            
             for request_ in user_requests:
+                deals = Deal.objects.filter(
+                    Q(user_request=user) &
+                    Q(user_proposition)
+
+                )    
+
                 try:
                     path_image = request_.user.image.url
                 except Exception:
@@ -817,9 +831,15 @@ class APIDOCUserRequests(APIView):
                         domain=domain, path=path_image)
                 else:
                     image_url = None
-                container_image = request_.container.image.url
-                container_image_url = 'http://{domain}{path}'.format(
-                    domain=domain, path=container_image)
+                try:
+                    container_image = request_.container.image.url
+                except Exception:
+                    container_image = None
+                if container_image:
+                    container_image_url = 'http://{domain}{path}'.format(
+                        domain=domain, path=container_image)
+                else:
+                    container_image_url = None
                 city_result = []
                 for city in request_.city.all():
                     city_result.append({
@@ -848,12 +868,12 @@ class APIDOCUserRequests(APIView):
                             "name": request_.line.name,
                         },
                         "status": request_.get_status_display(),
-                        "request_date": datetime.timestamp(datetime.strptime(request_.request_date.strftime("%m/%d/%Y"), "%m/%d/%Y")),
-                        "end_date": datetime.timestamp(datetime.strptime(request_.end_date.strftime("%m/%d/%Y"), "%m/%d/%Y"))
+                        "request_date": int(datetime.timestamp(datetime.strptime(request_.request_date.strftime("%m/%d/%Y"), "%m/%d/%Y"))),
+                        "end_date": int(datetime.timestamp(datetime.strptime(request_.end_date.strftime("%m/%d/%Y"), "%m/%d/%Y")))
                     }
                 )
             return Response(
-                    result
+                    result[offset: offset+limit]
                 )
         else:
             return Response(
@@ -943,10 +963,17 @@ class UserRequestsAPI(APIView):
                 token=self.request.headers['Authorization'])
         except Exception:
             user = None
+        except TypeError :
+            user = None
         if user:
             from datetime import datetime
             data = dict(request.data)
+            
             data['user'] = user.id
+            if isinstance(data['request_date'], list):
+                data['request_date'] = int(data['request_date'][0])
+            if isinstance(data['end_date'], list):
+                data['end_date'] = int(data['end_date'][0])
             data['request_date'] = datetime.utcfromtimestamp(data['request_date']).strftime("%Y-%m-%d")
             data['end_date'] = datetime.utcfromtimestamp(data['end_date']).strftime("%Y-%m-%d")
             user_request = UserRequsetSerializer(data=data)
@@ -957,7 +984,8 @@ class UserRequestsAPI(APIView):
                 })
             else:
                 return Response(
-                    user_request.data
+                    user_request.data,
+                    status.HTTP_400_BAD_REQUEST
                 )
         else:
             return Response(
@@ -1003,9 +1031,16 @@ class APDICOUserPropositionsAPI(APIView):
         except Exception:
             user = None
         if user:
-            user_propositions = UserProposition.objects.filter(
-                user=user
-            )
+            if request.GET.get('is_active') == '1':
+                user_propositions = UserProposition.objects.filter(
+                    user=user, status='в работе'
+                )
+            else:
+                user_propositions = UserProposition.objects.filter(
+                    user=user, status='в архиве'
+                )
+            limit = int(request.data.get('limit', 20))
+            offset = int(request.data.get('offset', 0))
             result = []
             domain = request.get_host()
             for proposition in user_propositions:
@@ -1018,9 +1053,15 @@ class APDICOUserPropositionsAPI(APIView):
                         domain=domain, path=path_image)
                 else:
                     image_url = None
-                container_image = proposition.container.image.url
-                container_image_url = 'http://{domain}{path}'.format(
-                    domain=domain, path=container_image)
+                try:
+                    container_image = proposition.container.image.url
+                except Exception:
+                    container_image = None
+                if container_image:
+                    container_image_url = 'http://{domain}{path}'.format(
+                        domain=domain, path=container_image)
+                else:
+                    container_image_url = None
                 from datetime import datetime
                 result.append(
                     {
@@ -1045,12 +1086,13 @@ class APDICOUserPropositionsAPI(APIView):
                             "id": proposition.line.id,
                             "name": proposition.line.name,
                         },
-                        "start_date": datetime.timestamp(datetime.strptime(proposition.start_date.strftime("%m/%d/%Y"), "%m/%d/%Y")),
-                        "end_date": datetime.timestamp(datetime.strptime(proposition.end_date.strftime("%m/%d/%Y"), "%m/%d/%Y"))
+                        "status": proposition.get_status_display(),
+                        "start_date": int(datetime.timestamp(datetime.strptime(proposition.start_date.strftime("%m/%d/%Y"), "%m/%d/%Y"))),
+                        "end_date": int(datetime.timestamp(datetime.strptime(proposition.end_date.strftime("%m/%d/%Y"), "%m/%d/%Y")))
                     }
                 )
             return Response(
-                result
+                result[offset:limit+offset]
             )
         else:
             return Response(
@@ -1141,6 +1183,10 @@ class UserPropositionsAPI(APIView):
             from datetime import datetime
             data = dict(request.data)
             data['user'] = user.id
+            if isinstance(data['start_date'], list):
+                data['start_date'] = int(data['start_date'][0])
+            if isinstance(data['end_date'], list):
+                data['end_date'] = int(data['end_date'][0])
             data['start_date'] = datetime.utcfromtimestamp(data['start_date']).strftime("%Y-%m-%d")
             data['end_date'] = datetime.utcfromtimestamp(data['end_date']).strftime("%Y-%m-%d")
             user_proposition = UserPropositionsSerializer(data=data)
@@ -1152,7 +1198,8 @@ class UserPropositionsAPI(APIView):
                 return response
             else:
                 return Response(
-                    user_proposition.data
+                    user_proposition.data,
+                    status.HTTP_400_BAD_REQUEST
                 )
         else:
             return Response(
@@ -1219,9 +1266,15 @@ class FilteredPropositions(APIView):
             results = []
             domain = request.get_host()
             for proposition in propositons:
-                path_image_container = proposition.user.image.url
-                container_image_url = 'http://{domain}{path}'.format(
-                    domain=domain, path=path_image_container)
+                try:
+                    path_image_container = proposition.user.image.url
+                except Exception:
+                    path_image_container  = None
+                if path_image_container:
+                    container_image_url = 'http://{domain}{path}'.format(
+                        domain=domain, path=path_image_container)
+                else:
+                    container_image_url = None
                 try:
                     path_image = proposition.user.image.url
                 except Exception:
@@ -1247,14 +1300,15 @@ class FilteredPropositions(APIView):
                         "id": proposition.city.id,
                         "name": proposition.city.name
                     },
+                    "amount": proposition.amount,
                     "container": {
                         "id": proposition.container.id,
                         "name": proposition.container.name,
                         "image": container_image_url
                     },
                     "date": {
-                        "start_date": datetime.timestamp(datetime.strptime(proposition.start_date.strftime("%m/%d/%Y"), "%m/%d/%Y")),
-                        "end_date": datetime.timestamp(datetime.strptime(proposition.end_date.strftime("%m/%d/%Y"), "%m/%d/%Y"))
+                        "start_date": int(datetime.timestamp(datetime.strptime(proposition.start_date.strftime("%m/%d/%Y"), "%m/%d/%Y"))),
+                        "end_date": int(datetime.timestamp(datetime.strptime(proposition.end_date.strftime("%m/%d/%Y"), "%m/%d/%Y")))
                     }
                 })
             return Response(

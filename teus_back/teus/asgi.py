@@ -2,6 +2,7 @@ import os
 
 from django.conf.urls import url
 from django.core.asgi import get_asgi_application
+from django.urls import re_path
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'teus.settings')
 django_asgi_app = get_asgi_application()
@@ -18,7 +19,7 @@ application = ProtocolTypeRouter({
     # WebSocket chat handler
     "websocket": AuthMiddlewareStack(
         URLRouter([
-            url(r"^chat/$", ChatConsumer.as_asgi()),
+            re_path(r"ws/chat/(?P<room_name>\w+)/", ChatConsumer.as_asgi()),
         ])
     ),
 })

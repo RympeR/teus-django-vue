@@ -24,6 +24,6 @@ def send_sms(phone, text):
     result = client.service.SendSMS(
         sender="TEUs",
         destination=phone,
-        text=text,
+        text='Code ' + str(text),
     )
     print(f'{result} ->sendsms')

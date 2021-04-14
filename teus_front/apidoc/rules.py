@@ -1,6 +1,6 @@
 
 """
-    @api {POST} /api/user/create-profile/ 1.2 Login / authorize
+    @api {POST} /api/user/create-profile/ 1.1 Login / authorize
     @apiName 1.2 Login / authorize
     @apiGroup User
     @apiParam {String} phone User phone number
@@ -107,6 +107,70 @@
 """
 
 """
+    @api {GET} /api/containers/get-apidoc-api-proposition/ 2.0 Get user propositions
+    @apiName 2.0 Get user propositions
+    @apiGroup Requests
+    @apiHeader {String} Authorization Users unique token
+
+    @apiParam {Number} limit Pagination limit (not required)
+    @apiParam {Number} offset Pagination offset (not required)
+    @apiParam {Boolean} is_active 1 or 0(not required)
+    
+
+    @apiSuccess {Object} proposition objects list
+    @apiSuccess {Number} id Proposition id
+    @apiSuccess {Object} user User object
+    @apiSuccess {Object} city city objects list
+    @apiSuccess {Object} container Container object
+    @apiSuccess {Object} line Line object
+    @apiSuccess {Number} request_date Request date timestamp 
+    @apiSuccess {Number} end_date End date timestamp 
+
+
+    @apiSuccessExample {json} Success-Response:
+    HTTP/1.1 200 OK
+    {
+        [
+        {
+            "id": 1,
+            "user": {
+                "id": 3,
+                "name": "test2",
+                "phone": "03495345455",
+                "image": null
+            },
+            "amount": 7,
+            "city": [
+                {
+                    "id": 1,
+                    "name": "test"
+                },
+                {
+                    "id": 2,
+                    "name": "retwh"
+                }
+            ],
+            "container": {
+                "id": 2,
+                "name": "34t34t",
+                "image": "http://api-teus.maximusapp.com/media/testF_iNKjXSm.jpg"
+            },
+            "line": {
+                "id": 1,
+                "name": "test loe"
+            },
+            "start_date": 1615410000.0,
+            "end_date": 1615410000.0
+        }
+    ]
+    }
+    @apiErrorExample {json} Error-Response:
+    HTTP/1.1 200 Not Found
+    {
+        "status": "invalid token"
+    }
+"""
+"""
     @api {GET} /api/containers/proposition-list/ 2.1 Get propositions
     @apiName 2.1 Get propositions
     @apiGroup Propositions
@@ -122,6 +186,7 @@
     @apiSuccess {Object} city city objects list
     @apiSuccess {Object} container Container object
     @apiSuccess {Object} line Line object
+    @apiSuccess {Number} amount Request amount 
     @apiSuccess {Number} request_date Request date timestamp 
     @apiSuccess {Object} date End date timestamp 
     @apiSuccess {Number} start_date End date timestamp 
@@ -152,9 +217,10 @@
                     "name": "t34t",
                     "image": "http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg"
                 },
+                "amount": 3,
                 "date": {
-                    "start_date": 1615410000.0,
-                    "end_date": 1615410000.0
+                    "start_date": 1615410000,
+                    "end_date": 1615410000
                 }
             },
             {
@@ -172,14 +238,15 @@
                     "id": 2,
                     "name": "retwh"
                 },
+                "amount": 2,
                 "container": {
                     "id": 1,
                     "name": "t34t",
                     "image": "http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg"
                 },
                 "date": {
-                    "start_date": 1615410000.0,
-                    "end_date": 1583096400.0
+                    "start_date": 1615410000,
+                    "end_date": 1583096400
                 }
             }
         ]
@@ -329,6 +396,8 @@
 
     @apiParam {Number} limit Pagination limit (not required)
     @apiParam {Number} offset Pagination offset (not required)
+    @apiParam {Boolean} is_active 1 or 0(not required)
+    
 
     @apiSuccess {Object} results result objects list
     @apiSuccess {Number} id Request id

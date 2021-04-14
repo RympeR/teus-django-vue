@@ -927,6 +927,13 @@
             "group": "Success 200",
             "type": "Number",
             "optional": false,
+            "field": "amount",
+            "description": "<p>Request amount</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
             "field": "request_date",
             "description": "<p>Request date timestamp</p>"
           },
@@ -956,7 +963,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    [\n        {\n            \"id\": 1,\n            \"user\": {\n                \"id\": 1,\n                \"name\": \"test1\",\n                \"image\": \"http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg\"\n            },\n            \"line\": {\n                \"id\": 1,\n                \"name\": \"test loe\"\n            },\n            \"city\": {\n                \"id\": 1,\n                \"name\": \"test\"\n            },\n            \"container\": {\n                \"id\": 1,\n                \"name\": \"t34t\",\n                \"image\": \"http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg\"\n            },\n            \"date\": {\n                \"start_date\": 1615410000.0,\n                \"end_date\": 1615410000.0\n            }\n        },\n        {\n            \"id\": 6,\n            \"user\": {\n                \"id\": 1,\n                \"name\": \"test1\",\n                \"image\": \"http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg\"\n            },\n            \"line\": {\n                \"id\": 1,\n                \"name\": \"test loe\"\n            },\n            \"city\": {\n                \"id\": 2,\n                \"name\": \"retwh\"\n            },\n            \"container\": {\n                \"id\": 1,\n                \"name\": \"t34t\",\n                \"image\": \"http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg\"\n            },\n            \"date\": {\n                \"start_date\": 1615410000.0,\n                \"end_date\": 1583096400.0\n            }\n        }\n    ]\n}",
+          "content": "HTTP/1.1 200 OK\n{\n    [\n        {\n            \"id\": 1,\n            \"user\": {\n                \"id\": 1,\n                \"name\": \"test1\",\n                \"image\": \"http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg\"\n            },\n            \"line\": {\n                \"id\": 1,\n                \"name\": \"test loe\"\n            },\n            \"city\": {\n                \"id\": 1,\n                \"name\": \"test\"\n            },\n            \"container\": {\n                \"id\": 1,\n                \"name\": \"t34t\",\n                \"image\": \"http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg\"\n            },\n            \"amount\": 3,\n            \"date\": {\n                \"start_date\": 1615410000,\n                \"end_date\": 1615410000\n            }\n        },\n        {\n            \"id\": 6,\n            \"user\": {\n                \"id\": 1,\n                \"name\": \"test1\",\n                \"image\": \"http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg\"\n            },\n            \"line\": {\n                \"id\": 1,\n                \"name\": \"test loe\"\n            },\n            \"city\": {\n                \"id\": 2,\n                \"name\": \"retwh\"\n            },\n            \"amount\": 2,\n            \"container\": {\n                \"id\": 1,\n                \"name\": \"t34t\",\n                \"image\": \"http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg\"\n            },\n            \"date\": {\n                \"start_date\": 1615410000,\n                \"end_date\": 1583096400\n            }\n        }\n    ]\n}",
           "type": "json"
         }
       ]
@@ -1363,6 +1370,134 @@
   },
   {
     "type": "GET",
+    "url": "/api/containers/get-apidoc-api-proposition/",
+    "title": "2.0 Get user propositions",
+    "name": "2.0_Get_user_propositions",
+    "group": "Requests",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Users unique token</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "limit",
+            "description": "<p>Pagination limit (not required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "offset",
+            "description": "<p>Pagination offset (not required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Boolean",
+            "optional": false,
+            "field": "is_active",
+            "description": "<p>1 or 0(not required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "proposition",
+            "description": "<p>objects list</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Proposition id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "user",
+            "description": "<p>User object</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "city",
+            "description": "<p>city objects list</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "container",
+            "description": "<p>Container object</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "line",
+            "description": "<p>Line object</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "request_date",
+            "description": "<p>Request date timestamp</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "end_date",
+            "description": "<p>End date timestamp</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    [\n    {\n        \"id\": 1,\n        \"user\": {\n            \"id\": 3,\n            \"name\": \"test2\",\n            \"phone\": \"03495345455\",\n            \"image\": null\n        },\n        \"amount\": 7,\n        \"city\": [\n            {\n                \"id\": 1,\n                \"name\": \"test\"\n            },\n            {\n                \"id\": 2,\n                \"name\": \"retwh\"\n            }\n        ],\n        \"container\": {\n            \"id\": 2,\n            \"name\": \"34t34t\",\n            \"image\": \"http://api-teus.maximusapp.com/media/testF_iNKjXSm.jpg\"\n        },\n        \"line\": {\n            \"id\": 1,\n            \"name\": \"test loe\"\n        },\n        \"start_date\": 1615410000.0,\n        \"end_date\": 1615410000.0\n    }\n]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 Not Found\n{\n    \"status\": \"invalid token\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "apidoc/rules.py",
+    "groupTitle": "Requests"
+  },
+  {
+    "type": "GET",
     "url": "/api/containers/get-apidoc-api-request/",
     "title": "3.1 Get user requests",
     "name": "3.1_Get_user_requests",
@@ -1396,6 +1531,13 @@
             "optional": false,
             "field": "offset",
             "description": "<p>Pagination offset (not required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Boolean",
+            "optional": false,
+            "field": "is_active",
+            "description": "<p>1 or 0(not required)</p>"
           }
         ]
       }
@@ -1865,7 +2007,7 @@
   {
     "type": "POST",
     "url": "/api/user/create-profile/",
-    "title": "1.2 Login / authorize",
+    "title": "1.1 Login / authorize",
     "name": "1.2_Login_/_authorize",
     "group": "User",
     "parameter": {

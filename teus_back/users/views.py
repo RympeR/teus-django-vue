@@ -428,7 +428,7 @@ class AdminAPI(APIView):
         try:
             print(request.headers)
             user = User.objects.get(
-                Q(token=request.headers['Authorization']) 
+                Q(token=request.headers['authorization']) 
             )
         except Exception as e:
             print(e)
@@ -444,7 +444,7 @@ class AdminAPI(APIView):
                 }
             )
         else:
-            print(request.headers['Authorization'])
+            print(request.headers['authorization'])
             print(user)
             return Response(
                 {

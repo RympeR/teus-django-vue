@@ -220,7 +220,9 @@ class UserAPI(APIView):
 
     def post(self, *args, **kwargs):
         data = dict(self.request.data)
-        
+        print('----')
+        print(data)
+        print('----')
         if self.request.data.get('phone') == '+380999999999' and self.request.data.get('code') == '1111':
             return Response(
                 {

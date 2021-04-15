@@ -1236,10 +1236,8 @@ class FilteredPropositions(APIView):
                     "image": container_image_url
                 },
                 "status": status,
-                "date": {
-                    "start_date": int(proposition.start_date.timestamp()),
-                    "end_date": int(proposition.end_date.timestamp())
-                }
+                "start_date": int(proposition.start_date.timestamp()),
+                "end_date": int(proposition.end_date.timestamp())
             })
 
         return Response(

@@ -24,7 +24,7 @@ from info.models import *
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework import status
 from django.db.models import Q
-
+from pprint import pprint
 
 class CsrfExemptSessionAuthentication(SessionAuthentication):
 
@@ -785,8 +785,8 @@ class APIDOCUserRequests(APIView):
                 user_requests = UserRequest.objects.filter(
                     user=user, status='в архиве'
                 )
-            limit = int(request.data.get('limit', 20))
-            offset = int(request.data.get('offset', 0))
+            limit = int(request.GET.get('limit', 20))
+            offset = int(request.GET.get('offset', 0))
             result = []
             domain = request.get_host()
 
@@ -1013,8 +1013,8 @@ class APDICOUserPropositionsAPI(APIView):
                     user=user, status='в архиве'
                 )
 
-            limit = int(request.data.get('limit', 20))
-            offset = int(request.data.get('offset', 0))
+            limit = int(request.GET.get('limit', 20))
+            offset = int(request.GET.get('offset', 0))
             result = []
             domain = request.get_host()
             print(user_propositions)
@@ -1158,6 +1158,9 @@ class FilteredPropositions(APIView):
 
     def get(self, request):
         try:
+
+            limit = int(request.GET.get('limit', 20))
+            offset = int(request.GET.get('offset', 0))
             deals = None
             user = User.objects.get(
                 token=request.headers['Authorization'])
@@ -1185,8 +1188,7 @@ class FilteredPropositions(APIView):
             ).values('user_proposition__pk')
         else:
             propositons = UserProposition.objects.all()
-        limit = int(request.data.get('limit', 20))
-        offset = int(request.data.get('offset', 0))
+        
         results = []
         domain = request.get_host()
         for proposition in propositons:
@@ -1239,8 +1241,11 @@ class FilteredPropositions(APIView):
                     "end_date": int(proposition.end_date.timestamp())
                 }
             })
+        print(offset)
+        print(limit)
+        pprint(results[offset: offset+limit])
         return Response(
-            results[offset: offset+limit]
+            results
         )
 
 class CreateRequestsAPI(generics.CreateAPIView):

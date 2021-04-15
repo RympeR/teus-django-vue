@@ -1241,9 +1241,7 @@ class FilteredPropositions(APIView):
                     "end_date": int(proposition.end_date.timestamp())
                 }
             })
-        print(offset)
-        print(limit)
-        pprint(results[offset: offset+limit])
+
         return Response(
             results
         )

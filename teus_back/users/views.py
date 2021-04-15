@@ -77,9 +77,9 @@ def get_phone_code(phone):
             phone=phone
         ).count()
         print(check)
-        if check >= sms_limit:
-            raise APIException(
-                {'phone': ['You have reached your SMS limit, try again in an hour.']}, 400)
+        # if check >= sms_limit:
+        #     raise APIException(
+        #         {'phone': ['You have reached your SMS limit, try again in an hour.']}, 400)
 
         code = set_phone_code(phone)
 
@@ -124,55 +124,54 @@ class UserLogin(APIView):
     
     def post(self, request):
         data = dict(request.data)
+        print(data)
 
-        phone = set_phone(self.request.data.get('phone'))
-        if phone == '380111111111' and self.request.data.get('code') == '1111':
+        if request.data.get('phone') == '+380999999999' and request.data.get('code') == '1111':
             return Response(
                 {
                     "status": "ok",
                     "token": 'tset'
                 }, status=status.HTTP_200_OK
             )
-        else:
-            print(phone)
-            registered_user = User.objects.filter(phone=phone).first()
-            code = self.request.data.get('code')
-            print(f'User->{registered_user}')
-            if registered_user:
-                if check_phone_code(phone, code):
-                    print(f'check code->{check_phone_code(phone, code)}')
-                    return Response(
-                        {
-                            "status": "ok",
-                            "token": registered_user.token
-                        }, status=status.HTTP_200_OK
-                    )
-                else:
-                    get_phone_code(phone)
-                    print(f'check code->{check_phone_code(phone, code)}')
-                    raise Api202(
-                            ['This phone is not confirmed, we sent SMS with a confirmation code'],
-                            'user'
-                        )
+        phone = set_phone(data.get('phone'))
+        registered_user = User.objects.filter(phone=phone).first()
+        code = self.request.data.get('code')
+        print(f'User->{registered_user}')
+        if registered_user:
+            if check_phone_code(phone, code):
+                print(f'check code->{check_phone_code(phone, code)}')
+                return Response(
+                    {
+                        "status": "ok",
+                        "token": registered_user.token
+                    }, status=status.HTTP_200_OK
+                )
             else:
-                if check_phone_code(phone, code):
-                    print(f'check non reg code->{check_phone_code(phone, code)}')
-                    data['token'] = User.generate_token(data['phone'][0])
-                    print(data['token'])
-                    user_token = UserSerializer.create(data)
-                    return Response(
-                        {
-                            "status": "ok",
-                            "token": user_token
-                        }, status=status.HTTP_200_OK
-                    )
-                else:
-                    print(f'check non reg code->{check_phone_code(phone, code)}')
-                    get_phone_code(phone)
-                    raise Api202(
+                get_phone_code(phone)
+                print(f'check code->{check_phone_code(phone, code)}')
+                raise Api202(
                         ['This phone is not confirmed, we sent SMS with a confirmation code'],
                         'user'
                     )
+        else:
+            if check_phone_code(phone, code):
+                print(f'check non reg code->{check_phone_code(phone, code)}')
+                data['token'] = User.generate_token(data['phone'][0])
+                print(data['token'])
+                user_token = UserSerializer.create(data)
+                return Response(
+                    {
+                        "status": "ok",
+                        "token": user_token
+                    }, status=status.HTTP_200_OK
+                )
+            else:
+                print(f'check non reg code->{check_phone_code(phone, code)}')
+                get_phone_code(phone)
+                raise Api202(
+                    ['This phone is not confirmed, we sent SMS with a confirmation code'],
+                    'user'
+                )
 
 
 
@@ -222,54 +221,54 @@ class UserAPI(APIView):
     def post(self, *args, **kwargs):
         data = dict(self.request.data)
         
-        phone = set_phone(self.request.data.get('phone'))
-        if phone == '380111111111' and self.request.data.get('code') == '1111':
+        if self.request.data.get('phone') == '+380999999999' and self.request.data.get('code') == '1111':
             return Response(
                 {
                     "status": "ok",
                     "token": 'tset'
                 }, status=status.HTTP_200_OK
             )
-        else:
-            print(self.request.data.get('phone'))
-            registered_user = User.objects.filter(phone=self.request.data.get('phone')).first()
-            code = self.request.data.get('code')
-            print(f'User->{registered_user}')
-            if registered_user:
-                if check_phone_code(phone, code):
-                    print(f'check code->{check_phone_code(phone, code)}')
-                    return Response(
-                        {
-                            "status": "ok",
-                            "token": registered_user.token
-                        }, status=status.HTTP_200_OK
-                    )
-                else:
-                    get_phone_code(phone)
-                    print(f'check code->{check_phone_code(phone, code)}')
-                    raise Api202(
-                            ['This phone is not confirmed, we sent SMS with a confirmation code'],
-                            'user'
-                        )
+        phone = set_phone(self.request.data.get('phone'))
+
+        print(self.request.data.get('phone'))
+        registered_user = User.objects.filter(phone=self.request.data.get('phone')).first()
+        code = self.request.data.get('code')
+        print(f'User->{registered_user}')
+        if registered_user:
+            if check_phone_code(phone, code):
+                print(f'check code->{check_phone_code(phone, code)}')
+                return Response(
+                    {
+                        "status": "ok",
+                        "token": registered_user.token
+                    }, status=status.HTTP_200_OK
+                )
             else:
-                if check_phone_code(phone, code):
-                    print(f'check non reg code->{check_phone_code(phone, code)}')
-                    data['token'] = User.generate_token(data['phone'][0])
-                    print(data['token'])
-                    user_token = UserSerializer.create(data)
-                    return Response(
-                        {
-                            "status": "ok",
-                            "token": user_token
-                        }, status=status.HTTP_200_OK
-                    )
-                else:
-                    print(f'check non reg code->{check_phone_code(phone, code)}')
-                    get_phone_code(phone)
-                    raise Api202(
+                get_phone_code(phone)
+                print(f'check code->{check_phone_code(phone, code)}')
+                raise Api202(
                         ['This phone is not confirmed, we sent SMS with a confirmation code'],
                         'user'
                     )
+        else:
+            if check_phone_code(phone, code):
+                print(f'check non reg code->{check_phone_code(phone, code)}')
+                data['token'] = User.generate_token(data['phone'][0])
+                print(data['token'])
+                user_token = UserSerializer.create(data)
+                return Response(
+                    {
+                        "status": "ok",
+                        "token": user_token
+                    }, status=status.HTTP_200_OK
+                )
+            else:
+                print(f'check non reg code->{check_phone_code(phone, code)}')
+                get_phone_code(phone)
+                raise Api202(
+                    ['This phone is not confirmed, we sent SMS with a confirmation code'],
+                    'user'
+                )
 
     def put(self, *args, **kwargs):
         try:

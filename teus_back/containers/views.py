@@ -1158,6 +1158,7 @@ class FilteredPropositions(APIView):
 
     def get(self, request):
         try:
+            deals = None
             user = User.objects.get(
                 token=request.headers['Authorization'])
         except Exception:

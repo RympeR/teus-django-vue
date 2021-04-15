@@ -1167,9 +1167,9 @@ class FilteredPropositions(APIView):
         except Exception:
             user = None
         if user:
-            if request.data.get('id', None):
+            if request.GET.get('id', None):
                 _filter = UserRequest.objects.get(
-                    pk=request.data['id']
+                    pk=request.GET['id']
                 )
                 propositons = UserProposition.objects.filter(
                     Q(city__name__in=_filter.city.all().values('name')) &

@@ -1049,8 +1049,8 @@ class APDICOUserPropositionsAPI(APIView):
                         },
                         "amount": proposition.amount,
                         "city": {
-                            "id": proposition.city.id,
-                            "name": proposition.city.name,
+                            "id": proposition.city.id if proposition.city else None,
+                            "name": proposition.city.name if proposition.city else None,
                         },
                         "container": {
                             "id": proposition.container.id,
@@ -1226,8 +1226,8 @@ class FilteredPropositions(APIView):
                     "name": proposition.line.name
                 },
                 "city": {
-                    "id": proposition.city.id,
-                    "name": proposition.city.name
+                    "id": proposition.city.id if proposition.city else None,
+                    "name": proposition.city.name if proposition.city else None
                 },
                 "amount": proposition.amount,
                 "container": {

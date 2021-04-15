@@ -1058,8 +1058,8 @@ class APDICOUserPropositionsAPI(APIView):
                             "image": container_image_url
                         },
                         "line": {
-                            "id": proposition.line.id,
-                            "name": proposition.line.name,
+                            "id": proposition.line.id if proposition.line else None,
+                            "name": proposition.line.name if proposition.line else None,
                         },
                         "status": proposition.status,
                         "start_date": int(proposition.start_date.timestamp()),

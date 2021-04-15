@@ -72,8 +72,8 @@ class RequestAPI(APIView):
                         "id": user_request.line.id,
                         "name": user_request.line.name,
                     },
-                    "request_date": int(user_request.request_date),
-                    "end_date": int(user_request.end_date),
+                    "request_date": int(user_request.request_date.timestamp()),
+                    "end_date": int(user_request.end_date.timestamp()),
                     "status": user_request.get_status_display(),
                 }
             )
@@ -197,8 +197,8 @@ class PropositionAPI(APIView):
                         "id": proposition.line.id,
                         "name": proposition.line.name,
                     },
-                    "start_date": int(proposition.start_date),
-                    "end_date": int(proposition.end_date),
+                    "start_date": int(proposition.start_date.timestamp()),
+                    "end_date": int(proposition.end_date.timestamp()),
                     "status": proposition.get_status_display(),
                 }
             )
@@ -836,9 +836,9 @@ class APIDOCUserRequests(APIView):
                             "id": request_.line.id,
                             "name": request_.line.name,
                         },
-                        "status": request_.get_status_display(),
-                        "request_date": int(request_.request_date),
-                        "end_date": int(request_.end_date),
+                        "status": request_.status,
+                        "request_date": int(request_.request_date.timestamp()),
+                        "end_date": int(request_.end_date.timestamp()),
                     }
                 )
             return Response(
@@ -1017,6 +1017,7 @@ class APDICOUserPropositionsAPI(APIView):
             offset = int(request.data.get('offset', 0))
             result = []
             domain = request.get_host()
+            print(user_propositions)
             for proposition in user_propositions:
                 try:
                     path_image = proposition.user.image.url
@@ -1036,7 +1037,7 @@ class APDICOUserPropositionsAPI(APIView):
                         domain=domain, path=container_image)
                 else:
                     container_image_url = None
-                from datetime import datetime
+                
                 result.append(
                     {
                         "id": proposition.id,
@@ -1060,11 +1061,12 @@ class APDICOUserPropositionsAPI(APIView):
                             "id": proposition.line.id,
                             "name": proposition.line.name,
                         },
-                        "status": proposition.get_status_display(),
-                        "start_date": int(proposition.start_date),
-                        "end_date": int(proposition.end_date)
+                        "status": proposition.status,
+                        "start_date": int(proposition.start_date.timestamp()),
+                        "end_date": int(proposition.end_date.timestamp())
                     }
                 )
+            print(result)
             return Response(
                 result[offset:limit+offset]
             )
@@ -1131,8 +1133,8 @@ class UserPropositionsAPI(APIView):
                             "id": proposition.line.id,
                             "name": proposition.line.name,
                         },
-                        "start_date": int(proposition.start_date),
-                        "end_date": int(proposition.end_date)
+                        "start_date": int(proposition.start_date.timestamp()),
+                        "end_date": int(proposition.end_date.timestamp())
                     }
                 )
             return Response({
@@ -1206,8 +1208,9 @@ class FilteredPropositions(APIView):
             else:
                 user_image_url = None
             status = False
-            if proposition.user.id in deals:
-                status = True
+            if deals:
+                if proposition.user.id in deals:
+                    status = True
             results.append({
                 "id":  proposition.id,
                 "user": {
@@ -1231,8 +1234,8 @@ class FilteredPropositions(APIView):
                 },
                 "status": status,
                 "date": {
-                    "start_date": int(proposition.start_date),
-                    "end_date": int(proposition.end_date)
+                    "start_date": int(proposition.start_date.timestamp()),
+                    "end_date": int(proposition.end_date.timestamp())
                 }
             })
         return Response(

@@ -3,7 +3,7 @@ from django.shortcuts import render
 from .serializers import (
     DealSerializer, RequestSerializer,
     PropositionSerializer, UserPropositionsSerializer,
-    UserRequsetSerializer)
+    UserRequsetSerializer, GenericRequestSerializer, GenericPropositionSerializer)
 from django.http import request
 from rest_framework import generics, permissions, filters
 from rest_framework.views import APIView
@@ -23,7 +23,7 @@ from users.models import *
 from info.models import *
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework import status
-
+from django.db.models import Q
 
 
 class CsrfExemptSessionAuthentication(SessionAuthentication):
@@ -38,7 +38,7 @@ class RequestAPI(APIView):
     parser_classes = (MultiPartParser, FormParser, JSONParser, )
     authentication_classes = (
         CsrfExemptSessionAuthentication, BasicAuthentication)
-    
+
     def get(self, request, request_id):
         try:
             user = User.objects.get(
@@ -53,7 +53,7 @@ class RequestAPI(APIView):
                     "id": city.id,
                     "name": city.name,
                 })
-                
+
             return Response(
                 {
                     "id": user_request.id,
@@ -72,8 +72,8 @@ class RequestAPI(APIView):
                         "id": user_request.line.id,
                         "name": user_request.line.name,
                     },
-                    "request_date": datetime.timestamp(datetime.strptime(user_request.request_date.strftime("%m/%d/%Y"), "%m/%d/%Y")),
-                    "end_date": datetime.timestamp(datetime.strptime(user_request.end_date.strftime("%m/%d/%Y"), "%m/%d/%Y")),
+                    "request_date": int(user_request.request_date),
+                    "end_date": int(user_request.end_date),
                     "status": user_request.get_status_display(),
                 }
             )
@@ -85,7 +85,7 @@ class RequestAPI(APIView):
             )
 
     def post(self, request):
-        
+
         try:
             user = User.objects.get(
                 token=self.request.headers['Authorization'])
@@ -197,8 +197,8 @@ class PropositionAPI(APIView):
                         "id": proposition.line.id,
                         "name": proposition.line.name,
                     },
-                    "start_date": datetime.timestamp(datetime.strptime(proposition.start_date.strftime("%m/%d/%Y"), "%m/%d/%Y")),
-                    "end_date": datetime.timestamp(datetime.strptime(proposition.end_date.strftime("%m/%d/%Y"), "%m/%d/%Y")),
+                    "start_date": int(proposition.start_date),
+                    "end_date": int(proposition.end_date),
                     "status": proposition.get_status_display(),
                 }
             )
@@ -481,6 +481,7 @@ class RequestsAPIList(APIView):
             result['results']
         )
 
+
 class RequestsList(APIView):
     renderer_classes = (JSONRenderer,)
     permission_classes = (permissions.AllowAny, )
@@ -590,6 +591,7 @@ class PropositionAPIList(APIView):
         return Response(
             result['results']
         )
+
 
 class PropositionList(APIView):
     renderer_classes = (JSONRenderer,)
@@ -761,33 +763,6 @@ class DealsList(APIView):
         )
 
 
-class FilteredDeals(APIView):
-    renderer_classes = (JSONRenderer,)
-    permission_classes = (permissions.AllowAny, )
-    userfilter = UserFilter()
-    authentication_classes = (
-        CsrfExemptSessionAuthentication, BasicAuthentication)
-
-    def get(self, request):
-        try:
-            user = User.objects.get(
-                token=request.headers['Authorization'])
-        except Exception:
-            user = None
-        if user:
-            return Response(
-                {
-                    "id": '3'
-                }
-            )
-        else:
-            return Response(
-                {
-                    "status": "invalid token"
-                }
-            )
-
-
 class APIDOCUserRequests(APIView):
     renderer_classes = (JSONRenderer,)
     permission_classes = (permissions.AllowAny, )
@@ -814,13 +789,8 @@ class APIDOCUserRequests(APIView):
             offset = int(request.data.get('offset', 0))
             result = []
             domain = request.get_host()
-            
-            for request_ in user_requests:
-                deals = Deal.objects.filter(
-                    Q(user_request=user) &
-                    Q(user_proposition)
 
-                )    
+            for request_ in user_requests:
 
                 try:
                     path_image = request_.user.image.url
@@ -846,7 +816,6 @@ class APIDOCUserRequests(APIView):
                         "id": city.id,
                         "name": city.name,
                     })
-                from datetime import datetime
                 result.append(
                     {
                         "id": request_.id,
@@ -868,19 +837,20 @@ class APIDOCUserRequests(APIView):
                             "name": request_.line.name,
                         },
                         "status": request_.get_status_display(),
-                        "request_date": int(datetime.timestamp(datetime.strptime(request_.request_date.strftime("%m/%d/%Y"), "%m/%d/%Y"))),
-                        "end_date": int(datetime.timestamp(datetime.strptime(request_.end_date.strftime("%m/%d/%Y"), "%m/%d/%Y")))
+                        "request_date": int(request_.request_date),
+                        "end_date": int(request_.end_date),
                     }
                 )
             return Response(
-                    result[offset: offset+limit]
-                )
+                result[offset: offset+limit]
+            )
         else:
             return Response(
                 {
                     "status": "invalid token"
                 }
             )
+
 
 class UserRequestsAPI(APIView):
     renderer_classes = (JSONRenderer,)
@@ -942,8 +912,8 @@ class UserRequestsAPI(APIView):
                             "name": request_.line.name,
                         },
                         "status": request_.get_status_display(),
-                        "request_date": datetime.timestamp(datetime.strptime(request_.request_date.strftime("%m/%d/%Y"), "%m/%d/%Y")),
-                        "end_date": datetime.timestamp(datetime.strptime(request_.end_date.strftime("%m/%d/%Y"), "%m/%d/%Y"))
+                        "request_date": int(request_.request_date),
+                        "end_date": int(request_.end_date),
                     }
                 )
             return Response({
@@ -963,19 +933,21 @@ class UserRequestsAPI(APIView):
                 token=self.request.headers['Authorization'])
         except Exception:
             user = None
-        except TypeError :
+        except TypeError:
             user = None
         if user:
             from datetime import datetime
             data = dict(request.data)
-            
+
             data['user'] = user.id
             if isinstance(data['request_date'], list):
                 data['request_date'] = int(data['request_date'][0])
             if isinstance(data['end_date'], list):
                 data['end_date'] = int(data['end_date'][0])
-            data['request_date'] = datetime.utcfromtimestamp(data['request_date']).strftime("%Y-%m-%d")
-            data['end_date'] = datetime.utcfromtimestamp(data['end_date']).strftime("%Y-%m-%d")
+            data['request_date'] = datetime.utcfromtimestamp(
+                data['request_date']).strftime("%Y-%m-%d")
+            data['end_date'] = datetime.utcfromtimestamp(
+                data['end_date']).strftime("%Y-%m-%d")
             user_request = UserRequsetSerializer(data=data)
             if user_request.is_valid():
                 user_request.save()
@@ -1002,7 +974,7 @@ class UserRequestsAPI(APIView):
             user = None
         if user:
             user_request = UserRequest.objects.get(pk=request.data['id'])
-            user_request.status=request.data['status']
+            user_request.status = request.data['status']
             user_request.save()
             return Response(
                 {
@@ -1016,6 +988,7 @@ class UserRequestsAPI(APIView):
                     "status": "invalid token"
                 }
             )
+
 
 class APDICOUserPropositionsAPI(APIView):
     renderer_classes = (JSONRenderer,)
@@ -1039,6 +1012,7 @@ class APDICOUserPropositionsAPI(APIView):
                 user_propositions = UserProposition.objects.filter(
                     user=user, status='в архиве'
                 )
+
             limit = int(request.data.get('limit', 20))
             offset = int(request.data.get('offset', 0))
             result = []
@@ -1087,8 +1061,8 @@ class APDICOUserPropositionsAPI(APIView):
                             "name": proposition.line.name,
                         },
                         "status": proposition.get_status_display(),
-                        "start_date": int(datetime.timestamp(datetime.strptime(proposition.start_date.strftime("%m/%d/%Y"), "%m/%d/%Y"))),
-                        "end_date": int(datetime.timestamp(datetime.strptime(proposition.end_date.strftime("%m/%d/%Y"), "%m/%d/%Y")))
+                        "start_date": int(proposition.start_date),
+                        "end_date": int(proposition.end_date)
                     }
                 )
             return Response(
@@ -1134,7 +1108,6 @@ class UserPropositionsAPI(APIView):
                 container_image = proposition.container.image.url
                 container_image_url = 'http://{domain}{path}'.format(
                     domain=domain, path=container_image)
-                from datetime import datetime
                 result.append(
                     {
                         "id": proposition.id,
@@ -1158,8 +1131,8 @@ class UserPropositionsAPI(APIView):
                             "id": proposition.line.id,
                             "name": proposition.line.name,
                         },
-                        "start_date": datetime.timestamp(datetime.strptime(proposition.start_date.strftime("%m/%d/%Y"), "%m/%d/%Y")),
-                        "end_date": datetime.timestamp(datetime.strptime(proposition.end_date.strftime("%m/%d/%Y"), "%m/%d/%Y"))
+                        "start_date": int(proposition.start_date),
+                        "end_date": int(proposition.end_date)
                     }
                 )
             return Response({
@@ -1173,63 +1146,6 @@ class UserPropositionsAPI(APIView):
                 }
             )
 
-    def post(self, request):
-        try:
-            user = User.objects.get(
-                token=self.request.headers['Authorization'])
-        except Exception:
-            user = None
-        if user:
-            from datetime import datetime
-            data = dict(request.data)
-            data['user'] = user.id
-            if isinstance(data['start_date'], list):
-                data['start_date'] = int(data['start_date'][0])
-            if isinstance(data['end_date'], list):
-                data['end_date'] = int(data['end_date'][0])
-            data['start_date'] = datetime.utcfromtimestamp(data['start_date']).strftime("%Y-%m-%d")
-            data['end_date'] = datetime.utcfromtimestamp(data['end_date']).strftime("%Y-%m-%d")
-            user_proposition = UserPropositionsSerializer(data=data)
-            if user_proposition.is_valid():
-                user_proposition.save()
-                response = Response({
-                    "id": user_proposition.data['id']
-                })
-                return response
-            else:
-                return Response(
-                    user_proposition.data,
-                    status.HTTP_400_BAD_REQUEST
-                )
-        else:
-            return Response(
-                {
-                    "status": "invalid token"
-                }
-            )
-
-    def put(self, request):
-        try:
-            user = User.objects.get(
-                token=self.request.headers['Authorization'])
-        except Exception:
-            user = None
-        if user:
-            user_proposition = UserProposition.objects.get(pk=request.data['id'])
-            user_proposition.status=request.data['status']
-            user_proposition.save()
-            return Response(
-                {
-                    "id": user_proposition.id,
-                    "status": user_proposition.get_status_display()
-                }
-            )
-        else:
-            return Response(
-                {
-                    "status": "invalid token"
-                }
-            )
 
 class FilteredPropositions(APIView):
     renderer_classes = (JSONRenderer,)
@@ -1261,62 +1177,97 @@ class FilteredPropositions(APIView):
                 )
             else:
                 propositons = UserProposition.objects.all()
-            limit = int(request.data.get('limit', 20))
-            offset = int(request.data.get('offset', 0))
-            results = []
-            domain = request.get_host()
-            for proposition in propositons:
-                try:
-                    path_image_container = proposition.user.image.url
-                except Exception:
-                    path_image_container  = None
-                if path_image_container:
-                    container_image_url = 'http://{domain}{path}'.format(
-                        domain=domain, path=path_image_container)
-                else:
-                    container_image_url = None
-                try:
-                    path_image = proposition.user.image.url
-                except Exception:
-                    path_image = None
-                if path_image:
-                    user_image_url = 'http://{domain}{path}'.format(
-                        domain=domain, path=path_image)
-                else:
-                    user_image_url = None
-                from datetime import datetime
-                results.append({
-                    "id":  proposition.id,
-                    "user": {
-                        "id": proposition.user.id,
-                        "name": proposition.user.first_name,
-                        "image": user_image_url
-                    },
-                    "line": {
-                        "id": proposition.line.id,
-                        "name": proposition.line.name
-                    },
-                    "city": {
-                        "id": proposition.city.id,
-                        "name": proposition.city.name
-                    },
-                    "amount": proposition.amount,
-                    "container": {
-                        "id": proposition.container.id,
-                        "name": proposition.container.name,
-                        "image": container_image_url
-                    },
-                    "date": {
-                        "start_date": int(datetime.timestamp(datetime.strptime(proposition.start_date.strftime("%m/%d/%Y"), "%m/%d/%Y"))),
-                        "end_date": int(datetime.timestamp(datetime.strptime(proposition.end_date.strftime("%m/%d/%Y"), "%m/%d/%Y")))
-                    }
-                })
-            return Response(
-                results[offset: offset+limit]
-            )
+            deals = Deal.objects.filter(
+                user_request=user
+            ).values('user_proposition__pk')
         else:
-            return Response(
-                {
-                    "status": "invalid token"
+            propositons = UserProposition.objects.all()
+        limit = int(request.data.get('limit', 20))
+        offset = int(request.data.get('offset', 0))
+        results = []
+        domain = request.get_host()
+        for proposition in propositons:
+            try:
+                path_image_container = proposition.user.image.url
+            except Exception:
+                path_image_container = None
+            if path_image_container:
+                container_image_url = 'http://{domain}{path}'.format(
+                    domain=domain, path=path_image_container)
+            else:
+                container_image_url = None
+            try:
+                path_image = proposition.user.image.url
+            except Exception:
+                path_image = None
+            if path_image:
+                user_image_url = 'http://{domain}{path}'.format(
+                    domain=domain, path=path_image)
+            else:
+                user_image_url = None
+            status = False
+            if proposition.user.id in deals:
+                status = True
+            results.append({
+                "id":  proposition.id,
+                "user": {
+                    "id": proposition.user.id,
+                    "name": proposition.user.first_name,
+                    "image": user_image_url
+                },
+                "line": {
+                    "id": proposition.line.id,
+                    "name": proposition.line.name
+                },
+                "city": {
+                    "id": proposition.city.id,
+                    "name": proposition.city.name
+                },
+                "amount": proposition.amount,
+                "container": {
+                    "id": proposition.container.id,
+                    "name": proposition.container.name,
+                    "image": container_image_url
+                },
+                "status": status,
+                "date": {
+                    "start_date": int(proposition.start_date),
+                    "end_date": int(proposition.end_date)
                 }
-            )
+            })
+        return Response(
+            results[offset: offset+limit]
+        )
+
+class CreateRequestsAPI(generics.CreateAPIView):
+    permission_classes = (permissions.AllowAny, )
+    queryset = UserRequest.objects.all()
+    parser_classes = (JSONParser, MultiPartParser, FormParser)
+    serializer_class = GenericRequestSerializer
+
+
+class ActionRequestsAPI(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (permissions.AllowAny, )
+    queryset = UserRequest.objects.all()
+    parser_classes = (JSONParser, MultiPartParser, FormParser)
+    serializer_class = GenericRequestSerializer
+
+    def partial_update(self, request, pk, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+
+
+class CreatePropositionAPI(generics.CreateAPIView):
+    permission_classes = (permissions.AllowAny, )
+    queryset = UserProposition.objects.all()
+    parser_classes = (JSONParser, MultiPartParser, FormParser)
+    serializer_class = GenericPropositionSerializer
+
+
+class ActionPropositionAPI(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (permissions.AllowAny, )
+    queryset = UserProposition.objects.all()
+    parser_classes = (JSONParser, MultiPartParser, FormParser)
+    serializer_class = GenericPropositionSerializer
+
+    def partial_update(self, request, pk, *args, **kwargs):
+        return self.update(request, *args, **kwargs)

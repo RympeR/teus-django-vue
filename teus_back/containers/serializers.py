@@ -1,8 +1,17 @@
 from rest_framework import serializers
 from .models import *
-from info.serializers import ContainerSerializer, LineSerializer, CitySerializer
+from info.serializers import ContainerSerializer, LineSerializer, CitySerializer, GenericCitySerializer
 from users.serializers import UserSerializer
 from datetime import datetime
+
+
+class TimestampField(serializers.Field):
+    def to_representation(self, value):
+        return value.timestamp()
+
+    def to_internal_value(self, value):
+        return value
+
 
 class UserRequsetSerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(
@@ -56,7 +65,7 @@ class UserPropositionsSerializer(serializers.ModelSerializer):
             amount=validated_data.get('amount', None),
             start_date=validated_data['start_date'],
             end_date=validated_data.get('end_date', None),
-            
+
         )
         return user_proposition
 
@@ -155,7 +164,7 @@ class DealSerializer(serializers.ModelSerializer):
             'container', instance.container)
         instance.amount = validated_data.get('amount', instance.amount)
         instance.handshake_time = instance.handshake_time
-        
+
         instance.save()
         return instance
 
@@ -222,3 +231,43 @@ class PropositionSerializer(serializers.ModelSerializer):
     def delete(proposition_id):
         proposition = UserProposition.objects.get(pk=proposition_id).delete()
         return proposition[0]
+
+class GenericRequestSerializer(serializers.ModelSerializer):
+    request_date = TimestampField(required=False)
+    end_date = TimestampField(required=False)
+    user =  serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), required=False)
+    city = serializers.PrimaryKeyRelatedField(queryset=City.objects.all(), many=True)
+    def validate(self, attrs):
+        try:
+            print(attrs)
+            request = self.context.get('request')
+            user = User.objects.get(
+                token=request.headers['Authorization'])
+            attrs['user']=user
+            return attrs
+        except Exception as e:
+            print(e)
+            return None
+    class Meta:
+        fields = '__all__'
+        model = UserRequest
+        
+class GenericPropositionSerializer(serializers.ModelSerializer):
+    start_date = TimestampField(required=False)
+    end_date = TimestampField(required=False)
+    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), required=False)
+    
+    def validate(self, attrs):
+        try:
+            request = self.context.get('request')
+            user = User.objects.get(
+                token=request.headers['Authorization'])
+            attrs['user']=user
+            return attrs
+        except Exception as e:
+            print(e)
+            return None
+
+    class Meta:
+        fields = '__all__'
+        model = UserProposition

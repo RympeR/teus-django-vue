@@ -29,12 +29,14 @@ urlpatterns = [
     path('get-apidoc-api-proposition/', APDICOUserPropositionsAPI.as_view() ,name='PropositionProfile'),
     
     path('get-api-proposition/', UserPropositionsAPI.as_view() ,name='PropositionProfile'),
-    path('create-api-proposition/', UserPropositionsAPI.as_view() ,name='PropositionCreate'),
+    path('create-api-proposition/', CreatePropositionAPI.as_view() ,name='PropositionCreate'),
+    path('update-api-proposition/<int:pk>', ActionPropositionAPI.as_view() ,name='PropositionCreate'),
     
     path('get-apidoc-api-request/', APIDOCUserRequests.as_view() ,name='RequestAPIProfile'),
     
     path('get-api-request/', UserRequestsAPI.as_view() ,name='RequestAPIProfile'),
-    path('create-api-request/', UserRequestsAPI.as_view() ,name='RequestAPICreate'),
+    path('create-api-request/', CreateRequestsAPI.as_view() ,name='RequestAPICreate'),
+    path('update-api-request/<int:pk>', ActionRequestsAPI.as_view() ,name='RequestAPICreate'),
     
     path('mark-request-status/',UserRequestsAPI.as_view() ,name='RequestAPImark' ),
     path('mark-proposition-status/',UserPropositionsAPI.as_view() ,name='RequestAPImark' ),

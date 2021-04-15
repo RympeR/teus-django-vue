@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import City, Container, Line
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
-import ast
+
 
 
 class CitySerializer(serializers.ModelSerializer):
@@ -133,3 +133,36 @@ class LineSerializer(serializers.ModelSerializer):
     def get_list():
         lines = Line.objects.all()
         return lines
+
+
+class GenericLineSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Line
+        fields = '__all__'
+
+class GenericCitySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = City
+        fields = '__all__'
+
+class GenericContainerGetSerializer(serializers.ModelSerializer):
+    iamge = serializers.SerializerMethodField()
+    class Meta:
+        model = Container
+        fields = '__all__'
+
+    def get_image(self, image):
+        try:
+            request = self.context.get('request')
+            photo_url = image.image_png.url
+            return request.build_absolute_uri(photo_url)
+        except Exception:
+            return None
+class GenericContainerSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Container
+        fields = '__all__'
+

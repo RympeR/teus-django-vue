@@ -1,9 +1,13 @@
 from django.http import request
-from rest_framework import generics, permissions, filters
+from rest_framework import generics, permissions, filters, parsers
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import City, Container, Line
-from .serializers import CitySerializer, ContainerSerializer, LineSerializer
+from .serializers import (
+    CitySerializer, ContainerSerializer, LineSerializer,
+    GenericLineSerializer, GenericCitySerializer, GenericContainerSerializer,
+    GenericContainerGetSerializer
+)
 from rest_framework import permissions
 from rest_framework.parsers import MultiPartParser
 from rest_framework.renderers import JSONRenderer
@@ -17,7 +21,7 @@ class CsrfExemptSessionAuthentication(SessionAuthentication):
 
 @renderer_classes((JSONRenderer,))
 @permission_classes((permissions.AllowAny,))
-class ContainerAPI(APIView):
+class OldContainerAPI(APIView):
     parser_classes = (MultiPartParser,)
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
     def get(self, *args, **kwargs):
@@ -111,7 +115,7 @@ def get_containers_list_api(request):
 
 @renderer_classes((JSONRenderer,))
 @permission_classes((permissions.AllowAny,))
-class CityAPI(APIView):
+class OldCityAPI(APIView):
     parser_classes = (MultiPartParser,)
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
     def get(self, *args, **kwargs):
@@ -184,7 +188,7 @@ def get_cities_list(request):
 
 @renderer_classes((JSONRenderer,))
 @permission_classes((permissions.AllowAny,))
-class LineAPI(APIView):
+class OldLineAPI(APIView):
     parser_classes = (MultiPartParser,)
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
     def get(self, *args, **kwargs):
@@ -252,3 +256,41 @@ def get_lines_list_api(request):
     return Response(
         lines_list
     )
+
+
+class LineAPI(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (permissions.AllowAny, )
+    queryset = Line.objects.all()
+    parser_classes = (parsers.JSONParser, parsers.MultiPartParser, parsers.FormParser)
+    serializer_class = GenericLineSerializer
+
+class CreateLineAPI(generics.CreateAPIView):
+    permission_classes = (permissions.AllowAny, )
+    queryset = Line.objects.all()
+    parser_classes = (parsers.JSONParser, parsers.MultiPartParser, parsers.FormParser)
+    serializer_class = GenericLineSerializer
+
+class CityAPI(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (permissions.AllowAny, )
+    queryset = City.objects.all()
+    parser_classes = (parsers.JSONParser, parsers.MultiPartParser, parsers.FormParser)
+    serializer_class = GenericCitySerializer
+
+class CreateCityAPI(generics.CreateAPIView):
+    permission_classes = (permissions.AllowAny, )
+    queryset = City.objects.all()
+    parser_classes = (parsers.JSONParser, parsers.MultiPartParser, parsers.FormParser)
+    serializer_class = GenericCitySerializer
+
+class ContainerAPI(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (permissions.AllowAny, )
+    queryset = Container.objects.all()
+    parser_classes = (parsers.JSONParser, parsers.MultiPartParser, parsers.FormParser)
+    serializer_class = GenericContainerGetSerializer
+
+class CreateContainerAPI(generics.CreateAPIView):
+    permission_classes = (permissions.AllowAny, )
+    queryset = Container.objects.all()
+    parser_classes = (parsers.JSONParser, parsers.MultiPartParser, parsers.FormParser)
+    serializer_class = GenericContainerSerializer
+

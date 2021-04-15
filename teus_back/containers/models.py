@@ -3,6 +3,7 @@ sys.path.append('..')
 from django.db import models
 from users.models import User
 from info.models import City, Container, Line
+from unixtimestampfield.fields import UnixTimeStampField
 
 STATUSES = (
     ('в работе', 'в работе'),
@@ -18,8 +19,8 @@ class UserRequest(models.Model):
     city = models.ManyToManyField(City, related_name='cities', blank=True)
     line = models.ForeignKey(Line, related_name='line', on_delete=models.CASCADE, null=True, blank=True)
     container = models.ForeignKey(Container, related_name='container', on_delete=models.CASCADE, null=True, blank=True)
-    request_date = models.DateField(verbose_name='date', null=True, blank=True)
-    end_date = models.DateField(verbose_name='end date', null=True, blank=True)
+    request_date = UnixTimeStampField(verbose_name='date', null=True, blank=True)
+    end_date = UnixTimeStampField(verbose_name='end date', null=True, blank=True)
     status = models.CharField(max_length=20, choices=STATUSES, default='в работе')
 
     class Meta:
@@ -32,8 +33,8 @@ class UserProposition(models.Model):
     city = models.ForeignKey(City, related_name='city_proposition', on_delete=models.CASCADE, null=True, blank=True)
     line = models.ForeignKey(Line, related_name='line_proposition', on_delete=models.CASCADE, null=True, blank=True)
     container = models.ForeignKey(Container, related_name='container_proposition', on_delete=models.CASCADE, null=True, blank=True)
-    start_date = models.DateField(verbose_name='start date', null=True, blank=True)
-    end_date = models.DateField(verbose_name='end date', null=True, blank=True)
+    start_date = UnixTimeStampField(verbose_name='start date', null=True, blank=True)
+    end_date = UnixTimeStampField(verbose_name='end date', null=True, blank=True)
     status = models.CharField(max_length=20, choices=STATUSES, default='в работе')
 
     class Meta:
@@ -47,7 +48,7 @@ class Deal(models.Model):
     city = models.ForeignKey(City, related_name='city_deal', on_delete=models.CASCADE)
     line = models.ForeignKey(Line, related_name='line_deal', on_delete=models.CASCADE)
     container = models.ForeignKey(Container, related_name='container_deal', on_delete=models.CASCADE)
-    handshake_time = models.DateTimeField(auto_now_add=True)
+    handshake_time = UnixTimeStampField(auto_now_add=True)
 
     class Meta:
         ordering = ['-handshake_time']

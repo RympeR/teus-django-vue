@@ -1243,7 +1243,7 @@ class FilteredPropositions(APIView):
             })
 
         return Response(
-            results
+            results[offset:limit+offset]
         )
 
 class CreateRequestsAPI(generics.CreateAPIView):

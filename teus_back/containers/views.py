@@ -1148,6 +1148,28 @@ class UserPropositionsAPI(APIView):
                 }
             )
 
+    def put(self, request):
+        try:
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            user_proposition = UserProposition.objects.get(pk=request.data['id'])
+            user_proposition.status = request.data['status']
+            user_proposition.save()
+            return Response(
+                {
+                    "id": user_proposition.id,
+                    "status": user_proposition.status
+                }
+            )
+        else:
+            return Response(
+                {
+                    "status": "invalid token"
+                }
+            )
 
 class FilteredPropositions(APIView):
     renderer_classes = (JSONRenderer,)

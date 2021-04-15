@@ -1171,6 +1171,7 @@ class FilteredPropositions(APIView):
                 _filter = UserRequest.objects.get(
                     pk=request.GET['id']
                 )
+
                 propositons = UserProposition.objects.filter(
                     Q(city__name__in=_filter.city.all().values('name')) &
                     Q(container__name__contains=_filter.container.name) &
@@ -1181,6 +1182,7 @@ class FilteredPropositions(APIView):
                     Q(amount__gte=_filter.amount) &
                     Q(line__name__contains=_filter.line.name)
                 )
+
             else:
                 propositons = UserProposition.objects.all()
             deals = Deal.objects.filter(
@@ -1193,7 +1195,7 @@ class FilteredPropositions(APIView):
         domain = request.get_host()
         for proposition in propositons:
             try:
-                path_image_container = proposition.user.image.url
+                path_image_container = proposition.container.image.url
             except Exception:
                 path_image_container = None
             if path_image_container:

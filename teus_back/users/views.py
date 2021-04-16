@@ -118,7 +118,7 @@ class CsrfExemptSessionAuthentication(SessionAuthentication):
 @renderer_classes((JSONRenderer,))
 @permission_classes((permissions.AllowAny,))
 class UserLogin(APIView):
-    parser_classes = (FormParser, JSONParser, )
+    parser_classes = (FormParser, JSONParser, MultiPartParser)
     authentication_classes = (
         CsrfExemptSessionAuthentication, BasicAuthentication)
     

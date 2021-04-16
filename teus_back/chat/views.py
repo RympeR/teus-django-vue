@@ -79,13 +79,61 @@ class GetRoomsProposition(APIView):
                 proposition_id=pk
             )
             results = []
+            domain = request.get_host()
             for obj in rooms:
+                try:
+                    path_image = obj.request_id.user.image.url
+                except Exception:
+                    path_image = None
+                if path_image:
+                    user_request_image_url = 'http://{domain}{path}'.format(
+                        domain=domain, path=path_image)
+                else:
+                    user_request_image_url = None
+                try:
+                    path_image = obj.proposition_id.user.image.url
+                except Exception:
+                    path_image = None
+                if path_image:
+                    user_proposition_image_url = 'http://{domain}{path}'.format(
+                        domain=domain, path=path_image)
+                else:
+                    user_proposition_image_url = None
+                try:
+                    path_image = obj.proposition_id.container.image.url
+                except Exception:
+                    path_image = None
+                if path_image:
+                    container_request_image_url = 'http://{domain}{path}'.format(
+                        domain=domain, path=path_image)
+                else:
+                    container_request_image_url = None
                 results.append(
                     {
                         "id": obj.pk,
+                        "line":{
+                            "name": obj.proposition_id.line.name if obj.proposition_id.line.name else None,
+                        },
+                        "contianer":{
+                            "name": obj.proposition_id.container.name,
+                            "image": container_request_image_url,
+                        },
+                        "user_request":{
+                            "id": obj.request_id.user.pk,
+                            "first_name": obj.request_id.user.first_name,
+                            "last_name": obj.request_id.user.last_name,
+                            "image": user_request_image_url,
+                        },
+                        "user_proposition":{
+                            "id": obj.proposition_id.user.pk,
+                            "first_name": obj.proposition_id.user.first_name,
+                            "last_name": obj.proposition_id.user.last_name,
+                            "image": user_proposition_image_url,
+                        },
+
                         "user_request_id": obj.request_id.pk,
                         "user_proposition_id": obj.proposition_id.pk,
-                        "date": datetime.timestamp(datetime.strptime(obj.date.strftime("%m/%d/%Y"), "%m/%d/%Y")),
+                        "date": int(obj.date.timestamp()),
                         "first_mark": obj.first_mark,
                         "second_mark": obj.second_mark
                     }
@@ -121,13 +169,61 @@ class GetRoomsRequest(APIView):
                 request_id=pk
             )
             results = []
+            domain = request.get_host()
             for obj in rooms:
+                try:
+                    path_image = obj.request_id.user.image.url
+                except Exception:
+                    path_image = None
+                if path_image:
+                    user_request_image_url = 'http://{domain}{path}'.format(
+                        domain=domain, path=path_image)
+                else:
+                    user_request_image_url = None
+                try:
+                    path_image = obj.proposition_id.user.image.url
+                except Exception:
+                    path_image = None
+                if path_image:
+                    user_proposition_image_url = 'http://{domain}{path}'.format(
+                        domain=domain, path=path_image)
+                else:
+                    user_proposition_image_url = None
+                try:
+                    path_image = obj.request_id.container.image.url
+                except Exception:
+                    path_image = None
+                if path_image:
+                    container_request_image_url = 'http://{domain}{path}'.format(
+                        domain=domain, path=path_image)
+                else:
+                    container_request_image_url = None
                 results.append(
                     {
                         "id": obj.pk,
+                        "line":{
+                            "name": obj.request_id.line.name,
+                        },
+                        "contianer":{
+                            "name": obj.request_id.container.name,
+                            "image": container_request_image_url,
+                        },
+                        "user_request":{
+                            "id": obj.request_id.user.pk,
+                            "first_name": obj.request_id.user.first_name,
+                            "last_name": obj.request_id.user.last_name,
+                            "image": user_request_image_url,
+                        },
+                        "user_proposition":{
+                            "id": obj.proposition_id.user.pk,
+                            "first_name": obj.proposition_id.user.first_name,
+                            "last_name": obj.proposition_id.user.last_name,
+                            "image": user_proposition_image_url,
+                        },
+
                         "user_request_id": obj.request_id.pk,
                         "user_proposition_id": obj.proposition_id.pk,
-                        "date": datetime.timestamp(datetime.strptime(obj.date.strftime("%m/%d/%Y"), "%m/%d/%Y")),
+                        "date": int(obj.date.timestamp()),
                         "first_mark": obj.first_mark,
                         "second_mark": obj.second_mark
                     }

@@ -1,4 +1,5 @@
 from .models import *
+from chat.models import *
 from django.shortcuts import render
 from .serializers import (
     DealSerializer, RequestSerializer,
@@ -1216,6 +1217,12 @@ class FilteredPropositions(APIView):
         results = []
         domain = request.get_host()
         for proposition in propositons:
+            room_id = None
+            if request.GET.get('id', None):
+                room_id = Room.objects.get(
+                    Q(request_id=request.GET.get('id', None)) &
+                    Q(proposition_id=proposition.pk)
+                ).pk
             try:
                 path_image_container = proposition.container.image.url
             except Exception:
@@ -1234,6 +1241,8 @@ class FilteredPropositions(APIView):
                     domain=domain, path=path_image)
             else:
                 user_image_url = None
+
+            
             status = False
             if deals:
                 if proposition.user.id in deals:
@@ -1253,6 +1262,7 @@ class FilteredPropositions(APIView):
                     "id": proposition.city.id if proposition.city else None,
                     "name": proposition.city.name if proposition.city else None
                 },
+                "room_id": room_id if room_id else None,
                 "amount": proposition.amount,
                 "container": {
                     "id": proposition.container.id,

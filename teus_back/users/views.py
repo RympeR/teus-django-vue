@@ -98,14 +98,14 @@ def check_phone_code(phone, code):
             return True
         raise APIException({'code': ['The code is incorrect or expired']}, 400)
     else:
-        data = Phone.objects.filter(
-            phone=phone,
-            is_checked=True,
-            expires_at__gte=timezone.now()
-        ).first()
-        print(f'{data} -> data')
-        if data:
-            return True
+        # data = Phone.objects.filter(
+        #     phone=phone,
+        #     is_checked=True,
+        #     expires_at__gte=timezone.now()
+        # ).first()
+        # print(f'{data} -> data')
+        # if data:
+        #     return True
         return False
 
 
@@ -125,7 +125,7 @@ class UserLogin(APIView):
     def post(self, request):
         data = dict(request.data)
         print(data)
-
+        print('-||-')
         if request.data.get('phone') == '+380999999999' and request.data.get('code') == '1111':
             return Response(
                 {
@@ -274,9 +274,11 @@ class UserAPI(APIView):
 
     def put(self, *args, **kwargs):
         try:
-            user = User.objects.get(
-                token=self.request.headers['Authorization'])
-        except Exception:
+            print(self.request.headers['Authorization'])
+            user = User.objects.filter(
+                token=self.request.headers['Authorization']).first()
+        except Exception as e:
+            print(e)
             user = None
         if user:
             data = dict(self.request.data)

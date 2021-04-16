@@ -16,6 +16,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     @staticmethod
     def create(validated_data):
+        print(validated_data)
         try:
             phone = validated_data['phone'][0]
         except KeyError:
@@ -23,7 +24,7 @@ class UserSerializer(serializers.ModelSerializer):
         try:
             first_name = validated_data['first_name'][0]
         except KeyError:
-            first_name = ''
+            first_name = 'test user'
         try:
             last_name = validated_data['last_name'][0]
         except KeyError:
@@ -37,6 +38,7 @@ class UserSerializer(serializers.ModelSerializer):
         except KeyError:
             image = None
         token = validated_data['token']
+        print(f'token ->{token}')
         user = User(
             phone=phone,
             first_name=first_name,
@@ -50,7 +52,8 @@ class UserSerializer(serializers.ModelSerializer):
 
     @staticmethod
     def update(validated_data):
-        user = get_object_or_404(User, pk=validated_data['user_id'])
+        user = User.objects.filter(pk=validated_data['user_id']).first()
+        print(user)
         try:
             user.phone = validated_data['phone'][0]
         except KeyError:

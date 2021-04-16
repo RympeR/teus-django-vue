@@ -223,7 +223,7 @@ class UserAPI(APIView):
         print('----')
         print(data)
         print('----')
-        if self.request.data.get('phone') == '+380999999999' and self.request.data.get('code') == '1111':
+        if '0999999999' in self.request.data.get('phone') and self.request.data.get('code') == '1111':
             return Response(
                 {
                     "status": "ok",

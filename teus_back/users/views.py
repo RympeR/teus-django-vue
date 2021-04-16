@@ -126,7 +126,7 @@ class UserLogin(APIView):
         data = dict(request.data)
         print(data)
         print('-||-')
-        if request.data.get('phone') == '+380999999999' and request.data.get('code') == '1111':
+        if '0999999999' in request.data.get('phone') and request.data.get('code') == '1111':
             return Response(
                 {
                     "status": "ok",

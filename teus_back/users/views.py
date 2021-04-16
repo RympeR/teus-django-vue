@@ -65,9 +65,9 @@ def get_phone_code(phone):
                                  relativedelta(minutes=sms_timeout)),
                 phone=phone
             ).first()
-            if check:
-                raise APIException(
-                    {'phone': ['You can not send SMS more than once per minute.']}, 400)
+            # if check:
+            #     raise APIException(
+            #         {'phone': ['You can not send SMS more than once per minute.']}, 400)
 
         sms_limit = 60
         switch = SettingsSwitch()

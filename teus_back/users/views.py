@@ -254,7 +254,7 @@ class UserAPI(APIView):
         else:
             if check_phone_code(phone, code):
                 print(f'check non reg code->{check_phone_code(phone, code)}')
-                data['token'] = User.generate_token(data['phone'][0])
+                data['token'] = User.generate_token(phone)
                 print(data)
                 user_token = UserSerializer.create(data)
                 return Response(

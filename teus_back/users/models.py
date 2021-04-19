@@ -4,6 +4,8 @@ import hmac
 import hashlib
 from dateutil.relativedelta import relativedelta
 import datetime
+from random import randint
+import datetime
 # Create your models here.
 
 
@@ -27,10 +29,11 @@ class User(models.Model):
         ordering = ['id']
 
     def __str__(self):
-        return str(self.first_name) + ' ' + str(self.last_name)
+        return str(self.phone)
 
     @staticmethod
     def generate_token(msg):
+        ts = datetime.datetime.now().timestamp()
         return hmac.new(bytes('qwegqwIOOLSegwGEGfef', encoding='utf8'), bytes(msg, encoding='utf8'), hashlib.sha256).hexdigest()
 
 class Phone(models.Model):

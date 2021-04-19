@@ -24,7 +24,7 @@ class UserSerializer(serializers.ModelSerializer):
         try:
             first_name = validated_data['first_name'][0]
         except KeyError:
-            first_name = 'test user'
+            first_name = ''
         try:
             last_name = validated_data['last_name'][0]
         except KeyError:

@@ -1219,10 +1219,13 @@ class FilteredPropositions(APIView):
         for proposition in propositons:
             room_id = None
             if request.GET.get('id', None):
-                room_id = Room.objects.get(
-                    Q(request_id=request.GET.get('id', None)) &
-                    Q(proposition_id=proposition.pk)
-                ).pk
+                try:
+                    room_id = Room.objects.get(
+                        Q(request_id=request.GET.get('id', None)) &
+                        Q(proposition_id=proposition.pk)
+                    ).pk
+                except Exception:
+                    room_id = None
             try:
                 path_image_container = proposition.container.image.url
             except Exception:

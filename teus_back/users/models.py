@@ -34,7 +34,7 @@ class User(models.Model):
     @staticmethod
     def generate_token(msg):
         ts = datetime.datetime.now().timestamp()
-        return hmac.new(bytes('qwegqwIOOLSegwGEGfef', encoding='utf8'), bytes(msg, encoding='utf8'), hashlib.sha256).hexdigest()
+        return hmac.new(bytes('qwegqwIOOLSegwGEGfef', encoding='utf8'), bytes(str(msg), encoding='utf8'), hashlib.sha256).hexdigest()
 
 class Phone(models.Model):
     phone = models.BigIntegerField(db_index=True)

@@ -21,6 +21,8 @@ class UserSerializer(serializers.ModelSerializer):
             phone = validated_data['phone'][0]
         except KeyError:
             phone = None
+        except TypeError:
+            phone = str(validated_data['phone'])
         try:
             first_name = validated_data['first_name'][0]
         except KeyError:

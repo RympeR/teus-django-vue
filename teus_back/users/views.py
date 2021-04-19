@@ -231,9 +231,8 @@ class UserAPI(APIView):
                 }, status=status.HTTP_200_OK
             )
         phone = set_phone(self.request.data.get('phone'))
-
-        print(self.request.data.get('phone'))
-        registered_user = User.objects.filter(phone=self.request.data.get('phone')).first()
+        data['phone'] = phone
+        registered_user = User.objects.filter(phone=phone).first()
         code = self.request.data.get('code')
         print(f'User->{registered_user}')
         if registered_user:
@@ -256,7 +255,7 @@ class UserAPI(APIView):
             if check_phone_code(phone, code):
                 print(f'check non reg code->{check_phone_code(phone, code)}')
                 data['token'] = User.generate_token(data['phone'][0])
-                print(data['token'])
+                print(data)
                 user_token = UserSerializer.create(data)
                 return Response(
                     {

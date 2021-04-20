@@ -131,6 +131,7 @@ class GetRoomsProposition(APIView):
                             "image": user_proposition_image_url,
                         },
 
+                        "amount": obj.proposition_id.amount,
                         "user_request_id": obj.request_id.pk,
                         "user_proposition_id": obj.proposition_id.pk,
                         "date": int(obj.date.timestamp()),
@@ -220,7 +221,7 @@ class GetRoomsRequest(APIView):
                             "last_name": obj.proposition_id.user.last_name,
                             "image": user_proposition_image_url,
                         },
-
+                        "amount": obj.request_id.amount,
                         "user_request_id": obj.request_id.pk,
                         "user_proposition_id": obj.proposition_id.pk,
                         "date": int(obj.date.timestamp()),

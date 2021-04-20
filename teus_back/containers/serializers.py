@@ -246,19 +246,6 @@ class GenericRequestSerializer(serializers.ModelSerializer):
                 token=request.headers['Authorization'])
             print(user)
             attrs['user']=user
-            obj  =  None
-            try:
-                obj = UserProposition.objects.get(
-                    user=attrs['user'],
-                    city=attrs['city'],
-                    line=attrs['line'],
-                    container=attrs['container'],
-                )
-            except Exception:
-                pass
-
-            if obj:
-                raise serializers.ValidationError
             return attrs
         except Exception as e:
             print(e)

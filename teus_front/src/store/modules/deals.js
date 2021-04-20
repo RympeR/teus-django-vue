@@ -49,7 +49,18 @@ const actions = {
                             id: el.sec_user.id,
                             name: el.sec_user.name
                         };
-
+                        // var date_start = new Date(el.handshake * 1000);
+                        // var year_start = date_start.getFullYear();
+                        // var month_start = ("0" + (date_start.getMonth() + 1)).slice(-2);
+                        // var day_start = ("0" + date_start.getDate()).slice(-2);
+                        var date = new Date(el.handshake * 1000);
+                        var handshake=date.getDate()+
+                        "-"+(date.getMonth()+1)+
+                        "-"+date.getFullYear()+
+                        " "+date.getHours()+
+                        ":"+date.getMinutes()+
+                        ":"+date.getSeconds()
+                        el.handshake = handshake
 
                     });
                     commit('setList', list);

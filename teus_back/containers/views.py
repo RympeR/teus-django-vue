@@ -527,8 +527,8 @@ class RequestsList(APIView):
                 },
                 "amount": row[9],
                 "date": {
-                    "start": row[10].strftime('%d %B %Y'),
-                    "end": row[11].strftime('%d %B %Y')
+                    "start": row[10],
+                    "end": row[11]
                 },
                 "status": row[12]
 
@@ -638,8 +638,8 @@ class PropositionList(APIView):
                 },
                 "amount": row[10],
                 "date": {
-                    "start": row[11].strftime('%d %B %Y'),
-                    "end": row[12].strftime('%d %B %Y')
+                    "start": row[11],
+                    "end": row[12]
                 },
                 "status": row[13]
             })
@@ -755,7 +755,7 @@ class DealsList(APIView):
                     "name": row[12]
                 },
                 "amount": row[13],
-                "handshake": row[14].strftime('%H:%M:%S %d %b %Y'),
+                "handshake": row[14],
             })
         return Response(
             {

@@ -1203,7 +1203,6 @@ class FilteredPropositions(APIView):
                         Q(start_date__range=(_filter.request_date, _filter.end_date)) |
                         Q(end_date__range=(_filter.request_date, _filter.end_date))
                     ) &
-                    Q(amount__gte=_filter.amount) &
                     Q(line__name__contains=_filter.line.name)
                 )
 

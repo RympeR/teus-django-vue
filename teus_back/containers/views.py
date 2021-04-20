@@ -1196,6 +1196,7 @@ class FilteredPropositions(APIView):
                 )
 
                 propositons = UserProposition.objects.filter(
+                    Q(status='в работе') &
                     Q(city__name__in=_filter.city.all().values('name')) &
                     Q(container__name__contains=_filter.container.name) &
                     (
@@ -1207,7 +1208,7 @@ class FilteredPropositions(APIView):
                 )
 
             else:
-                propositons = UserProposition.objects.all()
+                propositons = UserProposition.objects.filter(status='в работе')
             deals = Deal.objects.filter(
                 user_request=user
             ).values('user_proposition__pk')

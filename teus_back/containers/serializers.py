@@ -237,13 +237,28 @@ class GenericRequestSerializer(serializers.ModelSerializer):
     end_date = TimestampField(required=False)
     user =  serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), required=False)
     city = serializers.PrimaryKeyRelatedField(queryset=City.objects.all(), many=True)
+
     def validate(self, attrs):
+        print('validated')
         try:
-            print(attrs)
             request = self.context.get('request')
             user = User.objects.get(
                 token=request.headers['Authorization'])
+            print(user)
             attrs['user']=user
+            obj  =  None
+            try:
+                obj = UserProposition.objects.get(
+                    user=attrs['user'],
+                    city=attrs['city'],
+                    line=attrs['line'],
+                    container=attrs['container'],
+                )
+            except Exception:
+                pass
+
+            if obj:
+                raise serializers.ValidationError
             return attrs
         except Exception as e:
             print(e)
@@ -258,11 +273,25 @@ class GenericPropositionSerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), required=False)
     
     def validate(self, attrs):
+        print('validated')
         try:
             request = self.context.get('request')
             user = User.objects.get(
                 token=request.headers['Authorization'])
+            print(user)
             attrs['user']=user
+            obj  =  None
+            try:
+                obj = UserProposition.objects.get(
+                    user=attrs['user'],
+                    city=attrs['city'],
+                    line=attrs['line'],
+                    container=attrs['container'],
+                )
+            except Exception:
+                pass
+            if obj:
+                raise serializers.ValidationError
             return attrs
         except Exception as e:
             print(e)

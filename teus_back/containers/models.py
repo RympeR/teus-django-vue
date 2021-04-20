@@ -25,7 +25,6 @@ class UserRequest(models.Model):
 
     class Meta:
         ordering = ['-end_date']
-        unique_together = ('user', 'amount', 'line', 'container', )
 
 class UserProposition(models.Model):
     user = models.ForeignKey(User, related_name='user_proposition', on_delete=models.CASCADE)
@@ -39,7 +38,7 @@ class UserProposition(models.Model):
 
     class Meta:
         ordering = ['-end_date']
-        unique_together = ('user', 'amount', 'city', 'line', 'container', )
+       
 
 class Deal(models.Model):
     user_request = models.ForeignKey(User, related_name='deal_user_request', on_delete=models.CASCADE)

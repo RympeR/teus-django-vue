@@ -125,7 +125,7 @@
 										month: 'short',
 										year: 'numeric',
 									}"
-									@input="getFilteredPropositions(search)"
+									@input="getFilteredRequests(search)"
 									size="sm"
 									v-model="search.request_end_date"
 									class="mb-2"
@@ -241,7 +241,7 @@ export default {
 				request_date: "",
 				request_end_date: "",
 			},
-			perPage: 3,
+			perPage: 20,
 			currentPage: 1,
 			search_existing_list:{
 				lines:[],

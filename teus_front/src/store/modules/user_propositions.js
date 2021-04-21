@@ -119,6 +119,14 @@ const actions = {
             if (str != `${process.env.VUE_APP_HOST}/api/containers/get-proposition-list?`) {
                 str += "&";
             }
+            if (
+                (key == 'request_date' && obj[key] != '') ||
+                (key == 'request_end_date' && obj[key] != '') 
+            ){
+                let timestamp = new Date(obj[key]).getTime() / 1000
+                str += key + "=" + encodeURIComponent(timestamp);
+                continue
+            }
             str += key + "=" + encodeURIComponent(obj[key]);
         }
         console.log(str)

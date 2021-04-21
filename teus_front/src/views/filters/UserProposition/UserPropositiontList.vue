@@ -243,7 +243,7 @@ export default {
 				request_end_date: "",
 			},
 			filtered: false,
-			perPage: 1,
+			perPage: 20,
 			currentPage: 1,
 			search_existing_list:{
 				lines:[],

@@ -114,6 +114,14 @@ const actions = {
             if (str != `${process.env.VUE_APP_HOST}/api/containers/get-deal-list?`) {
                 str += "&";
             }
+            if (
+                (key == 'handshake' && obj[key] != '') ||
+                (key == 'handshake_end' && obj[key] != '') 
+            ){
+                let timestamp = new Date(obj[key]).getTime() / 1000
+                str += key + "=" + encodeURIComponent(timestamp);
+                continue
+            }
             str += key + "=" + encodeURIComponent(obj[key]);
         }
         console.log(str)
@@ -145,7 +153,14 @@ const actions = {
                             id: el.sec_user.id,
                             name: el.sec_user.name
                         };
-
+                        var date = new Date(el.handshake * 1000);
+                        var handshake=date.getDate()+
+                        "-"+(date.getMonth()+1)+
+                        "-"+date.getFullYear()+
+                        " "+date.getHours()+
+                        ":"+date.getMinutes()+
+                        ":"+date.getSeconds()
+                        el.handshake = handshake
 
                     });
 

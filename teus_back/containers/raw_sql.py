@@ -139,9 +139,9 @@ class UserFilter:
             query = self.add_and_case(
                 request, query, 'status', 'status', str_=False)
             query = self.add_between_case(
-                request, query,  'request_date', 'request_end_date', 'containers_userproposition.start_date')
+                request, query,  'request_date', 'request_end_date', 'containers_userproposition.start_date', str_=False)
             query = self.add_between_case(request, query, 'request_date',
-                                          'request_end_date', 'containers_userproposition.end_date',  or_=True)
+                                          'request_end_date', 'containers_userproposition.end_date',  or_=True, str_=False)
             query += 'order by "date" desc, "end_date" desc;'
             print(query)
             result = execute_select_query(login, password, query)
@@ -189,7 +189,7 @@ class UserFilter:
             query = self.add_and_case(
                 request, query, 'status', 'status', str_=False)
             query = self.add_between_case(
-                request, query,  'request_date', 'request_end_date', 'containers_userrequest.request_date')
+                request, query,  'request_date', 'request_end_date', 'containers_userrequest.request_date', str_=False)
             query += '''
                group by 1,3,5,6,7,8,9,10,4
                 order by "date", "end_date" desc;'''

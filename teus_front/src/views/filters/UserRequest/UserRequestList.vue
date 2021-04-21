@@ -241,7 +241,7 @@ export default {
 				request_date: "",
 				request_end_date: "",
 			},
-			perPage: 20,
+			perPage: 100,
 			currentPage: 1,
 			search_existing_list:{
 				lines:[],

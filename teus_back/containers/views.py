@@ -722,6 +722,7 @@ class DealsList(APIView):
         except Exception:
             user = None
         if user:
+            
             data = self.userfilter.get_deals(request, 'postgres', '1111')
         else:
             request.GET = {}

@@ -280,7 +280,7 @@ export default {
 				handshake_end: "",
 			},
 			filtered: false,
-			perPage: 1,
+			perPage: 20,
 			currentPage: 1,
 			search_existing_list:{
 				lines:[],

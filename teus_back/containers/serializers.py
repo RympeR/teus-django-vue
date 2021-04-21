@@ -3,7 +3,7 @@ from .models import *
 from info.serializers import ContainerSerializer, LineSerializer, CitySerializer, GenericCitySerializer
 from users.serializers import UserSerializer
 from datetime import datetime
-
+from rest_framework.views import APIView 
 
 class TimestampField(serializers.Field):
     def to_representation(self, value):

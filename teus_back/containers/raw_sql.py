@@ -15,10 +15,10 @@ class UserFilter:
             param = request.query_params[param_name]
             if query.split('\n')[-1].strip() != 'where':
                 for value in param:
-                    query += f"\nand {field_name} in '%'"
+                    query += f"\nand {field_name} in '%{value}%'\n"
             else:
                 for value in param:
-                    query += f"\n{field_name} like '%{param}%'"
+                    query += f"\n{field_name} like '%{value}%'\n"
         return query
 
     def add_and_case(self, request, query, param_name, field_name, str_=True):
@@ -99,7 +99,7 @@ class UserFilter:
         except Exception as e:
             print(e)
             print('failed')
-            query = base_query + ';'
+            query = base_query + 'order by users_user.id DESC;'
             result = execute_select_query(login, password, query)
         return result
 

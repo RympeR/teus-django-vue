@@ -780,6 +780,8 @@
     @apiHeader {String} Authorization Users unique token
 
     @apiParam {Number} pk Room id
+    @apiParam {Number} limit Messages Limit ( not required )
+    @apiParam {Number} offset Messages offset ( not required )
 
     @apiSuccess {object} results list of message objects
 
@@ -828,10 +830,29 @@
     {
         [
             {
-                "id": 4,
-                "user_request_id": 1,
-                "user_proposition_id": 1,
-                "date": 1615845600.0,
+                "id": 7,
+                "line": {
+                    "name": "testl2"
+                },
+                "contianer": {
+                    "name": "test24",
+                    "image": "http://127.0.0.1:8000/media/Ellipse_10.png"
+                },
+                "user_request": {
+                    "id": 1,
+                    "first_name": "admin",
+                    "last_name": "admin",
+                    "image": null
+                },
+                "user_proposition": {
+                    "id": 1,
+                    "first_name": "admin",
+                    "last_name": "admin",
+                    "image": null
+                },
+                "user_request_id": 6,
+                "user_proposition_id": 9,
+                "date": 1618572308,
                 "first_mark": false,
                 "second_mark": false
             }
@@ -860,10 +881,29 @@
     {
         [
             {
-                "id": 4,
-                "user_request_id": 1,
-                "user_proposition_id": 1,
-                "date": 1615845600.0,
+                "id": 7,
+                "line": {
+                    "name": "testl2"
+                },
+                "contianer": {
+                    "name": "test24",
+                    "image": "http://127.0.0.1:8000/media/Ellipse_10.png"
+                },
+                "user_request": {
+                    "id": 1,
+                    "first_name": "admin",
+                    "last_name": "admin",
+                    "image": null
+                },
+                "user_proposition": {
+                    "id": 1,
+                    "first_name": "admin",
+                    "last_name": "admin",
+                    "image": null
+                },
+                "user_request_id": 6,
+                "user_proposition_id": 9,
+                "date": 1618572308,
                 "first_mark": false,
                 "second_mark": false
             }

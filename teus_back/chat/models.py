@@ -3,7 +3,6 @@ from users.models import User
 from containers.models import UserRequest, UserProposition, Deal
 from unixtimestampfield.fields import UnixTimeStampField
 
-
 class Room(models.Model):
 
     request_id = models.ForeignKey(

@@ -1,10 +1,11 @@
 import json
+from users.models import User
 from channels.generic.websocket import AsyncWebsocketConsumer
 from channels.generic.websocket import WebsocketConsumer
 from asgiref.sync import async_to_sync
 import requests
 from .serializers import ChatCreateSerializer
-
+from .models import Chat
 
 class ChatConsumer(WebsocketConsumer):
     def connect(self):
@@ -33,11 +34,13 @@ class ChatConsumer(WebsocketConsumer):
         room = text_data_json['room']
         user = text_data_json['user']
         message = text_data_json['message']
+        _file = text_data_json['file']
         # Send message to room group
         async_to_sync(self.channel_layer.group_send)(
             self.room_group_name,
             {
                 'type': 'chat_message',
+                'file': _file,
                 'message': message,
                 'user': user,
                 'room': room,
@@ -61,6 +64,13 @@ class ChatConsumer(WebsocketConsumer):
             chat.save()
         else:
             print('not valid')
+        message_obj = None
+        if event['file']: 
+            if str(event['file']).isdigit():
+                message_obj = int(event['file'])
+                path = f'http://api-teus.maximusapp.com/{Chat.objects.get(pk=message_obj).attachment.url}'
         self.send(text_data=json.dumps({
-            'message': message
+            "user": user, #User.objects.get(pk=user).token,
+            'message': message,
+            'file': path if message_obj else None
         }))

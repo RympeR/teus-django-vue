@@ -23,6 +23,7 @@
 
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
+            console.log(data)
             document.querySelector('#chat-log').value += (data.message + '\n');
         };
 
@@ -40,7 +41,7 @@
         document.querySelector('#chat-message-submit').onclick = function(e) {
             const messageInputDom = document.querySelector('#chat-message-input');
             const fileInputDom = document.querySelector('#chat-file-input');
-            const file = fileInputDom.value;
+            const file = 14;
             const message = messageInputDom.value;
             chatSocket.send(JSON.stringify({
                 'user': 1,

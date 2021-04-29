@@ -165,6 +165,8 @@ class GetRoomsRequest(APIView):
             user = None
 
         if user:
+            limit = int(request.GET.get('limit', 20))
+            offset = int(request.GET.get('offset', 0))
             rooms = Room.objects.filter(
                 request_id__user=user,
                 request_id=pk
@@ -230,7 +232,7 @@ class GetRoomsRequest(APIView):
                     }
                 )
             return Response(
-                results
+                results[offset: offset+limit]
             )
         else:
             return Response(

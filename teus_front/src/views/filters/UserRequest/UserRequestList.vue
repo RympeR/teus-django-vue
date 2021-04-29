@@ -291,7 +291,7 @@ export default {
 			{ text: "Главная", to: { name: "home" } },
 			{ text: "Запросы", to: { name: "requests" } },
 		];
-		await this.getUserRequests().then((list) => {
+			 this.getUserRequests().then((list) => {
 			console.log(list);
 		});
 		await this.getLines().then((list) => {

@@ -68,7 +68,11 @@ class ChatConsumer(WebsocketConsumer):
         if event['file']: 
             if str(event['file']).isdigit():
                 message_obj = int(event['file'])
-                path = f'http://api-teus.maximusapp.com{Chat.objects.get(pk=message_obj).attachment.url}'
+
+                try:
+                    path = f'http://api-teus.maximusapp.com/{Chat.objects.get(pk=message_obj).attachment.url}'
+                except Exception as e:
+                    path = None
         self.send(text_data=json.dumps({
             "user": user, #User.objects.get(pk=user).token,
             'message': message,

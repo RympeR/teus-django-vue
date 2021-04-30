@@ -923,8 +923,9 @@
     @apiGroup Chat
 
     @apiParam {Number} room room id
-    @apiParam {String} message message text
-    @apiParam {Number} user user id
+    @apiParam {String} message message text or empty string ''
+    @apiParam {Number} user user id 
+    @apiParam {Number} file id of message with file attachment or None
 """
 
 """

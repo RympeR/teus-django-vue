@@ -423,6 +423,20 @@ define({ "api": [
             "optional": false,
             "field": "pk",
             "description": "<p>Room id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "limit",
+            "description": "<p>Messages Limit ( not required )</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "offset",
+            "description": "<p>Messages offset ( not required )</p>"
           }
         ]
       }
@@ -507,7 +521,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    [\n        {\n            \"id\": 4,\n            \"user_request_id\": 1,\n            \"user_proposition_id\": 1,\n            \"date\": 1615845600.0,\n            \"first_mark\": false,\n            \"second_mark\": false\n        }\n    ]\n}",
+          "content": "HTTP/1.1 200 OK\n{\n    [\n        {\n            \"id\": 7,\n            \"line\": {\n                \"name\": \"testl2\"\n            },\n            \"contianer\": {\n                \"name\": \"test24\",\n                \"image\": \"http://127.0.0.1:8000/media/Ellipse_10.png\"\n            },\n            \"user_request\": {\n                \"id\": 1,\n                \"first_name\": \"admin\",\n                \"last_name\": \"admin\",\n                \"image\": null\n            },\n            \"user_proposition\": {\n                \"id\": 1,\n                \"first_name\": \"admin\",\n                \"last_name\": \"admin\",\n                \"image\": null\n            },\n            \"user_request_id\": 6,\n            \"user_proposition_id\": 9,\n            \"date\": 1618572308,\n            \"first_mark\": false,\n            \"second_mark\": false\n        }\n    ]\n}",
           "type": "json"
         }
       ]
@@ -572,7 +586,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    [\n        {\n            \"id\": 4,\n            \"user_request_id\": 1,\n            \"user_proposition_id\": 1,\n            \"date\": 1615845600.0,\n            \"first_mark\": false,\n            \"second_mark\": false\n        }\n    ]\n}",
+          "content": "HTTP/1.1 200 OK\n{\n    [\n        {\n            \"id\": 7,\n            \"line\": {\n                \"name\": \"testl2\"\n            },\n            \"contianer\": {\n                \"name\": \"test24\",\n                \"image\": \"http://127.0.0.1:8000/media/Ellipse_10.png\"\n            },\n            \"user_request\": {\n                \"id\": 1,\n                \"first_name\": \"admin\",\n                \"last_name\": \"admin\",\n                \"image\": null\n            },\n            \"user_proposition\": {\n                \"id\": 1,\n                \"first_name\": \"admin\",\n                \"last_name\": \"admin\",\n                \"image\": null\n            },\n            \"user_request_id\": 6,\n            \"user_proposition_id\": 9,\n            \"date\": 1618572308,\n            \"first_mark\": false,\n            \"second_mark\": false\n        }\n    ]\n}",
           "type": "json"
         }
       ]
@@ -611,7 +625,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "message",
-            "description": "<p>message text</p>"
+            "description": "<p>message text or empty string ''</p>"
           },
           {
             "group": "Parameter",
@@ -619,6 +633,13 @@ define({ "api": [
             "optional": false,
             "field": "user",
             "description": "<p>user id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "file",
+            "description": "<p>id of message with file attachment or None</p>"
           }
         ]
       }

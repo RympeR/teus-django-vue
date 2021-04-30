@@ -38,11 +38,11 @@ class ChatSerializer(serializers.ModelSerializer):
 
 
 class ChatCreateSerializer(serializers.ModelSerializer):
-    date = TimestampField(required=False)
+    # date = TimestampField(required=False)
 
     class Meta:
         model = Chat
-        fields = '__all__'
+        exclude = ('date', )
 
 # class RoomHandshakeSerializer(serializers.ModelSerializer):
 #     request_id = UserRequsetSerializer()

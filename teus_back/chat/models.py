@@ -27,3 +27,4 @@ class Chat(models.Model):
         verbose_name = 'Чат'
         verbose_name_plural = 'Чаты'
         ordering = ['-date']
+        unique_together = ['date', 'user', 'room']

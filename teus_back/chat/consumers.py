@@ -35,6 +35,18 @@ class ChatConsumer(WebsocketConsumer):
         user = text_data_json['user']
         message = text_data_json['message']
         _file = text_data_json['file']
+        
+        payload = {
+            'room': room,
+            'user': user,
+            'text': message
+        }
+        print(payload)
+        chat = ChatCreateSerializer(data=payload)
+        if chat.is_valid():
+            chat.save()
+        else:
+            print('not valid')
         # Send message to room group
         async_to_sync(self.channel_layer.group_send)(
             self.room_group_name,
@@ -53,17 +65,7 @@ class ChatConsumer(WebsocketConsumer):
         message = event['message']
         room = event['room']
         user = event['user']
-        payload = {
-            'room': room,
-            'user': user,
-            'text': message
-        }
-
-        chat = ChatCreateSerializer(data=payload)
-        if chat.is_valid():
-            chat.save()
-        else:
-            print('not valid')
+        
         message_obj = None
         if event['file']: 
             if str(event['file']).isdigit():

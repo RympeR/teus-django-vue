@@ -165,8 +165,7 @@ class GetRoomsRequest(APIView):
             user = None
 
         if user:
-            limit = int(request.GET.get('limit', 20))
-            offset = int(request.GET.get('offset', 0))
+            
             rooms = Room.objects.filter(
                 request_id__user=user,
                 request_id=pk
@@ -232,7 +231,7 @@ class GetRoomsRequest(APIView):
                     }
                 )
             return Response(
-                results[offset: offset+limit]
+                results
             )
         else:
             return Response(
@@ -255,6 +254,8 @@ class GetChatMessages(APIView):
         except Exception:
             user = None
         if user:
+            offset = int(request.GET.get('offset', 0))
+            limit = int(request.GET.get('limit', 20))
             room = Room.objects.get(pk=room_id)
             objects = Chat.objects.filter(
                 room=room
@@ -278,11 +279,11 @@ class GetChatMessages(APIView):
                         "user_id": obj.user.pk,
                         "text": obj.text,
                         "attachment": image_url,
-                        "date": datetime.timestamp(datetime.strptime(obj.date.strftime("%m/%d/%Y"), "%m/%d/%Y"))
+                        "date": obj.date.timestamp(),
                     },
                 )
             return Response(
-                results
+                results[offset: offset+limit]
             )
         else:
             return Response(

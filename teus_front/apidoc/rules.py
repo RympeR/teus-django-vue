@@ -929,13 +929,15 @@
 """
 
 """
-    @api {PUT} /api/chat/handshake/{int:pk} 5.8 Handshake
+    @api {PUT} /api/chat/ws/handshake/{int:room_name} 5.8 Handshake
     @apiName 5.8 Handshake
     @apiGroup Chat
-    @apiHeader {String} Authorization Users unique token
 
     @apiParam {Number} pk Room id
-    @apiParam {Number} handshake First or second user (1 | 2)<- values
+    @apiParam {Number} user User id which has accepted ( request or proposition)
+    @apiParam {Boolean} accepted Stage on accept request
+    @apiParam {Boolean} validated_first First user validation step (after it send until second will not also send true)
+    @apiParam {Boolean} validated_second Second user validation step
 
     @apiSuccessExample {json} Success-Response:
     HTTP/1.1 200 but needs handshake
@@ -949,9 +951,4 @@
         "status": "processed"
     }
     
-    @apiErrorExample {json} Error-Response:
-    HTTP/1.1 200 without token
-    {
-        "status": "invalid token"
-    }
 """

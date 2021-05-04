@@ -344,7 +344,7 @@ class Handshake(APIView):
                 url = f"http://{domain}/api/containers/create-deal/"
 
                 payload = {
-                            'user_request': user_request,
+                        'user_request': user_request,
                         'amount': amount,
                         'city': city,
                         'line': line,

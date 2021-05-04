@@ -72,7 +72,7 @@ class ChatConsumer(WebsocketConsumer):
                 message_obj = int(event['file'])
 
                 try:
-                    path = f'http://api-teus.maximusapp.com/{Chat.objects.get(pk=message_obj).attachment.url}'
+                    path = f'http://api-teus.maximusapp.com{Chat.objects.get(pk=message_obj).attachment.url}'
                 except Exception as e:
                     path = None
         self.send(text_data=json.dumps({

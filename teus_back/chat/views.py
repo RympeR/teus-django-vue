@@ -258,7 +258,9 @@ class GetChatMessages(APIView):
             limit = int(request.GET.get('limit', 20))
             room = Room.objects.get(pk=room_id)
             objects = Chat.objects.filter(
-                room=room
+                Q(room=room) &
+               ~Q(text='') &
+                Q(attachment__isnull=False)
             ).order_by('-date')
             results = []
             domain = request.get_host()
@@ -279,7 +281,7 @@ class GetChatMessages(APIView):
                         "user_id": obj.user.pk,
                         "text": obj.text,
                         "attachment": image_url,
-                        "date": obj.date.timestamp(),
+                        "date": int(obj.date.timestamp() * 1000 ),
                     },
                 )
             return Response(

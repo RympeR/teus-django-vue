@@ -12,7 +12,8 @@ class Room(models.Model):
     date = UnixTimeStampField("Дата создания", auto_now_add=True, null=True, blank=True)
     first_mark = models.BooleanField(default=False)
     second_mark = models.BooleanField(default=False)
-
+    request_user_readed = models.BooleanField(default=False)
+    proposition_user_readed = models.BooleanField(default=False)
 
 class Chat(models.Model):
     room = models.ForeignKey(Room, verbose_name='Chat room',

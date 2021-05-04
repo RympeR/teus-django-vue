@@ -43,10 +43,21 @@ class ChatConsumer(WebsocketConsumer):
         }
         print(payload)
         chat = ChatCreateSerializer(data=payload)
+        
         if chat.is_valid():
             chat.save()
         else:
             print('not valid')
+        try:
+            room_obj = Room.objects.get(pk=int(room))
+        except Room.DoesNotExist:
+            room_obj = None
+        if room_obj:
+            if room.request_id.pk == int(user):
+                room.proposition_user_readed = False
+            elif room.proposition_id.pk == int(user):
+                room.request_user_readed = False
+            room.save()
         # Send message to room group
         async_to_sync(self.channel_layer.group_send)(
             self.room_group_name,

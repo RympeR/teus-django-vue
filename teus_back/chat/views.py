@@ -136,7 +136,8 @@ class GetRoomsProposition(APIView):
                         "user_proposition_id": obj.proposition_id.pk,
                         "date": int(obj.date.timestamp()),
                         "first_mark": obj.first_mark,
-                        "second_mark": obj.second_mark
+                        "second_mark": obj.second_mark,
+                        "readed": obj.proposition_user_readed
                     }
                 )
             return Response(
@@ -227,7 +228,8 @@ class GetRoomsRequest(APIView):
                         "user_proposition_id": obj.proposition_id.pk,
                         "date": int(obj.date.timestamp()),
                         "first_mark": obj.first_mark,
-                        "second_mark": obj.second_mark
+                        "second_mark": obj.second_mark,
+                        "readed": obj.request_user_readed
                     }
                 )
             return Response(

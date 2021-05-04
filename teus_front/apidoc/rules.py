@@ -854,7 +854,8 @@
                 "user_proposition_id": 9,
                 "date": 1618572308,
                 "first_mark": false,
-                "second_mark": false
+                "second_mark": false,
+                "readed": false
             }
         ]
     }
@@ -905,7 +906,8 @@
                 "user_proposition_id": 9,
                 "date": 1618572308,
                 "first_mark": false,
-                "second_mark": false
+                "second_mark": false,
+                "readed": false
             }
         ]
     }

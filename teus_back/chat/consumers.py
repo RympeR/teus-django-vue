@@ -6,6 +6,7 @@ from asgiref.sync import async_to_sync
 import requests
 from .serializers import ChatCreateSerializer
 from .models import Chat, Room
+from teus.func import send_push
 
 class ChatConsumer(WebsocketConsumer):
     def connect(self):
@@ -55,8 +56,18 @@ class ChatConsumer(WebsocketConsumer):
         if room_obj:
             if room.request_id.pk == int(user):
                 room.proposition_user_readed = False
+                send_push(
+                    f'''TEUs {room.request_id.first_name} отправил сообщение:
+                    {message}''',
+                    room.proposition_id.pk
+                )
             elif room.proposition_id.pk == int(user):
                 room.request_user_readed = False
+                send_push(
+                    f'''TEUs {room.proposition_id.first_name} отправил сообщение:
+                    {message}''',
+                    room.request_id.pk
+                )
             room.save()
         # Send message to room group
         async_to_sync(self.channel_layer.group_send)(

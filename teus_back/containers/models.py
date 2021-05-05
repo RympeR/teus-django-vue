@@ -35,6 +35,7 @@ class UserProposition(models.Model):
     start_date = UnixTimeStampField(verbose_name='start date', null=True, blank=True)
     end_date = UnixTimeStampField(verbose_name='end date', null=True, blank=True)
     status = models.CharField(max_length=20, choices=STATUSES, default='в работе')
+    created_at = UnixTimeStampField(auto_now_add=True, null=True)
 
     class Meta:
         ordering = ['-end_date']

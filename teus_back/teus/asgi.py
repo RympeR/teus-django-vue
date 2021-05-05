@@ -10,7 +10,7 @@ django_asgi_app = get_asgi_application()
 from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
 
-from chat.consumers import ChatConsumer
+from chat.consumers import ChatConsumer, DealConsumer
 
 application = ProtocolTypeRouter({
     # Django's ASGI application to handle traditional HTTP requests
@@ -20,6 +20,7 @@ application = ProtocolTypeRouter({
     "websocket": AuthMiddlewareStack(
         URLRouter([
             re_path(r"ws/chat/(?P<room_name>\w+)/", ChatConsumer.as_asgi()),
+            re_path(r'ws/handshake/(?P<room_name>\w+)/$', DealConsumer.as_asgi()),
         ])
     ),
 })

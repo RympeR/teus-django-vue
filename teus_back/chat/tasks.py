@@ -1,0 +1,1 @@
+from celery.decorators import periodic_task

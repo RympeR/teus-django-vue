@@ -1,7 +1,7 @@
-import onesignal as onesignal_sdk
+from onesignal_sdk.client import Client
 from django.utils.html import strip_tags
 
-onesignal_client = onesignal_sdk.Client(
+onesignal_client = Client(
     user_auth_key="NTQyZmY5NjctYmNjMC00OTU3LTlmMDgtZmUyZjU3ZjM2ZDgw",
     rest_api_key='YTFlMDc1NWItNTA0Yy00ZWE3LTkzOTEtNzdkYTliZDY4MmY3',
     app_id="3d278d7c-b7db-4698-8066-7b1ec919d19c"

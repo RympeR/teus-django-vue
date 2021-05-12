@@ -24,7 +24,7 @@ class UserRequest(models.Model):
     status = models.CharField(max_length=20, choices=STATUSES, default='в работе')
 
     class Meta:
-        ordering = ['-end_date']
+        ordering = ['-end_date', '-pk']
 
 class UserProposition(models.Model):
     user = models.ForeignKey(User, related_name='user_proposition', on_delete=models.CASCADE)
@@ -38,7 +38,7 @@ class UserProposition(models.Model):
     created_at = UnixTimeStampField(auto_now_add=True, null=True)
 
     class Meta:
-        ordering = ['-end_date']
+        ordering = ['-end_date', '-pk']
        
 
 class Deal(models.Model):

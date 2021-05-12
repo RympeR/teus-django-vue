@@ -4,6 +4,8 @@ from info.serializers import ContainerSerializer, LineSerializer, CitySerializer
 from users.serializers import UserSerializer
 from datetime import datetime
 from rest_framework.views import APIView 
+from users.models import *
+from info.models import *
 
 class TimestampField(serializers.Field):
     def to_representation(self, value):
@@ -231,6 +233,61 @@ class PropositionSerializer(serializers.ModelSerializer):
     def delete(proposition_id):
         proposition = UserProposition.objects.get(pk=proposition_id).delete()
         return proposition[0]
+
+
+class GetCitySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        fields = '__all__'
+        model = City
+
+class GetLineSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        fields = '__all__'
+        model = Line
+
+class GetContainerSerializer(serializers.ModelSerializer):  
+    image = serializers.SerializerMethodField()
+    
+    def get_image(self, container):
+        try:
+            request = self.context.get('request')
+            photo_url = container.image.url
+            return request.build_absolute_uri(photo_url)
+        except Exception:
+            return None
+    class Meta:         
+        fields = '__all__'         
+        model = Container
+
+class GetGenericUserSerializer(serializers.ModelSerializer):
+    image = serializers.SerializerMethodField()
+
+    def get_image(self, user):
+        try:
+            request = self.context.get('request')
+            photo_url = user.image.url
+            return request.build_absolute_uri(photo_url)
+        except Exception:
+            return None
+    class Meta:
+        fields = 'id', 'first_name', 'image'
+        model = User
+
+class GetGenericRequestSerializer(serializers.ModelSerializer):
+
+    request_date = TimestampField(required=False)
+    end_date = TimestampField(required=False)
+    city = GetCitySerializer(required=False, many=True)
+    container = GetContainerSerializer(required=False)
+    line = GetLineSerializer(required=False)
+    user = GetGenericUserSerializer(required=False)
+
+    class Meta:
+        fields = '__all__'
+        model = UserRequest
+
 
 class GenericRequestSerializer(serializers.ModelSerializer):
     request_date = TimestampField(required=False)

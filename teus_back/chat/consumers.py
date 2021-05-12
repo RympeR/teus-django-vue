@@ -7,6 +7,7 @@ import requests
 from .serializers import ChatCreateSerializer
 from .models import Chat, Room
 from teus.func import send_push
+from containers.models import Deal
 
 class ChatConsumer(WebsocketConsumer):
     def connect(self):
@@ -134,10 +135,10 @@ class DealConsumer(WebsocketConsumer):
         except Room.DoesNotExist:
             room_obj = None
         if room_obj:
-            if room_obj.request_id.pk == int(user):
+            if room_obj.request_id.user.pk == int(user):
                 room_obj.first_mark = True
                 room_obj.save()
-            if room_obj.proposition_id.pk == int(user):
+            if room_obj.proposition_id.user.pk == int(user):
                 room_obj.second_mark = True
                 room_obj.save()
             if room_obj.second_mark and room_obj.first_mark:
@@ -158,7 +159,14 @@ class DealConsumer(WebsocketConsumer):
                         room.proposition_id.status = 'выполнен'
                         room.proposition_id.amount = 0
                         room.request_id.amount = 0
-
+                    Deal.objects.create(
+                        user_request=room_obj.request_id.user,
+                        user_proposition=room_obj.proposition_id.user,
+                        amount=amount,
+                        city=room_obj.request_id.city,
+                        line=room_obj.request_id.line,
+                        container=room_obj.request_id.container,
+                    ).save()
                     room.proposition_id.save()
                     room.request_id.save()
                     room.save()
@@ -178,7 +186,8 @@ class DealConsumer(WebsocketConsumer):
     # Receive message from room group
     def chat_message(self, event):
         print(event)
-        validated = event['validated']
+        validated_first = event['validated_first']
+        validated_second = event['validated_second']
         accepted = event['accepted']
         room = event['room']
         user = event['user']

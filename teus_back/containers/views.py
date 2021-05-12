@@ -818,6 +818,13 @@ class APIDOCUserRequests(APIView):
                         "id": city.id,
                         "name": city.name,
                     })
+                rooms = Room.objects.filter(request_id=request_)
+                for room in rooms:
+                    if room.request_user_readed:
+                        readed=False
+                        break
+                else:
+                    readed=True
                 result.append(
                     {
                         "id": request_.id,
@@ -838,6 +845,7 @@ class APIDOCUserRequests(APIView):
                             "id": request_.line.id,
                             "name": request_.line.name,
                         },
+                        "readed": readed,
                         "status": request_.status,
                         "request_date": int(request_.request_date.timestamp()),
                         "end_date": int(request_.end_date.timestamp()),
@@ -1019,7 +1027,6 @@ class APDICOUserPropositionsAPI(APIView):
             offset = int(request.GET.get('offset', 0))
             result = []
             domain = request.get_host()
-            print(user_propositions)
             for proposition in user_propositions:
                 try:
                     path_image = proposition.user.image.url
@@ -1039,7 +1046,13 @@ class APDICOUserPropositionsAPI(APIView):
                         domain=domain, path=container_image)
                 else:
                     container_image_url = None
-                
+                rooms = Room.objects.filter(proposition_id=proposition)
+                for room in rooms:
+                    if room.proposition_user_readed:
+                        readed=False
+                        break
+                else:
+                    readed=True
                 result.append(
                     {
                         "id": proposition.id,
@@ -1063,6 +1076,7 @@ class APDICOUserPropositionsAPI(APIView):
                             "id": proposition.line.id if proposition.line else None,
                             "name": proposition.line.name if proposition.line else None,
                         },
+                        "readed": readed,
                         "status": proposition.status,
                         "start_date": int(proposition.start_date.timestamp()),
                         "end_date": int(proposition.end_date.timestamp())

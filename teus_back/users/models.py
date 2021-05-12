@@ -7,7 +7,8 @@ import datetime
 from random import randint
 import datetime
 # Create your models here.
-
+import string    
+import random
 
 class User(models.Model):
     phone = models.CharField(verbose_name='Телефон',
@@ -23,6 +24,8 @@ class User(models.Model):
     token = models.CharField(max_length=255, null=True, blank=True)
     is_admin = models.BooleanField(default=False)
     password = models.CharField(max_length=100, null=True, blank=True)
+    onesignal_token = models.CharField(max_length=255, null=True,blank=True, default='')
+    
     class Meta:
         verbose_name = 'Пользователь'
         verbose_name_plural = 'Пользователи'
@@ -33,8 +36,10 @@ class User(models.Model):
 
     @staticmethod
     def generate_token(msg):
+        S = 10
+        ran = ''.join(random.choices(string.ascii_uppercase + string.digits, k = S))    
         ts = datetime.datetime.now().timestamp()
-        return hmac.new(bytes('qwegqwIOOLSegwGEGfef', encoding='utf8'), bytes(str(msg), encoding='utf8'), hashlib.sha256).hexdigest()
+        return hmac.new(bytes(ran, encoding='utf8'), bytes(str(msg), encoding='utf8'), hashlib.sha256).hexdigest()
 
 class Phone(models.Model):
     phone = models.BigIntegerField(db_index=True)

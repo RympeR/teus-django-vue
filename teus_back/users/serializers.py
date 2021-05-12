@@ -3,7 +3,8 @@ from rest_framework import serializers
 from .models import User
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
-
+import logging
+logger = logging.getLogger('django')
 
 class UserSerializer(serializers.ModelSerializer):
 
@@ -17,6 +18,7 @@ class UserSerializer(serializers.ModelSerializer):
     @staticmethod
     def create(validated_data):
         print(validated_data)
+        logger.warning(f'created with data ->{validated_data}')
         try:
             phone = validated_data['phone'][0]
         except KeyError:
@@ -39,6 +41,13 @@ class UserSerializer(serializers.ModelSerializer):
             image = validated_data['image']
         except KeyError:
             image = None
+        try:
+            if  isinstance(validated_data['onesignal_token'], list):
+                one_signal = validated_data['onesignal_token'][0]
+            else:
+                one_signal = validated_data['onesignal_token']
+        except KeyError:
+            one_signal = None
         token = validated_data['token']
         print(f'token ->{token}')
         user = User(
@@ -47,15 +56,19 @@ class UserSerializer(serializers.ModelSerializer):
             last_name=last_name,
             company=company,
             image=image,
-            token=token
+            token=token,
+            onesignal_token=one_signal
         )
         user.save()
-        return user.token
+        return user
 
     @staticmethod
     def update(validated_data):
         user = User.objects.filter(pk=validated_data['user_id']).first()
         print(user)
+        print(validated_data)
+        print('-'*10)
+        logger.warning(f'updated with data ->{validated_data}')
         try:
             user.phone = validated_data['phone'][0]
         except KeyError:
@@ -72,6 +85,13 @@ class UserSerializer(serializers.ModelSerializer):
             user.company = validated_data['company'][0]
         except KeyError:
             user.company = user.company
+        try:             
+            if  isinstance(validated_data['onesignal_token'], list):                 
+                user.onesignal_token = validated_data['onesignal_token'][0]             
+            else:                 
+                user.onesignal_token = validated_data['onesignal_token']         
+        except KeyError:             
+            user.onesignal_token = None
         try:
             user.image = validated_data['image'][0]
         except KeyError:

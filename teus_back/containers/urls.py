@@ -25,7 +25,7 @@ urlpatterns = [
     path('create-deal/', DealAPI.as_view() ,name='DealCreate'),
     path('update-deal/<int:deal_id>/', DealAPI.as_view() ,name='DealUpdate'),
     path('delete-deal/<int:deal_id>/', DealAPI.as_view() ,name='DealDelete'),
-
+    path('quit-out-of-chat/<int:pk>', GetOutOfChat.as_view()),
     path('get-apidoc-api-proposition/', APDICOUserPropositionsAPI.as_view() ,name='PropositionProfile'),
     
     path('get-api-proposition/', UserPropositionsAPI.as_view() ,name='PropositionProfile'),

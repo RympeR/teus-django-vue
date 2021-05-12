@@ -131,7 +131,7 @@ class GetRoomsProposition(APIView):
                             "image": user_proposition_image_url,
                         },
 
-                        "amount": obj.proposition_id.amount,
+                        "amount": obj.request_id.amount,
                         "user_request_id": obj.request_id.pk,
                         "user_proposition_id": obj.proposition_id.pk,
                         "date": int(obj.date.timestamp()),
@@ -223,7 +223,7 @@ class GetRoomsRequest(APIView):
                             "last_name": obj.proposition_id.user.last_name,
                             "image": user_proposition_image_url,
                         },
-                        "amount": obj.request_id.amount,
+                        "amount": obj.proposition_id.amount,
                         "user_request_id": obj.request_id.pk,
                         "user_proposition_id": obj.proposition_id.pk,
                         "date": int(obj.date.timestamp()),
@@ -306,7 +306,8 @@ class GetRoomInfo(APIView):
                             "last_name": room.proposition_id.user.last_name,
                             "image": user_proposition_image_url,
                         },
-                        "amount": room.request_id.amount,
+
+                        "amount": room.proposition_id.amount,
                         "user_request_id": room.request_id.pk,
                         "user_proposition_id": room.proposition_id.pk,
                         "date": int(room.date.timestamp()),
@@ -347,7 +348,7 @@ class GetChatMessages(APIView):
             objects = Chat.objects.filter(
                 Q(room=room) &
                ~Q(text='') &
-                Q(attachment__isnull=False)
+                Q(attachment__isnull=False) 
             ).order_by('-date')
             results = []
             domain = request.get_host()

@@ -521,7 +521,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    [\n        {\n            \"id\": 7,\n            \"line\": {\n                \"name\": \"testl2\"\n            },\n            \"contianer\": {\n                \"name\": \"test24\",\n                \"image\": \"http://127.0.0.1:8000/media/Ellipse_10.png\"\n            },\n            \"user_request\": {\n                \"id\": 1,\n                \"first_name\": \"admin\",\n                \"last_name\": \"admin\",\n                \"image\": null\n            },\n            \"user_proposition\": {\n                \"id\": 1,\n                \"first_name\": \"admin\",\n                \"last_name\": \"admin\",\n                \"image\": null\n            },\n            \"user_request_id\": 6,\n            \"user_proposition_id\": 9,\n            \"date\": 1618572308,\n            \"first_mark\": false,\n            \"second_mark\": false\n        }\n    ]\n}",
+          "content": "HTTP/1.1 200 OK\n{\n    [\n        {\n            \"id\": 7,\n            \"line\": {\n                \"name\": \"testl2\"\n            },\n            \"contianer\": {\n                \"name\": \"test24\",\n                \"image\": \"http://api-teus.maximusapp.com/media/Ellipse_10.png\"\n            },\n            \"user_request\": {\n                \"id\": 1,\n                \"first_name\": \"admin\",\n                \"last_name\": \"admin\",\n                \"image\": null\n            },\n            \"user_proposition\": {\n                \"id\": 1,\n                \"first_name\": \"admin\",\n                \"last_name\": \"admin\",\n                \"image\": null\n            },\n            \"user_request_id\": 6,\n            \"user_proposition_id\": 9,\n            \"date\": 1618572308,\n            \"first_mark\": false,\n            \"second_mark\": false,\n            \"readed\": false\n        }\n    ]\n}",
           "type": "json"
         }
       ]
@@ -586,7 +586,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    [\n        {\n            \"id\": 7,\n            \"line\": {\n                \"name\": \"testl2\"\n            },\n            \"contianer\": {\n                \"name\": \"test24\",\n                \"image\": \"http://127.0.0.1:8000/media/Ellipse_10.png\"\n            },\n            \"user_request\": {\n                \"id\": 1,\n                \"first_name\": \"admin\",\n                \"last_name\": \"admin\",\n                \"image\": null\n            },\n            \"user_proposition\": {\n                \"id\": 1,\n                \"first_name\": \"admin\",\n                \"last_name\": \"admin\",\n                \"image\": null\n            },\n            \"user_request_id\": 6,\n            \"user_proposition_id\": 9,\n            \"date\": 1618572308,\n            \"first_mark\": false,\n            \"second_mark\": false\n        }\n    ]\n}",
+          "content": "HTTP/1.1 200 OK\n{\n    [\n        {\n            \"id\": 7,\n            \"line\": {\n                \"name\": \"testl2\"\n            },\n            \"contianer\": {\n                \"name\": \"test24\",\n                \"image\": \"http://api-teus.maximusapp.com/media/Ellipse_10.png\"\n            },\n            \"user_request\": {\n                \"id\": 1,\n                \"first_name\": \"admin\",\n                \"last_name\": \"admin\",\n                \"image\": null\n            },\n            \"user_proposition\": {\n                \"id\": 1,\n                \"first_name\": \"admin\",\n                \"last_name\": \"admin\",\n                \"image\": null\n            },\n            \"user_request_id\": 6,\n            \"user_proposition_id\": 9,\n            \"date\": 1618572308,\n            \"first_mark\": false,\n            \"second_mark\": false,\n            \"readed\": false\n        }\n    ]\n}",
           "type": "json"
         }
       ]
@@ -650,9 +650,67 @@ define({ "api": [
   },
   {
     "type": "PUT",
-    "url": "/api/chat/handshake/{int:pk}",
+    "url": "/api/chat/ws/handshake/{int:room_name}",
     "title": "5.8 Handshake",
     "name": "5.8_Handshake",
+    "group": "Chat",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "pk",
+            "description": "<p>Room id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "user",
+            "description": "<p>User id which has accepted ( request or proposition)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Boolean",
+            "optional": false,
+            "field": "validated_owner",
+            "description": "<p>First user validation step (after it send until second will not also send true)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Boolean",
+            "optional": false,
+            "field": "validated_customer",
+            "description": "<p>Second user validation step</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 but needs handshake\n{\n    \"status\": \"needs second handshake\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"success\": 200,\n    \"status\": \"processed\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "apidoc/rules.py",
+    "groupTitle": "Chat"
+  },
+  {
+    "type": "GET",
+    "url": "/api/chat/get-room-info/{int:pk}",
+    "title": "5.9 Get chat by id",
+    "name": "5.9_Get_chat_by_id",
     "group": "Chat",
     "header": {
       "fields": {
@@ -675,37 +733,90 @@ define({ "api": [
             "type": "Number",
             "optional": false,
             "field": "pk",
-            "description": "<p>Room id</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "handshake",
-            "description": "<p>First or second user (1 | 2)&lt;- values</p>"
+            "description": "<p>room id</p>"
           }
         ]
       }
     },
     "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "room",
+            "description": "<p>chat object</p>"
+          }
+        ]
+      },
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 but needs handshake\n{\n    \"status\": \"needs second handshake\"\n}",
-          "type": "json"
-        },
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    \"success\": 200,\n    \"status\": \"processed\"\n}",
+          "content": "HTTP/1.1 200 OK\n\n    {\n        \"id\": 7,\n        \"line\": {\n            \"name\": \"testl2\"\n        },\n        \"contianer\": {\n            \"name\": \"test24\",\n            \"image\": \"http://api-teus.maximusapp.com/media/Ellipse_10.png\"\n        },\n        \"user_request\": {\n            \"id\": 1,\n            \"first_name\": \"admin\",\n            \"last_name\": \"admin\",\n            \"image\": null\n        },\n        \"user_proposition\": {\n            \"id\": 1,\n            \"first_name\": \"admin\",\n            \"last_name\": \"admin\",\n            \"image\": null\n        },\n        \"user_request_id\": 6,\n        \"user_proposition_id\": 9,\n        \"date\": 1618572308,\n        \"first_mark\": false,\n        \"second_mark\": false,\n        \"readed\": false\n    }",
           "type": "json"
         }
       ]
     },
-    "error": {
+    "version": "0.0.0",
+    "filename": "apidoc/rules.py",
+    "groupTitle": "Chat"
+  },
+  {
+    "type": "GET",
+    "url": "/api/containers/quit-out-of-chat/{int:pk}",
+    "title": "5.9 Quit Chat",
+    "name": "5.9_Quit_chat",
+    "group": "Chat",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Users unique token</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "pk",
+            "description": "<p>room id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "user",
+            "description": "<p>User id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "readed",
+            "description": ""
+          }
+        ]
+      },
       "examples": [
         {
-          "title": "Error-Response:",
-          "content": "HTTP/1.1 200 without token\n{\n    \"status\": \"invalid token\"\n}",
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"user\": 1,\n    \"readed\" : True\n}",
           "type": "json"
         }
       ]
@@ -1104,7 +1215,7 @@ define({ "api": [
   },
   {
     "type": "PUT",
-    "url": "/api/containers/update-api-proposition/",
+    "url": "/api/containers/update-api-proposition/{proposition_id}",
     "title": "2.3 Update user proposition",
     "name": "2.3_Update_user_proposition",
     "group": "Propositions",
@@ -1482,6 +1593,13 @@ define({ "api": [
           },
           {
             "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "readed",
+            "description": "<p>False if there unreaded messages</p>"
+          },
+          {
+            "group": "Success 200",
             "type": "Number",
             "optional": false,
             "field": "request_date",
@@ -1499,7 +1617,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    [\n    {\n        \"id\": 1,\n        \"user\": {\n            \"id\": 3,\n            \"name\": \"test2\",\n            \"phone\": \"03495345455\",\n            \"image\": null\n        },\n        \"amount\": 7,\n        \"city\": [\n            {\n                \"id\": 1,\n                \"name\": \"test\"\n            },\n            {\n                \"id\": 2,\n                \"name\": \"retwh\"\n            }\n        ],\n        \"container\": {\n            \"id\": 2,\n            \"name\": \"34t34t\",\n            \"image\": \"http://api-teus.maximusapp.com/media/testF_iNKjXSm.jpg\"\n        },\n        \"line\": {\n            \"id\": 1,\n            \"name\": \"test loe\"\n        },\n        \"start_date\": 1615410000.0,\n        \"end_date\": 1615410000.0\n    }\n]\n}",
+          "content": "HTTP/1.1 200 OK\n{\n    [\n    {\n        \"id\": 1,\n        \"user\": {\n            \"id\": 3,\n            \"name\": \"test2\",\n            \"phone\": \"03495345455\",\n            \"image\": null\n        },\n        \"amount\": 7,\n        \"city\": [\n            {\n                \"id\": 1,\n                \"name\": \"test\"\n            },\n            {\n                \"id\": 2,\n                \"name\": \"retwh\"\n            }\n        ],\n        \"container\": {\n            \"id\": 2,\n            \"name\": \"34t34t\",\n            \"image\": \"http://api-teus.maximusapp.com/media/testF_iNKjXSm.jpg\"\n        },\n        \"line\": {\n            \"id\": 1,\n            \"name\": \"test loe\"\n        },\n        \"readed\": False,\n        \"start_date\": 1615410000.0,\n        \"end_date\": 1615410000.0\n    }\n]\n}",
           "type": "json"
         }
       ]
@@ -1610,6 +1728,13 @@ define({ "api": [
           },
           {
             "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "readed",
+            "description": "<p>False if there unreaded messages</p>"
+          },
+          {
+            "group": "Success 200",
             "type": "Number",
             "optional": false,
             "field": "request_date",
@@ -1627,7 +1752,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    [\n    {\n        \"id\": 1,\n        \"user\": {\n            \"id\": 3,\n            \"name\": \"test2\",\n            \"phone\": \"03495345455\",\n            \"image\": null\n        },\n        \"amount\": 7,\n        \"city\": [\n            {\n                \"id\": 1,\n                \"name\": \"test\"\n            },\n            {\n                \"id\": 2,\n                \"name\": \"retwh\"\n            }\n        ],\n        \"container\": {\n            \"id\": 2,\n            \"name\": \"34t34t\",\n            \"image\": \"http://api-teus.maximusapp.com/media/testF_iNKjXSm.jpg\"\n        },\n        \"line\": {\n            \"id\": 1,\n            \"name\": \"test loe\"\n        },\n        \"request_date\": 1615410000.0,\n        \"end_date\": 1615410000.0\n    }\n]\n}",
+          "content": "HTTP/1.1 200 OK\n{\n    [\n    {\n        \"id\": 1,\n        \"user\": {\n            \"id\": 3,\n            \"name\": \"test2\",\n            \"phone\": \"03495345455\",\n            \"image\": null\n        },\n        \"amount\": 7,\n        \"city\": [\n            {\n                \"id\": 1,\n                \"name\": \"test\"\n            },\n            {\n                \"id\": 2,\n                \"name\": \"retwh\"\n            }\n        ],\n        \"container\": {\n            \"id\": 2,\n            \"name\": \"34t34t\",\n            \"image\": \"http://api-teus.maximusapp.com/media/testF_iNKjXSm.jpg\"\n        },\n        \"line\": {\n            \"id\": 1,\n            \"name\": \"test loe\"\n        },\n        \"readed\": True,\n        \"request_date\": 1615410000.0,\n        \"end_date\": 1615410000.0\n    }\n]\n}",
           "type": "json"
         }
       ]
@@ -1747,7 +1872,7 @@ define({ "api": [
   },
   {
     "type": "PUT",
-    "url": "/api/containers/update-api-request/",
+    "url": "/api/containers/update-api-request/{request_id}",
     "title": "3.3 Update user request",
     "name": "3.3_Update_user_request",
     "group": "Requests",
@@ -2075,6 +2200,13 @@ define({ "api": [
             "optional": false,
             "field": "code",
             "description": "<p>Code from sms (not required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "onesignal_token",
+            "description": "<p>Code for one signal (not required)</p>"
           }
         ]
       }

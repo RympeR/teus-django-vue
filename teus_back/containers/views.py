@@ -4,7 +4,7 @@ from django.shortcuts import render
 from .serializers import (
     DealSerializer, RequestSerializer,
     PropositionSerializer, UserPropositionsSerializer,
-    UserRequsetSerializer, GenericRequestSerializer, GenericPropositionSerializer)
+    UserRequsetSerializer, GenericRequestSerializer, GetGenericRequestSerializer, GenericPropositionSerializer)
 from django.http import request
 from rest_framework import generics, permissions, filters
 from rest_framework.views import APIView
@@ -26,6 +26,8 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 from rest_framework import status
 from django.db.models import Q
 from pprint import pprint
+import logging
+logger = logging.getLogger('django')
 
 class CsrfExemptSessionAuthentication(SessionAuthentication):
 
@@ -820,7 +822,7 @@ class APIDOCUserRequests(APIView):
                     })
                 rooms = Room.objects.filter(request_id=request_)
                 for room in rooms:
-                    if room.request_user_readed:
+                    if not room.request_user_readed:
                         readed=False
                         break
                 else:
@@ -1048,7 +1050,7 @@ class APDICOUserPropositionsAPI(APIView):
                     container_image_url = None
                 rooms = Room.objects.filter(proposition_id=proposition)
                 for room in rooms:
-                    if room.proposition_user_readed:
+                    if not room.proposition_user_readed:
                         readed=False
                         break
                 else:
@@ -1187,6 +1189,41 @@ class UserPropositionsAPI(APIView):
                 }
             )
 
+class GetOutOfChat(APIView):
+    renderer_classes = (JSONRenderer,)
+    permission_classes = (permissions.AllowAny, )
+    authentication_classes = (
+        CsrfExemptSessionAuthentication, BasicAuthentication)
+    parser_classes = (MultiPartParser, FormParser, JSONParser, )
+
+    def get(self, request, pk):
+        try:                                           
+                                               
+            user = User.objects.get(                   
+                token=request.headers['Authorization'])
+        except Exception:                              
+            user = None
+
+        if user:
+            room = Room.objects.get(pk=pk)
+            logger.warning(user)
+            logger.warning(room.request_id.user == user)
+            logger.warning(room.proposition_id.user == user)
+            if room.request_id.user == user:
+                room.request_user_readed = True
+                room.save()
+            if room.proposition_id.user == user:
+                room.proposition_user_readed = True
+                room.save()
+            room.save()
+            return Response({
+                    "user": user.pk,
+                    "readed": True
+                })
+        else:
+            return Response({
+                "status": "No token specified"
+            })
 class FilteredPropositions(APIView):
     renderer_classes = (JSONRenderer,)
     permission_classes = (permissions.AllowAny, )
@@ -1227,7 +1264,7 @@ class FilteredPropositions(APIView):
                 user_request=user
             ).values('user_proposition__pk')
         else:
-            propositons = UserProposition.objects.all()
+            propositons = UserProposition.objects.filter(status='в работе')
         
         results = []
         domain = request.get_host()
@@ -1301,7 +1338,18 @@ class CreateRequestsAPI(generics.CreateAPIView):
     queryset = UserRequest.objects.all()
     parser_classes = (JSONParser, MultiPartParser, FormParser)
     serializer_class = GenericRequestSerializer
+    
+    def perform_create(self, serializer):
+        user = User.objects.get(
+                token=self.request.headers['Authorization'])        
+        return serializer.save(user=user)
 
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        instance = self.perform_create(serializer)
+        instance_serializer = GetGenericRequestSerializer(instance)
+        return Response(instance_serializer.data)
 
 class ActionRequestsAPI(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (permissions.AllowAny, )

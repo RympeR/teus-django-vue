@@ -9,6 +9,7 @@
     @apiParam {String} company User company (not required)
     @apiParam {String} image User avatar file (not required)
     @apiParam {String} code Code from sms (not required)
+    @apiParam {String} onesignal_token Code for one signal (not required)
 
     @apiSuccess {String} status ok or error
     @apiSuccessExample {json} Success-Response:
@@ -123,6 +124,7 @@
     @apiSuccess {Object} city city objects list
     @apiSuccess {Object} container Container object
     @apiSuccess {Object} line Line object
+    @apiSuccess {Boolean} readed False if there unreaded messages 
     @apiSuccess {Number} request_date Request date timestamp 
     @apiSuccess {Number} end_date End date timestamp 
 
@@ -159,6 +161,7 @@
                 "id": 1,
                 "name": "test loe"
             },
+            "readed": False,
             "start_date": 1615410000.0,
             "end_date": 1615410000.0
         }
@@ -287,7 +290,7 @@
 """
 
 """
-    @api {PUT} /api/containers/update-api-proposition/ 2.3 Update user proposition
+    @api {PUT} /api/containers/update-api-proposition/{proposition_id}  2.3 Update user proposition
     @apiName 2.3 Update user proposition
     @apiGroup Propositions
     @apiHeader {String} Authorization Users unique token
@@ -405,6 +408,7 @@
     @apiSuccess {Object} city city objects list
     @apiSuccess {Object} container Container object
     @apiSuccess {Object} line Line object
+    @apiSuccess {Boolean} readed False if there unreaded messages 
     @apiSuccess {Number} request_date Request date timestamp 
     @apiSuccess {Number} end_date End date timestamp 
 
@@ -441,6 +445,7 @@
                 "id": 1,
                 "name": "test loe"
             },
+            "readed": True,
             "request_date": 1615410000.0,
             "end_date": 1615410000.0
         }
@@ -481,7 +486,7 @@
 """
 
 """
-    @api {PUT} /api/containers/update-api-request/ 3.3 Update user request
+    @api {PUT} /api/containers/update-api-request/{request_id} 3.3 Update user request
     @apiName 3.3 Update user request
     @apiGroup Requests
     @apiHeader {String} Authorization Users unique token
@@ -836,7 +841,7 @@
                 },
                 "contianer": {
                     "name": "test24",
-                    "image": "http://127.0.0.1:8000/media/Ellipse_10.png"
+                    "image": "http://api-teus.maximusapp.com/media/Ellipse_10.png"
                 },
                 "user_request": {
                     "id": 1,
@@ -888,7 +893,7 @@
                 },
                 "contianer": {
                     "name": "test24",
-                    "image": "http://127.0.0.1:8000/media/Ellipse_10.png"
+                    "image": "http://api-teus.maximusapp.com/media/Ellipse_10.png"
                 },
                 "user_request": {
                     "id": 1,
@@ -937,9 +942,8 @@
 
     @apiParam {Number} pk Room id
     @apiParam {Number} user User id which has accepted ( request or proposition)
-    @apiParam {Boolean} accepted Stage on accept request
-    @apiParam {Boolean} validated_first First user validation step (after it send until second will not also send true)
-    @apiParam {Boolean} validated_second Second user validation step
+    @apiParam {Boolean} validated_owner First user validation step (after it send until second will not also send true)
+    @apiParam {Boolean} validated_customer Second user validation step
 
     @apiSuccessExample {json} Success-Response:
     HTTP/1.1 200 but needs handshake
@@ -953,4 +957,65 @@
         "status": "processed"
     }
     
+"""
+
+"""
+    @api {GET} /api/chat/get-room-info/{int:pk} 5.9 Get chat by id
+    @apiName 5.9 Get chat by id
+    @apiGroup Chat
+    @apiHeader {String} Authorization Users unique token
+
+    @apiParam {Number} pk room id
+
+    @apiSuccess {object} room chat object
+    @apiSuccessExample {json} Success-Response:
+    HTTP/1.1 200 OK
+    
+        {
+            "id": 7,
+            "line": {
+                "name": "testl2"
+            },
+            "contianer": {
+                "name": "test24",
+                "image": "http://api-teus.maximusapp.com/media/Ellipse_10.png"
+            },
+            "user_request": {
+                "id": 1,
+                "first_name": "admin",
+                "last_name": "admin",
+                "image": null
+            },
+            "user_proposition": {
+                "id": 1,
+                "first_name": "admin",
+                "last_name": "admin",
+                "image": null
+            },
+            "user_request_id": 6,
+            "user_proposition_id": 9,
+            "date": 1618572308,
+            "first_mark": false,
+            "second_mark": false,
+            "readed": false
+        }
+"""
+
+"""
+    @api {GET} /api/containers/quit-out-of-chat/{int:pk} 5.9 Quit Chat
+    @apiName 5.9 Quit chat
+    @apiGroup Chat
+    @apiHeader {String} Authorization Users unique token
+
+    @apiParam {Number} pk room id
+
+    @apiSuccess {Number} user User id
+    @apiSuccess {Boolean} readed 
+    @apiSuccessExample {json} Success-Response:
+    HTTP/1.1 200 OK
+    {
+        "user": 1,
+        "readed" : True
+    }
+
 """

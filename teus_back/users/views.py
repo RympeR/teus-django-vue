@@ -20,6 +20,8 @@ from .soap import *
 from .models import *
 from .utils import *
 from .exception import Api202, Api400
+import logging
+logger = logging.getLogger('django')
 
 def set_phone(phone):
     phone = str(phone)
@@ -126,7 +128,7 @@ class UserLogin(APIView):
         data = dict(request.data)
         print(data)
         print('-||-')
-        if '0999999999' in request.data.get('phone') and request.data.get('code') == '1111':
+        if '0999999999' in request.data.get('phone') and str(request.data.get('code')) == '1111':
             return Response(
                 {
                     "status": "ok",
@@ -138,8 +140,8 @@ class UserLogin(APIView):
         code = self.request.data.get('code')
         print(f'User->{registered_user}')
         if registered_user:
+            registered_user.onesignal_token = data.get('onesignal_token')
             if check_phone_code(phone, code):
-                print(f'check code->{check_phone_code(phone, code)}')
                 return Response(
                     {
                         "status": "ok",
@@ -158,11 +160,18 @@ class UserLogin(APIView):
                 print(f'check non reg code->{check_phone_code(phone, code)}')
                 data['token'] = User.generate_token(data['phone'][0])
                 print(data['token'])
+                if one_token:
+                    registered_user.onesignal_token = one_token
+                    registered_user.save()
+                print(f"{request.data} recieved without created user")  
                 user_token = UserSerializer.create(data)
+                if data.get('onesignal_token'):
+                    user_token.onesignal_token = data.get('onesignal_token')
+                    user_token.save()
                 return Response(
                     {
                         "status": "ok",
-                        "token": user_token
+                        "token": user_token.token
                     }, status=status.HTTP_200_OK
                 )
             else:
@@ -297,7 +306,8 @@ class UserAPI(APIView):
                     "phone": user.phone,
                     "first_name": user.first_name,
                     "last_name": user.last_name,
-                    "company": user.company
+                    "company": user.company,
+                    "onesignal_token": user.onesignal_token
                 }, status=status.HTTP_200_OK
             )
         else:
@@ -569,7 +579,8 @@ class UserTokenAPI(APIView):
                     "phone": user.phone,
                     "first_name": user.first_name,
                     "last_name": user.last_name,
-                    "company": user.company
+                    "company": user.company,
+                    "onesignal_token": user.onesignal_token
                 }, status=status.HTTP_200_OK
             )
         else:

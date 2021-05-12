@@ -10,7 +10,7 @@ urlpatterns = [
     path('update-room/<int:pk>', PutRoom.as_view()),
     path('delete-room/<int:pk>', GetRoom.as_view()),
     path('get-room/<int:pk>', GetRoom.as_view()),
-
+    path('get-room-info/<int:pk>', GetRoomInfo.as_view()),
     path('create-message/', PostChat.as_view()),
     path('update-message/<int:pk>', PutChat.as_view()),
     path('delete-message/<int:pk>', GetChat.as_view()),

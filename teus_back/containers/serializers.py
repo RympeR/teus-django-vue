@@ -245,7 +245,23 @@ class GenericRequestSerializer(serializers.ModelSerializer):
             user = User.objects.get(
                 token=request.headers['Authorization'])
             print(user)
+            print(attrs['city'])
             attrs['user']=user
+            obj  =  None
+            try:
+                obj = UserRequest.objects.get(
+                    user=attrs['user'],
+                    line=attrs['line'],
+                    city=attrs['city'],
+                    container=attrs['container'],
+                    request_date=attrs['request_date'],
+                    end_date=attrs['end_date'],
+                    status='в работе'
+                )
+            except Exception:
+                pass
+            if obj:
+                raise serializers.ValidationError
             return attrs
         except Exception as e:
             print(e)
@@ -273,7 +289,10 @@ class GenericPropositionSerializer(serializers.ModelSerializer):
                     user=attrs['user'],
                     city=attrs['city'],
                     line=attrs['line'],
+                    start_date=attrs['start_date'],
+                    end_date=attrs['end_date'],
                     container=attrs['container'],
+                    status='в работе'
                 )
             except Exception:
                 pass

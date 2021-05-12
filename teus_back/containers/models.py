@@ -15,10 +15,10 @@ STATUSES = (
 
 class UserRequest(models.Model):
     user = models.ForeignKey(User, related_name='user', on_delete=models.CASCADE)
-    amount = models.IntegerField(verbose_name='amount', null=True, blank=True)
-    city = models.ManyToManyField(City, related_name='cities', blank=True)
-    line = models.ForeignKey(Line, related_name='line', on_delete=models.CASCADE, null=True, blank=True)
-    container = models.ForeignKey(Container, related_name='container', on_delete=models.CASCADE, null=True, blank=True)
+    amount = models.IntegerField(verbose_name='amount')
+    city = models.ManyToManyField(City, related_name='cities',default=1, blank=True)
+    line = models.ForeignKey(Line, related_name='line', on_delete=models.CASCADE,default=1, blank=True)
+    container = models.ForeignKey(Container, related_name='container', on_delete=models.CASCADE,default=1, blank=True)
     request_date = UnixTimeStampField(verbose_name='date', null=True, blank=True)
     end_date = UnixTimeStampField(verbose_name='end date', null=True, blank=True)
     status = models.CharField(max_length=20, choices=STATUSES, default='в работе')
@@ -28,10 +28,10 @@ class UserRequest(models.Model):
 
 class UserProposition(models.Model):
     user = models.ForeignKey(User, related_name='user_proposition', on_delete=models.CASCADE)
-    amount = models.IntegerField(verbose_name='amount', null=True, blank=True)
-    city = models.ForeignKey(City, related_name='city_proposition', on_delete=models.CASCADE, null=True, blank=True)
-    line = models.ForeignKey(Line, related_name='line_proposition', on_delete=models.CASCADE, null=True, blank=True)
-    container = models.ForeignKey(Container, related_name='container_proposition', on_delete=models.CASCADE, null=True, blank=True)
+    amount = models.IntegerField(verbose_name='amount')
+    city = models.ForeignKey(City, related_name='city_proposition', on_delete=models.CASCADE,default=1, blank=True)
+    line = models.ForeignKey(Line, related_name='line_proposition', on_delete=models.CASCADE,default=1, blank=True)
+    container = models.ForeignKey(Container, related_name='container_proposition', on_delete=models.CASCADE, default=1, blank=True)
     start_date = UnixTimeStampField(verbose_name='start date', null=True, blank=True)
     end_date = UnixTimeStampField(verbose_name='end date', null=True, blank=True)
     status = models.CharField(max_length=20, choices=STATUSES, default='в работе')

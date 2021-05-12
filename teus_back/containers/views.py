@@ -818,6 +818,13 @@ class APIDOCUserRequests(APIView):
                         "id": city.id,
                         "name": city.name,
                     })
+                rooms = Room.objects.filter(request_id=request_)
+                for room in rooms:
+                    if not room.request_user_readed:
+                        readed=False
+                        break
+                else:
+                    readed=True
                 result.append(
                     {
                         "id": request_.id,
@@ -838,6 +845,7 @@ class APIDOCUserRequests(APIView):
                             "id": request_.line.id,
                             "name": request_.line.name,
                         },
+                        "readed": readed,
                         "status": request_.status,
                         "request_date": int(request_.request_date.timestamp()),
                         "end_date": int(request_.end_date.timestamp()),
@@ -1039,7 +1047,13 @@ class APDICOUserPropositionsAPI(APIView):
                         domain=domain, path=container_image)
                 else:
                     container_image_url = None
-                
+                rooms = Room.objects.filter(proposition_id=proposition)
+                for room in rooms:
+                    if not room.proposition_user_readed:
+                        readed=False
+                        break
+                else:
+                    readed=True
                 result.append(
                     {
                         "id": proposition.id,
@@ -1063,6 +1077,7 @@ class APDICOUserPropositionsAPI(APIView):
                             "id": proposition.line.id if proposition.line else None,
                             "name": proposition.line.name if proposition.line else None,
                         },
+                        "readed": readed,
                         "status": proposition.status,
                         "start_date": int(proposition.start_date.timestamp()),
                         "end_date": int(proposition.end_date.timestamp())
@@ -1173,6 +1188,36 @@ class UserPropositionsAPI(APIView):
                 }
             )
 
+class GetOutOfChat(APIView):
+    renderer_classes = (JSONRenderer,)
+    permission_classes = (permissions.AllowAny, )
+    authentication_classes = (
+        CsrfExemptSessionAuthentication, BasicAuthentication)
+    parser_classes = (MultiPartParser, FormParser, JSONParser, )
+
+    def put(self, request, pk):
+        try:                                           
+                                               
+            user = User.objects.get(                   
+                token=request.headers['Authorization'])
+        except Exception:                              
+            user = None
+
+        if user:
+            room = Room.objects.get(pk=pk)
+            if room.request_id == user:
+                room.requset_user_readed = True
+            if room.proposition_id == user:
+                room.proposition_user_readed = False
+            room.save()
+            return Response({
+                    "user": user.pk,
+                    "readed": True
+                })
+        else:
+            return Response({
+                "status": "No token specified"
+            })
 class FilteredPropositions(APIView):
     renderer_classes = (JSONRenderer,)
     permission_classes = (permissions.AllowAny, )
@@ -1213,7 +1258,7 @@ class FilteredPropositions(APIView):
                 user_request=user
             ).values('user_proposition__pk')
         else:
-            propositons = UserProposition.objects.all()
+            propositons = UserProposition.objects.filter(status='в работе')
         
         results = []
         domain = request.get_host()

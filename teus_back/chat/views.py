@@ -131,7 +131,7 @@ class GetRoomsProposition(APIView):
                             "image": user_proposition_image_url,
                         },
 
-                        "amount": obj.proposition_id.amount,
+                        "amount": obj.request_id.amount,
                         "user_request_id": obj.request_id.pk,
                         "user_proposition_id": obj.proposition_id.pk,
                         "date": int(obj.date.timestamp()),
@@ -223,7 +223,7 @@ class GetRoomsRequest(APIView):
                             "last_name": obj.proposition_id.user.last_name,
                             "image": user_proposition_image_url,
                         },
-                        "amount": obj.request_id.amount,
+                        "amount": obj.proposition_id.amount,
                         "user_request_id": obj.request_id.pk,
                         "user_proposition_id": obj.proposition_id.pk,
                         "date": int(obj.date.timestamp()),
@@ -242,7 +242,92 @@ class GetRoomsRequest(APIView):
                 }
             )
 
+class GetRoomInfo(APIView):
+    permission_classes = (AllowAny, )
+    renderer_classes = (JSONRenderer, )
+    parser_classes = (JSONParser, MultiPartParser,
+                      FileUploadParser, FormParser)
+    def get(self, request, pk):
+        try:
+            user = User.objects.get(
+                token=request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            try:
+                domain = request.get_host()
+                room = Room.objects.get(pk=pk)
+                try:
+                    path_image = room.request_id.user.image.url
+                except Exception:
+                    path_image = None
+                if path_image:
+                    user_request_image_url = 'http://{domain}{path}'.format(
+                        domain=domain, path=path_image)
+                else:
+                    user_request_image_url = None
+                try:
+                    path_image = room.proposition_id.user.image.url
+                except Exception:
+                    path_image = None
+                if path_image:
+                    user_proposition_image_url = 'http://{domain}{path}'.format(
+                        domain=domain, path=path_image)
+                else:
+                    user_proposition_image_url = None
+                try:
+                    path_image = room.request_id.container.image.url
+                except Exception:
+                    path_image = None
+                if path_image:
+                    container_request_image_url = 'http://{domain}{path}'.format(
+                        domain=domain, path=path_image)
+                else:
+                    container_request_image_url = None
+                return Response(
+                    {
+                        "id": room.pk,
+                        "line":{
+                            "name": room.request_id.line.name,
+                        },
+                        "contianer":{
+                            "name": room.request_id.container.name,
+                            "image": container_request_image_url,
+                        },
+                        "user_request":{
+                            "id": room.request_id.user.pk,
+                            "first_name": room.request_id.user.first_name,
+                            "last_name": room.request_id.user.last_name,
+                            "image": user_request_image_url,
+                        },
+                        "user_proposition":{
+                            "id": room.proposition_id.user.pk,
+                            "first_name": room.proposition_id.user.first_name,
+                            "last_name": room.proposition_id.user.last_name,
+                            "image": user_proposition_image_url,
+                        },
+                        "amount": room.proposition_id.amount,
+                        "user_request_id": room.request_id.pk,
+                        "user_proposition_id": room.proposition_id.pk,
+                        "date": int(room.date.timestamp()),
+                        "first_mark": room.first_mark,
+                        "second_mark": room.second_mark,
+                        "readed": room.request_user_readed
+                    }
+                )
+            except Room.objects.DoesNotExist: 
+                return Response(
+                    {
+                        "status": "Room with provided id does not exist"
+                    }
+                )
 
+        else:
+            return Response(
+                {
+                    "status": "invalid token"
+                }
+            )
 class GetChatMessages(APIView):
     permission_classes = (AllowAny, )
     renderer_classes = (JSONRenderer, )
@@ -262,7 +347,7 @@ class GetChatMessages(APIView):
             objects = Chat.objects.filter(
                 Q(room=room) &
                ~Q(text='') &
-                Q(attachment__isnull=False)
+                Q(attachment__isnull=False) 
             ).order_by('-date')
             results = []
             domain = request.get_host()

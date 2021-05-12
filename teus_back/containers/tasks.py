@@ -31,5 +31,5 @@ def check_matches():
             send_push(
                     'TEUs',
                     f'''{_filter.user.first_name} Появились предложения по вашему запросу''',
-                    _filter.user.pk
+                    _filter.user.onesignal_token
                 )

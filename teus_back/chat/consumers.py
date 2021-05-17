@@ -48,11 +48,11 @@ class ChatConsumer(WebsocketConsumer):
         }
         print(payload)
         chat = ChatCreateSerializer(data=payload)
-        
-        if chat.is_valid():
-            chat.save()
-        else:
-            print('not valid')
+        if not (message in ['', None] and message in ['', None]):  
+            if chat.is_valid():
+                chat.save()
+            else:
+                print('not valid')
         try:
             room_obj = Room.objects.get(pk=int(room))
         except Room.DoesNotExist:

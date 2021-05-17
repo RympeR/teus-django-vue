@@ -1074,6 +1074,7 @@ class APDICOUserPropositionsAPI(APIView):
                             "id": proposition.container.id,
                             "name": proposition.container.name,
                             "image": container_image_url
+
                         },
                         "line": {
                             "id": proposition.line.id if proposition.line else None,
@@ -1325,7 +1326,7 @@ class FilteredPropositions(APIView):
                     "name": proposition.container.name,
                     "image": container_image_url
                 },
-                "status": status,
+                "is_partner": status,
                 "start_date": int(proposition.start_date.timestamp()),
                 "end_date": int(proposition.end_date.timestamp())
             })

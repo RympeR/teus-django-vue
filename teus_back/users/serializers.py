@@ -1,6 +1,6 @@
 from django.db.models.fields import NullBooleanField
 from rest_framework import serializers
-from .models import User
+from .models import User, Phone
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
 import logging

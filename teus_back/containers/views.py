@@ -1263,7 +1263,7 @@ class FilteredPropositions(APIView):
                 propositons = UserProposition.objects.filter(status='в работе')
             deals = Deal.objects.filter(
                 user_request=user
-            ).values('user_proposition__pk')
+            )
         else:
             propositons = UserProposition.objects.filter(status='в работе')
         
@@ -1301,7 +1301,7 @@ class FilteredPropositions(APIView):
             
             status = False
             if deals:
-                if proposition.user.id in deals:
+                if proposition.user.id in [deal.pk for deal in deals]:
                     status = True
             results.append({
                 "id":  proposition.id,

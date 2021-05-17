@@ -8,6 +8,8 @@ from dateutil.relativedelta import relativedelta
 from django.db.models import Q
 from django.utils import timezone
 from teus.func import send_push
+import logging
+logger = logging.getLogger('django')
 
 class Command(BaseCommand):
     def handle(self, *args, **kwargs):
@@ -27,22 +29,21 @@ class Command(BaseCommand):
                         Q(created_at__gte=timezone.now()-timedelta(days=1))
                     )
                     if propositons.exists():
-                        if _filter.user.onesignal_token != '':
+                        logger.warning(f"{_filter.user.onesignal_token} --> player id")
+                        if _filter.user.onesignal_token != '' and _filter.user.onesignal_token is not None:
                             send_push(
                                     'TEUs',
                                     f'''{_filter.user.first_name} Появились предложения по вашему запросу''',
-                                    _filter.user.onesignal_token
+                                    _filter.user.onesignal_token,
+                                    {'request':_filter.pk}
                                 )
-                for proposition in UserProposition.objects.all():
-                    if datetime.datetime.now().timestamp() > proposition.end_date:
-                        propositon.status = 'в архиве'
-                        proposion.save()
+                            break
             except KeyboardInterrupt:
                 return
             except:
                 traceback.print_exc()
 
             try:
-                time.sleep(5)
+                time.sleep(3600)
             except KeyboardInterrupt:
                 return

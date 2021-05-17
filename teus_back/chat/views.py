@@ -316,7 +316,7 @@ class GetRoomInfo(APIView):
                         "readed": room.request_user_readed
                     }
                 )
-            except Room.objects.DoesNotExist: 
+            except Exception: 
                 return Response(
                     {
                         "status": "Room with provided id does not exist"
@@ -346,9 +346,7 @@ class GetChatMessages(APIView):
             limit = int(request.GET.get('limit', 20))
             room = Room.objects.get(pk=room_id)
             objects = Chat.objects.filter(
-                Q(room=room) &
-               ~Q(text='') &
-                Q(attachment__isnull=False) 
+                Q(room=room)
             ).order_by('-date')
             results = []
             domain = request.get_host()

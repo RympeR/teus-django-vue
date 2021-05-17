@@ -24,7 +24,8 @@ def send_push(title_ru, text_ru, user_id, push_data=None):
     if push_data:
         data['data'] = push_data
 
-    # create a notification
+    # create a notificatio
+    logger.warning(user_id)
     notification = onesignal.Notification(post_body=data)
     # send notification, it will return a response
     # logging.warning('createdd notification')

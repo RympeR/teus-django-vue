@@ -32,7 +32,7 @@ class User(models.Model):
         ordering = ['-id']
 
     def __str__(self):
-        return str(self.phone)
+        return str(self.pk) + '--' + str(self.phone)
 
     @staticmethod
     def generate_token(msg):

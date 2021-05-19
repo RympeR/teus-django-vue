@@ -153,9 +153,6 @@ class DealConsumer(WebsocketConsumer):
             if room_obj.proposition_id.user.pk == int(user):
                 room_obj.second_mark = True
                 room_obj.save()
-            if room_obj.proposition_id.user.pk == int(user) and validated_owner:
-                room_obj.first_mark = True
-                room_obj.save()
             if room_obj.second_mark and room_obj.first_mark:
                 if validated_owner and validated_customer:
                     if room_obj.request_id.amount > room_obj.proposition_id.amount:

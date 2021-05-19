@@ -217,7 +217,8 @@ class UserAPI(APIView):
                     "image": image_url,
                     "first_name": user.first_name,
                     "last_name": user.last_name,
-                    "company": user.company
+                    "company": user.company,
+                    "onesignal_token": user.onesignal_token,
                 }, status=status.HTTP_200_OK
             )
         else:
@@ -246,11 +247,15 @@ class UserAPI(APIView):
         print(f'User->{registered_user}')
         if registered_user:
             if check_phone_code(phone, code):
+                data['token'] = User.generate_token(phone)
+                logger.warning('---> upodate onseignal')
+                logger.warning(UserSerializer.set_token(registered_user, data))
+                
                 print(f'check code->{check_phone_code(phone, code)}')
                 return Response(
                     {
                         "status": "ok",
-                        "token": registered_user.token
+                        "token": data['token']
                     }, status=status.HTTP_200_OK
                 )
             else:
@@ -269,7 +274,7 @@ class UserAPI(APIView):
                 return Response(
                     {
                         "status": "ok",
-                        "token": user_token
+                        "token": user_token.token
                     }, status=status.HTTP_200_OK
                 )
             else:

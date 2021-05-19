@@ -1298,10 +1298,9 @@ class FilteredPropositions(APIView):
             else:
                 user_image_url = None
 
-            
             status = False
             if deals:
-                if proposition.user.id in [deal.pk for deal in deals]:
+                if proposition.user.id in [*[deal.user_proposition.pk for deal in deals], *[deal.user_request.pk for deal in deals]]:
                     status = True
             results.append({
                 "id":  proposition.id,

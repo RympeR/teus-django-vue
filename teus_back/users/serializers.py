@@ -61,10 +61,28 @@ class UserSerializer(serializers.ModelSerializer):
         )
         user.save()
         return user
-
+    
+    @staticmethod
+    def set_token(user, data):
+        user.token=data['token']
+        user.save()
+        if not data.get('onesignal_token'):
+            return None
+        if isinstance(data['onesignal_token'], list):
+            user.onesignal_token = data['onesignal_token'][0]
+        else:
+            user.onesignal_token = data['onesignal_token']
+        user.save()
+        return user.pk
     @staticmethod
     def update(validated_data):
-        user = User.objects.filter(pk=validated_data['user_id']).first()
+        try:
+            user = User.objects.filter(pk=validated_data['user_id']).first()
+        except Exception as e:
+            try:
+                pass
+            except Exception as e:
+                pass
         print(user)
         print(validated_data)
         print('-'*10)

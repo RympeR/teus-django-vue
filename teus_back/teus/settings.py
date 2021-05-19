@@ -115,7 +115,7 @@ USE_L10N = False
 
 LANGUAGE_CODE = 'ru-RU'
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)

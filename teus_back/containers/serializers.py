@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from rest_framework import exceptions
 from .models import *
 from info.serializers import ContainerSerializer, LineSerializer, CitySerializer, GenericCitySerializer
 from users.serializers import UserSerializer
@@ -6,7 +7,9 @@ from datetime import datetime
 from rest_framework.views import APIView 
 from users.models import *
 from info.models import *
-
+from chat.models import *
+from rest_framework.response import Response
+from rest_framework import status
 class TimestampField(serializers.Field):
     def to_representation(self, value):
         return value.timestamp()
@@ -293,7 +296,7 @@ class GenericRequestSerializer(serializers.ModelSerializer):
     request_date = TimestampField(required=False)
     end_date = TimestampField(required=False)
     user =  serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), required=False)
-    city = serializers.PrimaryKeyRelatedField(queryset=City.objects.all(), many=True)
+    # city = serializers.PrimaryKeyRelatedField(queryset=City.objects.all(), many=True)
 
     def validate(self, attrs):
         print('validated')
@@ -301,24 +304,22 @@ class GenericRequestSerializer(serializers.ModelSerializer):
             request = self.context.get('request')
             user = User.objects.get(
                 token=request.headers['Authorization'])
-            print(user)
             print(attrs['city'])
             attrs['user']=user
             obj  =  None
-            try:
-                obj = UserRequest.objects.get(
-                    user=attrs['user'],
-                    line=attrs['line'],
-                    city=attrs['city'],
-                    container=attrs['container'],
-                    request_date=attrs['request_date'],
-                    end_date=attrs['end_date'],
-                    status='в работе'
-                )
-            except Exception:
-                pass
+            
+            obj = UserRequest.objects.filter(
+                user=attrs['user'],
+                line=attrs['line'],
+                city=attrs['city'],
+                container=attrs['container'],
+                request_date=attrs['request_date'],
+                end_date=attrs['end_date'],
+                status='в работе'
+            )
+            print(f"{obj} --> obj")
             if obj:
-                raise serializers.ValidationError
+                return Response({}, status=status.HTTP_406_NOT_ACCEPTABLE)
             return attrs
         except Exception as e:
             print(e)
@@ -351,10 +352,11 @@ class GenericPropositionSerializer(serializers.ModelSerializer):
                     container=attrs['container'],
                     status='в работе'
                 )
-            except Exception:
+            except Exception as e:
+                print(e)
                 pass
             if obj:
-                raise serializers.ValidationError
+                return Response({}, status=status.HTTP_406_NOT_ACCEPTABLE)
             return attrs
         except Exception as e:
             print(e)

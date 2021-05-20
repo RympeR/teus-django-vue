@@ -108,6 +108,23 @@
 """
 
 """
+    @api {POST} /api/user/logout/ 1.4 Logout
+    @apiName 1.4 Logout
+    @apiGroup User
+    @apiHeader {String} Authorization Users unique token
+
+    @apiSuccessExample {json} Success-Response:
+    HTTP/1.1 200 OK
+    {
+    }
+    @apiErrorExample {json} Error-Response:
+    HTTP/1.1 200 Not Found
+    {
+        "status": "invalid token"
+    }
+"""
+
+"""
     @api {GET} /api/containers/get-apidoc-api-proposition/ 2.0 Get user propositions
     @apiName 2.0 Get user propositions
     @apiGroup Requests
@@ -284,6 +301,11 @@
     }
     @apiErrorExample {json} Error-Response:
     HTTP/1.1 200 without token
+    {
+        "status": "invalid token"
+    }
+    @apiErrorExample {json} Error-Response:
+    HTTP/1.1 406 not accepted
     {
         "status": "invalid token"
     }
@@ -482,6 +504,10 @@
     HTTP/1.1 200 without token
     {
         "status": "invalid token"
+    }
+    @apiErrorExample {json} Error-Response:
+    HTTP/1.1 406 not accepted
+    {
     }
 """
 
@@ -855,6 +881,7 @@
                     "last_name": "admin",
                     "image": null
                 },
+                "was_handshake": False,
                 "user_request_id": 6,
                 "user_proposition_id": 9,
                 "date": 1618572308,
@@ -907,6 +934,7 @@
                     "last_name": "admin",
                     "image": null
                 },
+                "was_handshake": True,
                 "user_request_id": 6,
                 "user_proposition_id": 9,
                 "date": 1618572308,

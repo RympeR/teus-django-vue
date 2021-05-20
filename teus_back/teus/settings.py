@@ -22,6 +22,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -34,7 +35,6 @@ INSTALLED_APPS = [
     'info',
     'containers',
 
-    'channels',
     'django_filters',
     'rest_framework',
     'rest_framework.authtoken',
@@ -75,9 +75,6 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'teus.wsgi.application'
-ASGI_APPLICATION = 'teus.asgi.application'
-
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
@@ -105,6 +102,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
+
+WSGI_APPLICATION = 'teus.wsgi.application'
+ASGI_APPLICATION = 'teus.asgi.application'
 
 
 TIME_ZONE = 'UTC'

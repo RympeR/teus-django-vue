@@ -29,6 +29,7 @@ from pprint import pprint
 import logging
 logger = logging.getLogger('django')
 
+
 class CsrfExemptSessionAuthentication(SessionAuthentication):
 
     def enforce_csrf(self, request):
@@ -724,7 +725,7 @@ class DealsList(APIView):
         except Exception:
             user = None
         if user:
-            
+
             data = self.userfilter.get_deals(request, 'postgres', '1111')
         else:
             request.GET = {}
@@ -823,10 +824,10 @@ class APIDOCUserRequests(APIView):
                 rooms = Room.objects.filter(request_id=request_)
                 for room in rooms:
                     if not room.request_user_readed:
-                        readed=False
+                        readed = False
                         break
                 else:
-                    readed=True
+                    readed = True
                 result.append(
                     {
                         "id": request_.id,
@@ -1051,10 +1052,10 @@ class APDICOUserPropositionsAPI(APIView):
                 rooms = Room.objects.filter(proposition_id=proposition)
                 for room in rooms:
                     if not room.proposition_user_readed:
-                        readed=False
+                        readed = False
                         break
                 else:
-                    readed=True
+                    readed = True
                 result.append(
                     {
                         "id": proposition.id,
@@ -1081,6 +1082,7 @@ class APDICOUserPropositionsAPI(APIView):
                         },
                         "readed": readed,
                         "status": proposition.status,
+                        "created_at": int(proposition.created_at.timestamp()),
                         "start_date": int(proposition.start_date.timestamp()),
                         "end_date": int(proposition.end_date.timestamp())
                     }
@@ -1174,7 +1176,8 @@ class UserPropositionsAPI(APIView):
         except Exception:
             user = None
         if user:
-            user_proposition = UserProposition.objects.get(pk=request.data['id'])
+            user_proposition = UserProposition.objects.get(
+                pk=request.data['id'])
             user_proposition.status = request.data['status']
             user_proposition.save()
             return Response(
@@ -1190,6 +1193,7 @@ class UserPropositionsAPI(APIView):
                 }
             )
 
+
 class GetOutOfChat(APIView):
     renderer_classes = (JSONRenderer,)
     permission_classes = (permissions.AllowAny, )
@@ -1198,11 +1202,11 @@ class GetOutOfChat(APIView):
     parser_classes = (MultiPartParser, FormParser, JSONParser, )
 
     def get(self, request, pk):
-        try:                                           
-                                               
-            user = User.objects.get(                   
+        try:
+
+            user = User.objects.get(
                 token=request.headers['Authorization'])
-        except Exception:                              
+        except Exception:
             user = None
 
         if user:
@@ -1218,13 +1222,15 @@ class GetOutOfChat(APIView):
                 room.save()
             room.save()
             return Response({
-                    "user": user.pk,
-                    "readed": True
-                })
+                "user": user.pk,
+                "readed": True
+            })
         else:
             return Response({
                 "status": "No token specified"
             })
+
+
 class FilteredPropositions(APIView):
     renderer_classes = (JSONRenderer,)
     permission_classes = (permissions.AllowAny, )
@@ -1264,9 +1270,10 @@ class FilteredPropositions(APIView):
             deals = Deal.objects.filter(
                 user_request=user
             )
+
         else:
             propositons = UserProposition.objects.filter(status='в работе')
-        
+
         results = []
         domain = request.get_host()
         for proposition in propositons:
@@ -1302,6 +1309,7 @@ class FilteredPropositions(APIView):
             if deals:
                 if proposition.user.id in [*[deal.user_proposition.pk for deal in deals], *[deal.user_request.pk for deal in deals]]:
                     status = True
+
             results.append({
                 "id":  proposition.id,
                 "user": {
@@ -1324,6 +1332,7 @@ class FilteredPropositions(APIView):
                     "name": proposition.container.name,
                     "image": container_image_url
                 },
+                "created_at": int(proposition.created_at.timestamp()),
                 "is_partner": status,
                 "start_date": int(proposition.start_date.timestamp()),
                 "end_date": int(proposition.end_date.timestamp())
@@ -1333,23 +1342,28 @@ class FilteredPropositions(APIView):
             results[offset:limit+offset]
         )
 
+
 class CreateRequestsAPI(generics.CreateAPIView):
     permission_classes = (permissions.AllowAny, )
     queryset = UserRequest.objects.all()
     parser_classes = (JSONParser, MultiPartParser, FormParser)
     serializer_class = GenericRequestSerializer
-    
+
     def perform_create(self, serializer):
         user = User.objects.get(
-                token=self.request.headers['Authorization'])        
+            token=self.request.headers['Authorization'])
         return serializer.save(user=user)
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
+        try:
+            serializer.is_valid(raise_exception=True)
+        except AssertionError:
+            return Response({}, status=status.HTTP_406_NOT_ACCEPTABLE)
         instance = self.perform_create(serializer)
         instance_serializer = GetGenericRequestSerializer(instance)
         return Response(instance_serializer.data)
+
 
 class ActionRequestsAPI(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (permissions.AllowAny, )
@@ -1366,6 +1380,16 @@ class CreatePropositionAPI(generics.CreateAPIView):
     queryset = UserProposition.objects.all()
     parser_classes = (JSONParser, MultiPartParser, FormParser)
     serializer_class = GenericPropositionSerializer
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        try:
+            serializer.is_valid(raise_exception=True)
+        except AssertionError:
+            return Response({}, status=status.HTTP_406_NOT_ACCEPTABLE)
+        instance = self.perform_create(serializer)
+        instance_serializer = serializer(instance)
+        return Response(instance_serializer.data)
 
 
 class ActionPropositionAPI(generics.RetrieveUpdateDestroyAPIView):

@@ -1,7 +1,8 @@
 from django.db import models
 from users.models import User
-from containers.models import UserRequest, UserProposition, Deal
+from containers.models import UserRequest, UserProposition
 from unixtimestampfield.fields import UnixTimeStampField
+from info.models import City, Container, Line
 
 class Room(models.Model):
 
@@ -29,3 +30,16 @@ class Chat(models.Model):
         verbose_name_plural = 'Чаты'
         ordering = ['-date']
         unique_together = ['date', 'user', 'room']
+
+class Deal(models.Model):
+    user_request = models.ForeignKey(User, related_name='deal_user_request', on_delete=models.CASCADE)
+    user_proposition = models.ForeignKey(User, related_name='deal_user_proposition', on_delete=models.CASCADE)
+    room = models.ForeignKey(Room, related_name='room_deal', on_delete=models.CASCADE, null=True, blank=True)
+    amount = models.IntegerField(verbose_name='Кол-во')
+    city = models.ForeignKey(City, related_name='city_deal', on_delete=models.CASCADE)
+    line = models.ForeignKey(Line, related_name='line_deal', on_delete=models.CASCADE)
+    container = models.ForeignKey(Container, related_name='container_deal', on_delete=models.CASCADE)
+    handshake_time = UnixTimeStampField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-handshake_time']

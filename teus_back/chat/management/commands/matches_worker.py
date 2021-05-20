@@ -38,14 +38,6 @@ class Command(BaseCommand):
                                     {'request':_filter.pk}
                                 )
                             break
-                for request_ in UserRequest.objects.all():
-                    if datetime.now().timestamp() > request_.end_date.timestamp():
-                        request_.status = 'в архиве'
-                        request_.save()
-                for proposition in UserProposition.objects.all():
-                    if datetime.now().timestamp() > proposition.end_date.timestamp():
-                        proposition.status = 'в архиве'
-                        proposition.save()
             except KeyboardInterrupt:
                 return
             except:

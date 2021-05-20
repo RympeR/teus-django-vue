@@ -11,6 +11,7 @@ urlpatterns = [
     path('get-users-list', UsersList.as_view() ,name='UsersFilterList'),
     
     path('login/', UserTokenAPI.as_view(), name='UserCreate'),
+    path('logout/', LogoutAPI.as_view(), name='UserLogout'),
     path('api-profile-update/', UserTokenAPI.as_view(), name='UserUpdate'),
     path('api-profile-delete/', UserTokenAPI.as_view(), name='UserDelete'),
     path('api-profile-get/', UserTokenAPI.as_view(), name='UserProfile'),

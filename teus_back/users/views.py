@@ -23,6 +23,7 @@ from .exception import Api202, Api400
 import logging
 logger = logging.getLogger('django')
 
+
 def set_phone(phone):
     phone = str(phone)
     if phone and type(phone) is not int:
@@ -123,7 +124,7 @@ class UserLogin(APIView):
     parser_classes = (FormParser, JSONParser, MultiPartParser)
     authentication_classes = (
         CsrfExemptSessionAuthentication, BasicAuthentication)
-    
+
     def post(self, request):
         data = dict(request.data)
         print(data)
@@ -152,9 +153,9 @@ class UserLogin(APIView):
                 get_phone_code(phone)
                 print(f'check code->{check_phone_code(phone, code)}')
                 raise Api202(
-                        ['This phone is not confirmed, we sent SMS with a confirmation code'],
-                        'user'
-                    )
+                    ['This phone is not confirmed, we sent SMS with a confirmation code'],
+                    'user'
+                )
         else:
             if check_phone_code(phone, code):
                 print(f'check non reg code->{check_phone_code(phone, code)}')
@@ -163,7 +164,7 @@ class UserLogin(APIView):
                 if one_token:
                     registered_user.onesignal_token = one_token
                     registered_user.save()
-                print(f"{request.data} recieved without created user")  
+                print(f"{request.data} recieved without created user")
                 user_token = UserSerializer.create(data)
                 if data.get('onesignal_token'):
                     user_token.onesignal_token = data.get('onesignal_token')
@@ -181,7 +182,6 @@ class UserLogin(APIView):
                     ['This phone is not confirmed, we sent SMS with a confirmation code'],
                     'user'
                 )
-
 
 
 @renderer_classes((JSONRenderer,))
@@ -250,7 +250,7 @@ class UserAPI(APIView):
                 data['token'] = User.generate_token(phone)
                 logger.warning('---> upodate onseignal')
                 logger.warning(UserSerializer.set_token(registered_user, data))
-                
+
                 print(f'check code->{check_phone_code(phone, code)}')
                 return Response(
                     {
@@ -262,9 +262,9 @@ class UserAPI(APIView):
                 get_phone_code(phone)
                 print(f'check code->{check_phone_code(phone, code)}')
                 raise Api202(
-                        ['This phone is not confirmed, we sent SMS with a confirmation code'],
-                        'user'
-                    )
+                    ['This phone is not confirmed, we sent SMS with a confirmation code'],
+                    'user'
+                )
         else:
             if check_phone_code(phone, code):
                 print(f'check non reg code->{check_phone_code(phone, code)}')
@@ -351,6 +351,7 @@ class UserListAPI(APIView):
     authentication_classes = (
         CsrfExemptSessionAuthentication, BasicAuthentication)
     parser_classes = (MultiPartParser, FormParser, JSONParser, )
+
     def get(self, *args, **kwargs):
 
         users = UserSerializer.getList()
@@ -445,13 +446,13 @@ class AdminAPI(APIView):
         try:
             print(request.headers)
             user = User.objects.get(
-                Q(token=request.headers['authorization']) 
+                Q(token=request.headers['authorization'])
             )
         except Exception as e:
             print(e)
             user = None
         if user:
-            print(f'\n\ngot {user}\n\n') 
+            print(f'\n\ngot {user}\n\n')
             return Response(
                 {
                     "status": True,
@@ -486,8 +487,9 @@ class ChangePasswordAPI(APIView):
             user = None
         print(User)
         if user:
-            print( self.request.data)
-            user = UserSerializer.update_password(user, self.request.data['new_password'])
+            print(self.request.data)
+            user = UserSerializer.update_password(
+                user, self.request.data['new_password'])
             print(f"{user} updated")
             response = Response()
             print(self.request.data)
@@ -613,3 +615,21 @@ class UserTokenAPI(APIView):
                     "status": "invalid token"
                 }
             )
+
+
+class LogoutAPI(APIView):
+    permission_classes = permissions.AllowAny,
+
+    def post(self, request):
+        try:
+            user = User.objects.get(
+                token=self.request.headers['Authorization'])
+        except Exception:
+            user = None
+        if user:
+            user.token = None
+            user.onesignal_token = None
+            user.save()
+            return Response({}, status=status.HTTP_200_OK)
+        else:
+            return Response({"status": "invalid token"})

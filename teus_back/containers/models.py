@@ -36,19 +36,7 @@ class UserProposition(models.Model):
     end_date = UnixTimeStampField(verbose_name='end date', null=True, blank=True)
     status = models.CharField(max_length=20, choices=STATUSES, default='в работе')
     created_at = UnixTimeStampField(auto_now_add=True, null=True)
-
+    
     class Meta:
         ordering = ['-end_date', '-pk']
        
-
-class Deal(models.Model):
-    user_request = models.ForeignKey(User, related_name='deal_user_request', on_delete=models.CASCADE)
-    user_proposition = models.ForeignKey(User, related_name='deal_user_proposition', on_delete=models.CASCADE)
-    amount = models.IntegerField(verbose_name='Кол-во')
-    city = models.ForeignKey(City, related_name='city_deal', on_delete=models.CASCADE)
-    line = models.ForeignKey(Line, related_name='line_deal', on_delete=models.CASCADE)
-    container = models.ForeignKey(Container, related_name='container_deal', on_delete=models.CASCADE)
-    handshake_time = UnixTimeStampField(auto_now_add=True)
-
-    class Meta:
-        ordering = ['-handshake_time']

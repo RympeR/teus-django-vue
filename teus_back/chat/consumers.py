@@ -5,9 +5,8 @@ from channels.generic.websocket import WebsocketConsumer
 from asgiref.sync import async_to_sync
 import requests
 from .serializers import ChatCreateSerializer
-from .models import Chat, Room
+from .models import Chat, Room, Deal
 from teus.func import send_push
-from containers.models import Deal
 import logging
 logger = logging.getLogger('django')
 
@@ -147,10 +146,10 @@ class DealConsumer(WebsocketConsumer):
         except Room.DoesNotExist:
             room_obj = None
         if room_obj:
-            if room_obj.request_id.user.pk == int(user):
+            if room_obj.request_id.user.pk == int(user) and validated_customer:
                 room_obj.first_mark = True
                 room_obj.save()
-            if room_obj.proposition_id.user.pk == int(user):
+            if room_obj.proposition_id.user.pk == int(user) and validated_owner:
                 room_obj.second_mark = True
                 room_obj.save()
             if room_obj.second_mark and room_obj.first_mark:
@@ -173,16 +172,17 @@ class DealConsumer(WebsocketConsumer):
                         room_obj.proposition_id.amount = 0
                         room_obj.request_id.amount = 0
                     Deal.objects.create(
+                        room=room_obj,
                         user_request=room_obj.request_id.user,
                         user_proposition=room_obj.proposition_id.user,
                         amount=amount,
-                        city=room_obj.request_id.city,
-                        line=room_obj.request_id.line,
-                        container=room_obj.request_id.container,
+                        city=room_obj.proposition_id.city,
+                        line=room_obj.proposition_id.line,
+                        container=room_obj.proposition_id.container,
                     ).save()
-                    room.proposition_id.save()
-                    room.request_id.save()
-                    room.save()
+                    room_obj.proposition_id.save()
+                    room_obj.request_id.save()
+                    room_obj.save()
         async_to_sync(self.channel_layer.group_send)(
             self.room_group_name,
             {

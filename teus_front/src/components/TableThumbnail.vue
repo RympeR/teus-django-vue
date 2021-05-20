@@ -7,7 +7,7 @@
         <b-modal :id="'modal__thumbnail' + id" scrollable hide-footer centered dialog-class="modal-dialog-auto" 
             :title="title"
         >
-            <b-img :src="src" :alt="title"/>
+            <b-img :src="src" width="500" height="500"  :alt="title"/>
         </b-modal>
     </div>
 </template>

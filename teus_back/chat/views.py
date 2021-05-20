@@ -9,7 +9,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.renderers import JSONRenderer, MultiPartRenderer
 from rest_framework.parsers import JSONParser, MultiPartParser, FormParser, FileUploadParser
 from datetime import datetime
-from .models import Room, Chat
+from .models import Room, Chat, Deal
 from .serializers import *
 import requests
 
@@ -80,7 +80,12 @@ class GetRoomsProposition(APIView):
             )
             results = []
             domain = request.get_host()
+            deals = Deal.objects.all()
+            deals = [deal.room for deal in deals]
             for obj in rooms:
+                had_deal = False
+                if obj in deals:
+                    had_deal = True
                 try:
                     path_image = obj.request_id.user.image.url
                 except Exception:
@@ -108,6 +113,9 @@ class GetRoomsProposition(APIView):
                         domain=domain, path=path_image)
                 else:
                     container_request_image_url = None
+                deal = Deal.objects.get(
+                    
+                )
                 results.append(
                     {
                         "id": obj.pk,
@@ -130,7 +138,7 @@ class GetRoomsProposition(APIView):
                             "last_name": obj.proposition_id.user.last_name,
                             "image": user_proposition_image_url,
                         },
-
+                        "was_handshake": had_deal,
                         "amount": obj.request_id.amount,
                         "user_request_id": obj.request_id.pk,
                         "user_proposition_id": obj.proposition_id.pk,
@@ -173,7 +181,12 @@ class GetRoomsRequest(APIView):
             )
             results = []
             domain = request.get_host()
+            deals = Deal.objects.all()
+            deals = [deal.room for deal in deals]
             for obj in rooms:
+                had_deal = False
+                if obj in deals:
+                    had_deal = True
                 try:
                     path_image = obj.request_id.user.image.url
                 except Exception:
@@ -223,6 +236,7 @@ class GetRoomsRequest(APIView):
                             "last_name": obj.proposition_id.user.last_name,
                             "image": user_proposition_image_url,
                         },
+                        "was_handshake": had_deal,
                         "amount": obj.proposition_id.amount,
                         "user_request_id": obj.request_id.pk,
                         "user_proposition_id": obj.proposition_id.pk,
@@ -255,8 +269,13 @@ class GetRoomInfo(APIView):
             user = None
         if user:
             try:
+                deals = Deal.objects.all()
+                deals = [deal.room for deal in deals]
                 domain = request.get_host()
                 room = Room.objects.get(pk=pk)
+                had_deal = False
+                if room in deals:
+                    had_deal = True
                 try:
                     path_image = room.request_id.user.image.url
                 except Exception:
@@ -306,7 +325,7 @@ class GetRoomInfo(APIView):
                             "last_name": room.proposition_id.user.last_name,
                             "image": user_proposition_image_url,
                         },
-
+                        "was_handshake": had_deal,
                         "amount": room.proposition_id.amount,
                         "user_request_id": room.request_id.pk,
                         "user_proposition_id": room.proposition_id.pk,

@@ -322,27 +322,14 @@ class UserAPI(APIView):
                 }
             )
 
-    def delete(self, *args, **kwargs):
-        try:
-            user = User.objects.get(
-                token=self.request.headers['Authorization'])
-        except Exception:
-            user = None
-        if user:
-            user = UserSerializer.deleteUser(
-                **kwargs
-            )
-            return Response(
-                {
-                    "user_id": user[0]
-                }, status=status.HTTP_200_OK
-            )
-        else:
-            return Response(
-                {
-                    "status": "invalid token"
-                }
-            )
+    def delete(self, pk):
+        user = User.objects.get(pk=pk).delete()
+        return Response(
+            {
+                "user_id": user.pk
+            }, status=status.HTTP_200_OK
+        )
+        
 
 
 @permission_classes((permissions.AllowAny,))

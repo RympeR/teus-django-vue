@@ -521,7 +521,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    [\n        {\n            \"id\": 7,\n            \"line\": {\n                \"name\": \"testl2\"\n            },\n            \"contianer\": {\n                \"name\": \"test24\",\n                \"image\": \"http://api-teus.maximusapp.com/media/Ellipse_10.png\"\n            },\n            \"user_request\": {\n                \"id\": 1,\n                \"first_name\": \"admin\",\n                \"last_name\": \"admin\",\n                \"image\": null\n            },\n            \"user_proposition\": {\n                \"id\": 1,\n                \"first_name\": \"admin\",\n                \"last_name\": \"admin\",\n                \"image\": null\n            },\n            \"user_request_id\": 6,\n            \"user_proposition_id\": 9,\n            \"date\": 1618572308,\n            \"first_mark\": false,\n            \"second_mark\": false,\n            \"readed\": false\n        }\n    ]\n}",
+          "content": "HTTP/1.1 200 OK\n{\n    [\n        {\n            \"id\": 7,\n            \"line\": {\n                \"name\": \"testl2\"\n            },\n            \"contianer\": {\n                \"name\": \"test24\",\n                \"image\": \"http://api-teus.maximusapp.com/media/Ellipse_10.png\"\n            },\n            \"user_request\": {\n                \"id\": 1,\n                \"first_name\": \"admin\",\n                \"last_name\": \"admin\",\n                \"image\": null\n            },\n            \"user_proposition\": {\n                \"id\": 1,\n                \"first_name\": \"admin\",\n                \"last_name\": \"admin\",\n                \"image\": null\n            },\n            \"was_handshake\": True,\n            \"user_request_id\": 6,\n            \"user_proposition_id\": 9,\n            \"date\": 1618572308,\n            \"first_mark\": false,\n            \"second_mark\": false,\n            \"readed\": false\n        }\n    ]\n}",
           "type": "json"
         }
       ]
@@ -586,7 +586,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    [\n        {\n            \"id\": 7,\n            \"line\": {\n                \"name\": \"testl2\"\n            },\n            \"contianer\": {\n                \"name\": \"test24\",\n                \"image\": \"http://api-teus.maximusapp.com/media/Ellipse_10.png\"\n            },\n            \"user_request\": {\n                \"id\": 1,\n                \"first_name\": \"admin\",\n                \"last_name\": \"admin\",\n                \"image\": null\n            },\n            \"user_proposition\": {\n                \"id\": 1,\n                \"first_name\": \"admin\",\n                \"last_name\": \"admin\",\n                \"image\": null\n            },\n            \"user_request_id\": 6,\n            \"user_proposition_id\": 9,\n            \"date\": 1618572308,\n            \"first_mark\": false,\n            \"second_mark\": false,\n            \"readed\": false\n        }\n    ]\n}",
+          "content": "HTTP/1.1 200 OK\n{\n    [\n        {\n            \"id\": 7,\n            \"line\": {\n                \"name\": \"testl2\"\n            },\n            \"contianer\": {\n                \"name\": \"test24\",\n                \"image\": \"http://api-teus.maximusapp.com/media/Ellipse_10.png\"\n            },\n            \"user_request\": {\n                \"id\": 1,\n                \"first_name\": \"admin\",\n                \"last_name\": \"admin\",\n                \"image\": null\n            },\n            \"user_proposition\": {\n                \"id\": 1,\n                \"first_name\": \"admin\",\n                \"last_name\": \"admin\",\n                \"image\": null\n            },\n            \"was_handshake\": False,\n            \"user_request_id\": 6,\n            \"user_proposition_id\": 9,\n            \"date\": 1618572308,\n            \"first_mark\": false,\n            \"second_mark\": false,\n            \"readed\": false\n        }\n    ]\n}",
           "type": "json"
         }
       ]
@@ -1206,6 +1206,11 @@ define({ "api": [
           "title": "Error-Response:",
           "content": "HTTP/1.1 200 without token\n{\n    \"status\": \"invalid token\"\n}",
           "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 406 not accepted\n{\n    \"status\": \"already exists\"\n}",
+          "type": "json"
         }
       ]
     },
@@ -1602,8 +1607,15 @@ define({ "api": [
             "group": "Success 200",
             "type": "Number",
             "optional": false,
-            "field": "request_date",
-            "description": "<p>Request date timestamp</p>"
+            "field": "start_date",
+            "description": "<p>start date timestamp</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "crated_at",
+            "description": "<p>created at datetime timestamp</p>"
           },
           {
             "group": "Success 200",
@@ -1862,6 +1874,11 @@ define({ "api": [
         {
           "title": "Error-Response:",
           "content": "HTTP/1.1 200 without token\n{\n    \"status\": \"invalid token\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 406 not accepted\n{\n    \"status\": \"already exists\"\n}",
           "type": "json"
         }
       ]
@@ -2317,6 +2334,47 @@ define({ "api": [
         {
           "title": "Success-Response:",
           "content": "HTTP/1.1 200 OK\n{\n    \"user_id\": 2,\n    \"phone\": \"09303943493\",\n    \"image\": \"http://api-teus.maximusapp.com/media/test_Xj5iHa6.jpg\",\n    \"first_name\": \"test\",\n    \"last_name\": \"test\",\n    \"company\": \"test\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 Not Found\n{\n    \"status\": \"invalid token\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "apidoc/rules.py",
+    "groupTitle": "User"
+  },
+  {
+    "type": "POST",
+    "url": "/api/user/logout/",
+    "title": "1.4 Logout",
+    "name": "1.4_Logout",
+    "group": "User",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Users unique token</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n}",
           "type": "json"
         }
       ]

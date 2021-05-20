@@ -1327,8 +1327,8 @@ class FilteredPropositions(APIView):
 
             status = False
             if deals:
-                deals = [*[deal.user_proposition.pk for deal in deals], *[deal.user_request.pk for deal in deals]]
-                for deal in deals:
+                _deal = [*[deal.user_proposition.pk for deal in deals], *[deal.user_request.pk for deal in deals]]
+                for deal in _deal:
                     if proposition.user.id == deal and user.pk != proposition.user.id:
                         status = True
                         break

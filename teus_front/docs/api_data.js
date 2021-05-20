@@ -1095,7 +1095,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    [\n        {\n            \"id\": 1,\n            \"user\": {\n                \"id\": 1,\n                \"name\": \"test1\",\n                \"image\": \"http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg\"\n            },\n            \"line\": {\n                \"id\": 1,\n                \"name\": \"test loe\"\n            },\n            \"city\": {\n                \"id\": 1,\n                \"name\": \"test\"\n            },\n            \"container\": {\n                \"id\": 1,\n                \"name\": \"t34t\",\n                \"image\": \"http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg\"\n            },\n            \"amount\": 3,\n            \"date\": {\n                \"start_date\": 1615410000,\n                \"end_date\": 1615410000\n            }\n        },\n        {\n            \"id\": 6,\n            \"user\": {\n                \"id\": 1,\n                \"name\": \"test1\",\n                \"image\": \"http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg\"\n            },\n            \"line\": {\n                \"id\": 1,\n                \"name\": \"test loe\"\n            },\n            \"city\": {\n                \"id\": 2,\n                \"name\": \"retwh\"\n            },\n            \"amount\": 2,\n            \"container\": {\n                \"id\": 1,\n                \"name\": \"t34t\",\n                \"image\": \"http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg\"\n            },\n            \"date\": {\n                \"start_date\": 1615410000,\n                \"end_date\": 1583096400\n            }\n        }\n    ]\n}",
+          "content": "HTTP/1.1 200 OK\n{\n    [\n        {\n            \"id\": 1,\n            \"user\": {\n                \"id\": 1,\n                \"name\": \"test1\",\n                \"onesignal_token\": \"test\",\n                \"image\": \"http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg\"\n            },\n            \"line\": {\n                \"id\": 1,\n                \"name\": \"test loe\"\n            },\n            \"city\": {\n                \"id\": 1,\n                \"name\": \"test\"\n            },\n            \"container\": {\n                \"id\": 1,\n                \"name\": \"t34t\",\n                \"image\": \"http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg\"\n            },\n            \"amount\": 3,\n            \"date\": {\n                \"start_date\": 1615410000,\n                \"end_date\": 1615410000\n            }\n        },\n        {\n            \"id\": 6,\n            \"user\": {\n                \"id\": 1,\n                \"name\": \"test1\",\n                \"image\": \"http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg\"\n            },\n            \"line\": {\n                \"id\": 1,\n                \"name\": \"test loe\"\n            },\n            \"city\": {\n                \"id\": 2,\n                \"name\": \"retwh\"\n            },\n            \"amount\": 2,\n            \"container\": {\n                \"id\": 1,\n                \"name\": \"t34t\",\n                \"image\": \"http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg\"\n            },\n            \"date\": {\n                \"start_date\": 1615410000,\n                \"end_date\": 1583096400\n            }\n        }\n    ]\n}",
           "type": "json"
         }
       ]
@@ -1402,13 +1402,20 @@ define({ "api": [
             "optional": false,
             "field": "end_date",
             "description": "<p>End date timestamp</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "created_at",
+            "description": "<p>created_at timestamp</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    \"id\": 1,\n    \"user\": {\n        \"id\": 1,\n        \"name\": \"test46655\",\n        \"phone\": \"094093409\"\n    },\n    \"amount\": 5,\n    \"city\": {\n        \"id\": 1,\n        \"name\": \"test23\"\n    },\n    \"container\": {\n        \"id\": 1,\n        \"name\": \"tests5\"\n    },\n    \"line\": {\n        \"id\": 1,\n        \"name\": \"test277\"\n    },\n    \"start_date\": 1615410000.0,\n    \"end_date\": 1615410000.0\n}",
+          "content": "HTTP/1.1 200 OK\n{\n    \"id\": 1,\n    \"user\": {\n        \"id\": 1,\n        \"name\": \"test46655\",\n        \"phone\": \"094093409\"\n    },\n    \"amount\": 5,\n    \"city\": {\n        \"id\": 1,\n        \"name\": \"test23\"\n    },\n    \"container\": {\n        \"id\": 1,\n        \"name\": \"tests5\"\n    },\n    \"line\": {\n        \"id\": 1,\n        \"name\": \"test277\"\n    },\n    \"start_date\": 1615410000.0,\n    \"end_date\": 1615410000.0,\n    \"created_at\": 1615410000.0\n}",
           "type": "json"
         }
       ]
@@ -1764,7 +1771,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    [\n    {\n        \"id\": 1,\n        \"user\": {\n            \"id\": 3,\n            \"name\": \"test2\",\n            \"phone\": \"03495345455\",\n            \"image\": null\n        },\n        \"amount\": 7,\n        \"city\": [\n            {\n                \"id\": 1,\n                \"name\": \"test\"\n            },\n            {\n                \"id\": 2,\n                \"name\": \"retwh\"\n            }\n        ],\n        \"container\": {\n            \"id\": 2,\n            \"name\": \"34t34t\",\n            \"image\": \"http://api-teus.maximusapp.com/media/testF_iNKjXSm.jpg\"\n        },\n        \"line\": {\n            \"id\": 1,\n            \"name\": \"test loe\"\n        },\n        \"readed\": True,\n        \"request_date\": 1615410000.0,\n        \"end_date\": 1615410000.0\n    }\n]\n}",
+          "content": "HTTP/1.1 200 OK\n{\n    [\n    {\n        \"id\": 1,\n        \"user\": {\n            \"id\": 3,\n            \"name\": \"test2\",\n            \"phone\": \"03495345455\",\n            \"onesignal_token\": \"test\",\n            \"image\": null\n        },\n        \"amount\": 7,\n        \"city\": [\n            {\n                \"id\": 1,\n                \"name\": \"test\"\n            },\n            {\n                \"id\": 2,\n                \"name\": \"retwh\"\n            }\n        ],\n        \"container\": {\n            \"id\": 2,\n            \"name\": \"34t34t\",\n            \"image\": \"http://api-teus.maximusapp.com/media/testF_iNKjXSm.jpg\"\n        },\n        \"line\": {\n            \"id\": 1,\n            \"name\": \"test loe\"\n        },\n        \"readed\": True,\n        \"request_date\": 1615410000.0,\n        \"end_date\": 1615410000.0\n    }\n]\n}",
           "type": "json"
         }
       ]
@@ -2451,6 +2458,13 @@ define({ "api": [
           },
           {
             "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "onesignal_token",
+            "description": "<p>User onesignal_token (not required)</p>"
+          },
+          {
+            "group": "Parameter",
             "type": "object",
             "optional": false,
             "field": "image",
@@ -2502,7 +2516,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    \"user_id\": 1,\n    \"image\": \"http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg\",\n    \"phone\": \"wefewf\",\n    \"first_name\": \"test1\",\n    \"last_name\": \"tset\",\n    \"company\": \"test\"\n}",
+          "content": "HTTP/1.1 200 OK\n{\n    \"user_id\": 1,\n    \"image\": \"http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg\",\n    \"phone\": \"wefewf\",\n    \"first_name\": \"test1\",\n    \"last_name\": \"tset\",\n    \"company\": \"test\",\n    \"onesignal_token\": \"test\"\n}",
           "type": "json"
         }
       ]

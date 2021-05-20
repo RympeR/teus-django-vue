@@ -80,8 +80,11 @@ class GetRoomsProposition(APIView):
             )
             results = []
             domain = request.get_host()
-            deals = Deal.objects.all()
-            deals = [deal.room for deal in deals]
+            try:
+                deals = Deal.objects.all()
+                deals = [deal.room for deal in deals]
+            except Exception:
+                deals = []
             for obj in rooms:
                 had_deal = False
                 if obj in deals:
@@ -113,9 +116,6 @@ class GetRoomsProposition(APIView):
                         domain=domain, path=path_image)
                 else:
                     container_request_image_url = None
-                deal = Deal.objects.get(
-                    
-                )
                 results.append(
                     {
                         "id": obj.pk,
@@ -181,8 +181,11 @@ class GetRoomsRequest(APIView):
             )
             results = []
             domain = request.get_host()
-            deals = Deal.objects.all()
-            deals = [deal.room for deal in deals]
+            try:
+                deals = Deal.objects.all()
+                deals = [deal.room for deal in deals]
+            except Exception:
+                deals = []
             for obj in rooms:
                 had_deal = False
                 if obj in deals:
@@ -269,8 +272,11 @@ class GetRoomInfo(APIView):
             user = None
         if user:
             try:
-                deals = Deal.objects.all()
-                deals = [deal.room for deal in deals]
+                try:
+                    deals = Deal.objects.all()
+                    deals = [deal.room for deal in deals]
+                except Exception:
+                    deals = []
                 domain = request.get_host()
                 room = Room.objects.get(pk=pk)
                 had_deal = False

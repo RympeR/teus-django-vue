@@ -322,7 +322,7 @@ class UserAPI(APIView):
                 }
             )
 
-    def delete(self, pk):
+    def delete(self, request, pk):
         user = User.objects.get(pk=pk).delete()
         return Response(
             {

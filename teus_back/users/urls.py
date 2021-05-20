@@ -7,7 +7,7 @@ urlpatterns = [
     path('profile/', UserListAPI.as_view(), name='UserFullList'),
     path('create-profile/', UserAPI.as_view(), name='UserCreate'),
     path('update-profile/<int:user_id>/', UserAPI.as_view(), name='UserUpdate'),
-    path('delete-profile/<int:user_id>/', UserAPI.as_view(), name='UserDelete'),
+    path('delete-profile/<int:pk>/', UserAPI.as_view(), name='UserDelete'),
     path('get-users-list', UsersList.as_view() ,name='UsersFilterList'),
     
     path('login/', UserTokenAPI.as_view(), name='UserCreate'),

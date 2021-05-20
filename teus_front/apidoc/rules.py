@@ -142,7 +142,8 @@
     @apiSuccess {Object} container Container object
     @apiSuccess {Object} line Line object
     @apiSuccess {Boolean} readed False if there unreaded messages 
-    @apiSuccess {Number} request_date Request date timestamp 
+    @apiSuccess {Number} start_date start date timestamp 
+    @apiSuccess {Number} crated_at created at datetime timestamp 
     @apiSuccess {Number} end_date End date timestamp 
 
 

@@ -22,8 +22,24 @@ class Command(BaseCommand):
                         Q(city__name__in=_filter.city.all().values('name')) &
                         Q(container__name__contains=_filter.container.name) &
                         (
-                            Q(start_date__range=(_filter.request_date, _filter.end_date)) |
-                            Q(end_date__range=(_filter.request_date, _filter.end_date))
+                            (
+                                Q(start_date__gte=_filter.request_date) &
+                                Q(start_date__lte=_filter.end_date) &
+                                Q(end_date__gte= _filter.end_date)
+                            ) |
+                            (
+                                Q(start_date__gte=_filter.request_date) &
+                                Q(end_date__lte=_filter.end_date)
+                            ) |
+                            (
+                                Q(start_date__lte=_filter.request_date) &
+                                Q(end_date__lte=_filter.end_date) &
+                                Q(end_date__gte= _filter.request_date)
+                            ) |
+                            (
+                                Q(start_date__lte=_filter.request_date) &
+                                Q(end_date__gte= _filter.end_date)
+                            ) 
                         ) &
                         Q(line__name__contains=_filter.line.name) & 
                         Q(created_at__gte=timezone.now()-timedelta(days=1))

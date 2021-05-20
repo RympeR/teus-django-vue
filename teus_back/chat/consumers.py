@@ -14,7 +14,7 @@ class ChatConsumer(WebsocketConsumer):
     def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = 'chat_%s' % self.room_name
-        print('connected')
+        logger.warning('connected')
         # Join room group
         async_to_sync(self.channel_layer.group_add)(
             self.room_group_name,
@@ -33,27 +33,28 @@ class ChatConsumer(WebsocketConsumer):
     # Receive message from WebSocket
     def receive(self, text_data):
         text_data_json = json.loads(text_data)
-        print('receive')
         room = text_data_json['room']
         user = text_data_json['user']
         message = text_data_json['message']
         _file = text_data_json['file']
         
+        logger.warning(f'receive from user -> {user}')
         payload = {
             'room': room,
             'user': user,
             'text': message
         }
-        print(payload)
+        logger.warning(payload)
         chat = ChatCreateSerializer(data=payload)
         if not (message in ['', None] and message in ['', None]):  
             if chat.is_valid():
                 chat.save()
+                logger.warning(f'valid message from -> {user}')
             else:
-                print('not valid')
+                logger.warning(f'not valid message from -> {user}')
         try:
             room_obj = Room.objects.get(pk=int(room))
-        except Room.DoesNotExist:
+        except Exception:
             room_obj = None
         if room_obj:
             if room_obj.request_id.user.pk == int(user):
@@ -94,11 +95,10 @@ class ChatConsumer(WebsocketConsumer):
 
     # Receive message from room group
     def chat_message(self, event):
-        print(event)
         message = event['message']
         room = event['room']
         user = event['user']
-        
+        logger.warning(f'sended valid message from -> {user}')
         message_obj = None
         if event['file']: 
             if str(event['file']).isdigit():
@@ -134,16 +134,15 @@ class DealConsumer(WebsocketConsumer):
     # Receive message from WebSocket
     def receive(self, text_data):
         text_data_json = json.loads(text_data)
-        print('receive')
-        logger.warning(f'recieved -> {text_data}')
         room = text_data_json['room']
         user = text_data_json['user']
         validated_owner = text_data_json['validated_owner']
         validated_customer = text_data_json['validated_customer']
+        logger.warning(f'recieved  handashake from -> {user}')
 
         try:
             room_obj = Room.objects.get(pk=int(room))
-        except Room.DoesNotExist:
+        except Exception:
             room_obj = None
         if room_obj:
             if room_obj.request_id.user.pk == int(user) and validated_customer:
@@ -204,7 +203,7 @@ class DealConsumer(WebsocketConsumer):
 
         room = event['room']
         user = event['user']
-        
+        logger.warning(f'recieved handashake from-> {user}')
         self.send(text_data=json.dumps({
             "room": room, 
             "user": user, 

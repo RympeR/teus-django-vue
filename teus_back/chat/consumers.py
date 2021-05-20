@@ -147,10 +147,10 @@ class DealConsumer(WebsocketConsumer):
             room_obj = None
         if room_obj:
             if room_obj.request_id.user.pk == int(user) and validated_customer:
-                room_obj.first_mark = True
+                room_obj.second_mark = True
                 room_obj.save()
             if room_obj.proposition_id.user.pk == int(user) and validated_owner:
-                room_obj.second_mark = True
+                room_obj.first_mark = True
                 room_obj.save()
             if room_obj.second_mark and room_obj.first_mark:
                 if validated_owner and validated_customer:

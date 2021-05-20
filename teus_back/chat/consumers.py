@@ -59,6 +59,7 @@ class ChatConsumer(WebsocketConsumer):
         if room_obj:
             if room_obj.request_id.user.pk == int(user):
                 room_obj.proposition_user_readed = False
+                room_obj.request_user_readed = True 
                 if room_obj.proposition_id.user.onesignal_token != '':
                     send_push(
                         'Teus message',
@@ -69,7 +70,8 @@ class ChatConsumer(WebsocketConsumer):
                 else:
                     logger.error(f' token -> {room_obj.proposition_id.user.onesignal_token} ')
             elif room_obj.proposition_id.user.pk == int(user):
-                room_obj.request_user_readed = False 
+                room_obj.request_user_readed = False
+                room_obj.proposition_user_readed = True
                 if room_obj.request_id.user.onesignal_token != '':
                     send_push(
                         'Teus message',

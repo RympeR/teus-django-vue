@@ -203,6 +203,7 @@ class PropositionAPI(APIView):
                     },
                     "start_date": int(proposition.start_date.timestamp()),
                     "end_date": int(proposition.end_date.timestamp()),
+                    "created_at": int(proposition.created_at.timestamp()),
                     "status": proposition.get_status_display(),
                 }
             )
@@ -1267,10 +1268,12 @@ class FilteredPropositions(APIView):
 
             else:
                 propositons = UserProposition.objects.filter(status='в работе')
-            deals = Deal.objects.filter(
-                user_request=user
-            )
-
+            try:
+                deals = Deal.objects.filter(
+                    user_request=user
+                )
+            except Exception as e:
+                deals = None
         else:
             propositons = UserProposition.objects.filter(status='в работе')
 

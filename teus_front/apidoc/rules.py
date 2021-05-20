@@ -226,6 +226,7 @@
                 "user": {
                     "id": 1,
                     "name": "test1",
+                    "onesignal_token": "test",
                     "image": "http://api-teus.maximusapp.com/media/kotik_JDk7Aog.jpg"
                 },
                 "line": {
@@ -451,6 +452,7 @@
                 "id": 3,
                 "name": "test2",
                 "phone": "03495345455",
+                "onesignal_token": "test",
                 "image": null
             },
             "amount": 7,

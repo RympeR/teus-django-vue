@@ -109,16 +109,16 @@ class UserSerializer(serializers.ModelSerializer):
             else:                 
                 user.onesignal_token = validated_data['onesignal_token']         
         except KeyError:             
-            user.onesignal_token = None
+            user.onesignal_token = user.onesignal_token
         try:
             user.image = validated_data['image'][0]
         except KeyError:
             try:
                 user.image = getattr(user, 'image', None)
             except ValueError:
-                user.image = None
+                user.image = user.image
         except ValueError:
-            user.image = None
+            user.image = user.image
         user.save()
         return user
 

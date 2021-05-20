@@ -326,7 +326,7 @@ class UserAPI(APIView):
         user = User.objects.get(pk=pk).delete()
         return Response(
             {
-                "user_id": user.pk
+                "user_id": user[0]
             }, status=status.HTTP_200_OK
         )
         

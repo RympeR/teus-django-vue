@@ -836,6 +836,7 @@ class APIDOCUserRequests(APIView):
                             "id": request_.user.id,
                             "name": request_.user.first_name,
                             "phone": request_.user.phone,
+                            "onesignal_token": request_.user.onesignal_token,
                             "image": image_url
                         },
                         "amount": request_.amount,
@@ -1318,6 +1319,7 @@ class FilteredPropositions(APIView):
                 "user": {
                     "id": proposition.user.id,
                     "name": proposition.user.first_name,
+                    "onesignal_token": proposition.user.onesignal_token,
                     "image": user_image_url
                 },
                 "line": {

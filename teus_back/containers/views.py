@@ -4,7 +4,7 @@ from django.shortcuts import render
 from .serializers import (
     DealSerializer, RequestSerializer,
     PropositionSerializer, UserPropositionsSerializer,
-    UserRequsetSerializer, GenericRequestSerializer, GetGenericRequestSerializer, GenericPropositionSerializer)
+    UserRequsetSerializer, GenericRequestSerializer, GetGenericRequestSerializer, GenericPropositionSerializer, GetGenericPropositionSerializer)
 from django.http import request
 from rest_framework import generics, permissions, filters
 from rest_framework.views import APIView
@@ -1359,7 +1359,7 @@ class CreateRequestsAPI(generics.CreateAPIView):
         try:
             serializer.is_valid(raise_exception=True)
         except AssertionError:
-            return Response({}, status=status.HTTP_406_NOT_ACCEPTABLE)
+            return Response({"status": "already exists"}, status=status.HTTP_406_NOT_ACCEPTABLE)
         instance = self.perform_create(serializer)
         instance_serializer = GetGenericRequestSerializer(instance)
         return Response(instance_serializer.data)
@@ -1381,14 +1381,19 @@ class CreatePropositionAPI(generics.CreateAPIView):
     parser_classes = (JSONParser, MultiPartParser, FormParser)
     serializer_class = GenericPropositionSerializer
 
+    def perform_create(self, serializer):
+        user = User.objects.get(
+            token=self.request.headers['Authorization'])
+        return serializer.save(user=user)
+
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         try:
             serializer.is_valid(raise_exception=True)
         except AssertionError:
-            return Response({}, status=status.HTTP_406_NOT_ACCEPTABLE)
+            return Response({"status": "already exists"}, status=status.HTTP_406_NOT_ACCEPTABLE)
         instance = self.perform_create(serializer)
-        instance_serializer = serializer(instance)
+        instance_serializer = GetGenericPropositionSerializer(instance)
         return Response(instance_serializer.data)
 
 

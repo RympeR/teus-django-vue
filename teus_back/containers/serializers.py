@@ -12,7 +12,7 @@ from rest_framework.response import Response
 from rest_framework import status
 class TimestampField(serializers.Field):
     def to_representation(self, value):
-        return value.timestamp()
+        return int(value.timestamp())
 
     def to_internal_value(self, value):
         return value
@@ -291,12 +291,10 @@ class GetGenericRequestSerializer(serializers.ModelSerializer):
         fields = '__all__'
         model = UserRequest
 
-
 class GenericRequestSerializer(serializers.ModelSerializer):
     request_date = TimestampField(required=False)
     end_date = TimestampField(required=False)
     user =  serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), required=False)
-    # city = serializers.PrimaryKeyRelatedField(queryset=City.objects.all(), many=True)
 
     def validate(self, attrs):
         print('validated')
@@ -304,22 +302,21 @@ class GenericRequestSerializer(serializers.ModelSerializer):
             request = self.context.get('request')
             user = User.objects.get(
                 token=request.headers['Authorization'])
-            print(attrs['city'])
+            print(attrs)
             attrs['user']=user
             obj  =  None
             
             obj = UserRequest.objects.filter(
                 user=attrs['user'],
                 line=attrs['line'],
-                city=attrs['city'],
+                city__in=attrs['city'],
                 container=attrs['container'],
                 request_date=attrs['request_date'],
                 end_date=attrs['end_date'],
                 status='в работе'
             )
-            print(f"{obj} --> obj")
             if obj:
-                return Response({}, status=status.HTTP_406_NOT_ACCEPTABLE)
+                raise exceptions.ValidationError
             return attrs
         except Exception as e:
             print(e)
@@ -329,8 +326,7 @@ class GenericRequestSerializer(serializers.ModelSerializer):
         model = UserRequest
         
 class GenericPropositionSerializer(serializers.ModelSerializer):
-    start_date = TimestampField(required=False)
-    end_date = TimestampField(required=False)
+
     user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), required=False)
     
     def validate(self, attrs):
@@ -343,7 +339,7 @@ class GenericPropositionSerializer(serializers.ModelSerializer):
             attrs['user']=user
             obj  =  None
             try:
-                obj = UserProposition.objects.get(
+                obj = UserProposition.objects.filter(
                     user=attrs['user'],
                     city=attrs['city'],
                     line=attrs['line'],
@@ -352,15 +348,32 @@ class GenericPropositionSerializer(serializers.ModelSerializer):
                     container=attrs['container'],
                     status='в работе'
                 )
+                print(obj, "-->obj")
             except Exception as e:
                 print(e)
                 pass
+            
             if obj:
-                return Response({}, status=status.HTTP_406_NOT_ACCEPTABLE)
+                raise exceptions.ValidationError
             return attrs
         except Exception as e:
             print(e)
             return None
+
+    class Meta:
+        fields = '__all__'
+        model = UserProposition
+
+
+class GetGenericPropositionSerializer(serializers.ModelSerializer):
+
+    start_date = TimestampField(required=False)
+    end_date = TimestampField(required=False)
+    created_at = TimestampField(required=False)
+    city = GetCitySerializer(required=False)
+    container = GetContainerSerializer(required=False)
+    line = GetLineSerializer(required=False)
+    user = GetGenericUserSerializer(required=False)
 
     class Meta:
         fields = '__all__'

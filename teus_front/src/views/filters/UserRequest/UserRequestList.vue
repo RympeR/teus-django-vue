@@ -34,7 +34,9 @@
 									/>
 									<b-form-datalist
 										id="user-list"
-										:options="search_existing_list.users_names"
+										:options="
+											search_existing_list.users_names
+										"
 									></b-form-datalist>
 								</div>
 							</template>
@@ -46,7 +48,6 @@
 									@input="getFilteredRequests(search)"
 									v-model="search.user_phone"
 								/>
-
 							</template>
 							<template v-else-if="field.key === 'line'">
 								<div class="stick-top">{{ field.label }}</div>
@@ -204,7 +205,6 @@
 					:per-page="perPage"
 				></b-pagination>
 			</template>
-
 		</b-col>
 	</b-row>
 </template>
@@ -243,13 +243,13 @@ export default {
 			},
 			perPage: 100,
 			currentPage: 1,
-			search_existing_list:{
-				lines:[],
+			search_existing_list: {
+				lines: [],
 				cities: [],
 				users_names: [],
 				users_phones: [],
 				containers: [],
-			}
+			},
 		};
 	},
 	watch: {
@@ -291,7 +291,7 @@ export default {
 			{ text: "Главная", to: { name: "home" } },
 			{ text: "Запросы", to: { name: "requests" } },
 		];
-			 this.getUserRequests().then((list) => {
+		this.getUserRequests().then((list) => {
 			console.log(list);
 		});
 		await this.getLines().then((list) => {
@@ -312,19 +312,29 @@ export default {
 				console.log(error);
 			});
 		this.user_requests.list.forEach((e) => {
-			this.search_existing_list.lines.push(e.line.name)
-			this.search_existing_list.containers.push(e.container.name)
-			this.search_existing_list.users_names.push(e.user.name)
-			this.search_existing_list.users_phones.push(e.phone.phone)
+			this.search_existing_list.lines.push(e.line.name);
+			this.search_existing_list.containers.push(e.container.name);
+			this.search_existing_list.users_names.push(e.user.name);
+			this.search_existing_list.users_phones.push(e.phone.phone);
 		});
-		this.cities.list.forEach((el)=>{
-			this.search_existing_list.cities.push(el.name)
-		})
-		this.search_existing_list.lines = [...new Set(this.search_existing_list.lines)]
-		this.search_existing_list.cities = [...new Set(this.search_existing_list.cities)]
-		this.search_existing_list.containers = [...new Set(this.search_existing_list.containers)]
-		this.search_existing_list.users_names = [...new Set(this.search_existing_list.users_names)]
-		this.search_existing_list.users_phones = [...new Set(this.search_existing_list.users_phones)]
+		this.cities.list.forEach((el) => {
+			this.search_existing_list.cities.push(el.name);
+		});
+		this.search_existing_list.lines = [
+			...new Set(this.search_existing_list.lines),
+		];
+		this.search_existing_list.cities = [
+			...new Set(this.search_existing_list.cities),
+		];
+		this.search_existing_list.containers = [
+			...new Set(this.search_existing_list.containers),
+		];
+		this.search_existing_list.users_names = [
+			...new Set(this.search_existing_list.users_names),
+		];
+		this.search_existing_list.users_phones = [
+			...new Set(this.search_existing_list.users_phones),
+		];
 	},
 	methods: {
 		...mapActions({

@@ -307,7 +307,7 @@
     @apiErrorExample {json} Error-Response:
     HTTP/1.1 406 not accepted
     {
-        "status": "invalid token"
+        "status": "already exists"
     }
 """
 
@@ -508,6 +508,7 @@
     @apiErrorExample {json} Error-Response:
     HTTP/1.1 406 not accepted
     {
+        "status": "already exists"
     }
 """
 

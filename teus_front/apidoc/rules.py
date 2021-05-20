@@ -82,12 +82,14 @@
     @apiParam {String} first_name User first name (not required)
     @apiParam {String} last_name User last name (not required)
     @apiParam {String} company User company (not required)
+    @apiParam {String} onesignal_token User onesignal_token (not required)
     @apiParam {object} image User avatar file
 
     @apiSuccess {Number} user_id User id
     @apiSuccess {String} first_name User first name
     @apiSuccess {String} last_name User last name
     @apiSuccess {String} image User avatar image
+    @apiParam {String} onesignal_token User onesignal_token
     @apiSuccess {String} company User company
 
     @apiSuccessExample {json} Success-Response:
@@ -98,7 +100,8 @@
         "phone": "wefewf",
         "first_name": "test1",
         "last_name": "tset",
-        "company": "test"
+        "company": "test",
+        "onesignal_token": "test"
     }
     @apiErrorExample {json} Error-Response:
     HTTP/1.1 200 Not Found
@@ -354,6 +357,7 @@
     @apiSuccess {Object} line Line object
     @apiSuccess {Number} start_date Request date timestamp 
     @apiSuccess {Number} end_date End date timestamp 
+    @apiSuccess {Number} created_at created_at timestamp 
 
 
     @apiSuccessExample {json} Success-Response:
@@ -379,7 +383,8 @@
             "name": "test277"
         },
         "start_date": 1615410000.0,
-        "end_date": 1615410000.0
+        "end_date": 1615410000.0,
+        "created_at": 1615410000.0
     }
     @apiErrorExample {json} Error-Response:
     HTTP/1.1 200 without token

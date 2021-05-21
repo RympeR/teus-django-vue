@@ -15,8 +15,13 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         while True:
             try:
-                for _filter in UserRequest.objects.all():
+                logger.warning('-'*10)
+                logger.warning(f"{UserRequest.objects.filter(status='в работе')} -> requests")
+                logger.warning('-'*10)
+                for _filter in UserRequest.objects.filter(status='в работе'):
+                    logger.warning('-----')
                     logger.warning(f"{_filter} -> user request fro user -> {_filter.user.pk}")
+                    logger.warning('-----')
                     propositons = UserProposition.objects.filter(
                         Q(status='в работе') &
                         Q(city__name__in=_filter.city.all().values('name')) &

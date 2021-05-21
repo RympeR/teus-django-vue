@@ -312,6 +312,7 @@ class GenericRequestSerializer(serializers.ModelSerializer):
                 city__in=attrs['city'],
                 container=attrs['container'],
                 request_date=attrs['request_date'],
+                amount=attrs['amount'], 
                 end_date=attrs['end_date'],
                 status='в работе'
             )
@@ -344,6 +345,7 @@ class GenericPropositionSerializer(serializers.ModelSerializer):
                     city=attrs['city'],
                     line=attrs['line'],
                     start_date=attrs['start_date'],
+                    amount=attrs['amount'], 
                     end_date=attrs['end_date'],
                     container=attrs['container'],
                     status='в работе'

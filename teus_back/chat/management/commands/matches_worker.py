@@ -59,13 +59,11 @@ class Command(BaseCommand):
                                     {'request':_filter.pk}
                                 )
                             break
-            except KeyboardInterrupt:
-                return
             except Exception as e:
                 logger.error(e)
-                traceback.print_exc()
-
+                logger.warning('caught exception')
             try:
                 time.sleep(180)
             except KeyboardInterrupt:
                 return
+        logger.error('fininshed')

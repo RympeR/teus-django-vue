@@ -207,20 +207,20 @@ class UserFilter:
     def get_deals(self, request, login, password):
         base_query = '''
             select
-                containers_deal.id,
+                chat_deal.id,
                 info_city.id "city_id", info_city.name "city name",
 				user1.id "user1_id", user1.first_name "user1_name", user1.phone "user1 phone",
                 user2.id "user2_id", user2.first_name "user2_name", user2.phone "user2 phone",
                 info_line.id "line id", info_line.name "line name",
                 info_container.id "container id", info_container.name "container name",
-                containers_deal.amount "amount",
-                containers_deal.handshake_time "handshake_time"
-                from containers_deal
-            join info_city on containers_deal.city_id = info_city.id
-            join info_line on containers_deal.line_id = info_line.id
-			join users_user as user2 on containers_deal.user_proposition_id = user2.id
-            join users_user as user1 on containers_deal.user_request_id = user1.id
-            join info_container on containers_deal.container_id = info_container.id
+                chat_deal.amount "amount",
+                chat_deal.handshake_time "handshake_time"
+                from chat_deal
+            join info_city on chat_deal.city_id = info_city.id
+            join info_line on chat_deal.line_id = info_line.id
+			join users_user as user2 on chat_deal.user_proposition_id = user2.id
+            join users_user as user1 on chat_deal.user_request_id = user1.id
+            join info_container on chat_deal.container_id = info_container.id
         '''
         try:
             query = base_query
@@ -241,13 +241,13 @@ class UserFilter:
             query = self.add_and_case(
                 request, query, 'amount', 'amount', str_=False)
             query = self.add_between_case(
-                request, query,  'handshake', 'handshake_end', 'containers_deal.handshake_time')
-            query += 'order by containers_deal.handshake_time desc;'
+                request, query,  'handshake', 'handshake_end', 'chat_deal.handshake_time')
+            query += 'order by chat_deal.handshake_time desc;'
             print(query)
             result = execute_select_query(login, password, query)
 
         except Exception as e:
             print(e)
-            query = base_query + 'order by containers_deal.handshake_time desc;'
+            query = base_query + 'order by chat_deal.handshake_time desc;'
             result = execute_select_query(login, password, query)
         return result

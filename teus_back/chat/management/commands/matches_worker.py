@@ -62,7 +62,7 @@ class Command(BaseCommand):
             except KeyboardInterrupt:
                 return
             except Exception as e:
-                print(e)
+                logger.error(e)
                 traceback.print_exc()
 
             try:

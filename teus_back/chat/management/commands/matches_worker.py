@@ -16,7 +16,7 @@ class Command(BaseCommand):
         while True:
             try:
                 for _filter in UserRequest.objects.all():
-                    
+                    logger.warning(f"{_filter} -> user request fro user -> {_filter.user.pk}")
                     propositons = UserProposition.objects.filter(
                         Q(status='в работе') &
                         Q(city__name__in=_filter.city.all().values('name')) &
@@ -41,9 +41,9 @@ class Command(BaseCommand):
                                 Q(end_date__gte= _filter.end_date)
                             ) 
                         ) &
-                        Q(line__name__contains=_filter.line.name) & 
-                        Q(created_at__gte=timezone.now()-timedelta(days=7))
+                        Q(line__name__contains=_filter.line.name) 
                     )
+                    logger.warning(propositons)
                     if propositons.exists():
                         logger.warning(f"{_filter.user.onesignal_token} --> player id user->{_filter.user.pk}")
                         if _filter.user.onesignal_token != '' and _filter.user.onesignal_token is not None:

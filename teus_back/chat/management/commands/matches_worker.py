@@ -42,10 +42,10 @@ class Command(BaseCommand):
                             ) 
                         ) &
                         Q(line__name__contains=_filter.line.name) & 
-                        Q(created_at__gte=timezone.now()-timedelta(days=1))
+                        Q(created_at__gte=timezone.now()-timedelta(days=7))
                     )
                     if propositons.exists():
-                        logger.warning(f"{_filter.user.onesignal_token} --> player id")
+                        logger.warning(f"{_filter.user.onesignal_token} --> player id user->{_filter.user.pk}")
                         if _filter.user.onesignal_token != '' and _filter.user.onesignal_token is not None:
                             send_push(
                                     'TEUs',
@@ -60,6 +60,6 @@ class Command(BaseCommand):
                 traceback.print_exc()
 
             try:
-                time.sleep(3600)
+                time.sleep(180)
             except KeyboardInterrupt:
                 return

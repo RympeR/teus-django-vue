@@ -65,5 +65,5 @@ class Command(BaseCommand):
             try:
                 time.sleep(180)
             except KeyboardInterrupt:
+                logger.error('fininshed')
                 return
-        logger.error('fininshed')

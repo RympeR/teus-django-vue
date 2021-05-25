@@ -363,8 +363,7 @@ class UserListAPI(APIView):
             except ValueError:
                 image_url = ''
             users_list[ind]['image'] = image_url
-        if k:
-            del users_list[k]
+        users_list = [_user for ind, _user in enumerate(users_list) if ind != k]
         return Response(
             {
                 "results": users_list,

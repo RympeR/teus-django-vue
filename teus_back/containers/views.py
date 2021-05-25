@@ -76,7 +76,7 @@ class RequestAPI(APIView):
                         "id": user_request.line.id,
                         "name": user_request.line.name,
                     },
-                    "request_date": int(user_request.start_date.timestamp()),
+                    "request_date": int(user_request.request_date.timestamp()),
                     "end_date": int(user_request.end_date.timestamp()),
                     "status": user_request.get_status_display(),
                 }
@@ -852,7 +852,7 @@ class APIDOCUserRequests(APIView):
                         },
                         "readed": readed,
                         "status": request_.status,
-                        "request_date": int(request_.start_date.timestamp()),
+                        "request_date": int(request_.request_date.timestamp()),
                         "end_date": int(request_.end_date.timestamp()),
                     }
                 )
@@ -927,7 +927,7 @@ class UserRequestsAPI(APIView):
                             "name": request_.line.name,
                         },
                         "status": request_.get_status_display(),
-                        "request_date": int(request_.start_date),
+                        "request_date": int(request_.request_date),
                         "end_date": int(request_.end_date),
                     }
                 )
@@ -956,11 +956,11 @@ class UserRequestsAPI(APIView):
 
             data['user'] = user.id
             if isinstance(data['request_date'], list):
-                data['start_date'] = int(data['request_date'][0])
+                data['request_date'] = int(data['request_date'][0])
             if isinstance(data['end_date'], list):
                 data['end_date'] = int(data['end_date'][0])
-            data['start_date'] = datetime.utcfromtimestamp(
-                data['start_date']).strftime("%Y-%m-%d")
+            data['request_date'] = datetime.utcfromtimestamp(
+                data['request_date']).strftime("%Y-%m-%d")
             data['end_date'] = datetime.utcfromtimestamp(
                 data['end_date']).strftime("%Y-%m-%d")
             user_request = UserRequsetSerializer(data=data)
@@ -1262,21 +1262,21 @@ class FilteredPropositions(APIView):
                     Q(container__name__contains=_filter.container.name) &
                     (
                         (
-                            Q(start_date__gte=_filter.start_date) &
+                            Q(start_date__gte=_filter.request_date) &
                             Q(start_date__lte=_filter.end_date) &
                             Q(end_date__gte= _filter.end_date)
                         ) |
                         (
-                            Q(start_date__gte=_filter.start_date) &
+                            Q(start_date__gte=_filter.request_date) &
                             Q(end_date__lte=_filter.end_date)
                         ) |
                         (
-                            Q(start_date__lte=_filter.start_date) &
+                            Q(start_date__lte=_filter.request_date) &
                             Q(end_date__lte=_filter.end_date) &
-                            Q(end_date__gte= _filter.start_date)
+                            Q(end_date__gte= _filter.request_date)
                         ) |
                         (
-                            Q(start_date__lte=_filter.start_date) &
+                            Q(start_date__lte=_filter.request_date) &
                             Q(end_date__gte= _filter.end_date)
                         ) 
                     ) &

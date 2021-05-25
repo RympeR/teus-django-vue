@@ -24,7 +24,7 @@ class UserRequest(models.Model):
     city = models.ManyToManyField(City, related_name='cities',default=1, blank=True)
     line = models.ForeignKey(Line, related_name='line', on_delete=models.CASCADE,default=1, blank=True)
     container = models.ForeignKey(Container, related_name='container', on_delete=models.CASCADE,default=1, blank=True)
-    start_date = UnixTimeStampField(verbose_name='date', null=True, blank=True)
+    request_date = UnixTimeStampField(verbose_name='date', null=True, blank=True)
     end_date = UnixTimeStampField(verbose_name='end date', null=True, blank=True)
     status = models.CharField(max_length=20, choices=STATUSES, default='в работе')
 
@@ -54,21 +54,21 @@ def create_proposition(sender: UserProposition, instance: UserProposition, creat
             Q(container__name__contains=instance.container.name) &
             (
                 (
-                    Q(start_date__gte=instance.start_date) &
-                    Q(start_date__lte=instance.end_date) &
+                    Q(request_date__gte=instance.start_date) &
+                    Q(request_date__lte=instance.end_date) &
                     Q(end_date__gte= instance.end_date)
                 ) |
                 (
-                    Q(start_date__gte=instance.start_date) &
+                    Q(request_date__gte=instance.start_date) &
                     Q(end_date__lte=instance.end_date)
                 ) |
                 (
-                    Q(start_date__lte=instance.start_date) &
+                    Q(request_date__lte=instance.start_date) &
                     Q(end_date__lte=instance.end_date) &
                     Q(end_date__gte= instance.start_date)
                 ) |
                 (
-                    Q(start_date__lte=instance.start_date) &
+                    Q(request_date__lte=instance.start_date) &
                     Q(end_date__gte= instance.end_date)
                 ) 
             ) &

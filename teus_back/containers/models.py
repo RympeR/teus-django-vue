@@ -77,7 +77,7 @@ def create_proposition(sender: UserProposition, instance: UserProposition, creat
         if requests.exists():
             for _request in requests:
                 logger.warning(f"{_request.user.onesignal_token} --> player id user->{_request.user.pk}")
-                if _request.user.onesignal_token != '' and _request.user.onesignal_token is not None:
+                if _request.user.onesignal_token != '' and _request.user.onesignal_token is not None and _request.user.pk != instance.user.pk:
                     send_push(
                             'TEUs',
                             f'''{_request.user.first_name} Появились предложения по вашему запросу''',

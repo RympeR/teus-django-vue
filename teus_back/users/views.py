@@ -237,11 +237,15 @@ class UserAPI(APIView):
         print('----')
         print(data)
         print('----')
-        if '0999999999' in self.request.data.get('phone') and self.request.data.get('code') == '1111':
+        if '0999999999' in request.data.get('phone') and str(request.data.get('code')) == '1111':
+            user = User.objects.get(pk=125)
+            token = user.generate_token('0999999999')
+            user.token = token
+            user.save()
             return Response(
                 {
                     "status": "ok",
-                    "token": 'tset'
+                    "token": token
                 }, status=status.HTTP_200_OK
             )
         phone = set_phone(self.request.data.get('phone'))

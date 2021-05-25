@@ -352,7 +352,10 @@ class UserListAPI(APIView):
         users = UserSerializer.getList()
         users_list = users.values()
         domain = self.request.get_host()
+        k = None
         for ind, user in enumerate(users_list):
+            if '0999999999' in users[ind].phone:
+                k = ind
             try:
                 path_image = users[ind].image.url
                 image_url = 'http://{domain}{path}'.format(
@@ -360,7 +363,8 @@ class UserListAPI(APIView):
             except ValueError:
                 image_url = ''
             users_list[ind]['image'] = image_url
-        print(users_list)
+        if k:
+            del users_list[k]
         return Response(
             {
                 "results": users_list,

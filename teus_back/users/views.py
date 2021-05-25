@@ -232,7 +232,7 @@ class UserAPI(APIView):
                 }
             )
 
-    def post(self, *args, **kwargs):
+    def post(self, request,  *args, **kwargs):
         data = dict(self.request.data)
         print('----')
         print(data)

@@ -54,21 +54,21 @@ def create_proposition(sender: UserProposition, instance: UserProposition, creat
             Q(container__name__contains=instance.container.name) &
             (
                 (
-                    Q(requset_date__gte=instance.start_date) &
-                    Q(requset_date__lte=instance.end_date) &
+                    Q(start_date__gte=instance.start_date) &
+                    Q(start_date__lte=instance.end_date) &
                     Q(end_date__gte= instance.end_date)
                 ) |
                 (
-                    Q(requset_date__gte=instance.start_date) &
+                    Q(start_date__gte=instance.start_date) &
                     Q(end_date__lte=instance.end_date)
                 ) |
                 (
-                    Q(requset_date__lte=instance.start_date) &
+                    Q(start_date__lte=instance.start_date) &
                     Q(end_date__lte=instance.end_date) &
                     Q(end_date__gte= instance.start_date)
                 ) |
                 (
-                    Q(requset_date__lte=instance.start_date) &
+                    Q(start_date__lte=instance.start_date) &
                     Q(end_date__gte= instance.end_date)
                 ) 
             ) &

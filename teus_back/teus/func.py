@@ -16,13 +16,13 @@ def send_push(title_ru, text_ru, user_id, push_data=None):
         "headings": {"ru": str(title_ru), 
             "en":str(title_ru)},
         "contents": {
-            "content_available" : "1",
             "ru": push_replace(text_ru),
             "en": push_replace(text_ru)
         },
         "include_player_ids": [str(user_id)],
     }
     if push_data:
+        push_data["content_available"] = "1"
         data['data'] = push_data
 
     # create a notificatio

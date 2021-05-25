@@ -238,7 +238,7 @@ class UserAPI(APIView):
         print(data)
         print('----')
         if '0999999999' in request.data.get('phone') and str(request.data.get('code')) == '1111':
-            user = User.objects.get(pk=125)
+            user = User.objects.get(pk=182)
             token = user.generate_token('0999999999')
             user.token = token
             user.save()

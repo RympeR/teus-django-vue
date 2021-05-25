@@ -150,9 +150,23 @@ class DealConsumer(WebsocketConsumer):
             if room_obj.request_id.user.pk == int(user) and validated_customer:
                 room_obj.second_mark = True
                 room_obj.save()
+                if room_obj.proposition_id.user.onesignal_token not in ('', None):
+                    send_push(
+                        'Teus message',
+                        f'''TEUs {room_obj.proposition_id.user.first_name} \nВаше предложение подтверждено. Сделка завершена''',
+                        room_obj.proposition_id.user.onesignal_token,
+                        {'room':room_obj.pk}
+                    )
             if room_obj.proposition_id.user.pk == int(user) and validated_owner:
                 room_obj.first_mark = True
                 room_obj.save()
+                if room_obj.request_id.user.onesignal_token not in ('', None):
+                    send_push(
+                        'Teus message',
+                        f'''TEUs {room_obj.request_id.user.first_name} \nВаш запрос одобрили, для завершения сделки - подтвердите предложение''',
+                        room_obj.request_id.user.onesignal_token,
+                        {'room':room_obj.pk}
+                    )
             if room_obj.second_mark and room_obj.first_mark:
                 if validated_owner and validated_customer:
                     if room_obj.request_id.amount > room_obj.proposition_id.amount:

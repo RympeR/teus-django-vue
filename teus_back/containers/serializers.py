@@ -291,11 +291,39 @@ class GetGenericRequestSerializer(serializers.ModelSerializer):
         fields = '__all__'
         model = UserRequest
 
+class GenericUpdateRequestSerializer(serializers.ModelSerializer):
+    request_date = TimestampField(required=False)
+    end_date = TimestampField(required=False)
+    user =  serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), required=False)
+    container = serializers.PrimaryKeyRelatedField(queryset=Container.objects.all(), read_only=False, required=False)
+    city = serializers.PrimaryKeyRelatedField(many=True, queryset=City.objects.all(), read_only=False, required=False)
+    line = serializers.PrimaryKeyRelatedField(queryset=Line.objects.all(), read_only=False, required=False)
+    amount = serializers.IntegerField(required=False)
+    class Meta:
+        fields = '__all__'
+        model = UserRequest
+
+class GenericUpdatePropositionSerializer(serializers.ModelSerializer):
+    start_date = TimestampField(required=False)
+    end_date = TimestampField(required=False)
+    user =  serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), required=False)
+    container = serializers.PrimaryKeyRelatedField(queryset=Container.objects.all(), read_only=False, required=False)
+    city = serializers.PrimaryKeyRelatedField(queryset=City.objects.all(), read_only=False, required=False)
+    line = serializers.PrimaryKeyRelatedField(queryset=Line.objects.all(), read_only=False, required=False)
+    amount = serializers.IntegerField(required=False)
+    class Meta:
+        fields = '__all__'
+        model = UserProposition
+        
+
 class GenericRequestSerializer(serializers.ModelSerializer):
     request_date = TimestampField(required=False)
     end_date = TimestampField(required=False)
     user =  serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), required=False)
-
+    container = serializers.PrimaryKeyRelatedField(queryset=Container.objects.all(), read_only=False, required=False)
+    city = serializers.PrimaryKeyRelatedField(many=True, queryset=City.objects.all(), read_only=False, required=False)
+    line = serializers.PrimaryKeyRelatedField(queryset=Line.objects.all(), read_only=False, required=False)
+    amount = serializers.IntegerField(required=False)
     def validate(self, attrs):
         print('validated')
         try:
@@ -304,7 +332,7 @@ class GenericRequestSerializer(serializers.ModelSerializer):
                 token=request.headers['Authorization'])
             print(attrs)
             attrs['user']=user
-            obj  =  None
+            obj = None
             
             obj = UserRequest.objects.filter(
                 user=attrs['user'],

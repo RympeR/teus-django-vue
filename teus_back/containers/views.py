@@ -2,8 +2,8 @@ from .models import *
 from chat.models import *
 from django.shortcuts import render
 from .serializers import (
-    DealSerializer, RequestSerializer,
-    PropositionSerializer, UserPropositionsSerializer,
+    DealSerializer, RequestSerializer,GenericUpdateRequestSerializer,
+    PropositionSerializer, UserPropositionsSerializer,GenericUpdatePropositionSerializer,
     UserRequsetSerializer, GenericRequestSerializer, GetGenericRequestSerializer, GenericPropositionSerializer, GetGenericPropositionSerializer)
 from django.http import request
 from rest_framework import generics, permissions, filters
@@ -26,6 +26,8 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 from rest_framework import status
 from django.db.models import Q
 from pprint import pprint
+from rest_framework.generics import GenericAPIView
+from rest_framework.mixins import UpdateModelMixin
 import logging
 logger = logging.getLogger('django')
 
@@ -1389,15 +1391,24 @@ class CreateRequestsAPI(generics.CreateAPIView):
         return Response(instance_serializer.data)
 
 
-class ActionRequestsAPI(generics.RetrieveUpdateDestroyAPIView):
+# class ActionRequestsAPI(generics.RetrieveUpdateDestroyAPIView):
+#     permission_classes = (permissions.AllowAny, )
+#     queryset = UserRequest.objects.all()
+#     parser_classes = (JSONParser, MultiPartParser, FormParser)
+#     serializer_class = GenericRequestSerializer
+
+#     def partial_update(self, request, pk, *args, **kwargs):
+#         return self.partial_update(request, *args, **kwargs)
+class ActionRequestsAPI(generics.RetrieveUpdateAPIView, UpdateModelMixin):
     permission_classes = (permissions.AllowAny, )
     queryset = UserRequest.objects.all()
     parser_classes = (JSONParser, MultiPartParser, FormParser)
-    serializer_class = GenericRequestSerializer
+    serializer_class = GenericUpdateRequestSerializer
 
-    def partial_update(self, request, pk, *args, **kwargs):
+
+    def partial_update(self, request, *args, **kwargs):
+        kwargs['partial'] = True
         return self.update(request, *args, **kwargs)
-
 
 class CreatePropositionAPI(generics.CreateAPIView):
     permission_classes = (permissions.AllowAny, )
@@ -1421,11 +1432,20 @@ class CreatePropositionAPI(generics.CreateAPIView):
         return Response(instance_serializer.data)
 
 
-class ActionPropositionAPI(generics.RetrieveUpdateDestroyAPIView):
+# class ActionPropositionAPI(generics.RetrieveUpdateDestroyAPIView):
+#     permission_classes = (permissions.AllowAny, )
+#     queryset = UserProposition.objects.all()
+#     parser_classes = (JSONParser, MultiPartParser, FormParser)
+#     serializer_class = GenericPropositionSerializer
+
+#     def partial_update(self, request, pk, *args, **kwargs):
+#         return self.partial_update(request, *args, **kwargs)
+
+class ActionPropositionAPI(generics.RetrieveUpdateAPIView, UpdateModelMixin):
     permission_classes = (permissions.AllowAny, )
     queryset = UserProposition.objects.all()
     parser_classes = (JSONParser, MultiPartParser, FormParser)
-    serializer_class = GenericPropositionSerializer
+    serializer_class = GenericUpdatePropositionSerializer
 
-    def partial_update(self, request, pk, *args, **kwargs):
-        return self.update(request, *args, **kwargs)
+    def partial_update(self, request, *args, **kwargs):
+        return self.partial_update(request, *args, **kwargs)

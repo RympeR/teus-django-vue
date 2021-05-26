@@ -21,7 +21,7 @@ def send_push(title_ru, text_ru, user_id, push_data=None):
         },
         "include_player_ids": [str(user_id)],
     }
-    data['mutable_content'] = {"content_available" : "1"}
+    data['content_available'] = "1"
     if push_data:
         data['data'] = push_data
 

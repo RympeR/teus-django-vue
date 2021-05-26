@@ -23,6 +23,7 @@ def send_push(title_ru, text_ru, user_id, push_data=None):
     }
     data['content_available'] = "1"
     if push_data:
+        push_data['content_available'] = "1"
         data['data'] = push_data
 
     # create a notificatio

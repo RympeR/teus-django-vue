@@ -13,8 +13,8 @@ class Room(models.Model):
     date = UnixTimeStampField("Дата создания", auto_now_add=True, null=True, blank=True)
     first_mark = models.BooleanField(default=False)
     second_mark = models.BooleanField(default=False)
-    request_user_readed = models.BooleanField(default=False)
-    proposition_user_readed = models.BooleanField(default=False)
+    request_user_readed = models.BooleanField(default=True)
+    proposition_user_readed = models.BooleanField(default=True)
 
     def __str__(self):
         return f'{self.pk}-p-{self.proposition_id.user}-u-{self.request_id.user}'

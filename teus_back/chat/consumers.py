@@ -34,14 +34,14 @@ class ChatConsumer(WebsocketConsumer):
     def receive(self, text_data):
         try:
             text_data_json = json.loads(text_data)
+            room = text_data_json["room"]
+            user = text_data_json["user"]
+            message = text_data_json["message"]
+            _file = text_data_json["file"]
         except Exception as e:
             logger.warning("Failed reading")
             logger.warning(text_data)
-        room = text_data_json['room']
-        user = text_data_json['user']
-        message = text_data_json['message']
-        _file = text_data_json['file']
-        
+    
         logger.warning(f'receive from user -> {user}')
         payload = {
             'room': room,

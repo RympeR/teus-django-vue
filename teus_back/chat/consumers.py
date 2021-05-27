@@ -88,7 +88,7 @@ class ChatConsumer(WebsocketConsumer):
 
             room_obj.save()
         # Send message to room group
-        self.channel_layer.group_send(
+        async_to_sync(self.channel_layer.group_send)(
             self.room_group_name,
             {
                 'type': 'chat_message',

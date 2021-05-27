@@ -16,7 +16,7 @@ class ChatConsumer(WebsocketConsumer):
         self.room_group_name = 'chat_%s' % self.room_name
         logger.warning('connected')
         # Join room group
-        self.channel_layer.group_add(
+        async_to_sync(self.channel_layer.group_add)(
             self.room_group_name,
             self.channel_name
         )
@@ -25,7 +25,7 @@ class ChatConsumer(WebsocketConsumer):
 
     def disconnect(self, close_code):
         # Leave room group
-        self.channel_layer.group_discard(
+        async_to_sync(self.channel_layer.group_discard)(
             self.room_group_name,
             self.channel_name
         )
@@ -91,11 +91,11 @@ class ChatConsumer(WebsocketConsumer):
         async_to_sync(self.channel_layer.group_send)(
             self.room_group_name,
             {
-                'type': 'chat_message',
-                'file': _file,
-                'message': message,
-                'user': user,
-                'room': room,
+                "type": "chat_message",
+                "file": _file,
+                "message": message,
+                "user": user,
+                "room": room,
             }
         )
 
@@ -117,8 +117,8 @@ class ChatConsumer(WebsocketConsumer):
         self.send(text_data=json.dumps({
             "room": room,
             "user": user, #User.objects.get(pk=user).token,
-            'message': message,
-            'file': path if message_obj else None
+            "message": message,
+            "file": path if message_obj else None
         }))
 
 class DealConsumer(WebsocketConsumer):

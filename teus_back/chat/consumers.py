@@ -27,7 +27,7 @@ class ChatConsumer(WebsocketConsumer):
         # Leave room group
         self.channel_layer.group_discard(
             self.room_group_name,
-            self.channel
+            self.channel_name
         )
 
     # Receive message from WebSocket

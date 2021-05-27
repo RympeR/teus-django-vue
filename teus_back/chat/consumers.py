@@ -33,6 +33,8 @@ class ChatConsumer(WebsocketConsumer):
     # Receive message from WebSocket
     def receive(self, text_data):
         try:
+            logger.warning("recieved")
+            logger.warning(text_data)
             text_data_json = json.loads(text_data)
             room = text_data_json["room"]
             user = text_data_json["user"]
@@ -98,9 +100,11 @@ class ChatConsumer(WebsocketConsumer):
                 "room": room,
             }
         )
-
+# ws://api-teus.maximusapp.com/api/chat/ws/chat/2/
     # Receive message from room group
     def chat_message(self, event):
+        logger.warning("recieved event")
+        logger.warning(event)
         message = event['message']
         room = event['room']
         user = event['user']

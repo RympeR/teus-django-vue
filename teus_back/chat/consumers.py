@@ -67,6 +67,7 @@ class ChatConsumer(WebsocketConsumer):
                 room_obj.proposition_user_readed = False
                 room_obj.request_user_readed = True 
                 if room_obj.proposition_id.user.onesignal_token != '':
+                    logger.warning('sended push proposition_id')
                     send_push(
                         'Teus message',
                         f'''TEUs {room_obj.request_id.user.first_name} отправил сообщение:\n{message}''',
@@ -74,11 +75,13 @@ class ChatConsumer(WebsocketConsumer):
                         {'room':room_obj.pk}
                     )
                 else:
+                    logger.warning('no sended push proposition_id')
                     logger.error(f' token -> {room_obj.proposition_id.user.onesignal_token} ')
             elif room_obj.proposition_id.user.pk == int(user):
                 room_obj.request_user_readed = False
                 room_obj.proposition_user_readed = True
                 if room_obj.request_id.user.onesignal_token != '':
+                    logger.warning('sended push request_id')
                     send_push(
                         'Teus message',
                         f'''TEUs {room_obj.proposition_id.user.first_name} отправил сообщение:\n{message}''',
@@ -86,6 +89,7 @@ class ChatConsumer(WebsocketConsumer):
                         {'room':room_obj.pk}
                     )
                 else:
+                    logger.warning('no sended push request_id')
                     logger.error(f'token => {room_obj.request_id.user.onesignal_token}')
 
             room_obj.save()
@@ -100,7 +104,7 @@ class ChatConsumer(WebsocketConsumer):
                 "room": room,
             }
         )
-# ws://api-teus.maximusapp.com/api/chat/ws/chat/2/
+# 
     # Receive message from room group
     def chat_message(self, event):
         logger.warning("recieved event")

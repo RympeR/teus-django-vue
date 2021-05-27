@@ -28,6 +28,8 @@ class UserRequest(models.Model):
     end_date = UnixTimeStampField(verbose_name='end date', null=True, blank=True)
     status = models.CharField(max_length=20, choices=STATUSES, default='в работе')
 
+    def __str__(self):
+        return f'{self.pk}-p-{self.user}-u-{self.user.user}'
     class Meta:
         ordering = ['-end_date', '-pk']
 
@@ -42,6 +44,9 @@ class UserProposition(models.Model):
     status = models.CharField(max_length=20, choices=STATUSES, default='в работе')
     created_at = UnixTimeStampField(auto_now_add=True, null=True)
     
+    def __str__(self):
+        return f'{self.pk}-p-{self.user}-u-{self.user.user}'
+
     class Meta:
         ordering = ['-end_date', '-pk']
        

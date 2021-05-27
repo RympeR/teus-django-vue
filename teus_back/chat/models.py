@@ -16,6 +16,8 @@ class Room(models.Model):
     request_user_readed = models.BooleanField(default=False)
     proposition_user_readed = models.BooleanField(default=False)
 
+    def __str__(self):
+        return f'{self.pk}-p-{self.proposition_id.user}-u-{self.request_id.user}'
 class Chat(models.Model):
     room = models.ForeignKey(Room, verbose_name='Chat room',
                              related_name='chat_room', on_delete=models.CASCADE)
@@ -24,7 +26,9 @@ class Chat(models.Model):
     text = models.TextField("Message", max_length=500, null=True, blank=True)
     attachment = models.FileField("Файл", null=True, blank=True)
     date = UnixTimeStampField("Send datetime", auto_now_add=True, null=True, blank=True)
-
+    
+    def __str__(self):
+        return f'{self.pk}-p-{self.room}-u-{self.user}'
     class Meta:
         verbose_name = 'Чат'
         verbose_name_plural = 'Чаты'
@@ -40,6 +44,8 @@ class Deal(models.Model):
     line = models.ForeignKey(Line, related_name='line_deal', on_delete=models.CASCADE)
     container = models.ForeignKey(Container, related_name='container_deal', on_delete=models.CASCADE)
     handshake_time = UnixTimeStampField(auto_now_add=True)
-
+    
+    def __str__(self):
+        return f'{self.pk}-p-{self.user_request}-u-{self.user_proposition}'
     class Meta:
         ordering = ['-handshake_time']

@@ -1449,3 +1449,15 @@ class ActionPropositionAPI(generics.RetrieveUpdateAPIView, UpdateModelMixin):
 
     def partial_update(self, request, *args, **kwargs):
         return self.partial_update(request, *args, **kwargs)
+
+class DeletePropositionAPI(generics.DestroyAPIView):
+    permission_classes = (permissions.AllowAny, )
+    queryset = UserProposition.objects.all()
+    parser_classes = (JSONParser, MultiPartParser, FormParser)
+    serializer_class = PropositionSerializer
+
+class DeleteRequestAPI(generics.DestroyAPIView):
+    permission_classes = (permissions.AllowAny, )
+    queryset = UserRequest.objects.all()
+    parser_classes = (JSONParser, MultiPartParser, FormParser)
+    serializer_class = RequestSerializer

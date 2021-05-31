@@ -86,7 +86,7 @@ class GetRoomsProposition(APIView):
             except Exception:
                 deals = []
             for obj in rooms:
-                messages = rooms.chat_room.first()
+                messages = obj.chat_room.first()
                 if not messages.exists():
                     continue
                 had_deal = False
@@ -190,6 +190,9 @@ class GetRoomsRequest(APIView):
             except Exception:
                 deals = []
             for obj in rooms:
+                messages = obj.chat_room.first()
+                if not messages.exists():
+                    continue
                 had_deal = False
                 if obj in deals:
                     had_deal = True

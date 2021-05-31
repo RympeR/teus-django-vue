@@ -8,7 +8,7 @@ urlpatterns = [
     path('get-requests-list', RequestsList.as_view() ,name='RequestFullList'),
     path('get-requests-api-list', RequestsAPIList.as_view() ,name='RequestFullList'),
     path('update-request/<int:request_id>/', RequestAPI.as_view() ,name='RequestUpdate'),
-    path('delete-request/<int:request_id>/', DeleteRequestAPI.as_view() ,name='RequestDelete'),
+    path('delete-request/<int:pk>/', DeleteRequestAPI.as_view() ,name='RequestDelete'),
 
     path('get-proposition/<int:proposition_id>/', PropositionAPI.as_view() ,name='PropositionProfile'),
     path('create-proposition/', PropositionAPI.as_view() ,name='PropositionCreate'),
@@ -16,7 +16,7 @@ urlpatterns = [
     path('get-proposition-api-list', PropositionAPIList.as_view() ,name='PropositionFullList'),
     path('proposition-list/', FilteredPropositions.as_view() ,name='PropositionFilteredList'),
     path('update-proposition/<int:proposition_id>/', PropositionAPI.as_view() ,name='PropositionUpdate'),
-    path('delete-proposition/<int:proposition_id>/', DeletePropositionAPI.as_view() ,name='PropositionDelete'),
+    path('delete-proposition/<int:pk>/', DeletePropositionAPI.as_view() ,name='PropositionDelete'),
 
 
     path('get-deal-list', DealsList.as_view() ,name='DealFullList'),

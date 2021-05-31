@@ -87,7 +87,7 @@ class GetRoomsProposition(APIView):
                 deals = []
             for obj in rooms:
                 messages = obj.chat_room.first()
-                if not messages.exists():
+                if not messages:
                     continue
                 had_deal = False
                 if obj in deals:
@@ -191,7 +191,7 @@ class GetRoomsRequest(APIView):
                 deals = []
             for obj in rooms:
                 messages = obj.chat_room.first()
-                if not messages.exists():
+                if not messages:
                     continue
                 had_deal = False
                 if obj in deals:

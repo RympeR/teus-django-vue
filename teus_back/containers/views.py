@@ -1340,13 +1340,14 @@ class FilteredPropositions(APIView):
                 "user": {
                     "id": proposition.user.id,
                     "name": proposition.user.first_name,
+                    "company": proposition.user.last_name if proposition.user.last_name else None,
                     "onesignal_token": proposition.user.onesignal_token,
-                    "image": user_image_url
+                    "image": user_image_url,
                 },
                 "line": {
                     "id": proposition.line.id,
                     "name": proposition.line.name,
-                    "company": proposition.line.lastname,
+                    
                 },
                 "city": {
                     "id": proposition.city.id if proposition.city else None,

@@ -1345,7 +1345,8 @@ class FilteredPropositions(APIView):
                 },
                 "line": {
                     "id": proposition.line.id,
-                    "name": proposition.line.name
+                    "name": proposition.line.name,
+                    "company": proposition.line.lastname,
                 },
                 "city": {
                     "id": proposition.city.id if proposition.city else None,

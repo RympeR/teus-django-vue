@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="form__item">
-            <span class="form__label">Фамилия</span>
+            <span class="form__label">Компания</span>
             <div class="form__control">
                 <b-form-input class="short"
                     type="text"

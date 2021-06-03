@@ -135,7 +135,7 @@ export default {
             fields: [
                 { key: 'id', label: 'ID', sortable: true},
                 { key: 'phone', label: 'Телефон', sortable: true},
-                { key: 'last_name', label: 'Фамилия', sortable: true},
+                { key: 'last_name', label: 'Компания', sortable: true},
                 { key: 'first_name', label: 'Имя'},
                 { key: 'image', label: 'Аватар'},
                 { key: 'actions', label: ''},
